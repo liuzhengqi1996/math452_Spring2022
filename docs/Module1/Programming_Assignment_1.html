@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 1 Programming Assignment &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Linearly separable sets" href="m1_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Week 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module1/Programming_Assignment_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module1/Programming_Assignment_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-1-pt-plot-the-curve-of-function">
+   <strong>
+    Problem 1 (1 pt).
+   </strong>
+   Plot the curve of function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#f-x-x-3-x-x-in-1-1">
+   $
+   <span class="math notranslate nohighlight">
+    \(f(x) = x^3 - x,~~ x \in[-1,1].\)
+   </span>
+   $
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-2-pts">
+   <strong>
+    Problem 2 (2 pts).
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-two-roots-of-the-function">
+   (1) Find the two roots of the function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#f-x-2x-2-x-1-x-in-1-2">
+   $
+   <span class="math notranslate nohighlight">
+    \(f(x) = 2x^2 - x - 1,~~ x \in[-1,2].\)
+   </span>
+   $
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve">
+   (2) Plot the curve of the function
+   <span class="math notranslate nohighlight">
+    \(f(x)\)
+   </span>
+   defined in (1) and mark all the roots on the curve.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3-optional-given-p-begin-bmatrix-1-2-3-4-end-bmatrix-investigate-the-two-different-multiplications-p-p-and-torch-mm-p-p">
+   <strong>
+    Problem 3 (optional)
+   </strong>
+   .  Given
+   <span class="math notranslate nohighlight">
+    \(P=\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4\end{bmatrix}\)
+   </span>
+   , investigate the two different multiplications
+   <span class="math notranslate nohighlight">
+    \(P*P\)
+   </span>
+   and
+   <span class="math notranslate nohighlight">
+    \(torch.mm(P,P)\)
+   </span>
+   .
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4-1-pt-given">
+   <strong>
+    Problem 4 (1 pt).
+   </strong>
+   Given
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-begin-bmatrix-1-2-3-4-5-6-7-8-9-end-bmatrix-b-begin-bmatrix-1-2-3-end-bmatrix">
+   $
+   <span class="math notranslate nohighlight">
+    \(A=\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}, ~~ b=\begin{bmatrix} 1  \\ 2 \\ 3\end{bmatrix}.\)
+   </span>
+   $
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solve-a-2-x-b">
+   Solve
+   <span class="math notranslate nohighlight">
+    \(A^2 x = b.\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5-1-pt-given-f-x-y-x-2-y-2-xy-3-compute-frac-partial-f-x-y-partial-y-at-x-1-y-2">
+   <strong>
+    Problem 5 (1 pt).
+   </strong>
+   Given
+   <span class="math notranslate nohighlight">
+    \(f(x,y) = x^2+y^2+(xy)^3\)
+   </span>
+   , compute
+   <span class="math notranslate nohighlight">
+    \(\frac{\partial f(x,y)}{\partial y}\)
+   </span>
+   at
+   <span class="math notranslate nohighlight">
+    \(x=1,y=2\)
+   </span>
+   .
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-6-optional-define-a-function-to-find-the-minimum-of-three-numbers-a-b-c-test-your-code-and-print-the-minimum-of-the-three-numbers-where-a-sqrt-2-b-frac-4-3-c-0-5e">
+   <strong>
+    Problem 6 (optional).
+   </strong>
+   Define a function to find the minimum of three numbers
+   <span class="math notranslate nohighlight">
+    \(a,~b,~c\)
+   </span>
+   . Test your code and print the minimum of the three numbers, where
+   <span class="math notranslate nohighlight">
+    \(a=\sqrt{2},~ b=\frac{4}{3},~ c=0.5e\)
+   </span>
+   .
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-7-1-pt-define-a-function-to-find-the-maximum-and-minimum-of-a-sequence-with-n-numbers">
+   <strong>
+    Problem 7 (1 pt).
+   </strong>
+   Define a function to find the maximum and minimum of a sequence with n numbers.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-8-1-pt-define-a-function-to-sort-a-sequence-with-n-numbers-in-ascending-order">
+   <strong>
+    Problem 8 (1 pt).
+   </strong>
+   Define a function to sort a sequence with n numbers in ascending order.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-9-3-pts-given-a-function">
+   <strong>
+    Problem 9 (3 pts).
+   </strong>
+   Given a function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#f-x-y-x-2-2-y-2-2-y-4-2-2x-2-2xy-4y-16x-1">
+   $
+   <span class="math notranslate nohighlight">
+    \(f(x,y)=(x-2)^2 + y^2 + 2(y-4)^2 + 2x^2 + 2xy + 4y -16x +1.\)
+   </span>
+   $
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#please-write-a-code-to-apply-gradient-descent-method-to-find-the-minimum-of-f-x-y-with-initial-value-x-y-0">
+   Please write a code to apply gradient descent method to find the minimum of
+   <span class="math notranslate nohighlight">
+    \(f(x,y)\)
+   </span>
+   with initial value
+   <span class="math notranslate nohighlight">
+    \(x=y=0\)
+   </span>
+   .
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="week-1-programming-assignment">
+<h1>Week 1 Programming Assignment<a class="headerlink" href="#week-1-programming-assignment" title="Permalink to this headline">¶</a></h1>
+<p>Remark:</p>
+<p>(1) There are 9 problems, among which 7 problems are for 10 points whlie the other 2 problems are optional. Although the optional problems will not be counted, you are suggested to finish them as possible as you can.</p>
+<p>(2) Please upload your solutions of this assignment to Canvas with a file named “Programming_Assignment_1 _yourname.ipynb” before 11:59pm May 23.</p>
+<p>=================================================================================================================</p>
+<div class="section" id="problem-1-1-pt-plot-the-curve-of-function">
+<h2><strong>Problem 1 (1 pt).</strong> Plot the curve of function<a class="headerlink" href="#problem-1-1-pt-plot-the-curve-of-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="f-x-x-3-x-x-in-1-1">
+<h2>$<span class="math notranslate nohighlight">\(f(x) = x^3 - x,~~ x \in[-1,1].\)</span>$<a class="headerlink" href="#f-x-x-3-x-x-in-1-1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code for solving probelm 1 in this cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-2-2-pts">
+<h2><strong>Problem 2 (2 pts).</strong><a class="headerlink" href="#problem-2-2-pts" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="find-the-two-roots-of-the-function">
+<h2>(1) Find the two roots of the function<a class="headerlink" href="#find-the-two-roots-of-the-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="f-x-2x-2-x-1-x-in-1-2">
+<h2>$<span class="math notranslate nohighlight">\(f(x) = 2x^2 - x - 1,~~ x \in[-1,2].\)</span>$<a class="headerlink" href="#f-x-2x-2-x-1-x-in-1-2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve">
+<h2>(2) Plot the curve of the function <span class="math notranslate nohighlight">\(f(x)\)</span> defined in (1) and mark all the roots on the curve.<a class="headerlink" href="#plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-3-optional-given-p-begin-bmatrix-1-2-3-4-end-bmatrix-investigate-the-two-different-multiplications-p-p-and-torch-mm-p-p">
+<h2><strong>Problem 3 (optional)</strong>.  Given <span class="math notranslate nohighlight">\(P=\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4\end{bmatrix}\)</span>, investigate the two different multiplications <span class="math notranslate nohighlight">\(P*P\)</span> and <span class="math notranslate nohighlight">\(torch.mm(P,P)\)</span>.<a class="headerlink" href="#problem-3-optional-given-p-begin-bmatrix-1-2-3-4-end-bmatrix-investigate-the-two-different-multiplications-p-p-and-torch-mm-p-p" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-4-1-pt-given">
+<h2><strong>Problem 4 (1 pt).</strong>  Given<a class="headerlink" href="#problem-4-1-pt-given" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-begin-bmatrix-1-2-3-4-5-6-7-8-9-end-bmatrix-b-begin-bmatrix-1-2-3-end-bmatrix">
+<h2>$<span class="math notranslate nohighlight">\(A=\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}, ~~ b=\begin{bmatrix} 1  \\ 2 \\ 3\end{bmatrix}.\)</span>$<a class="headerlink" href="#a-begin-bmatrix-1-2-3-4-5-6-7-8-9-end-bmatrix-b-begin-bmatrix-1-2-3-end-bmatrix" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="solve-a-2-x-b">
+<h2>Solve <span class="math notranslate nohighlight">\(A^2 x = b.\)</span><a class="headerlink" href="#solve-a-2-x-b" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-5-1-pt-given-f-x-y-x-2-y-2-xy-3-compute-frac-partial-f-x-y-partial-y-at-x-1-y-2">
+<h2><strong>Problem 5 (1 pt).</strong>  Given <span class="math notranslate nohighlight">\(f(x,y) = x^2+y^2+(xy)^3\)</span>, compute <span class="math notranslate nohighlight">\(\frac{\partial f(x,y)}{\partial y}\)</span> at <span class="math notranslate nohighlight">\(x=1,y=2\)</span>.<a class="headerlink" href="#problem-5-1-pt-given-f-x-y-x-2-y-2-xy-3-compute-frac-partial-f-x-y-partial-y-at-x-1-y-2" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-6-optional-define-a-function-to-find-the-minimum-of-three-numbers-a-b-c-test-your-code-and-print-the-minimum-of-the-three-numbers-where-a-sqrt-2-b-frac-4-3-c-0-5e">
+<h2><strong>Problem 6 (optional).</strong> Define a function to find the minimum of three numbers <span class="math notranslate nohighlight">\(a,~b,~c\)</span>. Test your code and print the minimum of the three numbers, where <span class="math notranslate nohighlight">\(a=\sqrt{2},~ b=\frac{4}{3},~ c=0.5e\)</span>.<a class="headerlink" href="#problem-6-optional-define-a-function-to-find-the-minimum-of-three-numbers-a-b-c-test-your-code-and-print-the-minimum-of-the-three-numbers-where-a-sqrt-2-b-frac-4-3-c-0-5e" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-7-1-pt-define-a-function-to-find-the-maximum-and-minimum-of-a-sequence-with-n-numbers">
+<h2><strong>Problem 7 (1 pt).</strong> Define a function to find the maximum and minimum of a sequence with n numbers.<a class="headerlink" href="#problem-7-1-pt-define-a-function-to-find-the-maximum-and-minimum-of-a-sequence-with-n-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Hint: x = np.random.randint(a,b,size=n) can randomly generate n numbers (saved in a row vector x ) and each number is between a and b.</p>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-8-1-pt-define-a-function-to-sort-a-sequence-with-n-numbers-in-ascending-order">
+<h2><strong>Problem 8 (1 pt).</strong>  Define a function to sort a sequence with n numbers in ascending order.<a class="headerlink" href="#problem-8-1-pt-define-a-function-to-sort-a-sequence-with-n-numbers-in-ascending-order" title="Permalink to this headline">¶</a></h2>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="problem-9-3-pts-given-a-function">
+<h2><strong>Problem 9 (3 pts).</strong>  Given a function<a class="headerlink" href="#problem-9-3-pts-given-a-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="f-x-y-x-2-2-y-2-2-y-4-2-2x-2-2xy-4y-16x-1">
+<h2>$<span class="math notranslate nohighlight">\(f(x,y)=(x-2)^2 + y^2 + 2(y-4)^2 + 2x^2 + 2xy + 4y -16x +1.\)</span>$<a class="headerlink" href="#f-x-y-x-2-2-y-2-2-y-4-2-2x-2-2xy-4y-16x-1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="please-write-a-code-to-apply-gradient-descent-method-to-find-the-minimum-of-f-x-y-with-initial-value-x-y-0">
+<h2>Please write a code to apply gradient descent method to find the minimum of <span class="math notranslate nohighlight">\(f(x,y)\)</span> with initial value <span class="math notranslate nohighlight">\(x=y=0\)</span>.<a class="headerlink" href="#please-write-a-code-to-apply-gradient-descent-method-to-find-the-minimum-of-f-x-y-with-initial-value-x-y-0" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="m1_02.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Linearly separable sets</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

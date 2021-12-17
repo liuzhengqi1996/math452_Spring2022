@@ -10,6 +10,7 @@ parts:
     sections:
     - file: Module1/m1_01.ipynb
     - file: Module1/m1_02.ipynb
+    - file: Module1/Programming_Assignment_1.ipynb
 
     
 
