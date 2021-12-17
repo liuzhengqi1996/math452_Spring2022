@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linearly separable sets &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Machine learning basics, popular data sets" href="m1_01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Linearly separable sets
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module1/m1_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module1/m1_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="linearly-separable-sets">
+<h1>Linearly separable sets<a class="headerlink" href="#linearly-separable-sets" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3im0zbc7&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_3sj1s85k&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_3im0zbc7&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_3sj1s85k"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_awemnq71&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_tiw3d9xz&quot;</span>  <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_awemnq71&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_tiw3d9xz"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>In this section, we consider a special class of <span class="math notranslate nohighlight">\(k\)</span> linearly separable
+sets for <span class="math notranslate nohighlight">\(k\ge 2\)</span>. Let us first introduce the following definition for
+binary classification.</p>
+<p>For <span class="math notranslate nohighlight">\(k=2\)</span>, there is a very simple geometric interpretation of two
+linearly separable sets.</p>
+<div class="tip admonition" id="lem2class">
+<p class="admonition-title">Definition</p>
+<p>The two sets <span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(A_2\subset \mathbb{R}^d\)</span> are linearly separable if there exists a
+hyperplane</p>
+<p>such that <span class="math notranslate nohighlight">\(wx+b&gt;0\)</span> if <span class="math notranslate nohighlight">\(x \in A_1\)</span> and <span class="math notranslate nohighlight">\(wx+b&lt;0\)</span> if
+<span class="math notranslate nohighlight">\(x \in A_2\)</span></p>
+<div class="math notranslate nohighlight" id="equation-2classh">
+<span class="eqno">(1)<a class="headerlink" href="#equation-2classh" title="Permalink to this equation">¶</a></span>\[
+  H_{0}=\{x:wx+b=0\} 
+\]</div>
+</div>
+<div class="figure align-default" id="twoclassification">
+<a class="reference internal image-reference" href="../_images/LinearS1.png"><img alt="../_images/LinearS1.png" src="../_images/LinearS1.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">One linearly separable set</span><a class="headerlink" href="#twoclassification" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/NLinearS1.png"><img alt="../_images/NLinearS1.png" src="../_images/NLinearS1.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Two non-linearly separable sets</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="tip admonition" id="id2">
+<p class="admonition-title">Lemma</p>
+<p>The two sets <span class="math notranslate nohighlight">\(A_1\)</span>,
+<span class="math notranslate nohighlight">\(A_2\subset \mathbb{R}^d\)</span> are linearly separable if there exists</p>
+<div class="math notranslate nohighlight" id="equation-wb1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-wb1" title="Permalink to this equation">¶</a></span>\[\begin{split}
+  W=
+  \begin{pmatrix}
+  w_1\\
+  w_2
+  \end{pmatrix}
+  \in \mathbb{R}^{2\times d}, 
+  b=
+  \begin{pmatrix}
+  b_1\\
+  b_2
+  \end{pmatrix}
+  \in \mathbb{R}^{2\times d}
+\end{split}\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight" id="equation-eq3-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq3-1" title="Permalink to this equation">¶</a></span>\[
+  w_1x+b_1 &gt; w_{2} x+b_2,\ \forall x\in A_1,
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-eq-3-2">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-3-2" title="Permalink to this equation">¶</a></span>\[
+  w_1x+b_1 &lt; w_2 x+b_2,\ \forall x\in A_2.
+\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> Here, we can just take <span class="math notranslate nohighlight">\(w = w_1 - w_2\)</span> and <span class="math notranslate nohighlight">\(b = b_1 - b_2\)</span>,
+then we can check that the hyperplane <span class="math notranslate nohighlight">\(wx + b\)</span> satisfies the definition
+as presented before.◻</p>
+</div>
+<p>Now let us consider multi-class classification. To begin with the
+definition, let us assume that the data space is divided into <span class="math notranslate nohighlight">\(k\)</span>
+classes represented by <span class="math notranslate nohighlight">\(k\)</span> disjoint sets
+<span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\subset \mathbb{R}^d\)</span>, which means</p>
+<div class="math notranslate nohighlight">
+\[
+A = A_1\cup A_2\cup \cdots \cup A_k, ~A_i\cap A_j = \emptyset, \forall i \neq j
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Definition</p>
+<p>A collection of subsets <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^d\)</span> are linearly
+separable if there exist</p>
+<div class="math notranslate nohighlight" id="equation-wb">
+<span class="eqno">(5)<a class="headerlink" href="#equation-wb" title="Permalink to this equation">¶</a></span>\[\begin{split}
+W=
+  \begin{pmatrix}
+  w_1\\
+  \vdots\\
+  w_k
+  \end{pmatrix}
+  \in \mathbb{R}^{k\times d}, 
+  b=
+  \begin{pmatrix}
+  b_1\\
+  \vdots\\
+  b_k
+  \end{pmatrix}
+  \in \mathbb{R}^{k\times d}
+\end{split}\]</div>
+<p>such that, for each <span class="math notranslate nohighlight">\(1\le i\le k\)</span> and
+<span class="math notranslate nohighlight">\(j \neq i\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq-3">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-3" title="Permalink to this equation">¶</a></span>\[
+  w_ix+b_i &gt; w_jx+b_j,\ \forall x\in A_i
+\]</div>
+<p>namely, each pairs of <span class="math notranslate nohighlight">\(A_i\)</span> and <span class="math notranslate nohighlight">\(A_j\)</span> are linearly separable by the plane</p>
+<div class="math notranslate nohighlight" id="equation-hij">
+<span class="eqno">(7)<a class="headerlink" href="#equation-hij" title="Permalink to this equation">¶</a></span>\[
+  H_{ij}=\{(w_i-w_j)\cdot x+(b_i-b_j) = 0\}, \quad \forall j\neq i
+\]</div>
+</div>
+<p>The geometric interpretation for linearly separable sets is less obvious
+when <span class="math notranslate nohighlight">\(k&gt;2\)</span>.</p>
+<div class="tip admonition" id="interplation-assume-that">
+<p class="admonition-title">Lemma</p>
+<p><span class="math notranslate nohighlight">\(A_1,...,A_k\)</span> are linearly separable and <span class="math notranslate nohighlight">\(W\in
+\mathbb{R}^{k\times d}\)</span> and <span class="math notranslate nohighlight">\(b\in\mathbb{R}^k\)</span> satisfy
+<a class="reference internal" href="#equation-wb">(5)</a>. Define</p>
+<div class="math notranslate nohighlight" id="equation-gammai">
+<span class="eqno">(8)<a class="headerlink" href="#equation-gammai" title="Permalink to this equation">¶</a></span>\[
+  \Gamma_i(W,b) = \{x\in\mathbb R^d: (Wx+b)_i &gt; (Wx+b)_j,\ \forall j \neq i\}
+\]</div>
+<p>Then for each <span class="math notranslate nohighlight">\(i\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-aigamma">
+<span class="eqno">(9)<a class="headerlink" href="#equation-aigamma" title="Permalink to this equation">¶</a></span>\[
+  A_i \subset \Gamma_i(W,b)
+\]</div>
+</div>
+<p>We note that each <span class="math notranslate nohighlight">\(\Gamma_i(W,b)\)</span> is a polygon whose boundary consists
+of hyperplanes given by <a class="reference internal" href="#equation-hij">(7)</a>.</p>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/3-class.png"><img alt="../_images/3-class.png" src="../_images/3-class.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Linearly separable sets in 2-d space (k = 3)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>We next introduce two more definitions of linearly separable sets that
+have more clear geometric interpretation.</p>
+<div class="tip admonition">
+<p class="admonition-title">Definition</p>
+<p>A collection of subsets <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^d\)</span> is all-vs-one
+linearly separable if for each <span class="math notranslate nohighlight">\(i = 1,...,k\)</span>, <span class="math notranslate nohighlight">\(A_i\)</span> and
+<span class="math notranslate nohighlight">\(\displaystyle \cup_{j\neq i} A_j\)</span> are linearly separable.</p>
+</div>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/MulLClassfication.PNG"><img alt="../_images/MulLClassfication.PNG" src="../_images/MulLClassfication.PNG" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">All-vs-One linearly separable sets (k =
+3)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Definition</p>
+<p>A collection of subsets <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^d\)</span> is pairwise
+linearly separable if for each pair of indices <span class="math notranslate nohighlight">\(1\leq i &lt;
+  j\leq k\)</span>, <span class="math notranslate nohighlight">\(A_i\)</span> and <span class="math notranslate nohighlight">\(A_j\)</span> are linearly separable.</p>
+</div>
+<div class="figure align-default" id="pairwise-separable-example">
+<a class="reference internal image-reference" href="../_images/pairwise_linearly_separable.png"><img alt="../_images/pairwise_linearly_separable.png" src="../_images/pairwise_linearly_separable.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Pairwise linearly separable sets in 2-d space (k =3)</span><a class="headerlink" href="#pairwise-separable-example" title="Permalink to this image">¶</a></p>
+</div>
+<p>We begin by comparing our notion of linearly separable to the two other
+previously introduced geometric definitions of all-vs-one linearly
+separable and pairwise lineaerly separable. Obviously, in the case of
+two classes, they are all equivalent, however, with more than two
+classes this is no longer the case. We do have the following
+implications, though.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Lemma</p>
+<p>If <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^d\)</span> are all-vs-one linearly separable,
+then they are linearly separable as well.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> Assume that <span class="math notranslate nohighlight">\(A_1,...,A_k\)</span> are all-vs-one linearly separable.
+For each <span class="math notranslate nohighlight">\(i\)</span>, let <span class="math notranslate nohighlight">\(w_i\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> be such that <span class="math notranslate nohighlight">\(w_ix + b_i\)</span> separates <span class="math notranslate nohighlight">\(A_i\)</span>
+from <span class="math notranslate nohighlight">\(\cup_{j\neq i} A_j\)</span>, i.e. <span class="math notranslate nohighlight">\(w_ix + b_i &gt; 0\)</span> for <span class="math notranslate nohighlight">\(x\in A_i\)</span> and
+<span class="math notranslate nohighlight">\(w_ix + b_i &lt; 0\)</span> for <span class="math notranslate nohighlight">\(x \in \cup_{j\neq i} A_j\)</span>.</p>
+<p>Set <span class="math notranslate nohighlight">\(W = (w_1^T,w_2^T,\cdots,w_k^T)^T\)</span>, <span class="math notranslate nohighlight">\(b = (b_1,b_2,\cdots,b_k)^T\)</span> and
+observe that if <span class="math notranslate nohighlight">\(x\in A_i\)</span>, then <span class="math notranslate nohighlight">\((Wx + b)_i &gt; 0\)</span> while <span class="math notranslate nohighlight">\((Wx + b)_j &lt; 0\)</span>
+for all <span class="math notranslate nohighlight">\(j\neq i\)</span>.◻</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Lemma</p>
+<p>If <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^n\)</span> are linearly separable, then they
+are pairwise linearly separable as well.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> If <span class="math notranslate nohighlight">\(A_1,...,A_k\subset \mathbb{R}^d\)</span> are linearly separable,
+suppose that <span class="math notranslate nohighlight">\(W = (w_1^T,w_2^T,\cdots,w_k^T)^T\)</span>, <span class="math notranslate nohighlight">\(b =
+  (b_1,b_2,\cdots,b_k)^T\)</span>. So we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{cases} 
+  w_i x+ b_i &gt; w_j x + b_j &amp; x\in A_i \\
+  w_i x+ b_i &lt; w_j x + b_j&amp; x\in A_j \\
+  \end{cases}
+\end{split}\]</div>
+<p>Take <span class="math notranslate nohighlight">\(w_{i,j} = w_i - w_j, b_{i,j} = b_i-b_j\)</span>, then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  w_{i,j}x + b_{i,j}\begin{cases} 
+  &gt; 0 &amp; x\in A_i \\
+  &lt; 0 &amp; x\in A_j \\
+  \end{cases}
+\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(A_1,...,A_k\)</span> are pairwise linearly separable.◻</p>
+</div>
+<p>However, the converses of both of these statements are false, as the
+following examples show.</p>
+<div class="tip admonition">
+<p class="admonition-title">Example</p>
+<p>Consider the sets <span class="math notranslate nohighlight">\(A_1, A_2, A_3\subset \mathbb{R}\)</span> given by
+<span class="math notranslate nohighlight">\(A_1 = [-4,-2]\)</span>, <span class="math notranslate nohighlight">\(A_2 = [-1,1]\)</span>, and <span class="math notranslate nohighlight">\(A_3 = [2,4]\)</span>. These sets are
+clearly not one-vs-all linearly separable because <span class="math notranslate nohighlight">\(A_2\)</span> cannot be
+separated from both <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_3\)</span> by a single plane (in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>
+this is just cutting the real line at a given number, and <span class="math notranslate nohighlight">\(A_2\)</span> is in
+the middle).</p>
+<p>However, these sets are linearly separated by <span class="math notranslate nohighlight">\(W = [-2,0,2]^T\)</span> and
+<span class="math notranslate nohighlight">\(b = [-3,0,-3]^T\)</span>, for example.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Example</p>
+<p>Consider the sets <span class="math notranslate nohighlight">\(A_1, A_2, A_3\subset \mathbb{R}^2\)</span> shown in figure
+<a class="reference internal" href="#pairwise-separable-example"><span class="std std-numref">Fig. 5</span></a>. Note that <span class="math notranslate nohighlight">\(A_i\)</span> and <span class="math notranslate nohighlight">\(A_j\)</span> are
+separated by hyperplane <span class="math notranslate nohighlight">\(H_{i,j}\)</span> (drawn in the figure) and so these
+sets are pairwise linearly separable. We will show that they are not
+linearly separable.</p>
+<p>Assume to the contrary that <span class="math notranslate nohighlight">\(W\in \mathbb{R}^{3\times 2}\)</span> and
+<span class="math notranslate nohighlight">\(b\in \mathbb{R}^2\)</span> separate <span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span>, and <span class="math notranslate nohighlight">\(A_3\)</span>. Then
+<span class="math notranslate nohighlight">\((w_i - w_j)x + (b_i - b_j)\)</span> must be a plane which separates <span class="math notranslate nohighlight">\(A_i\)</span> and
+<span class="math notranslate nohighlight">\(A_j\)</span>. Now consider a point <span class="math notranslate nohighlight">\(z\)</span> bounded by <span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span> and <span class="math notranslate nohighlight">\(A_3\)</span> in
+figure <a class="reference internal" href="#pairwise-separable-example"><span class="std std-numref">Fig. 5</span></a>. We see from the figure that
+given any plane separating <span class="math notranslate nohighlight">\(A_1\)</span> from <span class="math notranslate nohighlight">\(A_2\)</span>, <span class="math notranslate nohighlight">\(z\)</span> must be on the same
+side as <span class="math notranslate nohighlight">\(A_2\)</span>, given any plane separating <span class="math notranslate nohighlight">\(A_2\)</span> from <span class="math notranslate nohighlight">\(A_3\)</span>, <span class="math notranslate nohighlight">\(z\)</span> must be
+on the same side as <span class="math notranslate nohighlight">\(A_3\)</span>, and given any plane separating <span class="math notranslate nohighlight">\(A_3\)</span> from
+<span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(z\)</span> must be on the same side as <span class="math notranslate nohighlight">\(A_1\)</span>.</p>
+<p>This means that <span class="math notranslate nohighlight">\((w_2 - w_1)z + (b_2 - b_1) &gt; 0\)</span>,
+<span class="math notranslate nohighlight">\((w_3 - w_2)z + (b_3 - b_2) &gt; 0\)</span>, and <span class="math notranslate nohighlight">\((w_1 - w_3)z + (b_1 - b_3) &gt; 0\)</span>.
+Adding these together, we obtain <span class="math notranslate nohighlight">\(0 &gt; 0\)</span>, a contradiction.</p>
+<p>The essence behind this example is that although the sets <span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span>,
+and <span class="math notranslate nohighlight">\(A_3\)</span> are pairwise linearly separable, no possible pairwise
+separation allows us to consistently classify arbitrary new points.
+However, a linear separation would give us a consistent scheme for
+classifying new points.</p>
+</div>
+<p>So the notion of linear separability is sandwiched in between the more
+intuitive notions of all-vs-one and pairwise separability. It turns out
+that linear separability is the notion which is most useful for the
+<span class="math notranslate nohighlight">\(k\)</span>-class classification problem and so we focus on this notion of
+separability from now on.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="m1_01.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Machine learning basics, popular data sets</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-206078372-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>
