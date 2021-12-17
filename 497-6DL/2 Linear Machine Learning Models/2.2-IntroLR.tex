@@ -1,0 +1,349 @@
+\newpage  
+\section{Introduction to logistic regression}
+In this section, we introduce techniques related to basic logistic regression, see \cite{gelman2006data} for more details.
+\subsection{Logistic regression}\label{sec:LR}
+%We first introduce the next definition of the set of linearly classifiable weights.
+
+Assume that we are given $k$ linearly separable sets $A_1,A_2,\cdots,A_k\in \mathbb{R}^d$, we define the set of classifiable weights as
+	\begin{equation}
+	\bm\Theta = \{\bm\theta = (W,b): w_ix+b_i>w_jx+b_j,~\forall x\in A_i, j\neq i, i= 1,\cdots,k\}
+	\end{equation}
+	which means those $(W,b)$ can separate $A_1,A_2,\cdots,A_k$ correctly. 
+	
+
+Our linearly separable assumption implies that $\bm\Theta\neq \emptyset$. 
+Now we know the existence of linearly classifiable weights. But how can we find one element in $\bm\Theta$?
+
+\begin{definition}[soft-max]\label{softmax}
+ Given $s = (s_1,s_2,\cdots,s_k)^T\in \mathbb{R}^k$, we define the soft-max mapping $\sigma: \mathbb{R}^k \rightarrow\mathbb{R}^k $ as
+ \begin{equation}
+ \sigma(s)  = \frac{e^{s}}{e^{s}\cdot \bm{1}} = \frac{1}{\sum\limits_{i=1}^k e^{s_i}}
+ \begin{pmatrix}
+ e^{s_1}\\
+ e^{s_2}\\
+ \vdots\\
+ e^{s_k}
+ \end{pmatrix}
+ \end{equation}
+ where $e^{s} = 
+ \begin{pmatrix}
+ e^{s_1}\\
+ e^{s_2}\\
+ \vdots\\
+ e^{s_k}
+ \end{pmatrix}
+ $, $\bm{1} = 
+ \begin{pmatrix}
+ 1\\
+ 1 \\
+ \vdots \\
+ 1
+ \end{pmatrix} \in\mathbb{R}^k$.
+\end{definition}
+
+
+\begin{definition}
+ Given parameter $\bm\theta = (W,b)$, we define a feature mapping $\bm p: \mathbb{R}^d \rightarrow \mathbb{R}^k$ as
+ \begin{equation}
+ \bm p(x; \bm\theta)  = \sigma(Wx+b) = \frac{1}{\sum\limits_{i=1}^k e^{w_i x+b_i}}
+ \begin{pmatrix}
+ e^{w_1 x+b_1}\\
+ e^{w_2 x+b_2}\\
+ \vdots\\
+ e^{w_k x+b_k}
+ \end{pmatrix}
+ = \begin{pmatrix}
+ p_1(x; \bm\theta) \\
+ p_2(x; \bm\theta) \\
+ \vdots \\
+ p_k(x; \bm\theta)
+ \end{pmatrix}
+ \end{equation}
+ where the $i$-th component 
+ \begin{equation}\label{key}
+ p_i(x; \bm\theta) = \frac{e^{w_i x+b_i}}{\sum\limits_{i=1}^k e^{w_i x+b_i}}.
+ \end{equation}
+\end{definition}
+
+
+
+The soft-max mapping have several important properties.
+\begin{enumerate}
+	\item 
+	$\displaystyle 0< p_i(x; \bm\theta) <1,~\sum_i p_i(x; \bm\theta) = 1$. 
+	
+	This implies that $\bm p(x; \bm\theta)$ can be regarded as a probability distribution of data points which means that given $x\in \mathbb{R}^d$, we have $x\in A_i$ with probability $p_i(x; \bm{\theta})$, $i = 1,\cdots,k$. 
+	\item 
+	$p_i(x; \bm\theta)>p_j(x; \bm\theta)\Leftrightarrow w_ix+b_i>w_j x+b_j.$
+	
+	This implies that the linearly classifiable weights have an equivalent description as
+	\begin{equation}
+	\bm{\Theta} = \left\{\bm\theta: p_i(x; \bm\theta)>p_j(x; \bm\theta),~\forall x\in A_i, j\neq i, i= 1,\cdots,k\right\}
+	\end{equation}
+	\item We usually use the max-out method to do classification. For a given data point $x$, we first use a soft-max mapping to map it to $\bm p(x; \bm\theta)$, then we attach $x$ to the class $i= \arg\max_j p_i(x; \bm\theta)$. 
+	
+	This means that we pick the label $i$ as the class of $x$ such that $x\in A_i$ has the biggest probability $p_i(x; \bm\theta)$.
+\end{enumerate}
+More detailed discussion of logistic regression from the probability perspective will be presented in the nearly future. 
+
+From the above properties, we can define the following likelihood function to help find elements in $\bm{\Theta}$:
+\begin{equation}
+P (\bm\theta)=
+\prod\limits_{i = 1}^k \prod\limits_{x\in A_i} p_i(x; \bm\theta).
+\end{equation} 
+%The next lemma shows that we can use this function to help us find some linearly classifiable weights.
+%\begin{theorem}\label{thm1-H}
+%	If $ \bm \theta \notin \Theta$, then there exists $ \bm \theta^* \in\bm \Theta$ such that 
+%	\begin{equation}\label{key}
+%	H( \bm \theta^*) > H(\bm \theta).
+%	\end{equation}
+%\end{theorem}
+Based on the property that
+\begin{equation}\label{key}
+p_i (x; \bm \theta) = \max_{1\le j \le k} p_j(x; \bm \theta), \quad\forall x \in A_i,\ \bm \theta \in \Theta,
+\end{equation}
+we may use the next optimization problem
+\begin{equation}\label{key}
+\max_{\bm \theta\in \bm{\Theta}} P(\bm \theta).
+\end{equation}
+to find an element in $\bm{\Theta}$. 
+More precisely, let us introduce the next lemmas (properties) of $P(\bm \theta)$.
+\begin{lemma}\label{lemm:H1/2}
+	Assume that the sets $A_1,A_2,\cdots,A_k$ are linearly separable. Then we have
+	\begin{equation}
+	\left\{\bm \theta:~P(\bm\theta)>\frac{1}{2}\right\}\subset \bm{\Theta}.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	It suffices to show that if $\bm\theta \not\in \bm\Theta$, we must have $P(\bm\theta)\leq\frac{1}{2}$.
+	For any $\bm\theta \not\in
+	\bm\Theta$, there must exist an $i_0$ ,an $x_0\in A_{i_0}$ and a
+	$j_0\neq i_0$ such that
+	\begin{equation}
+	w_{i_0} x_0 + b_{i_0} \leq w_{j_0}x_0 + b_{j_0}.
+	\end{equation}
+	Then we have
+	\begin{equation}
+	p_{i_0}(x_0; \bm\theta) \leq \frac{e^{w_{i_0} x_0 + b_{i_0}}}{e^{w_{i_0} x_0+b_{i_0}}+e^{w_{j_0} x_0+b_{j_0}}} \leq\frac{1}{2}.
+	\end{equation}
+	Notice that $p_i(x; \bm \theta) < 1$ for all $i = 1,\cdots,k$, $x\in A$.
+	So
+	\begin{equation}
+	P(\bm\theta) <  p_{i_0}(x_0; \bm\theta) \leq \frac{1}{2}.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}
+	If $A_1,A_2,\cdots,A_k$ are linearly separable and $\bm\theta \in \bm\Theta$, we have
+	\begin{equation}
+	\lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\bm\theta) = 1\Leftrightarrow x\in A_i. 
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	We first note that if  $x\in A_i$,
+	\begin{equation}
+	 p_i(x,\bm \theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \to 1, \quad \text{as} \quad \alpha \to \infty.
+	\end{equation}
+	On the other hand, if $x\not\in A_i$, 
+	\begin{equation}
+	p_i(x; \bm\alpha\bm\theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \leq \frac{1}{2}.
+	\end{equation}
+	This implies that if $x\not\in A_i$, $\lim_{\alpha\rightarrow \infty}p_i(x; \alpha\bm \theta)\neq 1$ which is equivalent to the proposition that if $\lim_{\alpha\rightarrow \infty}p_i(x; \alpha\bm \theta)= 1$, then $x\in A_i$.
+\end{proof}
+
+\begin{lemma}{\label{thm2}} If $A_1,A_2,\cdots,A_k$ are linearly separable, 
+	\begin{equation}
+	\bm\Theta = \left\{\bm\theta: \lim_{\alpha\rightarrow +\infty}P(\alpha\bm\theta) = 1\right\}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+ 	We first note that if $\bm\theta \in\bm\Theta$, we have $\displaystyle\lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\bm\theta) = 1$ for all $x\in A_i$. So
+	\begin{equation}
+	\lim\limits_{\alpha\rightarrow +\infty} P(\alpha\bm\theta) = \lim\limits_{\alpha\rightarrow +\infty} \prod\limits_{i = 1}^k \prod\limits_{x\in A_i} p_i(x; \alpha\bm\theta) = \prod\limits_{i = 1}^k \prod\limits_{x\in A_i} \lim\limits_{\alpha\rightarrow +\infty}p_i(x; \alpha\bm\theta) = 1.
+	\end{equation}
+	On the other hand, if $\lim\limits_{\alpha\rightarrow +\infty} P(\alpha\bm\theta) = 1$, there must exist one $\alpha_0>0$ such that $P(\alpha_0\bm\theta) >\frac{1}{2}$. From Lemma~\ref{lemm:H1/2}, we have $\alpha_0\bm\theta\in\bm\Theta$, which means $\bm\theta\in\bm\Theta$.
+\end{proof}
+
+
+These properties above imply that if we can obtain a classifiable weight through maximizing $P(\bm\theta)$, while lemma \ref{thm2} tells us that $P(\bm\theta)$ will not have a global minimum actually.
+
+More specifically, we just need to find some $\bm \theta \in \Theta$ such that
+\begin{equation}\label{key}
+P(\bm \theta) > \frac{1}{2} \Leftrightarrow  L(\bm \theta) : = -\log P(\bm \theta )  < \log(2).
+\end{equation}
+%{\bf Question:} how to find these element?
+
+\blankpage
+\break
+\subsection{Regularized logistic regression}
+Here, we start from the regularization term $e^{-\lambda R(\|\bm\theta\|)}$ with 
+these next properties:
+\begin{enumerate}
+	\item $\lambda > 0$.
+	\item $R(t)$ is a strictly increasing function on $\mathbb{R}^+$ with $R(0) = 0$, $\lim\limits_{t\rightarrow +\infty} R(t) = +\infty$.
+	For example, $R(t) = t^2$.
+	\item $\|\cdot\|$ is a norm on $R^{k\times(d+1)}$, a commonly used norm  is the 
+	following Frobenius norm: 
+	\begin{equation}\label{key}
+	\|\bm \theta\|_F = \sqrt{\sum_{i,j}W_{ij}^2 + \sum_i b_i^2}.
+	\end{equation}
+\end{enumerate}
+
+Based on this regularization term,  we may consider the following 
+regularized likelihood function $P_\lambda(\bm\theta)$ as 
+\begin{equation}\label{key}
+ P_\lambda(\bm\theta) = P(\bm\theta)e^{-\lambda R(\|\bm\theta\|)}.
+\end{equation}
+
+
+Here, let us define 
+\begin{equation}\label{key}
+\bm\Theta_{\lambda} = \mathop{{\arg\max}}_{\bm\theta}  P_\lambda(\bm\theta),
+\end{equation}
+where 
+\begin{equation}\label{key}
+\mathop{\arg\max}_{\bm\theta}  P_\lambda(\bm\theta) = \left\{\bm \theta ~:~ P_\lambda(\bm \theta) = \max_{\bm \theta} P_\lambda(\bm \theta) \right\}.
+\end{equation}
+
+
+The next lemma show that the maximal set of modified objective is not empty.
+\begin{lemma}Suppose that $A_1,A_2, \cdots, A_k$ are linearly separable, then
+	\begin{enumerate}
+		\item if $\lambda = 0$, $\bm\Theta_0 = \emptyset$,
+		\item $\bm\Theta_{\lambda}$ must be nonempty for all $\lambda>0$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Lemma~\ref{thm2} shows the first proposition. For the second proposition, 
+	we notice that 
+	\begin{enumerate}
+		\item $ P_\lambda(\bm 0) = \frac{1}{k^N}$.
+		\item $\exists\ M_{\lambda}>0$ such that $e^{-\lambda R(\|\bm\theta\|)}<\frac{1}{k^N}$ whenever $\|\bm\theta\|> M_{\lambda}$ because of the properties of $R(\|\bm\theta\|)$.
+	\end{enumerate}
+	So a maxima on $\{\bm\theta: \|\bm\theta\| \le M_{\lambda}\}$ must be a global maxima. Then we can easily obtain the result in the lemma from the boundedness and closeness of $\{\bm\theta: \|\bm\theta\| \le M_{\lambda}\}$.
+\end{proof}
+
+Furthermore, we have the next theorem which shows that we can indeed get $\Theta$ by maximizing $P_\lambda(\bm \theta)$.
+\begin{theorem}\label{thm-L-Theta} If $A_1,A_2,\cdots,A_k$ are linearly separable, 
+	\begin{equation}\label{key}
+	\bm\Theta_{\lambda} \subset \bm\Theta,
+	\end{equation}
+when $\lambda>0$ and sufficiently small.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lemm:H1/2}, we can take $\bm\theta_0\in \bm\Theta$ such that $P(\bm\theta_0)> \frac{3}{4}$.
+Then, for any $\lambda < \frac{\log \frac{3}{2}}{R(\|\bm\theta_0\|)}$, $\bm\theta_{\lambda}\in \bm\Theta_{\lambda}$, we have
+		\[
+		P(\bm\theta_{\lambda}) \geq  P_\lambda(\bm\theta_{\lambda})  \geq P_\lambda(\bm \theta_0) = P(\bm\theta_0)e^{-\lambda R(\|\bm\theta_0\|)} > \frac{3}{4}\cdot \frac{2}{3} = \frac{1}{2},
+		\]
+		which implies that $\bm \theta_{\lambda} \in \Theta$.
+		Thus, for any $ 0< \lambda < \frac{\log \frac{3}{2}}{R(\|\bm\theta_0\|)}$, $\bm\Theta_{\lambda} \subset \bm\Theta$.
+
+\end{proof}
+
+
+The design of logistic regression is that 
+maximize $P_\lambda(\bm\theta)$ is equivalent to minimize $-\log P_\lambda(\bm\theta)$, i.e.,
+\begin{equation}\label{key}
+\max_{\bm \theta} \left\{ P_\lambda(\bm\theta) \right\} \Leftrightarrow \min_{\bm \theta} \left\{ -\log   P_\lambda(\bm\theta)\right\},
+\end{equation}
+while the second one is more convenient to evaluate the gradient. Meanwhile, we add a regularization term $R(\bm\theta)$ to the objective function which makes the optimization problem has a unique solution. 
+
+ Mathematically, we can formulate Logistic regression as
+\begin{equation}
+\min_{\bm\theta} L_\lambda(\bm \theta),
+\end{equation}
+where
+\begin{equation}\label{eq:logisticlambda}
+L_\lambda(\bm \theta)  := -\log P_\lambda(\bm\theta) = -\log P(\bm\theta) + \lambda R(\|\bm\theta\|) = L(\bm\theta) + \lambda R(\|\bm\theta\|),
+\end{equation}
+with
+\begin{equation}\label{logistic}
+L(\bm \theta) = - \sum_{i=1}^k \sum_{x\in A_i} \log p_{i}(x;\bm \theta).
+\end{equation}
+
+
+
+Then we have the next logistic regression algorithm.
+\begin{algorithm}[H]
+	\caption{Logistic Regression} 
+	\label{alg:LR-R}
+	Given data $A_1, A_2, \cdots, A_k$, find 
+	\begin{equation}\label{key}
+	\bm \theta^* = \mathop{\arg\min}_{\bm \theta}  L_\lambda(\bm \theta),
+	\end{equation}
+	for some sufficient small $\lambda > 0$.
+\end{algorithm}
+
+\begin{remark}
+	Here
+	\begin{equation}\label{key}
+	L(\bm \theta)  = -\log P(\bm\theta),
+	\end{equation}
+	is known as the loss function of logistic regression model.
+	The next reasons may show that why $L(\bm \theta)$ is popular.
+	\begin{enumerate}
+		\item It is more convenient to take gradient for $L(\bm \theta)$ than $P(\bm \theta)$.
+		\item $L(\bm \theta)$ is related the so-called cross-entropy 
+		loss function which will be discussed in the next section.
+		\item $L(\bm \theta)$ is a convex function which will be discussed later.
+	\end{enumerate}
+\end{remark}
+
+
+
+\endinput
+\begin{lemma}
+	If $A_1,A_2,\cdots,A_k$ are linearly separable, $-\log H(\bm\theta)$ has no global minimum.
+\end{lemma}
+
+\begin{theorem}
+	$-\log P(\bm\theta) + \lambda R(\bm\theta)$ has a global minimizer for sufficiently small $\lambda>0$. 
+\end{theorem}
+
+
+Denote the above objective function as
+\begin{equation}
+L(\theta,\alpha) = \alpha (\max_i \|w_i\|_2) + \displaystyle\sum_{i=1}^k \displaystyle\sum_{x\in A_i} 
+\left(\log(\mathbbm{1}^T\exp(W x + b)) - (W x + b)_i\right)
+\end{equation}
+where $\theta = (W,b)$. And we denote a linear separable parameter set $\Theta$ as
+\begin{equation}
+\Theta = \{\theta~|w_ix + b_i > w_jx + b_j, x\in A_i,~j\neq i\}
+\end{equation}
+Set
+\begin{equation}
+p_i(\theta,x) = \frac{e^{w_i x+b_i}}{\sum\limits_{j=1}^k e^{w_j x+b_j}},   \forall i = 1,\cdots,k.
+\end{equation}
+and define the LR classifiable parameter set $\bar{\Theta}$ as
+\begin{equation}
+\bar{\Theta} = \{\theta~|p_i(\theta,x)>p_j(\theta,x), ~x\in A_i,~j\neq i\}
+\end{equation}
+Easy to observe that 
+\begin{equation}
+\Theta = \bar{\Theta}
+\end{equation}
+
+
+
+
+\begin{theorem}
+	Assume that $R(\theta)\geq 0$ is an non-negative function such that 
+	\begin{equation}
+	\Theta^*(\lambda)={\rm argmax}\ P(\theta)e^{-\lambda R(\theta)} \neq \emptyset, \quad \forall \lambda>0
+	\end{equation}
+	then for sufficiently small $\lambda>0$, 
+	$$ \Theta^*(\lambda)\subset \left\{ \theta: P(\theta)\geq \frac{1}{2} \right\}\subset \Theta.$$
+\end{theorem}
+
+\begin{proof}
+	Given $\theta_0\in\Theta$. Let $\alpha >0$ be such that 
+	$$P(\alpha \theta_0)\geq \frac{2}{3}$$
+	Let $\lambda>0$ be sufficiently small such that 
+	$$e^{-\lambda R(\theta)}>\frac{3}{4}$$
+	For any $\theta \in \Theta^*$  
+	$$
+	P(\theta)e^{-\lambda R(\theta)} \geq P(\alpha \theta_0) e^{-\lambda R(\alpha\theta_0)} > \frac{2}{3}\cdot \frac{3}{4}=\frac{1}{2}$$
+	Then $P(\theta)>\frac{1}{2}$.
+\end{proof}  

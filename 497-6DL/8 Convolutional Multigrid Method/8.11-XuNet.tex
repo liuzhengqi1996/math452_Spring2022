@@ -1,0 +1,348 @@
+%\newcommand{\fix}{\marginpar{FIX}}
+%\newcommand{\new}{\marginpar{NEW}}
+%\newcommand{\classmap}{H}
+%\newcommand{\linearize}{H_0}
+%\newcommand{\linear}{L}
+%\newcommand{\FC}{{\mathcal D}}
+%\example
+Denote $\phi^{\ell}=(\phi^{\ell}_{i,j})\in \mathbb R^{m_{\ell}\times n_{\ell}}$, 
+by the definitions of convolution \eqref{con1} and stride \eqref{stride}, \eqref{basis:plongation} means that
+$$
+ \phi^{\ell+1}=R\ast_2 \phi^{{\ell}},
+$$
+where 
+\begin{equation}\label{bi-restrict}
+R=
+%\left\{
+\begin{cases}
+	\begin{pmatrix}
+	\frac{1}{4} &\frac{1}{2}&\frac{1}{4}\\
+	\frac{1}{2}& 1&\frac{1}{2}\\
+	\frac{1}{4}&\frac{1}{2}&  \frac{1}{4} 
+	\end{pmatrix}
+	\hbox{~~for bilinear functions};\\
+	\begin{pmatrix}
+	0 &\frac{1}{2}&\frac{1}{2}\\
+	\frac{1}{2}& 1&\frac{1}{2}\\
+	\frac{1}{2}&\frac{1}{2}&  0
+	\end{pmatrix}
+	\hbox{~~for linear functions}.
+	\end{cases}
+	%\right.
+	\end{equation}		
+\section{Deconvolution}
+For any linear mapping $\mathcal C: \mathbb{R}^{m\times n} \mapsto \mathbb{R}^{m'\times n'}$, 
+its transpose is the unique linear mapping $\mathcal C^\top: \mathbb{R}^{m'\times n'} \mapsto \mathbb{R}^{m\times n}$
+satisfying 
+$$
+(\mathcal C^\top u, v)_{l^2}=(u, \mathcal C v)_{l^2}~~~\forall~u\in \mathbb{R}^{m'\times n'} , v\in \mathbb{R}^{m\times n}
+$$
+Associated with any kernel $K$, a deconvolution is defined as the transpose of convolution 
+with stride $2$ with respect to the $l^2$-inner product as:
+\begin{equation}\label{eq:def_deconv}
+ (u, K \ast_2^\top v)_{l^2}=(K \ast_2 u, v)_{l^2},
+\end{equation}
+with
+\begin{equation}
+u \in \mathbb{R}^{m \times n} \quad \text{and} \quad v \in \mathbb{R}^{\frac{m+1}{2} \times \frac{m+1}{2}}.
+\end{equation}
+
+\begin{lemma}\label{lemm:tilde-K}
+For any $K \in \mathbb{R}^{(2k+1) \times (2k+1)}$,
+\begin{equation}\label{eq:}
+K\ast_2^\top = {\tilde K}\ast \mathcal S^\top,
+\end{equation}
+where $\tilde K$ is defined as
+\begin{equation}\label{eq:def_tildeK}
+\tilde K_{p,q} = K_{-p, -q}, \quad p,q = -k:k.
+\end{equation}
+Intuitively, if we take $K_{0,0}$ as the center for the convolutional kernel $K$, 
+then $\tilde K$ is the central symmetry of $K$. 
+In 2D case, it can also be understood as the rotation of $\pi$ with respect to
+the center $K_{0,0}$.
+\end{lemma}
+
+Recalling the definition of deconvolution in \eqref{eq:def_deconv}, we have
+\begin{equation}\label{eq:op_deconv}
+\begin{aligned}
+(u,  K \ast_2^\top v)_{l^2} &= (K \ast_2 u, v)_{l^2} = (\mathcal S \mathcal C_K u, v)_{l^2} \\
+&= (u,  \mathcal C^\top_K \mathcal S^\top v)_{l^2},
+\end{aligned}
+\end{equation}
+with definition
+\begin{equation}\label{eq:de_stride_dim}
+\mathcal S^\top:   \mathbb{R}^{\frac{m+1}{2} \times\frac{n+1}{2}} \mapsto \mathbb{R}^{m\times n},
+\end{equation}
+and 
+\begin{equation}\label{eq:de_stride}
+[\mathcal S^\top (f)]_{i,j} = 
+\begin{cases}
+0 \quad &\text{if i or j is even}, \\
+f_{i/2, j/2}, \quad &\text{else}.
+\end{cases}
+\end{equation}
+
+Thus to say, we have the simple version of the deconvolution for $K \ast $ as
+\begin{equation}\label{eq:simple_deconv}
+K \ast_2^\top v = \mathcal C_K^\top \circ \mathcal S^\top (v) = \mathcal C_{\tilde K} \circ \mathcal S^\top (v) = \tilde K \ast \mathcal S^\top (v),
+\end{equation}
+thus to say
+\begin{equation}\label{eq:final}
+K \ast_2^\top  = \tilde K \ast \mathcal S^\top.
+\end{equation}
+
+In short, we have the next decomposition
+\begin{itemize}
+	\item convolution with stride = stride $ \circ$ convolution,
+	\item deconvolution with stride  = transposed convolution $\circ$ transposed stride = convolution with the central symmetry of original kernel $\circ$ transposed stride.
+\end{itemize}
+
+\begin{theorem}\label{thm:deconv_op}
+
+Let us consider 
+\begin{equation}
+K=(K_{p,q}),~~p,q = -1, 0, 1.
+\end{equation}
+Then we have 
+$$
+K \ast_2^\top v = \tilde K \ast \mathcal S^\top (v).
+$$
+As in \eqref{eq:de_stride} and the Lemma \ref{lemm:tilde-K}, we have the 
+final version is 
+\begin{equation}
+\label{eq:7}
+[K \ast_2^\top v ]_{2i,2j}=  K_{0,0}v_{i,j},
+\end{equation}
+with 
+\begin{equation}
+\label{eq:9}
+[K \ast_2^\top v ]_{2i-1, 2j} = K_{0,1}v_{i-1,j} + K_{0,-1}v_{i,j}, \quad 
+[K \ast_2^\top v ]_{2i, 2j-1} = K_{1,0}v_{i,j} + K_{-1,0}v_{i,j-1},
+\end{equation}
+and
+\begin{equation}
+%\begin{tiny}
+%{\scriptsize 
+[K \ast_2^\top v ]_{2i-1, 2j-1}  =  
+K_{1,1}v_{i,j} + K_{-1,1}v_{i-1,j} + K_{1,-1}v_{i,j-1} + K_{-1,-1}v_{i-1,j-1}.
+%\end{tiny}
+%}
+\end{equation}
+\end{theorem}
+\begin{remark}
+Deconvolution can obviously be also defined for general stride $s$, but we believe it is sufficient to use $s=2$
+in most applications. 
+\end{remark}
+
+ 
+\section{Linear feature mappings}
+We consider the following linear mapping
+\begin{equation}
+  \label{feature-map}
+\mathbf A\mathbf u=\mathbf  f  
+\end{equation}
+where 
+\begin{equation}
+  \label{map-A}
+\mathbf A: \mathcal V\mapsto \mathcal V'.
+\end{equation}
+For example, for the elliptic problem \eqref{laplace}, $(\mathbf A \mathbf u, \mathbf v)=(\nabla u_h, \nabla v_h)$.
+We consider the restriction of the mapping $\mathbf A_1\equiv \mathbf A$ on the coarser multilevel spaces:
+\begin{equation}
+  \label{map-A-ell}
+\mathbf A_{\ell}: \mathcal V_\ell\mapsto \mathcal V'_\ell
+\end{equation}
+and the corresponding equation read as:
+\begin{equation}
+  \label{feature-map-ell}
+\mathbf A_\ell \mathbf u^\ell=\mathbf f^\ell.
+\end{equation}
+In image process, we can view $\mathbf f$ as the input images and $\mathbf u$ as the extracted features of the original image $\mathbf f$.  We then view $\mathbf f^\ell$ as the projection of images on a coarser resolution and $\mathbf u^\ell$ as the extracted features of the coarsened image $\mathbf f^\ell$.
+
+One main question is how to obtain coarser images and features defined by \eqref{feature-map-ell} from the original equation \eqref{feature-map}.  We now consider a special technique.
+
+We define $\mathbf u^\ell\in \mathcal V_\ell$ by
+\begin{equation}
+  \label{u_ell}
+(\mathbf A\mathbf u^\ell,\mathbf v^\ell)=  (\mathbf f,\mathbf v^\ell), \quad\forall \mathbf v^\ell\in\mathcal V_\ell
+\end{equation}
+\begin{lemma}
+The restricted $\mathbf u^\ell\in\mathcal V_\ell$ defined by \eqref{u_ell} satisfies \eqref{feature-map-ell} if 
+$\mathbf A_\ell: \mathcal V_\ell\mapsto \mathcal V_\ell'$ and $\mathbf f_\ell\in \mathcal V_\ell'$ are defined by
+\begin{equation}
+  \label{A-ell}
+(\mathbf A_\ell \mathbf u^\ell,\mathbf v^\ell)=  (\mathbf A\mathbf u^\ell,\mathbf v^\ell), \quad\forall \mathbf v^\ell\in\mathcal V_\ell
+\end{equation}
+\begin{equation}
+  \label{u-ell}
+(\mathbf f^\ell,\mathbf v^\ell)=  (\mathbf f,\mathbf v^\ell), \quad\forall \mathbf v^\ell\in\mathcal V_\ell
+\end{equation}
+\end{lemma}
+
+
+\section{Restriction and prolongation under the convolution notation}
+Now we derive the restriction and prolongation as follows. We show the details for the case of bilinear functions here. The 
+case of linear function can be shown similarly. 
+Let $f_{i,j}^{\ell+1}=(\mathbf f^\ell,\phi^{\ell+1}_{i,j})_{L^2(\Omega)}$, then we have
+\begin{equation}
+\begin{split}
+  f^{\ell+1}&=\int_{\Omega} \mathbf f^\ell \phi^{\ell+1}=\sum\limits_{i=1}^{m_\ell}\sum\limits_{j=1}^{n_\ell}
+ \int_{\Omega}f_{i,j}^{\ell}\psi_{i,j}^\ell\left[(R\ast_2) \phi^\ell\right]
+=\sum\limits_{i=1}^{m_\ell}\sum\limits_{j=1}^{n_\ell} f_{i,j}^{\ell}(R\ast_2)\int_{\Omega}\psi_{i,j}^\ell \phi^\ell\\
+&=\sum\limits_{i=1}^{m_\ell}\sum\limits_{j=1}^{n_\ell}(R\ast_2)f_{i,j}^{\ell}e_ie_j^T=R\ast_2 f^{\ell}.
+\end{split}
+\end{equation}
+Hence the restriction 
+$$
+R^{\ell+1}_\ell: \mathbb R^{m_{\ell}\times n_{\ell}}\mapsto  \mathbb R^{m_{\ell+1}\times n_{\ell+1}} 
+$$
+is obtain by $R^{\ell+1}_\ell  f^{\ell}= R\ast_2  f^{\ell}$ with $R\in \mathbb R^{3\times 3}$ given by  \eqref{bi-restrict}, namely
+\begin{equation}\label{restriction:freedom}
+\begin{split}
+f_{i,j}^{\ell+1}&=f^{\ell}_{2i,2j}+\frac{1}{2}(f^{\ell}_{2i-1,2j}+f^{\ell}_{2i,2j-1}+f^{\ell}_{2i+1,2j}+f^{\ell}_{2i,2j+1})\\
+&+\frac{1}{4}\left(f^{\ell}_{2i-1,2j-1}+f^{\ell}_{2i+1,2j-1}+f^{\ell}_{2i+1,2j+1}+f^{\ell}_{2i-1,2j+1}\right).
+\end{split}
+\end{equation}
+
+Next 
+let $\mathbf u^{\ell+1}=\sum\limits_{i=1}^{m_{\ell+1}}\sum\limits_{j=1}^{n_{\ell+1}}u_{i,j}^{\ell+1}\phi^{\ell+1}_{i,j}
+=( \mathbf u^{\ell+1}, \phi^{\ell+1})_{l^2}$, then we have
+\begin{equation}
+\begin{split}
+\mathbf u^{\ell+1}&=( u^{\ell+1}, \phi^{\ell+1})_{l^2}
+=( u^{\ell+1}, R\ast_2\phi^{\ell})_{l^2}=(R\ast_2^{\top} u^{\ell+1}, \phi^{\ell})_{l^2}\\
+&=\sum\limits_{i=1}^{m_{\ell}}\sum\limits_{j=1}^{n_{\ell}}\left(R\ast_2^{\top} u^{\ell+1}\right)_{i,j}\phi^{\ell}_{i,j}.
+\end{split}
+\end{equation}
+Namely
+$$
+\mathbf u^{\ell+1}(x_i^\ell,y_j^\ell)=\left(R\ast_2^{\top} u^{\ell+1}\right)_{i,j}.
+$$
+And we obtain the prolongation 
+$$
+P_{\ell+1}^\ell=R\ast_2^{\top} : \mathbb R^{m_{\ell+1}\times n_{\ell+1}}\mapsto  \mathbb R^{m_{\ell}\times n_{\ell} }
+$$
+is defined by 
+$$
+u^\ell_{2i,2j}=u^{\ell+1}_{i,j},
+$$
+$$
+u^\ell_{2i-1,2j}=\frac{1}{2}(u^\ell_{i,j}+u^\ell_{i-1,j}),~~~ u^\ell_{2i,2j-1}=\frac{1}{2}(u^{\ell+1}_{i,j}+u^{\ell+1}_{i,j-1})
+$$
+and 
+$$
+u^\ell_{2i-1,2j-1}=\frac{1}{4}(u^{\ell+1}_{i,j}+u^{\ell+1}_{i-1,j}+u^{\ell+1}_{i-1,j-1}+u^{\ell+1}_{i,j-1}).
+$$
+In summery, we have the restriction and prolongation as follows: 
+\begin{lemma}\label{ris:plon}
+The restriction 
+$$
+R^{\ell+1}_\ell: \mathbb R^{m_\ell\times n_\ell}\mapsto  \mathbb R^{m_{\ell+1}\times n_{\ell+1}}~~\hbox{is}~~ R^{\ell+1}_\ell = R\ast_2  
+$$ 
+and the prolongation
+$$
+P_{\ell+1}^{\ell}: \mathbb R^{m_{\ell+1}\times n_{\ell+1}}\mapsto  \mathbb R^{m_{\ell}\times n_{\ell} } ~~\hbox{is}~~ P^{\ell}_{\ell+1} =R\ast_2^{\top} 
+$$
+where 
+\begin{equation}\label{bi-restrict1}
+R=
+%\left\{
+\begin{cases}
+	\begin{pmatrix}
+	\frac{1}{4} &\frac{1}{2}&\frac{1}{4}\\
+	\frac{1}{2}& 1&\frac{1}{2}\\
+	\frac{1}{4}&\frac{1}{2}&  \frac{1}{4} 
+	\end{pmatrix}
+	\hbox{~~for bilinear functions};\\
+	\begin{pmatrix}
+	0 &\frac{1}{2}&\frac{1}{2}\\
+	\frac{1}{2}& 1&\frac{1}{2}\\
+	\frac{1}{2}&\frac{1}{2}&  0
+	\end{pmatrix}
+	\hbox{~~for linear functions}.
+	\end{cases}
+	%\right.
+	\end{equation}	
+\end{lemma}
+
+Let $(\phi^{\ell}_{i,j})$ is a basis of $\mathcal V_\ell$, for any $\mathbf u^\ell \in \mathcal V_\ell$, then $\mathbf u^{\ell}=\sum\limits_{i=1}^{m_{\ell}}\sum\limits_{j=1}^{n_{\ell}}u_{i,j}^{\ell}\phi^{\ell}_{i,j}$, and we denote $u^\ell=(u_{i,j}^{\ell})\in  \mathbb R^{m_{\ell}\times n_{\ell} }$ the matrix representation of $\mathbf u^\ell$ under the basis $(\phi^{\ell}_{i,j})$.
+Let $(\psi^{\ell}_{s,t})$ is a basis of $\mathcal V'_\ell$ which is dual to $(\phi^{\ell}_{i,j})$. Denote $A_\ell=(a_{stij}^{\ell})$ the tensor representation of $\mathbf A_\ell: \mathcal V_\ell\mapsto \mathcal V'_\ell $ and defined as 
+$$
+\mathbf A_\ell \phi^\ell_{i,j}=\sum\limits_{s=1}^{m_{\ell}}\sum\limits_{t=1}^{n_{\ell}}a_{stij}^{\ell}\psi^\ell_{s,t}.
+$$
+Hence $a_{stij}^{\ell}=(\mathbf A_\ell \phi^\ell_{i,j}, \phi^\ell_{s,t})$. From $(\mathbf A_{\ell+1}\phi^{\ell+1}_{i,j}, \phi^{\ell+1}_{s,t})=(\mathbf A_\ell\phi^{\ell+1}_{i,j}, \phi^{\ell+1}_{s,t})$, we have
+$$
+a_{stij}^{\ell+1}=\sum_{r=1}^{m_\ell}\sum_{q=1}^{n_\ell}\left(\sum_{k=1}^{m_\ell}\sum_{m=1}^{n_\ell} P_{kmij}^{\ell,{\ell+1}} a_{rqkm}^\ell\right)P_{rqst}^{\ell,{\ell+1}} 
+$$ 
+Where $P^{\ell,{\ell+1}}=(P_{rqst}^{\ell,{\ell+1}})$ is the tensor representation of the prolongation $P_{\ell+1}^{\ell}$.
+
+
+Consider the finite element method on two different grids 
+$\mathcal T_\ell,~\mathcal T_{\ell+1},~h_{\ell+1}=2h_\ell, \mathcal V_{\ell+1}\subset \mathcal V_{\ell}$. 
+With the restriction $R_{\ell}^{\ell+1}$ and prolongation $P_{\ell+1}^\ell$ obtained in Lemma \ref{ris:plon}, we have the following relationship to define coarse operation
+\begin{equation}\label{eq:def_coarse}
+\begin{aligned}
+ A_{\ell+1}&=R_{\ell}^{\ell+1}  A_{\ell}P_{\ell+1}^{\ell}.  \\
+&= R \ast_2 A_\ell \ast (R\ast_2^\top),   \quad (\ell = 1:J-1),
+\end{aligned}
+\end{equation}
+with $A_1 = A$. 
+\begin{theorem}
+If $R$ is consistent with $A_\ell$ which means that $R$ should be linear or bi-linear as $A_\ell$, then we have
+the $A_{\ell+1}$ operation in coarse grid defined in \eqref{eq:def_coarse} is the same with $A_\ell$.
+\end{theorem}
+\begin{proof}
+For any $u_{\ell+1}$ and $v_{\ell+1}$ in $\mathcal V_{\ell+1}$, it remains to prove that
+$$
+(A_\ell P_{\ell+1}^\ell u_{\ell+1},P_{\ell+1}^\ell v_{\ell+1}) = (A_{\ell+1}u_{\ell+1}, v_{\ell+1})
+$$
+where $A_\ell$ and $A_{\ell+1}$ are the tensor representation of $\mathbf A_\ell$ and $\mathbf A_{\ell+1}$.
+
+We can also view them as convolutions. By the definition of operators $R_{\ell}^{\ell+1}$ and $P_{\ell+1}^\ell$, a direct computation gives the above result.
+\end{proof}
+\begin{proof}
+By the definition above, we have that
+\begin{equation}
+A_{\ell+1} (v) = \mathcal S\left( (R\ast A_{\ell} \ast R )\ast \mathcal S^\top(v) \right),
+\end{equation}
+because of the properties of convolution we know that 
+\begin{equation}\label{eq:K=RAR}
+(R\ast A_{\ell} \ast R )\ast = K \ast,
+\end{equation}
+for some 
+$$
+K \in \mathbb{R}^{7\times 7}.
+$$
+Then we have the next computation for $A_{\ell+1}(v)$
+\begin{equation}\label{eq:compute_A}
+\begin{aligned}
+[A_{\ell+1} (v)]_{i,j} &= [\mathcal S\left( (R\ast A_{\ell} \ast R )\ast \mathcal S^\top(v) \right)]_{i,j}, \\
+&= [ K\ast  \mathcal S^\top(v)]_{2i,2j}, \\
+&= \sum_{p,q=-3}^{3} [\mathcal S^\top (v)]_{2i+p, 2j+q} K_{p,q}, \\
+&= \sum_{p,q=-1}^1  [\mathcal S^\top (v)]_{2(i+p), 2(j+q)} K_{2p,2q}, \\
+&= \sum_{p,q=-1}^1  v_{i+p, j+q} \hat K_{p,q}, \\
+\end{aligned}
+\end{equation}
+	
+Thus to say, we have
+\begin{equation}
+A_{\ell+1}(v) =  \hat K \ast v,
+\end{equation}
+with 
+$$
+\hat K_{p,q} = K_{2p,2q}, \quad p,q = -1,0,1,
+$$
+with $K$ is defined in \eqref{eq:K=RAR}.
+
+Then by the direct computation of \eqref{eq:K=RAR} as 
+$$
+(R\ast A_{\ell} \ast R )\ast = K \ast
+$$
+and take the even index we have that
+\begin{equation}
+A_{\ell+1} = \hat K = A_\ell,
+\end{equation}
+if $R$ is consistent with $A_\ell$ which means that $R$ should be linear or bi-linear as $A_\ell$.	
+\end{proof}
+
+

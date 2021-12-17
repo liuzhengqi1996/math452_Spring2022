@@ -1,0 +1,91 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Math 452 Site
+author: Department of Mathematics, Penn State University Park
+copyright: "The Pennsylvania State University, 2021. This material is not licensed for resale"
+logo: PSU_SCI_RGB_2C.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: 452_book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/liuzhengqi1996/math452_Spring2022  # Online location of your book
+  # path_to_book              : 110book/  # Optional path to your book, relative to the repository root
+  branch                    : main  # Which branch of the repository should be used when creating links (optional)
+  
+  
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: false
+  use_repository_button: false
+  google_analytics_id: UA-206078372-1
+
+
+
+sphinx:
+  config:
+    language: en
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js
+    mathjax_config:
+      tex2jax:
+        inlineMath: [["$","$"], ["\\(", "\\)"]]
+    myst_update_mathjax: false
+  extra_extensions:
+    - sphinx_proof  
+    # html_js_files:
+    # - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    # # latex_engine: 'xelatex'
+    
+    
+# Enable AMS style math
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - dollarmath
+    - amsmath
+    - linkify
+    - colon_fence
+    - substitution
+
+# parse:
+#   myst_substitutions:
+#     my_step: "dropdown"
+#     my_drop_title: ":title: bg-secondary text-light"
+#     my_step_set: |
+#       :title: bg-secondary text-light
+#       :body: bg-light
+#       :animate: fade-in
+
+
+
+# Set launch button for notebook  
+launch_buttons:
+  notebook_interface:  "jupyterlab" #or "classic"
+  # binderhub_url: https://binder.jupytr.cloud.psu.edu  # The URL for your BinderHub (e.g., https://mybinder.org)
+  binderhub_url: "https://mybinder.org"
+  # "https://mybinder.org/v2/gh/liuzhengqi1996/binder/0857756f6027721a1be25c69bd6b9061d94d5b7a?urlpath=lab%2Ftree%2Ftutorial.ipynb"
+#   jupyterhub_url: ""
+#   thebe: true
+
+
+# Only build TOC files
+only_build_toc_files: true
+
+# Exlude Try-it-yourself notebooks
+exclude_patterns: [110_02_01_limits_def_TIY.ipynb, old_stuff/*]  

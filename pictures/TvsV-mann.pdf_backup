@@ -1,0 +1,91 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: XuZou_pic1.fig
+%%Creator: fig2dev
+%%CreationDate: Thu Feb  2 17:16:05 1995
+%%For: zou@joshua (Jun Zou)
+%%BoundingBox: 0 0 207 225
+%%Pages: 0
+%%EndComments
+/$F2psDict 200 dict def 
+$F2psDict begin
+$F2psDict /mtrx matrix put
+/l {lineto} bind def
+/m {moveto} bind def
+/s {stroke} bind def
+/n {newpath} bind def
+/gs {gsave} bind def
+/gr {grestore} bind def
+/clp {closepath} bind def
+/graycol {dup dup currentrgbcolor 4 -2 roll mul 4 -2 roll mul
+4 -2 roll mul setrgbcolor} bind def
+/col-1 {} def
+/col0 {0 0 0 setrgbcolor} bind def
+/col1 {0 0 1 setrgbcolor} bind def
+/col2 {0 1 0 setrgbcolor} bind def
+/col3 {0 1 1 setrgbcolor} bind def
+/col4 {1 0 0 setrgbcolor} bind def
+/col5 {1 0 1 setrgbcolor} bind def
+/col6 {1 1 0 setrgbcolor} bind def
+/col7 {1 1 1 setrgbcolor} bind def
+	end
+/$F2psBegin {$F2psDict begin /$F2psEnteredState save def} def
+/$F2psEnd {$F2psEnteredState restore end} def
+%%EndProlog
+
+$F2psBegin
+0 setlinecap 0 setlinejoin
+-175.0 391.0 translate 0.900 -0.900 scale
+0.500 setlinewidth
+	[4.000000] 0 setdash
+% Polyline
+n 299 269 m 349 254 l  334 309 l  299 269 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 299 269 m 314 224 l  349 254 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 314 224 m 384 234 l  349 254 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 384 234 m 399 284 l  349 254 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 334 309 m 399 284 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 314 224 m 249 264 l  299 269 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 249 264 m 269 329 l  299 269 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 269 329 m 334 309 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 334 309 m 324 354 l  269 329 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 334 309 m 369 334 l  399 284 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 324 354 m 369 334 l gs col-1 s gr
+	[] 0 setdash
+% Polyline
+n 424 184 m 369 419 l gs col-1 s gr
+% Polyline
+n 194 254 m 424 184 l gs col-1 s gr
+% Polyline
+n 194 254 m 364 434 l gs col-1 s gr
+% Polyline
+n 369 419 m 364 434 l gs col-1 s gr
+$F2psEnd

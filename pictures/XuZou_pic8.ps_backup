@@ -1,0 +1,146 @@
+%!
+%%Title: /tmp/xfig-export003669
+%%Creator: fig2dev
+%%CreationDate: Fri Mar  1 14:28:51 1996
+%%For: zou@fourier (Dr. Jun Zou,LSB 210,7985,)
+%%BoundingBox: 0 0 393 136
+%%Pages: 0
+%%EndComments
+/$F2psDict 6400 dict def 
+$F2psDict begin
+$F2psDict /mtrx matrix put
+/l {lineto} bind def
+/m {moveto} bind def
+/s {stroke} bind def
+/n {newpath} bind def
+/gs {gsave} bind def
+/gr {grestore} bind def
+/clp {closepath} bind def
+/graycol {dup dup currentrgbcolor 4 -2 roll mul 4 -2 roll mul
+4 -2 roll mul setrgbcolor} bind def
+/col-1 {} def
+/col0 {0 0 0 setrgbcolor} bind def
+/col1 {0 0 1 setrgbcolor} bind def
+/col2 {0 1 0 setrgbcolor} bind def
+/col3 {0 1 1 setrgbcolor} bind def
+/col4 {1 0 0 setrgbcolor} bind def
+/col5 {1 0 1 setrgbcolor} bind def
+/col6 {1 1 0 setrgbcolor} bind def
+/col7 {1 1 1 setrgbcolor} bind def
+ /DrawEllipse {
+	/endangle exch def
+	/startangle exch def
+	/yrad exch def
+	/xrad exch def
+	/y exch def
+	/x exch def
+	/savematrix mtrx currentmatrix def
+	x y translate xrad yrad scale 0 0 1 startangle endangle arc
+	savematrix setmatrix
+	} def newpath 0 0 0 0 0 1 DrawEllipse stroke
+
+	end
+/$F2psBegin {$F2psDict begin /$F2psEnteredState save def} def
+/$F2psEnd {$F2psEnteredState restore end} def
+%%EndProlog
+
+$F2psBegin
+0 setlinecap 0 setlinejoin
+-128 135 translate
+0.0 136.0 translate 0.900 -0.900 scale
+0.500 setlinewidth
+	[4.000000] 0 setdash
+% Ellipse
+n 299 160 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 159 298 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 299 299 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 379 200 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 439 159 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 559 160 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 499 199 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 379 298 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 499 297 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 559 259 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 159 159 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Ellipse
+n 440 259 2 2 0 360 DrawEllipse gs 0.00 setgray fill gr
+gs col-1 s gr
+	[] 0 setdash
+/Times-Roman findfont 12.00 scalefont setfont
+144 239 m 
+gs 1 -1 scale (E) col-1 show gr
+% Polyline
+n 299 299 m 299 159 l  159 159 l  159 299 l 
+ clp gs col-1 s gr
+% Polyline
+n 439 159 m 379 199 l  499 199 l  559 159 l 
+ 439 159 l gs col-1 s gr
+% Polyline
+n 379 199 m 379 299 l  499 299 l  499 199 l gs col-1 s gr
+% Polyline
+n 559 159 m 559 259 l  499 299 l gs col-1 s gr
+	[4.000000] 0 setdash
+% Polyline
+n 439 159 m 439 259 l  559 259 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 439 259 m 379 299 l gs col-1 s gr
+	[] 0 setdash
+/Times-Roman findfont 12.00 scalefont setfont
+142 160 m 
+gs 1 -1 scale (V) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+570 212 m 
+gs 1 -1 scale (E) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+425 159 m 
+gs 1 -1 scale (V) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+527 230 m 
+gs 1 -1 scale (F) col-1 show gr
+$F2psEnd
+

@@ -1,0 +1,624 @@
+%!
+%%Creator: kim_h                                             
+%%Title: F3D version 3.02
+%%CreationDate: 1995:06:30
+%%Pages: (atend)
+%%BoundingBox:       28      28     581     762
+%%EndComments
+%
+% tex: macro pour insere de dessin f3d 
+% tex: %% -----------------------------------------
+% utiliser les macro defini dans f3d.tex et psfig.tex
+% 
+100 dict begin
+%  debut des variables postscript modifiables
+%  ------------------------------------------
+% - decalagexcm et decalageycm permettent de
+%   decaler le dessin resp. vers la droite
+%   et vers le  haut (la feuille est verticale)
+ 
+  /decalagexcm 0. def
+  /decalageycm 0. def
+ 
+% - angle permet de tourner le dessin
+%   en degres
+ 
+  /angle     90.0000 def
+ 
+% - zoomx zoomy permet de grossir le dessin
+%   facteur d'agrandissement resp.
+%   dans la direction x et y
+%   du dessin initial
+ 
+  /zoomx 1. def
+  /zoomy 1. def
+ 
+% tex permet d'inserer un dessin postscript
+%
+%  si latex est vrai => showdessin est faux 
+%  Pour utilisation avec dvi2ps faire :
+%             latex faux et showdessin vrai
+% -----------------------------------------
+  /latex dup where {pop true}{false} ifelse  def
+  /showdessin latex not def
+ 
+% kadre permet d'encadrer le dessin
+ 
+  /kadre false def
+  /logo false def
+ 
+%
+%  fin des variables postscript modifiables
+%  ----------------------------------------
+  /texte ( le 30:06:1995 a 12h 24mn.    Utilisateur: kim_h ) def
+  /hx     25.9000 def
+  /hy     19.5000 def
+  /xpapier     21.5000 def 
+  /ypapier     27.9000 def
+% %%%%%%%%%%%%%% debut des definition %%%%%%%%%%
+% %%%%%%%%%%%%%%    des macros        %%%%%%%%%%
+% %%%%%%%%  PostScript pour Fortran 3D %%%%%%%%%%
+%   syntaxe      ;     action
+% x2 y2 x1 y2 sgm ;
+%        trace le segment (x1,y1) (x2,y2)
+% x2 y2 x1 y2 sge ;
+%         efface et trace le segment (x1,y1) (x2,y2)
+% dc x1 y1 .... xn yn gris fc ;
+%        remplie le contour de la couleur gris
+%
+% jeux sens taille  ldf
+%      load la font : jeux,sens,taille
+%      sens en degres
+%       0<jeux<36
+% epais type dte ;
+%        definit type trait et l'epaisseur en mm
+% newdessin
+%        imprime la page et redessine la banniere
+%        si le mode n'est pas latex 
+% inc :   met le clipping sur le rectangle 0 hx 0 hy
+% xmin xmax ymin ymax hdc : met
+%     le clipping sur le rectangle xmin xmax ymin ymax
+% initf3d
+%        initialise f3d
+% finf3d
+%        termine f3d
+/versionf3d
+ (Fortran 3D couleur 3.03)
+ def
+/ptcm  28.3464566929134 def
+/cm {ptcm mul} def
+% ---   construction de la matrice de changement
+% ---   de base l'origine est (xmin,ymin)
+%           dans le rectangle
+% ------------------------------------------
+% ------------------------------------------
+% --- on est au centre du dessin -----------
+ 
+/rec {newpath 4 copy 8 1 roll moveto
+       3 -1 roll lineto 4 2 roll exch
+        lineto lineto closepath} def
+/police [
+      (Courier)
+      (NewCenturySchlbk-Italic)
+      (Bookman-LightItalic)
+      (Helvetica)
+      (Courier-Bold)
+      (Helvetica-Narrow-Bold)
+      (Courier-BoldOblique)
+      (Times-Italic)
+      (Times-Bold)
+      (NewCenturySchlbk-Roman)
+      (Helvetica-Narrow-Oblique)
+      (Bookman-DemiItalic)
+      (Symbol)
+      (Bookman-Demi)
+      (Helvetica-BoldOblique)
+      (Bookman-Light)
+      (Helvetica-Oblique)
+      (AvantGarde-Book)
+      (AvantGarde-DemiOblique)
+      (AvantGarde-BookOblique)
+      (AvantGarde-Demi)
+      (Helvetica-Narrow)
+      (ZapfChancery-MediumItalic)
+      (Courier-Oblique)
+      (NewCenturySchlbk-BoldItalic)
+      (Helvetica-Bold)
+      (Times-Roman)
+      (Times-BoldItalic)
+      (Helvetica-Narrow-BoldOblique)
+      (NewCenturySchlbk-Bold)
+      (Palatino-Bold)
+      (Courier)
+      (Palatino-Italic)
+      (Palatino-Roman)
+      (Palatino-BoldItalic)
+      (ZapfDingbats)
+      ] def
+/ldf  {dup matrix scale exch matrix rotate
+       matrix concatmatrix
+      exch police exch get findfont
+      exch makefont setfont
+      } def
+ 
+/stg {setgray} def
+/stc {setrgbcolor} def
+/matrice1 {matini setmatrix ccx cm ccy cm translate
+        angle rotate
+        echelle cm dup scale
+        hx 2 div neg
+        hy 2 div neg  translate } def
+/matrice { matini setmatrix  
+        ccx decalagexcm add cm
+        ccy decalageycm add cm translate
+        angle rotate
+        echelle cm dup scale
+        zoomx zoomy scale
+        hx 2 div neg
+        hy 2 div neg  translate} def
+/cadre {
+    currentlinewidth 2 div neg dup
+     hx exch sub
+    currentlinewidth 2 div neg dup
+      hy exch sub   rec } def
+/showcadre {gsave initclip matrice1
+           kadre
+           { .05 setlinewidth [] 0 setdash
+           0. 0. 0. stc cadre stroke}
+           if
+           grestore} def
+/sgm  {moveto lineto  stroke } def
+/sge  {moveto lineto  gsave 1. 1. 1. stc
+      [] 0 setdash stroke grestore stroke} def
+/dc {currentrgbcolor mark} def
+/fc {stc newpath moveto
+      counttomark 2 idiv {lineto} repeat
+      closepath fill cleartomark  stc} def
+ 
+/inc {matrice1 initclip  0 hx 0 hy rec
+      clip newpath matrice} def
+ 
+/hdc {inc rec clip newpath} def
+ 
+/aller {3 copy 3 1 roll moveto currentlinewidth
+        exch dup .1 mul setlinewidth} def
+/seg0 {aller dup neg 0 exch 0 rmoveto rlineto
+       stroke setlinewidth} def
+/seg1 {aller .70711 mul dup dup neg dup rmoveto
+       rlineto stroke setlinewidth} def
+/seg2 {aller dup neg 0 exch 0 4 1 roll rmoveto
+       rlineto stroke setlinewidth} def
+/seg3 {aller .70711 mul neg dup neg dup dup neg
+       rmoveto rlineto  stroke setlinewidth} def
+/croixplus {seg0 neg seg0 seg2 neg seg2
+       pop pop pop} def
+/croixx {seg1 neg seg1 seg3 neg seg3
+       pop pop pop} def
+/croixetoile {3 copy croixplus croixx} def
+/rond  {currentlinewidth 4 1 roll dup .1 mul
+       setlinewidth 0 360 arc stroke
+       setlinewidth} def
+/rondfill  {0 360 arc fill} def
+% x y alpha  string
+/dwrstring {dup 5 1 roll stringwidth
+        2 index neg mul 3 index add exch
+        2 index neg mul 4 index add exch
+        moveto pop pop pop show newpath} def
+/cartouche{ /dessin dessin 1 add def
+    latex logo not or not
+    {gsave  initgraphics 
+     1 cm 1 cm scale
+     2 0 .2 ldf
+     1. .65 moveto
+     versionf3d show
+     .5 0. rmoveto
+     usertime initCPU sub 0.001 mul 
+     20 string cvs show (s) show
+     .5 0. rmoveto
+     24 0 .35 ldf
+     texte show
+     .5 0. rmoveto
+     ( Dessin  ) show
+     dessin 10 11 string cvrs show
+     grestore /initCPU usertime def }
+     if } def
+/typetrait [[]
+            [0.05]
+            [0.1 0.05]
+            [0.05 0.05 .2 0.05]
+            [0.05 0.02 .2 0.02 .05 .05]] def
+/dte { dup 0 lt
+       {pop}
+       {5 mod  typetrait exch get 0  setdash}
+       ifelse
+       dup 0 lt {pop}
+       {.1 mul setlinewidth}
+       ifelse } def
+/newdessin {showdessin 
+             {gsave showpage grestore
+              showcadre cartouche} if} def
+/initf3d { gsave /initCPU usertime def
+    /dessin 1 def /matini matrix currentmatrix def
+    latex
+    { /echelle
+        hhx hx angle cos mul abs
+            hy angle sin mul abs add div
+        hhy hx angle sin mul abs
+            hy angle cos mul abs add div
+        2 copy
+        gt {exch} if pop
+      def
+      /xmin 0.  def
+      /xmax hx  def
+      /ymin 0.  def
+      /ymax hy  def
+      %-- position du cadre dans le rectangle
+      currentpoint
+        /ccy exch ptcm div def
+        /ccx exch ptcm div def
+    }
+    { /echelle  1  def
+      % echelle du dessin
+      /xmin 0     def /xmax hx  def
+      % position du cadre dans le rectangle
+      /ymin 0    def /ymax hy  def
+      /ccx xpapier 2 div def
+      /ccy ypapier 2 div def
+      % position du centre du rectangle
+      % sur la feuille en cm
+    }
+    ifelse
+    /dessin 0 def
+    matrice
+    showcadre
+    cartouche
+    inc
+    } def
+ 
+/finf3d {grestore } def
+ 
+%  fin des definition postscript pour Fortran 3D %
+% --Programmeurs: Hecht et Saltel           -------
+% --        INRIA sep 1988 version 2.05     -------
+% --     Modifications C. JOSSEROND         -------
+% --           GPM2 Fevrier 91              -------
+% --     Modifications F. Hecht             -------
+% --           GPM2 Fevrier 92 version 3.02 -------
+% -------------------------------------------------
+%%EndProlog
+initf3d
+%  Dessin :        1
+10 0. 0.3  ldf
+0.   stg 
+0. 25.9 0. 19.5 hdc
+inc
+1.   stg 
+0.   stg 
+0. 25.9 0. 19.5 hdc
+inc
+0. 25.9 0. 18.52 hdc
+inc
+0.5  0 dte 4.53 0.842 6.214 0.842 sgm
+6.214 0.842 7.898 0.842 sgm
+7.898 0.842 9.582 0.842 sgm
+9.582 0.842 11.27 0.842 sgm
+11.27 0.842 12.95 0.842 sgm
+12.95 0.842 14.63 0.842 sgm
+14.63 0.842 16.32 0.842 sgm
+16.32 0.842 18. 0.842 sgm
+18. 0.842 19.69 0.842 sgm
+19.69 0.842 21.37 0.842 sgm
+21.37 0.842 21.25 2.829 sgm
+21.25 2.829 20.94 4.622 sgm
+20.94 4.622 20.47 6.262 sgm
+20.47 6.262 19.88 7.771 sgm
+19.88 7.771 19.17 9.166 sgm
+19.17 9.166 18.36 10.46 sgm
+18.36 10.46 17.44 11.65 sgm
+17.44 11.65 16.44 12.75 sgm
+16.44 12.75 15.34 13.76 sgm
+15.34 13.76 14.15 14.67 sgm
+14.15 14.67 12.85 15.48 sgm
+12.85 15.48 11.46 16.19 sgm
+11.46 16.19 9.949 16.79 sgm
+9.949 16.79 8.31 17.25 sgm
+8.31 17.25 6.517 17.57 sgm
+6.517 17.57 4.53 17.68 sgm
+4.53 17.68 4.53 16. sgm
+4.53 16. 4.53 14.31 sgm
+4.53 14.31 4.53 12.63 sgm
+4.53 12.63 4.53 10.95 sgm
+4.53 10.95 4.53 9.263 sgm
+4.53 9.263 4.53 7.578 sgm
+4.53 7.578 4.53 5.894 sgm
+4.53 5.894 4.53 4.21 sgm
+4.53 2.526 4.53 0.842 sgm
+4.53 4.21 4.53 2.526 sgm
+0.01  0 dte 6.441 2.076 4.53 0.842 sgm
+6.214 0.842 6.441 2.076 sgm
+7.898 0.842 6.441 2.076 sgm
+4.53 2.526 6.441 2.076 sgm
+7.898 0.842 8.74 2.301 sgm
+8.74 2.301 9.582 0.842 sgm
+6.441 2.076 8.74 2.301 sgm
+9.582 0.842 10.42 2.3 sgm
+10.42 2.3 11.27 0.842 sgm
+10.42 2.3 8.74 2.301 sgm
+11.27 0.842 12.11 2.298 sgm
+12.11 2.298 12.95 0.842 sgm
+10.42 2.3 12.11 2.298 sgm
+12.95 0.842 13.79 2.298 sgm
+14.63 0.842 13.79 2.298 sgm
+12.11 2.298 13.79 2.298 sgm
+14.63 0.842 15.48 2.298 sgm
+16.32 0.842 15.48 2.298 sgm
+13.79 2.298 15.48 2.298 sgm
+17.16 2.3 16.32 0.842 sgm
+17.16 2.3 18. 0.842 sgm
+17.16 2.3 15.48 2.298 sgm
+18. 0.842 19.38 2.129 sgm
+19.38 2.129 19.69 0.842 sgm
+21.37 0.842 19.38 2.129 sgm
+19.38 2.129 21.25 2.829 sgm
+17.16 2.3 19.38 2.129 sgm
+21.25 2.829 19.78 3.688 sgm
+20.94 4.622 19.78 3.688 sgm
+19.78 3.688 19.38 2.129 sgm
+20.94 4.622 19.31 5.044 sgm
+20.47 6.262 19.31 5.044 sgm
+19.31 5.044 19.78 3.688 sgm
+18.88 6.506 20.47 6.262 sgm
+18.88 6.506 19.88 7.771 sgm
+19.31 5.044 18.88 6.506 sgm
+18.31 7.852 19.88 7.771 sgm
+18.31 7.852 19.17 9.166 sgm
+18.88 6.506 18.31 7.852 sgm
+19.17 9.166 17.64 9.102 sgm
+17.64 9.102 18.36 10.46 sgm
+18.31 7.852 17.64 9.102 sgm
+16.86 10.26 18.36 10.46 sgm
+16.86 10.26 17.44 11.65 sgm
+16.86 10.26 17.64 9.102 sgm
+17.44 11.65 15.98 11.32 sgm
+15.98 11.32 16.44 12.75 sgm
+16.86 10.26 15.98 11.32 sgm
+16.44 12.75 15.01 12.29 sgm
+15.01 12.29 15.34 13.76 sgm
+15.98 11.32 15.01 12.29 sgm
+15.34 13.76 13.95 13.17 sgm
+13.95 13.17 14.15 14.67 sgm
+13.95 13.17 15.01 12.29 sgm
+12.79 13.95 14.15 14.67 sgm
+12.79 13.95 12.85 15.48 sgm
+12.79 13.95 13.95 13.17 sgm
+12.85 15.48 11.54 14.62 sgm
+11.54 14.62 11.46 16.19 sgm
+11.54 14.62 12.79 13.95 sgm
+11.46 16.19 10.19 15.2 sgm
+9.949 16.79 10.19 15.2 sgm
+11.54 14.62 10.19 15.2 sgm
+9.949 16.79 8.731 15.62 sgm
+8.731 15.62 8.31 17.25 sgm
+10.19 15.2 8.731 15.62 sgm
+8.31 17.25 6.52 16.24 sgm
+6.52 16.24 6.517 17.57 sgm
+4.53 17.68 6.52 16.24 sgm
+6.52 16.24 4.53 16. sgm
+8.731 15.62 6.52 16.24 sgm
+4.53 16. 5.838 14.83 sgm
+5.838 14.83 4.53 14.31 sgm
+6.52 16.24 5.838 14.83 sgm
+4.53 14.31 5.987 13.47 sgm
+5.987 13.47 4.53 12.63 sgm
+5.838 14.83 5.987 13.47 sgm
+4.53 12.63 5.986 11.79 sgm
+5.986 11.79 4.53 10.95 sgm
+5.986 11.79 5.987 13.47 sgm
+4.53 10.95 5.985 10.1 sgm
+5.985 10.1 4.53 9.263 sgm
+5.985 10.1 5.986 11.79 sgm
+4.53 9.263 5.985 8.42 sgm
+5.985 8.42 4.53 7.578 sgm
+5.985 8.42 5.985 10.1 sgm
+4.53 7.578 5.988 6.736 sgm
+5.988 6.736 4.53 5.894 sgm
+5.988 6.736 5.985 8.42 sgm
+4.53 5.894 5.988 5.052 sgm
+5.988 5.052 4.53 4.21 sgm
+5.988 5.052 5.988 6.736 sgm
+4.53 4.21 5.865 3.483 sgm
+5.865 3.483 4.53 2.526 sgm
+5.865 3.483 6.441 2.076 sgm
+5.865 3.483 5.988 5.052 sgm
+6.441 2.076 7.661 3.89 sgm
+7.661 3.89 8.74 2.301 sgm
+5.988 5.052 7.661 3.89 sgm
+7.661 3.89 5.865 3.483 sgm
+8.74 2.301 9.582 3.753 sgm
+9.582 3.753 10.42 2.3 sgm
+9.582 3.753 7.661 3.89 sgm
+10.42 2.3 11.27 3.738 sgm
+11.27 3.738 12.11 2.298 sgm
+11.27 3.738 9.582 3.753 sgm
+12.11 2.298 12.95 3.728 sgm
+12.95 3.728 13.79 2.298 sgm
+12.95 3.728 11.27 3.738 sgm
+13.79 2.298 14.63 3.728 sgm
+14.63 3.728 15.48 2.298 sgm
+14.63 3.728 12.95 3.728 sgm
+15.48 2.298 16.32 3.734 sgm
+16.32 3.734 17.16 2.3 sgm
+16.32 3.734 14.63 3.728 sgm
+17.16 2.3 17.99 3.76 sgm
+17.99 3.76 19.38 2.129 sgm
+17.99 3.76 19.78 3.688 sgm
+17.99 3.76 19.31 5.044 sgm
+17.99 3.76 16.32 3.734 sgm
+19.31 5.044 17.55 5.104 sgm
+18.88 6.506 17.55 5.104 sgm
+16.32 3.734 17.55 5.104 sgm
+17.55 5.104 17.99 3.76 sgm
+17.12 6.368 18.88 6.506 sgm
+18.31 7.852 17.12 6.368 sgm
+17.55 5.104 17.12 6.368 sgm
+18.31 7.852 16.76 7.821 sgm
+16.76 7.821 17.64 9.102 sgm
+17.12 6.368 16.76 7.821 sgm
+17.64 9.102 16.12 8.922 sgm
+16.12 8.922 16.86 10.26 sgm
+16.76 7.821 16.12 8.922 sgm
+16.86 10.26 15.38 9.932 sgm
+15.38 9.932 15.98 11.32 sgm
+16.12 8.922 15.38 9.932 sgm
+15.98 11.32 14.54 10.86 sgm
+14.54 10.86 15.01 12.29 sgm
+15.38 9.932 14.54 10.86 sgm
+15.01 12.29 13.62 11.69 sgm
+13.62 11.69 13.95 13.17 sgm
+14.54 10.86 13.62 11.69 sgm
+13.95 13.17 12.61 12.43 sgm
+12.61 12.43 12.79 13.95 sgm
+13.62 11.69 12.61 12.43 sgm
+12.79 13.95 11.51 13.07 sgm
+11.51 13.07 11.54 14.62 sgm
+12.61 12.43 11.51 13.07 sgm
+11.54 14.62 10.31 13.61 sgm
+10.31 13.61 10.19 15.2 sgm
+11.51 13.07 10.31 13.61 sgm
+10.19 15.2 8.941 13.94 sgm
+8.941 13.94 8.731 15.62 sgm
+10.31 13.61 8.941 13.94 sgm
+8.731 15.62 7.266 14.45 sgm
+7.266 14.45 6.52 16.24 sgm
+7.266 14.45 5.838 14.83 sgm
+7.266 14.45 5.987 13.47 sgm
+8.941 13.94 7.266 14.45 sgm
+5.987 13.47 7.467 12.86 sgm
+7.467 12.86 5.986 11.79 sgm
+8.941 13.94 7.467 12.86 sgm
+7.266 14.45 7.467 12.86 sgm
+5.986 11.79 7.415 10.95 sgm
+7.415 10.95 5.985 10.1 sgm
+7.467 12.86 7.415 10.95 sgm
+5.985 10.1 7.416 9.263 sgm
+7.416 9.263 5.985 8.42 sgm
+7.415 10.95 7.416 9.263 sgm
+5.985 8.42 7.426 7.581 sgm
+7.426 7.581 5.988 6.736 sgm
+7.416 9.263 7.426 7.581 sgm
+5.988 6.736 7.441 5.895 sgm
+7.441 5.895 5.988 5.052 sgm
+7.441 5.895 7.661 3.89 sgm
+7.426 7.581 7.441 5.895 sgm
+7.661 3.89 8.784 5.082 sgm
+8.784 5.082 9.582 3.753 sgm
+7.441 5.895 8.784 5.082 sgm
+9.582 3.753 10.35 5.177 sgm
+10.35 5.177 11.27 3.738 sgm
+8.784 5.082 10.35 5.177 sgm
+11.27 3.738 12.12 5.144 sgm
+12.12 5.144 12.95 3.728 sgm
+10.35 5.177 12.12 5.144 sgm
+12.95 3.728 13.79 5.129 sgm
+13.79 5.129 14.63 3.728 sgm
+12.12 5.144 13.79 5.129 sgm
+14.63 3.728 15.69 5.334 sgm
+15.69 5.334 16.32 3.734 sgm
+15.69 5.334 17.55 5.104 sgm
+15.69 5.334 17.12 6.368 sgm
+13.79 5.129 15.69 5.334 sgm
+17.12 6.368 15.78 6.675 sgm
+15.78 6.675 16.76 7.821 sgm
+15.69 5.334 15.78 6.675 sgm
+16.76 7.821 15.21 7.659 sgm
+15.21 7.659 16.12 8.922 sgm
+15.78 6.675 15.21 7.659 sgm
+16.12 8.922 14.88 8.633 sgm
+14.88 8.633 15.38 9.932 sgm
+15.21 7.659 14.88 8.633 sgm
+15.38 9.932 13.95 9.391 sgm
+13.95 9.391 14.54 10.86 sgm
+13.95 9.391 14.88 8.633 sgm
+14.54 10.86 13.41 10.31 sgm
+13.41 10.31 13.62 11.69 sgm
+13.41 10.31 13.95 9.391 sgm
+13.62 11.69 12.33 10.86 sgm
+12.33 10.86 12.61 12.43 sgm
+12.33 10.86 13.41 10.31 sgm
+12.61 12.43 11.59 11.67 sgm
+11.59 11.67 11.51 13.07 sgm
+11.59 11.67 12.33 10.86 sgm
+11.51 13.07 10.42 11.78 sgm
+10.42 11.78 10.31 13.61 sgm
+10.42 11.78 11.59 11.67 sgm
+10.31 13.61 8.897 12.22 sgm
+8.897 12.22 8.941 13.94 sgm
+8.897 12.22 7.467 12.86 sgm
+8.897 12.22 7.415 10.95 sgm
+8.897 12.22 10.42 11.78 sgm
+7.415 10.95 9.215 10.27 sgm
+9.215 10.27 7.416 9.263 sgm
+10.42 11.78 9.215 10.27 sgm
+9.215 10.27 8.897 12.22 sgm
+7.416 9.263 8.831 8.43 sgm
+8.831 8.43 7.426 7.581 sgm
+8.831 8.43 9.215 10.27 sgm
+7.426 7.581 9.227 6.603 sgm
+9.227 6.603 7.441 5.895 sgm
+9.227 6.603 8.784 5.082 sgm
+9.227 6.603 10.35 5.177 sgm
+9.227 6.603 8.831 8.43 sgm
+10.35 5.177 11.28 6.588 sgm
+11.28 6.588 12.12 5.144 sgm
+11.28 6.588 9.227 6.603 sgm
+12.12 5.144 12.94 6.601 sgm
+12.94 6.601 13.79 5.129 sgm
+12.94 6.601 11.28 6.588 sgm
+13.79 5.129 14.49 6.451 sgm
+14.49 6.451 15.69 5.334 sgm
+14.49 6.451 15.78 6.675 sgm
+15.21 7.659 14.49 6.451 sgm
+14.49 6.451 12.94 6.601 sgm
+15.21 7.659 14.01 7.98 sgm
+14.01 7.98 14.88 8.633 sgm
+14.01 7.98 13.95 9.391 sgm
+12.94 6.601 14.01 7.98 sgm
+14.49 6.451 14.01 7.98 sgm
+13.95 9.391 12.5 8.814 sgm
+12.5 8.814 13.41 10.31 sgm
+12.5 8.814 12.33 10.86 sgm
+11.28 6.588 12.5 8.814 sgm
+12.5 8.814 12.94 6.601 sgm
+14.01 7.98 12.5 8.814 sgm
+12.33 10.86 11.09 9.727 sgm
+11.09 9.727 11.59 11.67 sgm
+11.09 9.727 10.42 11.78 sgm
+11.09 9.727 9.215 10.27 sgm
+12.5 8.814 11.09 9.727 sgm
+9.215 10.27 9.78 9.026 sgm
+9.78 9.026 8.831 8.43 sgm
+11.09 9.727 9.78 9.026 sgm
+8.831 8.43 10.39 8.031 sgm
+10.39 8.031 9.227 6.603 sgm
+10.39 8.031 11.28 6.588 sgm
+10.39 8.031 12.5 8.814 sgm
+10.39 8.031 11.09 9.727 sgm
+9.78 9.026 10.39 8.031 sgm
+%
+%   DEBUT LIMITS
+%
+0.25  0 dte 0. 0.025 25.9 0.025 sgm
+25.88 0. 25.88 18.52 sgm
+25.9 18.5 0. 18.5 sgm
+0.025 18.52 0.025 0. sgm
+0. 25.9 0. 18.52 hdc
+inc
+%
+%   FIN LIMITS
+%
+0. 25.9 18.52 19.5 hdc
+inc
+showdessin {gsave copypage grestore} if
+%%Trailer
+%%Pages:        1
+finf3d end

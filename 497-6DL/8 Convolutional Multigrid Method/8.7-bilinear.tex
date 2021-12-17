@@ -1,0 +1,55 @@
+%\subsection{Bilinear element}
+
+%\noindent\textbf{Bilinear element}
+
+Continuous bilinear finite element discretization of
+\eqref{laplace} on the right mesh in 
+Fig. \ref{fig:2dpartition}. The discrete space for linear finite element is 
+$$
+\mathcal V_h=\{v_h: v_h|_K\in \{1,\ x,\ y,\ xy \} \text{ and } v_h \text{ is globally continuous}\}.
+$$ 
+%It is easy to see that on the element $K$ with four vertice $(x_i, y_j)$, $(x_i,y_{j+1})$, $(x_{i+1},y_j)$ and $(x_{i+1},y_{j+1})$, the nodal basis functions 
+%%associate with each $(x_i,y_j)$   
+%(satisfying \eqref{NodalBasis}) are given by 
+%\begin{equation}
+%  \label{BilinearNodalBasis}
+%  \begin{array}{llll}
+%\phi_{i,j}(x,y)&=  \frac{(x_{i+1}-x)(y_{j+1}-y)}{h^2}, 
+%&\phi_{i, j+1}(x,y)&= \frac{(x_{i+1}-x)(y-y_j)}{h^2}, \\
+%\phi_{i+1,j}(x,y)&=  \frac{(x-x_i)(y_{j+1}-y)}{h^2}, 
+%& \phi_{i+1,j+1}(x,y)&= \frac{(x-x_i)(y-y_j)}{h^2}.
+%\end{array}
+%\end{equation}
+For bilinear element case, we have 
+\begin{equation}
+\begin{split}
+(\nabla \mathbf u_h, \nabla \mathbf v_h)&=\sum\limits_{i,j=1}^{n}\int_{E_{i,j}}\nabla \mathbf u_h, \nabla \mathbf v_h dxdy\\
+&=\sum\limits_{i,j=1}^{n}\int_{E_{i,j}} \left(\frac{(u_{i+1,j}-u_{i,j})(y_{j+1}-y)}{h^2}
++\frac{(u_{i,j+1}-u_{i+1,j+1})(y-y_j)}{h^2}\right)\\
+&~\qquad\qquad\left(\frac{(v_{i+1,j}-v_{i,j})(y_{j+1}-y)}{h^2}
++\frac{(v_{i,j+1}-v_{i+1,j+1})(y-y_j)}{h^2}\right)\\
+&~~\quad\qquad+\left(\frac{(u_{i,j+1}-u_{i,j})(x_{i+1}-x)}{h^2}
++\frac{(u_{i+1,j}-u_{i+1,j+1})(x-x_i)}{h^2}\right)\\
+&~\qquad\qquad \left(\frac{(v_{i,j+1}-v_{i,j})(x_{i+1}-x)}{h^2}
++\frac{(v_{i+1,j}-v_{i+1,j+1})(x-x_i)}{h^2}\right)dxdy\\
+&=(A\ast u, v)_{l^2}.
+\end{split}
+\end{equation}
+where $A=\left(
+\begin{matrix}
+-1&-1&-1\\
+-1&8&-1\\
+-1&-1&-1\\
+\end{matrix}
+\right)$ 
+and $A\ast u$ is given by \eqref{2d-fe1}.
+
+And we have
+\begin{equation}
+  \label{2d-fe1}
+A\ast u=8u_{ij}-(u_{i+1,j}+u_{i-1,j}+u_{i,j+1}+u_{i,j-1}+u_{i+1,j+1}+u_{i-1,j-1}+u_{i-1,j+1}+u_{i+1,j-1})=f_{i,j},
+\end{equation}
+and 
+$
+u_{i,j}=0~~\hbox{if}~~i ~~\hbox{or}~~ j\in \{0, n+1\}.
+$

@@ -1,0 +1,199 @@
+
+\section{Finite element method and convolution}\label{sec:mg}
+Let us first briefly describe finite
+element methods for the numerical solution of the following boundary
+value problem
+\begin{equation}
+\label{laplace}
+-\Delta u = f,  \mbox{ in } \Omega,\quad
+u=0  \mbox{ on } \partial\Omega,\quad
+\Omega=(0,1)^2.
+\end{equation}
+For the $x$ direction and the $y$ direction, we consider the partition:
+\begin{equation}\label{partitionyx}
+ 0=x_0<x_1<\cdots<x_{n+1}=1, \quad x_i=\frac{i}{m+1},\quad (i=0,\cdots,m+1);
+ \end{equation}
+ \begin{equation}\label{partitiony}
+ 0=y_0<y_1<\cdots<y_{n+1}=1, \quad y_j=\frac{j}{n+1},\quad (j=0,\cdots,n+1).
+\end{equation}
+For $\Omega=(0,1)^2$, we just choose $m=n$. Such a uniform partition in the $x$ and $y$ directions leads us to a special example in two dimensions, a uniform square mesh $\R_h^2 = \big\{(ih,jh); i, j \in \Z\big\}$ (Figure \ref{fig:2dpartition}). 
+
+
+\begin{figure}
+\begin{center}
+\setlength{\unitlength}{0.5mm}
+\begin{picture}(45,45)(50,0)
+\linethickness{0.25mm}
+\multiput(0,0)(10,0){6}{\line(0,1){50}}
+\multiput(0,0)(0,10){6}{\line(1,0){50}}
+\put(0,0){\line(1,1){50}}
+\put(10,0){\line(1,1){40}}
+\put(20,0){\line(1,1){30}}
+\put(30,0){\line(1,1){20}}
+\put(40,0){\line(1,1){10}}
+\put(0,10){\line(1,1){40}}
+\put(0,20){\line(1,1){30}}
+\put(0,30){\line(1,1){20}}
+\put(0,40){\line(1,1){10}}
+\put(47,34){$\displaystyle \left. \begin{array}{l}~ \\ ~\end{array}
+\right\} h={1\over n+1}$}
+\put(54,14){$\displaystyle N = n^2$}
+\multiput(100,0)(10,0){6}{\line(0,1){50}}
+\multiput(100,0)(0,10){6}{\line(1,0){50}}
+\put(147,34){$\displaystyle \left. \begin{array}{l}~ \\ ~\end{array}
+\right\} h={1\over n+1}$}
+\put(154,14){$\displaystyle N = n^2$}
+\end{picture}
+\setlength{\unitlength}{0.5mm}
+\end{center}
+\label{fig:2dpartition}
+\caption{Two-dimensional uniform grids for finite element}
+\end{figure}
+
+We consider two finite elements: continuous linear element and
+bilinear element. These two finite element methods find $u_h\in V_h$
+such that
+\begin{equation}\label{Discrete:2d}
+(\nabla u_h, \nabla v_h)=(f, v_h),\ \forall v_h\in V_h.
+\end{equation}
+
+
+Basis functions $\phi_{ij}$ satisfy 
+\begin{equation}
+  \label{NodalBasis}
+\phi_{ij}(x_k,y_l)=\delta_{(i,j),(k,l)}.  
+\end{equation}
+
+Consider continuous linear finite element discretization of \eqref{laplace} on
+the left triangulation in Fig \ref{fig:2dpartition}. The discrete
+space for linear finite element is
+$$
+\mathcal V_h=\{v_h: v_h|_K\in P_1(K) \text{ and } v_h \text{ is globally continuous}\}.
+$$ 
+
+By simple computation, we have
+\begin{equation}
+(\nabla \phi_{i,j} , \nabla \phi_{k,l})=
+\left\{
+		\begin{array}{ll}
+		-1 & \mbox{ if } |k-i|+|j-l|= 1,\\     
+		4 & \mbox{ if } (k,l)=(i,j),\\
+		0& \mbox{ elsewhere}.
+		\end{array}
+		\right.
+\end{equation}
+It is easy to verify that the formulation for the linear element method is 
+\begin{equation}
+  \label{2d-fe0}
+A\ast u=4u_{i,j}-(u_{i+1,j}+u_{i-1,j}+u_{i,j+1}+u_{i,j-1})=f_{i,j},~~u_{i,j}=0~~\hbox{if}~~i ~~\hbox{or}~~ j\in \{0, n+1\},
+\end{equation}
+where 
+\begin{equation}\label{fij_fe}
+f_{i,j} = \int_{\Omega} f(x,y)\phi_{i,j}(x,y) {\rm d}x {\rm d}y \approx h^2 f(x_i, y_j).
+\end{equation} 
+
+\begin{definition}\label{def:convolution}
+A convolution defined on $\mathbb{R}^{m\times n}$ is a linear mapping 
+$K\ast: \mathbb{R}^{m\times n}\mapsto \mathbb{R}^{m\times n}$ defined with padding,  
+for any $g \in \mathbb{R}^{m\times n}$ by:
+%We first consider $\theta$ a convolution operator (with stride $1$) 
+%and padding:
+\begin{equation}\label{con010}
+[K \ast g]_{i,j} = \sum_{p,q=-k}^k K_{p, q} g_{i + p, j + q}, \quad i=1:m, j = 1:n.
+\end{equation}
+\end{definition}
+The coefficients in \eqref{con010} constitute  a kernel matrix
+\begin{equation}
+K \in \mathbb{R}^{(2k+1) \times (2k+1)},
+\end{equation}
+where $k$ is often taken as a small integer. 
+Here we note that the indices for the entries in $K$ are given in a special way. 
+For example, if $k=1, K\in \mathbb R^{3\times 3}$, and 
+$$
+K=\begin{pmatrix}
+	K_{-1,-1} &K_{-1,0} &K_{-1,1} \\
+	K_{0,-1} &K_{0,0} &K_{0,1} \\
+	K_{1,-1} &K_{1,0} &K_{1,1} \\
+	\end{pmatrix},
+$$
+for we may have the following 2D Laplacian kernel
+\begin{equation}\label{key}
+K=\begin{pmatrix}
+0 &-1 &0\\
+-1 &4&-1 \\
+0 &-1 &0 \\
+\end{pmatrix}.
+\end{equation}  
+Here padding means how $ g_{i+ p, j + q}$ is defined
+when $(i+ p, j + q)$ is out of $1:m$ or $1:n$. 
+The following three choices are often used
+\begin{equation}\label{eq:padding}
+g_{i + p, j + q} = \begin{cases}
+0,  \quad &\text{zero padding}, \\
+f_{(i + p)\pmod{m}, (s + q)\pmod{n}},  \quad &\text{periodic padding}, \\
+f_{|i-1 +p|, |j -1  +q|},  \quad &\text{reflected padding}, \\
+\end{cases}
+\end{equation}
+if 
+\begin{equation}
+i + p \notin \{1, 2, \dots, m\} ~\text{or} ~  j+ q \notin \{1, 2, \dots, n\}.
+\end{equation}
+Here $ d \pmod{m} \in \{1, \cdots, m\} $  means the remainder when $d$ is divided by $m$.
+
+\begin{definition}\label{def:convolution2}
+For $g \in \mathbb{R}^{m\times n}$, convolution with stride $2$ is defined as 
+\begin{equation}\label{stride_2}
+[K \ast_2 g]_{i,j} = \sum_{p,q=-k}^k K_{p,q} g_{2i + p-1, 2j + q-1},  
+\quad i = 1: \lfloor \frac{m+1}{2}\rfloor , j = 1: \lfloor \frac{n+1}{2} \rfloor.
+\end{equation}
+\end{definition}
+
+Using the convolutional notation \eqref{con010}, \eqref{2d-fe0} can be written as 
+\begin{equation}
+  \label{eq:Ac}
+A\ast u=f
+\end{equation}
+with 
+\begin{equation}
+  \label{Ac}
+A=
+\begin{pmatrix}
+0&-1&0\\
+-1&4&-1\\
+0&-1&0
+\end{pmatrix}
+.
+\end{equation}
+
+\begin{proposition}\label{prop:A}
+The mapping $A\ast$ has following properties
+\begin{enumerate}
+\item $A$ is symmetric, namely 
+$$
+(A\ast u, v)_{l^2}=(u,A\ast v)_{l^2}.
+$$
+\item  $(A\ast v, v)_F>0, ~~~\hbox{if}~~~v\neq 0.$
+\item $A\ast u=f$ if and only if 
+\begin{equation}\label{minProblem}
+u\in \argmin_{v\in \mathcal V_h} J(v)={1\over 2}(A\ast v,v)-(f,v).
+\end{equation}
+\item The eigenvalues $\lambda_{kl}$ and eigenvectors $u^{kl}$ of $A$ are given by
+$$
+\lambda_{kl}=4(\sin^2\frac{k\pi}{2(n+1)}+ \sin^2\frac{l\pi}{2(n+1)}),
+$$
+$$
+u_{ij}^{kl}=\sin \frac{ki\pi}{n+1}\sin \frac{lj\pi}{n+1},\ 1\leq i\leq n,\ 1\leq j\leq n,
+$$
+and  $\rho(A)<8$. Furthermore,
+\begin{equation*}
+\lambda_{n,n}=8\cos^2\frac{\pi}{2(n+1)}\approx 8(1- ({\pi\over 2(n+1)})^2) \approx 8-{2\pi^2\over (n+1)^2}
+\end{equation*}
+\end{enumerate}
+\end{proposition}
+
+
+  
+
+
+
+

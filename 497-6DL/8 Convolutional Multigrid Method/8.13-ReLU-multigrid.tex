@@ -1,0 +1,77 @@
+\section{ReLU multigrid method for nonnegative solution}
+Considering $f = (1, 1, ..., 1)^\top$,
+\begin{breakablealgorithm}%[!htb]
+	\caption{$(u^{1}, u^2, \cdots, u^J) = {\text{MG0}}(f; u^0; J,\nu_1, \cdots, \nu_J)$}
+	\label{alg:L-ReLUSlash0}
+	\begin{algorithmic}
+		\State Set up
+		$$
+		f^1 = f, \quad u^{1}=u^0.
+		$$
+		\State Smoothing and restriction from fine to coarse level (nested)
+		\For{$\ell = 1:J$}
+		\For{$i = 1:\nu_\ell$}
+		\State
+		\begin{equation}\label{eq:smoothing}
+		u^{\ell} \leftarrow u^{\ell} + S^\ell \ast \text{Relu}( (f^\ell - A_\ell \ast u^{\ell})).
+		\end{equation}
+		\EndFor
+		\State Form restricted residual and set initial guess:
+		$$
+		u^{\ell+1,0} \leftarrow 0, \quad f^{\ell+1} \leftarrow R \ast_2 (f^\ell -  A_\ell \ast u^{\ell}), A_{\ell+1} = R \ast_2 A_\ell \ast (R\ast_2^\top).
+		$$
+		\EndFor
+	\end{algorithmic}
+\end{breakablealgorithm}
+Algorithm 5 is not convergent.
+
+\newpage
+\begin{breakablealgorithm}%[!htb]
+	\caption{$(u^{1}, u^2, \cdots, u^J) = {\text{MG0}}(f; u^0; J,\nu_1, \cdots, \nu_J)$}
+	\label{alg:L-ReLUSlash1}
+	\begin{algorithmic}
+		\State Set up
+		$$
+		f^1 = f, \quad u^{1}=u^0.
+		$$
+		\State Smoothing and restriction from fine to coarse level (nested)
+		\For{$\ell = 1:J$}
+		\For{$i = 1:\nu_\ell$}
+		\State
+		\begin{equation}\label{eq:smoothing}
+		u^{\ell} \leftarrow u^{\ell} +\text{Relu}( S^\ell \ast  (f^\ell - A_\ell \ast u^{\ell})).
+		\end{equation}
+		\EndFor
+		\State Form restricted residual and set initial guess:
+		$$
+		u^{\ell+1,0} \leftarrow 0, \quad f^{\ell+1} \leftarrow R \ast_2 (f^\ell -  A_\ell \ast u^{\ell}), A_{\ell+1} = R \ast_2 A_\ell \ast (R\ast_2^\top).
+		$$
+		\EndFor
+	\end{algorithmic}
+\end{breakablealgorithm}
+
+Algorithm 6 is convergent, the iterative steps is list below. $l = 2$
+\\
+\begin{tabular}{c|c|c|}
+	J &MG& Algorithm 6\\ \hline
+	2 & 15 & 27 \\\hline
+	3 & 16 & 35 \\\hline
+	4 & 17 & 38 \\\hline
+\end{tabular}
+
+
+\subsection{$\Pi$ is interpolation}
+\textbf{Not Convergent}
+		\begin{equation}
+		u^{\ell,i} \leftarrow u^{\ell,i-1} + \text{Relu}\circ B_{\ell,i}  ({f^\ell -  A^{\ell} (u^{\ell,i-1})}).
+		\end{equation}
+	 \begin{equation}
+	 u^{\ell,i} \leftarrow u^{\ell,i-1} + B_{\ell,i}\circ\text{Relu}({f^\ell -  A^{\ell} (u^{\ell,i-1})}).
+	 \end{equation}
+\textbf{Almost the same as without Relu}
+	 \begin{equation}
+	 u^{\ell,i} \leftarrow u^{\ell,i-1} +B_{\ell,i}  ({f^\ell -   \text{Relu}\circ A^{\ell} (u^{\ell,i-1})}).
+	 \end{equation}
+	 \begin{equation}
+	 u^{\ell,i} \leftarrow u^{\ell,i-1} + B_{\ell,i}  ({f^\ell -  A^{\ell} \circ\text{Relu}(u^{\ell,i-1})}).
+	 \end{equation}

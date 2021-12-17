@@ -1,0 +1,283 @@
+\section{Multigrid methods for nonlinear problem}
+In classification, the key problem can be reduced to find the 
+representation (feature) for high dimension image for classifying. 
+Here we propose to solve the next unbalanced nonlinear system  
+\begin{equation}\label{eq:rep}
+L(u) = f,
+\end{equation}
+for finding the suitable feature representation $u \in \mathbb{R}^c$ for  
+image $f\in \mathbb{R}^{n}$. The rationality of system can be traced back to 
+the low-dimension assumption that natural image need to be concentrated 
+on a low-dimension manifold with respect to the pixel space.
+
+In order to motivate how to deal with the nonlinear system \eqref{eq:rep}, we 
+consider a simple nonlinear model problem 
+\begin{equation}\label{nonlinear:poisson}
+\left\{
+\begin{aligned}
+-\nabla\cdot(a(u)\nabla u)+c(u)&=f, \quad x\in \Omega,\\
+u&=0\quad\hbox{on}\quad\partial \Omega.
+\end{aligned}
+\right. 
+\end{equation}
+%\example $p$-Laplacian $\displaystyle \min_{u\in W^{1,p}()\Omega} \frac{1}{p} \int_\Omega |\nabla u|^p dx-\int_\Omega fudx$. 
+
+The weak formulation of \eqref{nonlinear:poisson} reads: Find $u\in H^1_0(\Omega)$, such that 
+$$
+(a(u)\nabla u,\nabla v)+(c(u), v)=(f,v), \quad \forall v\in H^1_0(\Omega). 
+$$
+Define
+\begin{equation}
+(L(u), v)=(a(u)\nabla u,\nabla v)+(c(u), v).
+\end{equation}
+Then we have 
+\begin{equation}
+L(u)=f.
+\end{equation}
+Now the discretization problem reads: Find $u_h\in V_h$ such that
+\begin{equation}
+(a(u_h)\nabla u_h,\nabla v_h)+(c(u_h), v_h)=(f,v_h)\quad \forall v_h\in V_h. 
+\end{equation}
+Again define 
+$$
+(L_h(u_h), v_h)=(a(u_h)\nabla u_h,\nabla v_h)+(c(u_h), v_h).
+$$
+Then we obtain 
+\begin{equation}\label{non:system}
+L_h(u_h)=f_h. 
+\end{equation}
+If $a(u_h)$ is a constant, then \eqref{non:system} reduces to a linear system and we denote the 
+linear system as $A_hu_h=f_h$. 
+
+Recall the two grid method described in \eqref{eq:smoothing0}, \eqref{eq:formresidual}, \eqref{erreq}, \eqref{coarse:correc} and \eqref{eq:prolongation00}
+for linear problem 
+\begin{equation}\label{linearA}
+A_hu_h=f_h,
+\end{equation}
+reads as following three steps:
+\begin{enumerate}
+\item Fine grid smoothing: 
+%applying $m$ times gradient descent iterations to obtain $u^m$.
+$$
+u_h\update u_h+S_h(f_h-A_hu_h)
+$$
+such as gradient descent method. 
+\item Coarse grid correction: solving the residual equation restricted
+on the coarse grid $\ct_{2h}$ to obtain
+$$
+        A_{2h}e_{2h}=Q_{2h}r^h
+$$
+with $r^h=f_h-A_h u_h$. 
+\item Update: $u_h\update u_h+e_{2h}$.
+\end{enumerate}
+Coarse grid correction for the linear case can be rewritten as: 
+$$
+ A_{2h}e_{2h}=Q_{2h}(f_h-A_h u_h).
+ $$
+ For any $u_h^0$, we write the above equation as  
+ \begin{equation}\label{eq2}
+Q_{2h}(A_{h}(u_h^0+e_{2h})-A_hu_h^0)=Q_{2h}(f_h-A_h u_h).
+ \end{equation}
+ Noting that $Q_{2h}A_{h}=A_{2h}P_{2h}$, where $P_{2h}$ is the energy projection 
+%from $V_h$ 
+ into $V_{2h}$. 
+ Therefore \eqref{eq2} can be written as 
+% $$
+% A_{2h}(P_{2h} u_h^0)+ A_{2h} e_{2h})- A_{2h} (P_{2h} u_h^0)=Q_{2h}(f_h-A_h u_h).
+% $$
+% and further 
+  \begin{equation}\label{eq4}
+ A_{2h}(P_{2h} u_h^0+ e_{2h})=Q_{2h}(f_h-A_h u_h)+A_{2h} (P_{2h} u_h^0).
+  \end{equation}
+Now let 
+$$
+u_{2h,0}=P_{2h} u_h^0 \quad \hbox{and}\quad u_{2h}=P_{2h} u_h^0+ e_{2h},
+$$
+ then solving $e_{2h}$ in  \eqref{eq4} is equivalent to solve $u_{2h}$  in the following equation
+\begin{equation}\label{eq5}
+ A_{2h}u_{2h}=Q_{2h}(f_h-A_h u_h)+A_{2h} (u_{2h,0}).
+ \end{equation}
+ In this case, noting that $e_{2h}=u_{2h}-P_{2h} u_h^0=u_{2h}-u_{2h,0}$, hence the step 3 means 
+ $$
+\hbox{ Update:} \,\, u_h\update u_h+u_{2h}-u_{2h,0}.
+ $$
+ 
+ In summery, the two grid method for the linear system \eqref{linearA} can be rewritten as following three steps:
+\begin{enumerate}
+\item Fine grid smoothing: 
+%applying $m$ times gradient descent iterations to obtain $u^m$.
+$$
+u_h\update u_h+S_h(f_h-A_hu_h)
+$$
+such as gradient descent method. 
+\item Coarse grid correction: for any $u_h^0$, solving the residual equation restricted
+on the coarse grid $\ct_{2h}$ to obtain
+$$
+   u_{2h,0}=P_{2h} u_h^0, \quad     A_{2h}u_{2h}=Q_{2h}(f_h-A_h u_h)+A_{2h} (u_{2h,0}).
+$$
+where $P_{2h}$ is the energy projection %from $V_h$ 
+into $V_{2h}$. 
+\item Update: $u_h\update u_h+u_{2h}-u_{2h,0}$.
+\end{enumerate}
+Usually, after the fine grid smoothing, we choose $u_h^0$ as the solution updated from the fine grid smoothing.  And for nonlinear problems, we replace $P_{2h}u_h^0$ by $\Pi_h^{2h}u_h^0$, where $\Pi_h^{2h}$ is an interpolation or projection from $V_h$ to $V_{2h}$. 
+Now we apply the above two grid method to the nonlinear system \eqref{non:system}, 
+namely $L_{h}(u_h)=f_h$, we obtain the two grid method for nonlinear system
+ \begin{enumerate}
+\item Fine grid smoothing: 
+%applying $m$ times gradient descent iterations to obtain $u^m$.
+$$
+u_h\update u_h+S_h(f_h-L_h(u_h))
+$$
+such as gradient descent method. 
+\item Coarse grid correction: solving the residual equation restricted
+on the coarse grid $\ct_{2h}$ to obtain
+$$
+   u_{2h,0}=\Pi_h^{2h} u_h, \quad     L_{2h}(u_{2h})=Q_{2h}(f_h-L_h (u_h))+L_{2h} (u_{2h,0}).
+$$
+where $\Pi_h^{2h}$ is an interpolation or projection from $V_h$ to $V_{2h}$. 
+\item Update: $u_h\update u_h+u_{2h}-u_{2h,0}$. 
+\end{enumerate}
+
+ 
+To solve the nonlinear system, we can try the multilevel ideas 
+with smoothing in fine level, and truncated it into coarse level by recursion. 
+One strategy to involve the multi-scale idea is to ``smoothing'' in the fine level, 
+and restrict it as a good approximation in the coarse level, this idea can 
+be found in many literatures especially for multigrid methods in optimization 
+\cite{tai2002global, nash2000a}.  So, there is a more general nonlinear multigrid named 
+scheme-fully approximation scheme (FAS) \cite{briggs2000a, trottenberg2000multigrid}, 
+which can be considered as the generalization of linear multigrid Algorithm \ref{alg:L-Slash1}.  
+Here we show a FAS algorithm with V-cycle as
+\begin{breakablealgorithm}
+	\caption{$u = {\text{ Bslash-FAS}}(u^{1,0},f,J,m_1, \cdots, m_J)$}
+	\label{alg:Slash-FAS}
+	\begin{algorithmic}
+		\State Initialization 
+		$$
+		f^1 = f.
+		$$
+		\State Smoothing and restriction from fine to coarse level (nested)
+		\For{$\ell = 1:J$}
+		\State Nonlinear relaxation on level $\ell$:
+		\For{$i = 1:m_j$}
+		\State 
+		$$
+		u^{\ell,i} = u^{\ell,i-1} +S_\ell^i(f^\ell - L^{\ell}(u^{\ell,i-1})).
+		$$
+		\EndFor
+		\State Form the initial guess and right side term for level $\ell+1$:
+		$$
+		u^{\ell+1,0} = \Pi_\ell^{\ell+1}u^{\ell,m_\ell}, \quad 
+		f^{\ell+1} = R_\ell^{\ell+1} (f^\ell - L^{\ell}(u^{\ell,m_\ell})) + L^{\ell+1}( u^{\ell+1, 0}).
+		$$
+		\EndFor
+		\State Prolongation and correction from coarse to fine level
+		\For{$\ell = J-1:1$}
+		
+		\State Form error in coarse level 
+		$$
+		e^{\ell+1} = u^{\ell+1, m_{\ell+1}} - u^{\ell+1,0}.
+		$$
+		\State Correction by using error in coarse level
+		$$
+		u^{\ell,m_\ell} \leftarrow u^{\ell,m_\ell} + P_{\ell+1}^{\ell}e^{\ell+1}.
+		$$
+		\EndFor
+	\end{algorithmic}
+\end{breakablealgorithm}
+%For some cases, we choose $S_\ell^i=[\nabla F^{\ell}(u^{\ell,i-1})]^{-1}$.
+If the problem in \eqref{eq:rep} is linear, then we have the next theorem to show that 
+this FAS scheme is consist with the classical multigrid methods for linear systems.
+\begin{theorem}
+	If $L(u)$  in \eqref{eq:rep}  is a linear operation. 
+	Then Algorithm \ref{alg:Slash-FAS} is equivalent to Algorithm \ref{alg:L-Slash1} with any choice of $\Pi_\ell^{\ell+1}$.
+\end{theorem}
+
+
+\section{A nonlinear BVP example}
+ Consider the following boundary value problem
+$$
+-u''+2u^3=0 \quad(0< x < 1), \quad u(0)=\frac{1}{3}\hbox{~and~}u(1)=\frac{1}{4}.
+$$
+The analytical solution is  $u=\frac{1}{x+3}$. The weak formulation becomes
+\begin{equation}
+(u',v')+(2u^3,v)=0.
+\end{equation}
+By choosing $u_h=\sum \alpha_i \phi_i$, we have
+\begin{equation}\label{eq:nolinear}
+L_h({\bm \alpha}):=A{\bm \alpha}+2h{\bm \alpha}^3-b,
+\end{equation}
+where
+$A =\frac{1}{h}
+\begin{pmatrix}
+2 & -1 &  &&\\
+-1 & 2 & -1&&\\
+   &\vdots&\vdots&\vdots&\\
+   &&-1&2&-1\\
+   &&&-1&2
+\end{pmatrix}$ and
+$b =\frac{1}{h}
+\begin{pmatrix}
+\frac{1}{3}\\
+\vdots\\
+\frac{1}{4}\end{pmatrix}$.  
+We use gradient descent method and nonlinear multigrid method to solve \eqref{eq:nolinear}. The smoother used in the 
+nonlinear multigrid method is two steps of gradient descent method: 
+$$
+\bm \alpha^{n+1}=\bm \alpha^n-\eta L_h(\bm \alpha^n) -\eta L_h(\bm \alpha^n-\eta L_h(\bm \alpha^n))
+$$
+where $L_h$ is defined by \eqref{eq:nolinear} and $\eta$ is the learning rate. 
+
+\begin{table}\label{Table:nonliear}%[htdp]
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline \hline
+Size of Unkowns  & Nonlinear Multigrid  ethod  & Gradient Descent method \\ \hline\hline %& V + PCG for $A$\\ \hline %\hline
+15       &   13 steps  &  61.6 k steps \\ \hline %&\onslide<3->{\brown{5/0.003s}}  \\ \hline
+31      &   14 steps   &  976.6 k steps  \\ \hline %&\onslide<3->{\brown{5/0.003s}}  \\ \hline
+63         &  15 steps & $>$ 1000 k steps\\ \hline %& \onslide<5->{\brown{5/0.005s}} \\ \hline 
+127       & 16 steps & $>$ 1000 k steps \\ \hline %&  \onslide<7->{\brown{5/0.016s}} \\ \hline 
+255        & 16 steps & $>$ 1000 k steps \\ \hline %& \onslide<9->{\brown{5/0.06s}}  \\ \hline 
+511     &17 steps& $>$ 1000 k steps \\ \hline %& \onslide<11->{\brown{5/0.22s}} \\   \hline \hline
+1023      &18 steps&$>$ 1000 k steps \\ \hline %& \onslide<11->{\brown{5/0.22s}} \\   \hline \hline
+\end{tabular}
+\caption{Number of iterations for $\| L_h({\bm \alpha}) \|/ \|b\| \leq 10^{-6}$}
+\end{center}
+\end{table}
+
+From the above numerical results shown in Table \ref{Table:nonliear}, the nonlinear multigrid method is uniform with respect to the size of 
+unknowns and much faster than the gradient descent method.  
+
+
+\endinput
+Following the FAS idea, we propose the next Algorithms \ref{alg:OD-FAS} to solve the \eqref{eq:rep}:
+\begin{breakablealgorithm}
+	\caption{$u = {\text{OD-FAS}}(f,J,m_1, \cdots, m_J)$}
+	\label{alg:OD-FAS}
+	\begin{algorithmic}
+		\State Initialization
+		$$
+		u^{1,0} = f,
+		$$
+		\State Feature extraction between levels,
+		\For{$\ell = 1:J$}
+		\State Feature extraction during level $\ell$,
+		\For{$i = 1:m_\ell$}
+		\State 
+		$$
+		u^{\ell,i} = u^{\ell,i-1} +[\epsilon I + \nabla F^{\ell}(u^{\ell,i-1})]^{-1} (f^\ell - F^{\ell}(u^{\ell,i-1})).
+		$$
+		\EndFor
+		\If{$\ell = J$}
+		\State Return $u^{J,m_J}$.
+		\EndIf
+		\State Form initialization and right hand term in coarse level:
+		$$
+		u^{\ell+1,0}= R_\ell^{\ell+1} u^{\ell,m_\ell}, \quad 
+		f^{\ell+1} = R_\ell^{\ell+1} (r^\ell - F^{\ell}(u^{\ell,m_\ell})) + F^{\ell+1}( u^{\ell+1, 0}).
+		$$
+		\EndFor
+	\end{algorithmic}
+\end{breakablealgorithm}
+
+

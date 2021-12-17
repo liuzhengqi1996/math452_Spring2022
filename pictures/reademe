@@ -1,0 +1,10 @@
+%
+% 	last update:	12/27/1997
+%
+
+The following files contain three pictures on using the Tarjan
+algorithm to form the blocks for block Gauss-Seidel methods
+
+	ordering-horizontal.ps
+	ordering-upperleft.ps
+	ordering-quartercirc.ps

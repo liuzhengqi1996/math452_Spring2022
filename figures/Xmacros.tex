@@ -1,0 +1,435 @@
+%% Macros for AMG notes
+%\newcommand{\triplenorm}[1]{\ensuremath{| \! | \! | #1 | \! | \! |}}
+\newcommand{\triplenorm}[1]{%
+  \left\vert\kern-0.9pt\left\vert\kern-0.9pt\left\vert #1
+  \right\vert\kern-0.9pt\right\vert\kern-0.9pt\right\vert}
+\newcommand{\Tscalar}[2]{\ensuremath{(#1 , #2)_{\bar R^{-1}}}} %%% macro for star norm.
+\newcommand{\Tnorm}[1]{\ensuremath{\|#1\|_{\bar R^{-1}}}}
+\newcommand{\Dscalar}[2]{\ensuremath{( #1 , #2 )_D}}
+\newcommand{\Dnorm}[1]{\|#1\|_{D}}
+\newcommand{\Tproj}{\ensuremath{Q_c}}
+\newcommand{\Dproj}{\ensuremath{Q_D}}
+\newcommand{\Anorm}[1]{\|#1\|_A}
+\newcommand{\trace}{\ensuremath{\operatorname{trace}}}
+\newcommand{\Span}{\ensuremath{\operatorname{span}}}
+
+\newcommand{\eqqsim}{\mathbin{\rotatebox[origin=c]{180}{\ensuremath{\cong}}}}
+
+\newcommand{\rs}{\ensuremath{R_s}}
+
+\newcommand{\Vhf}{V_{\rm hf}}
+\newcommand{\Vf}{V_{f}}
+\newcommand{\Vc}{V_{c}}
+\newcommand{\sparse}{\ensuremath{\operatorname{S}}}
+\newcommand{\dof}{\ensuremath{N}}
+\newcommand{\co}{\ensuremath{C_{o}}}
+\newcommand{\Nepo}{{Nepomnyaschikh}}
+\renewcommand{\v}{{\cal V}}
+% ---------------------------
+% packages
+% ---------------------------
+% AMS math symbol
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{mathrsfs}
+%\usepackage{mathptmx}       % selects Times Roman as basic font
+%\usepackage{algorithmic}
+\usepackage{bm}
+%\usepackage{wsuipa}
+
+\usepackage{algpseudocode}
+\usepackage[Algorithm]{algorithm}
+%% one line ifs and fors commands only for this section
+\algnewcommand{\IIf}[1]{\State\algorithmicif\ #1\ \algorithmicthen}
+\algnewcommand{\EElse}{\unskip\ \algorithmicelse\ }
+\algnewcommand{\EndIIf}{\unskip\ \algorithmicend\ \algorithmicif}
+\algnewcommand{\FFor}[1]{\State\algorithmicfor\ #1\ }
+\algnewcommand{\EndFFor}{\unskip\ \algorithmicend\ \algorithmicfor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% text fonts
+\usepackage{txfonts}
+%\usepackage{helvet}         % selects Helvetica as sans-serif font
+%\usepackage{courier}        % selects Courier as typewriter font
+\usepackage[latin1]{inputenc}
+
+% graphcis
+\usepackage{graphicx}
+\usepackage{subfigure} %commented by Ludmil, uncommented by Hongxuan
+\usepackage{float}
+
+\usepackage{tikz}   %commented by Ludmil, uncommented by Hongxuan
+\usetikzlibrary{shapes,arrows,decorations.pathmorphing,backgrounds,positioning,fit,matrix,calc}  %commented by Ludmil, uncommented by Hongxuan
+%\usepackage{subfig}  %added by Ludmil, commented by Hongxuan
+
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+
+
+%% command shell environment 
+\usepackage[most]{tcolorbox}
+\newtcblisting{commandshell}{colback=black,colupper=white,colframe=yellow!75!black,
+listing only,listing options={language=sh},
+every listing line={\textcolor{red}{\small\ttfamily\bfseries Terminal \$> }}}
+
+%% Code styles
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{python}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+%\lstset{style=python}
+
+
+% other tools
+\usepackage{hyperref}
+\usepackage{type1cm}
+%%\usepackage[normalem]{ulem}
+\usepackage{soul}
+%\usepackage{times}
+\usepackage{url}
+\usepackage{undertilde}
+%\usepackage{ulem}
+%\def\utilde{\uwave}
+\usepackage{rotating} %% commented because it crashes "figure" (ludmil), uncommented by Hongxuan
+\usepackage{makeidx}
+\makeindex             % used for the subject index
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{xspace}
+ \usepackage{comment}  % added by Ludmil
+ % \usepackage[bw,framed]{mcode} %% commented because it crashes "lstlisting" (ludmil)
+\usepackage[margins]{trackchanges} %% commented because it crashes "figure" (ludmil), uncommented by Hongxuan
+\usepackage{etoolbox}
+\usepackage{array}
+%%
+% ---------------------------
+% Formats
+% ---------------------------
+% head
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{} %added by Hongxuan Zhang
+
+% page
+\pagenumbering{arabic}
+\newcommand{\pinput}[1]
+{\newpag
+\hrule
+\centerline{\huge \bf #1}
+\hrule
+\newpage}
+
+% ---------------------------
+% Theorems etc.
+% ---------------------------
+\ifcsmacro{theorem}{}{
+\newtheorem{theorem}{Theorem}[section]
+}
+\ifcsmacro{lemma}{}{
+\newtheorem{lemma}[theorem]{Lemma}
+}
+\ifcsmacro{corollary}{}{
+\newtheorem{corollary}[theorem]{Corollary}
+}
+\ifcsmacro{proposition}{}{
+\newtheorem{proposition}[theorem]{Proposition}
+}
+\ifcsmacro{algorithm}{}{
+\newtheorem{algorithm}[equation]{Algorithm}
+}
+\newtheorem{consequence}[equation]{Consequence}
+\newtheorem{conclusion}[equation]{Conclusion}
+\newcommand{\Remark}{\noindent{\bf Remark.~}}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem{observation}[equation]{Observation}
+%\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{homework}[theorem]{Homework}
+%\newtheorem{example}[theorem]{Example}
+
+\def\proof{\par{\it Proof}. \ignorespaces}
+\def\endproof{{\ \vbox{\hrule\hbox{\vrule
+        height1.3ex\hskip0.8ex\vrule}\hrule}}\par}
+
+% ---------------------------
+% Chapter and sections
+% ---------------------------
+\let\oldchapter\chapter
+\def\chapter{%
+  \setcounter{exercise}{0}%
+  \oldchapter
+}
+
+% ---------------------------
+% New commands
+% ---------------------------
+% References and Citation
+%\newcommand{\Label}[1]{\label{#1}{{\mbox{\small\mbox{\fbox{\tt #1}\quad}}}}}
+\newcommand{\Label}{\label}
+\newcommand{\Rf}[1]{\mbox{$(\ref{#1})$}}
+\newcommand{\rf}[1]{$(\ref{#1})$}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\range}{Range}
+%\DeclareMathOperator*{\span}{span}
+
+% making comment
+% \renewcommand{\initialsOne}{Xu}
+% \renewcommand{\initialsTwo}{XHu}
+% \renewcommand{\initialsThree}{Yang}
+% \renewcommand{\initialsFour}{Zhang}
+% \renewcommand{\initialsFive}{KHu}
+
+
+%\newcommand{\sh}{{\cal S}_h}
+% new math command
+\newcommand{\pro}{{\mathcal P}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\newcommand{\bary}{\begin{array}}
+\newcommand{\eary}{\end{array}}
+\newcommand{\supp}{{\rm supp}\;}
+\newcommand{\update}{\leftarrow}
+\newcommand{\cequiv}{\stackrel{\mathrm{c}}{\equiv}}
+\newcommand{\hf}{\frac{1}{2}}
+\newcommand{\qall}{\quad\forall\;}
+\def\ec{\mathrel{\hbox{$\copy\Ea\kern-\wd\Ea\raise-3.5pt\hbox{$\sim$}$}}}
+\newcommand{\lc}{\mathrel{\raise2pt\hbox{${\mathop<\limits_{\raise1pt\hbox{\mbox{$\sim$}}}}$}}}
+\newcommand{\gc}{\mathrel{\raise2pt\hbox{${\mathop>\limits_{\raise1pt\hbox{\mbox{$\sim$}}}}$}}}
+\newcommand{\deq}{\stackrel{\rm def}{=}}
+\newcommand{\cths}{\{\cth: h\in\aleph\}}
+\newcommand{\td}[1]{\tilde{#1}}
+\newcommand{\spd}{SPD }
+\newcommand{\step}[1]{\noindent\raisebox{1.5pt}[10pt][0pt]{\tiny\framebox{$#1$}}\xspace}
+\newcommand{\topic}[1]{\vspace{2mm}\addtocounter{equation}{1}{\noindent{\bf(\theequation) \ {\sf #1}.}}\ }
+\newbox\Ea
+\setbox\Ea=\hbox{\raise0.9pt\hbox{$=$}}
+\newcommand{\smt}[1]{\overline{#1}}%% Notation for matrix, to be modified.
+\newcommand{\rep}[1]{{\widetilde {#1}}}%% Notation for matrix representation
+\newcommand{\mt}{\mathcal}%% Notation for matrix, to be modified.
+\newcommand{\hcomment}[1]{\mbox{\quad (#1)}}
+\newcommand{\tol}{\mbox{\rm tol}}
+\newcommand{\diag}{\mbox{diag}\;}
+\newcommand{\for}{\sf for\mbox{$\;$}}
+\newcommand{\efor}{\mbox{\sf endfor}}
+\newcommand{\ot}[1]{\mbox{\bf{$#1$}}}
+\newcommand{\hset}{{\aleph}}
+\newcommand{\thset}{\{{\cal T}_h: h\in \hset\}}
+\newcommand{\mbb}{\mathbb}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\dist}{\mbox{dist}\;}
+\newcommand{\prt}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\prtt}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\ang}[1]{\left\langle #1 \right\rangle}
+\newcommand{\bproof}{\begin{proof}}
+\newcommand{\eproof}{\end{proof}}
+
+% new letters
+\newcommand{\nne}{\mbox{$n_{\mbox{\tiny E}}$}}
+\newcommand{\At}{\mbox{$A_{\mbox{\tiny T}}$}}
+\newcommand{\rhst}{\mbox{${f}_{\mbox{\tiny T}}$}}
+\newcommand{\rhs}{\mbox{$f$}}
+\newcommand{\nt}{\mbox{$NT$}}
+\newcommand{\ib}{\mbox{$IB$}}
+\newcommand{\nn}{\mbox{$n$}}
+\newcommand{\om}{\Omega}  % needs to get rid of it
+\newcommand{\Om}{\Omega}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\m}{\mbox{$\cM$}}
+\newcommand{\cT}{\mbox{${\cal T}$}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\ct}{{\cal T}}  % need to get rid of it
+\newcommand{\cth}{{\cal T}_h}
+\newcommand{\Th}{\mbox{${\cal T}_h$}}
+\newcommand{\ld}{\lambda}
+\newcommand{\nh}{{\cal N}_h}
+%%%\renewcommand{\v}{{\cal V}}
+\newcommand{\vvv}{{\cal V}}
+\newcommand{\vh}{{\cal V}_h}
+\newcommand{\newu}{u^{new}}
+\newcommand{\oldu}{u^{\rm old}}
+\newcommand{\oldr}{r^{\rm old}}
+\newcommand{\LL}{L}
+\newcommand{\Sh}{{\cal S}^h}
+\newcommand{\Shz}{{\cal S}^h_0}
+\newcommand{\V}{V}
+\newcommand{\Q}{Q}
+\newcommand{\Ddivh}{\mbox{\bf A}_h^{\rm div}}
+\newcommand{\hb}{\hat B}
+\newcommand{\tqk}{\tilde Q_k}
+\newcommand{\vaip}{\overline{a}}
+\newcommand{\Prol}{\Pi}
+\newcommand{\Aa}{\bar A}
+
+% operators
+\newcommand{\grad}{{\rm grad}}
+\newcommand{\curl}{{\rm curl }}
+\newcommand{\dv}{{\rm div}}
+\newcommand{\divg}{{\rm div}\mbox{$\;$}}
+\newcommand{\Hcurl}{{\rm curl}}
+\newcommand{\Hg}{H({\rm grad})}
+
+% projections
+\newcommand{\Phz}{\Pi_h^0}
+\newcommand{\Phg}{\Pi_h}
+\newcommand{\Phd}{\Pi_h^{\rm div}}
+\newcommand{\PHdiv}{\Pi_H^{\rm div}}
+\newcommand{\Phc}{\Pi_h^{\rm curl}}
+\newcommand{\PHc}{\Pi_H^{\rm curl}}
+\newcommand{\PHcurl}{\Pi_H^{\rm curl}}
+\newcommand{\PHd}{\Pi_H^{\rm div}}
+\newcommand{\PHz}{\Pi_H^{\rm 0}}
+
+% inner product, norm
+\newcommand{\inner}{\mbox{$(\cdot, \cdot)$}}
+\newcommand{\innerA}{(\cdot,\cdot)_A}
+\newcommand{\nm}[2]{\|{#1}\|_{#2}}
+\newcommand{\nmA}[1]{\nm{#1}{A}}
+\newcommand{\NA}[1]{\|#1\|_{A}}
+\newcommand{\nmm}[1]{\|#1\|}
+\newcommand{\trnm}[2]{|\!\!|\!\!|{#1}|\!\!|\!\!|_{#2}}
+
+% space
+\newcommand{\ho}{H^1_0(\Om)}
+\ifcsmacro{R}{}{
+\newcommand{\R}{\mathbb{R}} %% this does not work as \R^{blah blah} better do not use (--ltz)
+}
+\newcommand{\Z}{\mathbb{Z}}
+%\newcommand\Rn[1]{\R^{#1}}
+\newcommand{\Hd}{\mbox{$\ot H({\rm div})$}}
+\newcommand{\Hdiv}{\mbox{$\ot H({\rm div})$}}
+\newcommand{\Hhdiv}{\mbox{$\ot H_h({\rm div})$}}
+\newcommand{\HHdiv}{\mbox{$\ot H_H({\rm div})$}}
+\newcommand{\Zdiv}{\mbox{$\ot Z({\rm div})$}}
+\newcommand{\Zzdiv}{\mbox{$\ot Z_0({\rm div})$}}
+\newcommand{\Zhdiv}{\mbox{$\ot Z_h({\rm div})$}}
+\newcommand{\ZHdiv}{\mbox{$\ot Z_H({\rm div})$}}
+\newcommand{\Hc}{\mbox{$\ot H({\rm curl})$}}
+\newcommand{\Hcllurl}{\mbox{$\ot H({\rm curl})$}}
+\newcommand{\Hzcurl}{\mbox{$\ot H_0({\rm curl})$}}
+\newcommand{\Hhcurl}{\mbox{$\ot H_h({\rm curl})$}}
+\newcommand{\HHcurl}{\mbox{$\ot H_H({\rm curl})$}}
+\newcommand{\Hhg}{\mbox{$H^1_h$}}
+\newcommand{\Hhd}{\mbox{$H_h^{\rm div}$}}
+\newcommand{\Hhc}{\mbox{$H_h^{\rm\small curl}$}}
+\newcommand{\Hhz}{\mbox{$L^2_h$}}
+\newcommand{\Cinf}{C^\infty}
+\newcommand{\cc}{C(\bar \Omega)}
+\newcommand{\ccc}{C^{0,\lambda}(\bar \Omega)}
+\newcommand{\hoz}{H_0^1(\Om)}
+\newcommand{\HHg}{\mbox{$H_H^1$}}
+\newcommand{\czi}{C_0^\infty(\Omega)}
+\newcommand{\domega}{{\cal D}(\Omega)}
+\newcommand{\ddomega}{{\cal D}'(\Omega)}
+\newcommand{\nmt}[2]{|\!|\!|#1|\!|\!|_{#2}^{\sim}}
+\newcommand{\nmaa}[1]{\|#1\|_{0,(\alpha)}}
+\newcommand{\nmg}[2]{\nm{#1}{H^{#2}(\Om)}}
+\newcommand{\ucc}{\nm{u}{0,\infty}}
+\newcommand{\uccc}{\nm{u}{\ccc}}
+\newcommand{\unpp}{\nm{u}{W^{d/p,p}(\Omega)}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\La}{L^{(\alpha)}(\Omega)}
+\newcommand{\Ref}[1]{\ref{#1}}
+\newcommand{\apprle}{\lesssim}
+
+
+%%%%%%%%% MULTIGRID FOR H(DIV) AND H(CURL)%%%
+\newcommand{\diam}{\mbox{\rm diam\,}}
+%\newcommand{\curl}{{\rm\bf  curl}}
+%\newcommand{\grad}{{\rm\bf grad}}
+%\DeclareMathOperator*{\supp}{supp}
+\renewcommand{\div}{{\operatorname{div}}}
+\newcommand{\sdiv}{\mbox{{\footnotesize div}}}
+\newcommand{\scurl}{\mbox{{\footnotesize curl}}}%\newcommand{\eps}{\varepsilon}
+
+\newcommand{\N}{{\mathbb N}}
+%\renewcommand{\P}{{\mathbb{P}}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cJ}{{\mathcal J}}
+\newcommand{\cL}{{\mathcal L}}
+%\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+%\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cQ}{{\mathcal Q}}
+\newcommand{\cS}{{\mathcal S}}
+%\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+
+\newcommand{\bA}{{\boldsymbol A}}
+\newcommand{\bB}{{\boldsymbol B}}
+\newcommand{\bH}{{\boldsymbol H}}
+\newcommand{\bL}{{\boldsymbol L}}
+\newcommand{\bP}{{\boldsymbol P}}
+\newcommand{\bQ}{{\boldsymbol Q}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bp}{{\boldsymbol p}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\br}{{\boldsymbol r}}
+%\newcommand{\bm}{{\boldsymbol m}}
+\newcommand{\bsf}{{\boldsymbol f}}
+\newcommand{\bn}{{\boldsymbol n}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\bpsi}{{\boldsymbol \psi}}
+%
+\newcommand{\leqs}{\leqslant}
+\newcommand{\nleqs}{\nleqslant}
+\newcommand{\geqs}{\geqslant}
+\newcommand{\ngeqs}{\ngeqslant}
+%%%%%%%%%%%% end of multigrid for H(div) and H(curl)%%%%

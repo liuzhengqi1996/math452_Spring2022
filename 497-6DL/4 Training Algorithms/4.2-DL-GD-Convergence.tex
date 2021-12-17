@@ -1,0 +1,98 @@
+\subsection{Convergence of Gradient Descent method}
+Now we are ready to study the rate of convergence of unconstrained minimization schemes. 
+For the optimization problem \eqref{optmodel},
+\begin{equation}\label{key}
+\min_{x\in \mathbb{R}^n} f(x).
+\end{equation}
+We assume that $f(x)$ is convex.
+Then we say that $x^*$ is a minimizer if 
+$$
+f(x^*) = \min_{x \in \mathbb{R}^n} f(x).
+$$
+%By Theorem \ref{th:critical}, 
+For minimizer $x^*$, we have
+\begin{equation}\label{key}
+\nabla f(x^*) = 0.
+\end{equation}
+We have the next two properties of the minimizer for convex functions:
+\begin{enumerate}
+	\item If $f(x) \ge c_0$, for some $c_0 \in \mathbb{R}$, then we have 
+	\begin{equation}\label{key}
+	\mathop{\arg\min} f \neq \emptyset.
+	\end{equation}
+	\item If $f(x)$ is $\lambda$-strongly convex, then $f(x)$ has a unique minimizer, namely, there
+	exists a unique $x^*\in \mathbb{R}^n$ such that 
+	\begin{equation}\label{key}
+	f(x^*) = \min_{x\in \mathbb{R}^n }f(x).
+	\end{equation}
+\end{enumerate}
+
+
+To investigate the convergence of gradient descent method, let us recall the gradient
+descent method:
+\begin{algorithm}
+	\caption{ FGD} 
+	\label{alg:FGD}
+	{\bf For}: $t = 1, 2, \cdots$
+	\begin{equation}\label{equ:fgd-iteration}
+	x_{t+1} =  x_{t} - \eta_t \nabla f(x_t), 
+	\end{equation}
+	where $\eta_t$ is the stepsize / learning rate.
+\end{algorithm}
+
+
+
+
+We have the next theorem about the convergence of gradient descent method under the Assumption
+\ref{ass:GD}.
+
+\begin{theorem}
+	For Gradient Descent Algorithm \ref{alg:FGD}, if $f(x)$ satisfies Assumption \ref{ass:GD}, then 
+	\begin{equation}
+	\|x_t - x^*\|^2 \le  \alpha^t \|x_0 - x^*\|^2
+	\end{equation}
+	if $0<\eta_t <\frac{2\lambda}{L^2}$ and $\alpha < 1$. 
+	
+	Particularly, if $\eta_t = \frac{\lambda}{L^2}$, then
+	\begin{equation}
+	\|x_t - x^*\|^2 \le  \left(1 - \frac{\lambda^2}{L^2}\right)^t \|x_0 - x^*\|^2.
+	\end{equation} 
+\end{theorem}
+
+\begin{proof}
+	Note that 
+	\begin{equation}
+	x_{t+1} - x =  x_{t} - \eta_t \nabla f(x_t)  - x.
+	\end{equation}
+	By taking $L^2$ norm for both sides, we get 
+	\begin{equation}
+	\|x_{t+1} - x \|^2 = \|x_{t} - \eta_t \nabla f(x_t) - x \|^2.
+	\end{equation}
+	Let $x = x^*$. It holds that
+	\begin{equation}
+	\begin{aligned}
+	\|x_{t+1} - x^* \|^2 &=  \| x_{t} - \eta_t \nabla f(x_t) - x^* \|^2 \\
+	&= \|x_t-x^*\|^2 - 2\eta_t \nabla f(x_t)^\top (x_t - x^*) + \eta_t^2 \|\nabla f(x_t) - \nabla f(x^*)\|^2 \qquad \mbox{\scriptsize (by $\nabla f(x^*)=0$)}\\
+	&\le \|x_t - x^*\|^2 - 2\eta_t \lambda \|x_t - x^*\|^2 + \eta_t ^2 L^2 \|x_t - x^*\|^2  \quad \mbox{\scriptsize (by $\lambda$- strongly convex \eqref{strongConvIneq} and Lipschitz)}\\
+	&\le (1 - 2\eta_t \lambda + \eta_t^2 L^2) \|x_t - x^*\|^2
+	=\alpha \|x_t - x^*\|^2,
+	\end{aligned}
+	\end{equation}
+	where
+	$$
+	\alpha = \left(L^2 (\eta_t  -{\lambda\over L^2})^2 + 1-{\lambda^2\over L^2}\right)<1\  \mbox{if } 0< \eta_t<\frac{2\lambda}{L^2}.
+	$$ 
+	Particularly, if $\eta_t =\frac{\lambda}{L^2}$,
+	$$
+	\alpha=1-{\lambda^2\over L^2},
+	$$
+	which finishes the proof. 
+\end{proof}
+This means that if the learning rate is chosen appropriatly, $\{x_t\}_{t=1}^\infty$ from the gradient descent method will converge to the minimizer $x^*$ of the function.
+
+There are some issues on Gradient Descent method:
+\begin{itemize}
+\item $\nabla f(x_{t})$ is very expensive to compute.
+\item Gradient Descent method does not yield generalization accuracy.
+\end{itemize}
+The stochastic gradient descent (SGD) method in the next section will focus on these two issues.

@@ -1,0 +1,229 @@
+%\newbreak
+\section{KL divergence and cross-entropy}
+Cross-entropy minimization is frequently used in optimization and rare-event probability estimation. When comparing a distribution    against a fixed reference distribution, cross-entropy and KL divergence are identical up to an additive constant. See more details in \cite{murphy2012machine,kullback1951information,kullback1997information} and the reference therein.
+
+The KL(Kullback--Leibler) divergence defines a special distance between two discrete probability distributions 
+$$
+p=\left( \begin{array}{ccc}
+p_1\\
+\vdots \\
+p_k
+\end{array} \right),\quad  q=\left( \begin{array}{ccc}
+q_1\\
+\vdots \\
+q_k
+\end{array} \right)
+$$
+with $0\le p_i, q_i\le1$ and $\sum_{i=1}^{k}p_i=\sum_{i=1}^{k}q_i=1$ by
+\begin{equation}
+\label{KL-divergence}
+D_{\rm KL}(q,p)= \sum_{i=1}^k q_i\log \frac{q_i}{p_i}.  
+\end{equation}
+
+\begin{lemma}\mbox{}
+$D_{\rm KL}(q,p)$ works like a ``distance" without the symmetry:
+	\begin{enumerate}
+		\item $D_{\rm KL}(q,p)\ge0$;		
+		\item $D_{\rm KL}(q,p)=0$ if and only if $p=q$;
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}We first note that the elementary inequality
+	\begin{equation}
+	\log x \le x - 1, \quad\mathrm{for\ any\ }x\ge0,
+	\end{equation}
+	and the equality holds if and only if $x=1$.
+	\begin{equation}
+	-D_{\rm KL}(q,p) = - \sum_{i=1}^c q_i\log \frac{q_i}{p_i}   = \sum_{i=1}^k q_i\log \frac{p_i}{q_i} \le \sum_{i=1}^k q_i( \frac{p_i}{q_i}  - 1) = 0.
+	\end{equation}
+	And the equality holds if and only if 
+	\begin{equation}
+	\frac{p_i}{q_i} = 1 \quad \forall i = 1:k.
+	\end{equation}
+\end{proof}
+
+Define cross-entropy for distribution $p$ and $q$ by
+\begin{equation}\label{Cross-Entropy}
+H(q,p) = - \sum_{i=1}^k q_i \log p_i,
+\end{equation}
+and the entropy for distribution $q$ by 
+\begin{equation}\label{Entropy}
+H(q) = - \sum_{i=1}^k q_i \log q_i.
+\end{equation}
+Note that
+\begin{equation}
+D_{\rm KL}(q,p)= \sum_{i=1}^k q_i\log \frac{q_i}{p_i} =  \sum_{i=1}^k q_i \log q_i - \sum_{i=1}^k q_i \log p_i
+\end{equation}
+Thus, 
+\begin{equation}\label{KLandEntropy}
+H(q,p) = H(q) + D_{\rm KL}(q,p).
+\end{equation} 
+It follows from the relation \eqref{KLandEntropy} that
+\begin{equation}
+\label{EntropyandKL}
+\mathop{\arg\min}_p D_{\rm KL}(q,p)=\mathop{\arg\min}_p H(q,p).
+\end{equation}
+
+The concept of cross-entropy  can be used to define a loss function in machine learning and optimization. 
+Let us assume $y_i$ is the true label for $x_i$, for example $y_i = e_{k_i}$ if $x_i \in A_{k_i}$. Consider the predicted distribution 
+\begin{equation}\label{key}
+\bm p(x; \bm \theta) = \frac{1}{\sum\limits_{i=1}^k e^{w_i x+b_i}}
+\begin{pmatrix}
+e^{w_1 x+b_1}\\
+e^{w_2 x+b_2}\\
+\vdots\\
+e^{w_k x+b_k}
+\end{pmatrix}
+= \begin{pmatrix}
+p_1(x; \bm\theta) \\
+p_2(x; \bm\theta) \\
+\vdots \\
+p_k(x; \bm\theta)
+\end{pmatrix}
+\end{equation}
+for any data $x \in A$.
+By \eqref{EntropyandKL}, the minimization of KL divergence is equivalent to the minimization of the cross-entropy, namely
+\begin{equation}
+\mathop{\arg\min}_{\theta} \sum_{i=1}^N D_{\rm KL}(y_i,\bm p(x_i; \bm \theta)) = \mathop{\arg\min}_{\theta} \sum_{i=1}^N H(y_i, \bm p(x_i; \bm \theta)).
+\end{equation} 
+Recall that we have all data $D = \{(x_1,y_1),(x_2,y_2),\cdots, (x_N, y_N)\}$.  Then, it is natural to consider the 
+loss function as following:
+\begin{equation}
+\sum_{j=1}^N H(y_i, \bm p(x_i; \bm \theta)),
+\end{equation}
+which measures the distance between the real label and predicted one for all data.
+In the meantime, we can check that
+\begin{equation}
+\begin{aligned}
+\sum_{j=1}^N H(y_j, \bm p(x_j; \bm \theta))&=-\sum_{j=1}^N y_j  \cdot \log  \bm p(x_j; \bm \theta )\\
+&=-\sum_{j=1}^N  \log p_{i_j}(x_i; \bm \theta) \quad (\text{because}~y_j = e_{i_j}~\text{for}~x_j \in A_{i_j})\\
+&=-\sum_{i=1}^k \sum_{x\in A_i}  \log p_{i}(x; \bm \theta) \\
+&=-\log \prod_{i=1}^k \prod_{x\in A_i}   p_{i}(x; \bm \theta)\\
+& = L(\theta)
+\end{aligned}
+\end{equation}
+with $L(\theta)$ defined in \eqref{logistic} as 
+\begin{equation}
+L(\bm \theta) = - \sum_{i=1}^k \sum_{x\in A_i} \log p_{i}(x;\bm \theta).
+\end{equation}
+
+That is to say, the logistic regression loss function defined by likelihood in \eqref{logistic} is exact
+the loss function defined by measuring the distance between real label and predicted one via cross-entropy.
+We can note 
+\begin{equation}\label{key}
+\min_{\bm \theta} L_\lambda(\bm \theta) \Leftrightarrow \min_{\bm \theta} \sum_{j=1}^N H(y_i, \bm p(x_i; \bm \theta)) + \lambda R(\|\bm \theta\|) 
+\Leftrightarrow \min_{\bm \theta} \sum_{j=1}^N D_{\rm KL}(y_i, \bm p(x_i; \bm \theta)) + \lambda R(\|\bm \theta\|).
+\end{equation}
+
+
+
+\endinput
+
+%
+%The deep neural network described above is a basic model.  We can add
+%also add an input $f_{\rm in}$ and $f_{\rm out}$ that
+%$$
+%f(x,\Theta)=f_{\rm out} [f^J(f_{\rm in}(x),\Theta)]. 
+%$$
+%$f_{\rm in}$ can be viewed as denoising function for the input data
+%... 
+%
+%Let us give an example of  $f_{\rm out}=\sigma$: softmax.
+%$$
+%p=\sigma(y), y\in \mathbb R^c
+%$$
+%\begin{equation}
+%  \label{softmax}
+%p_j=\frac{e^{y_j}}{\sum_{i=1}^ce^{y_i}}, \quad j=1:c.
+%\end{equation}
+%We note that 
+%$$
+%p_j\ge 0, \quad \sum_{j=1}^cp_j=1
+%$$
+%which can be viewed as probability distribution. 
+%
+%The softmax is a good measure when the classification is not
+%distinctive.  For example, in the MNIST, we may not be able to
+%distinct some handwritings for ``$0$'' versus ``$6$", ``$2$'' versus
+%``$7$'', ``$3$'' versus ``$5$''.  In these cases, the softmax is
+%expected to give relative large components corresponding to these
+%numbers.
+%
+%The loss function can be defined by nonlinear least square
+%\begin{equation}
+%  \label{loss-l2}
+%L(\Theta)={1\over N}\sum_{k=1}^N|f(x_k,\Theta)-y_k|^2.  
+%\end{equation}
+%
+%In terms of softmax, the loss function can also be defined by KL divergence
+%as follows:
+%\begin{equation}
+%  \label{loss-entropy}
+%  L(\Theta)={1\over N}\sum_{k=1}^N D_{\rm KL}(y_k || f(x_k,\Theta))
+%\end{equation}
+%where 
+%\begin{equation}
+%  \label{KL-divergence}
+%D_{\rm KL}(p || q)= \sum_{i=1}^c p_i\log \frac{p_i}{q_i}.  
+%\end{equation}
+%For more details, we have
+%\begin{equation}
+%D_{\rm KL}(p || q)= \sum_{i=1}^c p_i\log \frac{p_i}{q_i} =  \sum_{i=1}^c p_i \log p_i - \sum_{i=1}^c p_i \log q_i
+%\end{equation}
+%So in the information theory, they have the next definition for:
+%\begin{definition}[Entropy for distribution $p$:]
+%\begin{equation}\label{Entropy}
+%H(p) = - \sum_{i=1}^c p_i \log p_i .
+%\end{equation}
+%\end{definition}
+%and 
+%\begin{definition}[Cross-Entropy for distribution $p$ and $q$:]
+%\begin{equation}\label{Cross-Entropy}
+%H(p,q) = - \sum_{i=1}^c p_i \log q_i .
+%\end{equation}
+%\end{definition}
+%
+%So, we have the relation that:
+%\begin{equation}\label{KLandEntropy}
+%H(p,q) = H(p) + D_{\rm KL}(p || q).
+%\end{equation}
+%
+%
+%What's more, $D_{\rm KL}(p || q)$ works like a ``distance" without the symmetry, i.e 
+%\begin{equation}
+%D_{\rm KL}(p || q) \ge 0
+%\end{equation}
+%and 
+%\begin{equation}
+%D_{\rm KL}(p || q) = 0 \iff p = q.
+%\end{equation}
+%\begin{proof}Using the result that 
+%\begin{equation}
+%\log x \le x - 1,
+%\end{equation}
+%we have
+%\begin{equation}
+% - \sum_{i=1}^c p_i\log \frac{p_i}{q_i}   = \sum_{i=1}^c p_i\log \frac{q_i}{p_i} \le \sum_{i=1}^c p_i( \frac{q_i}{p_i}  - 1) = 0.
+%\end{equation}
+%And we know that, it takes the equality sign if and only if 
+%\begin{equation}
+%\frac{q_i}{p_i} = 1 \quad \forall i = 1:c.
+%\end{equation}
+%\end{proof}
+%
+%In the end, we have
+%\begin{equation}
+%\mathop{\arg\min}_{\Theta} {1\over N}\sum_{k=1}^N D_{\rm KL}(y_k || f(x_k,\Theta)) = \mathop{\arg\min}_{\Theta} {1\over N}\sum_{k=1}^N H(y_k, f(x_k,\Theta)),
+%\end{equation}
+%because of the relation \eqref{KLandEntropy}. So, this shows why
+%people like ``Cross-Entropy" despite it isn't like any ``distance" in
+%the first view.
+%
+%We note that $p\log p$ is also well defined for $p=0$, namely $0$.
+%Thus we do not need to apply softmax to the labeling vector $y_i\in
+%\{e_1, \ldots e_c\}$ which is also a probability distribution.   In
+%this case, we can still use the original labeling vector to define
+%cross-entropy to define the loss function. 
+%
+%Indeed, the cross-entropy is a measure of the distance between two
+%probability distribution.

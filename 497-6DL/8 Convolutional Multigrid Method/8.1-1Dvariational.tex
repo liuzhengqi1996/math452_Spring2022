@@ -1,0 +1,113 @@
+\section{Two-point boundary problems and finite element discretization}
+Denote the functional space
+$$
+V:=H^1_0(0,1)=\{v:\, [0,1]\rightarrow R,\,\,\mbox{$v$ is continuous and}\, v(0)=v(1)=0\}.
+$$
+Given any $f: [0,1]\rightarrow R$, consider 
+\begin{equation*}
+J(v)=\frac12\int_{0}^1|v'|^2dx-\int_{0}^1 fvdx.
+\end{equation*}
+Find $u\in V$ such that 
+\begin{equation}\label{minvar}
+\displaystyle u=\argmin_{v\in V} J(v)\quad
+\end{equation}
+\begin{theorem}
+Problem \eqref{minvar} is equivalent to: Find $u\in V$ such that 
+\begin{equation}\label{1Dpossion}
+\left\{
+\begin{aligned}
+-u''&= f, \,\, 0<x<1, \\
+ u(0)&=u(1)=0.
+\end{aligned}
+\right.
+\end{equation}
+\end{theorem}
+\begin{proof}
+For any $v\in V, t\in R$, let $g(t)=J(u+t v)$. 
+Since $u=\argmin_{v\in V} J(v)$ means $g(t)\ge g(0)$. Hence, for any $v\in V$, $0$ is the global minimum of the function $g(t)$. Therefore
+$g'(0)=0$ implies 
+$$
+\int_{0}^1 u'v'dx=\int_0^1fvdx\quad \forall v\in V. 
+$$
+By integration by parts, which is equivalent to 
+$$
+\int_{0}^1 (-u''-f)vdx=0\quad \forall v\in V. 
+$$
+It can be proved that the above identity holds if and only if 
+$-u''= f$ for all $x\in (0,1)$. Namely $u$ satisfies \eqref{1Dpossion}. 
+\end{proof}
+
+Let $V_h$ be finite element space and $\{\varphi_1, \varphi_2, \cdots \varphi_{n}\}$ be a nodal basis of $V_h$. 
+%Let $\{\psi_1,\psi_2,\cdots, \psi_{n}\}$ be a dual basis of $\{\varphi_1, \varphi_2, \cdots \varphi_{n}\}$, namely $(\varphi_i,\psi_j )=\delta_{ij}$.
+\begin{equation}
+J(v_h)=\frac12\int_0^1|v_h'|^2dx-\int_0^1fv_hdx.
+\end{equation}
+Let 
+$$
+\displaystyle v_h=\sum_{i=1}^{n}\nu_i\varphi_i,\quad \nu=(\nu_i)_{i=1}^{n}
+$$
+then using the convolution notation, we have
+$$
+J(v_h)=I(\nu)=\frac12\nu^TA\ast\nu-b^T\nu
+$$
+and 
+$$
+\nabla I(\nu) =A\ast \nu -b,
+$$
+where $A=\frac{1}{h}[-1,2, -1]$.
+
+At the same time, let $\displaystyle u_h=\sum_{i=1}^{n}\mu_i\varphi_i,$
+\begin{equation}\label{min1d}
+\displaystyle u_h=\argmin_{v_h\in V_h} J(v_h)\Leftrightarrow \mu=\argmin_{\nu \in R^n} I(\nu)
+\end{equation}
+And $u_h$ solves the problem: Find $u_h\in V_h$
+\begin{equation}\label{1ddiscrevar}
+\frac{d}{dt}J(u_h+t v_h)|_{t=0}=a(u_h,v_h)-\langle f, v_h\rangle=0 \quad \forall v_h\in V_h. 
+\end{equation}
+where 
+$$
+a(u_h,v_h)=\int_0^1 u_h'v_h'dx.
+$$
+
+\begin{theorem}\label{thm:best-approximation}
+Let $V$ be a Hilbert space, $a(\cdot,\cdot)$ be a continuous,
+symmetric, bilinear form defining an inner product on $V$. Let
+$f(\cdot)$ be a continuous linear form. If $u$ is solution to the
+problem~\eqref{minvar} and $u_h$ is a solution
+to~\eqref{min1d}, then the following equality holds:
+\begin{equation}\label{eq:best-approx}
+\|u-u_h\|_a = \inf_{v\in V_h}\|u-v\|_a,
+\end{equation}
+where $\|u-u_h\|^2_a = a(u-u_h,u-u_h)$. 
+\end{theorem}
+
+\begin{proof}
+Frist, one sees that
+$$
+a(u-u_h, v)=0,~~~\forall v\in V_h.
+$$
+Thus, for any $v\in V_h$ we have
+\begin{eqnarray*}
+& &\|u-u_h\|_a^2=a(u-u_h, u-u_h)\\[0.2cm]
+&=& a(u-u_h, u-v)\\[0.2cm]
+&\le& \|u-u_h\|_a\|u-v\|_a.
+\end{eqnarray*}
+Taking the infimum on both sides of this equation then gives. 
+$$
+\|u-u_h\|_a\le \inf_{v\in V_h}\|u-v\|_a.
+$$
+The proof is complete, since 
+\[
+\|u-u_h\|_a\ge \inf_{v\in V_h}\|u-v\|_a,
+\]
+by the definition of infimum. 
+\end{proof}
+Combining Theorem \ref{interp00} and Theorem \ref{thm:best-approximation}, we obtain the error estimate for the finite element method. 
+\begin{theorem}
+If $u\in H^2(\Omega)$ is solution to the
+problem~\eqref{1Dpossion} and $u_h$ is a solution to~\eqref{min1d}, then we have:
+\begin{equation}
+ \|u-u_h\|+h |u-u_h|_{1}\lc h^2 |u|_2.
+   \end{equation}
+ \end{theorem}
+
