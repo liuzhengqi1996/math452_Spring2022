@@ -16,7 +16,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_awemnq71&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_hjxe3ipe" ,width='800', height='500')
 
 
-# # Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2021/12/A03LogisticRegression_Video_Notes.pdf)
+# ## Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2021/12/A03LogisticRegression_Video_Notes.pdf)
 
 # Assume that we are given $k$ linearly separable sets
 # $A_1,A_2,\cdots,A_k\in \mathbb{R}^d$, we define the set of classifiable
