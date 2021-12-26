@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logistic regression &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KL-divergence and cross-entropy" href="m1_04.html" />
+    <link rel="prev" title="Linearly separable sets" href="m1_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_hw.html">
+     Download the Module 1 homework here: Homework1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Programming_Assignment_1.html">
+     Week 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module1/m1_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module1/m1_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Logistic regression
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regularized-logistic-regression">
+     Regularized logistic regression
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="logistic-regression">
+<h1>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3im0zbc7&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_ciutwbnv&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_3im0zbc7&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ciutwbnv"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_awemnq71&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_hjxe3ipe&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_awemnq71&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_hjxe3ipe"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h1>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2021/12/A03LogisticRegression_Video_Notes.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h1>
+<p>Assume that we are given <span class="math notranslate nohighlight">\(k\)</span> linearly separable sets
+<span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\in \mathbb{R}^d\)</span>, we define the set of classifiable
+weights as</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf\Theta = \{\mathbf\theta = (W,b): w_ix+b_i&gt;w_jx+b_j,~\forall x\in A_i, j\neq i, i= 1,\cdots,k\}
+\]</div>
+<p>which means those <span class="math notranslate nohighlight">\((W,b)\)</span> can separate <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> correctly.</p>
+<p>Our linearly separable assumption implies that
+<span class="math notranslate nohighlight">\(\mathbf\Theta\neq \emptyset\)</span>. Now we know the existence of linearly
+classifiable weights. But how can we find one element in <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span>?</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Given parameter <span class="math notranslate nohighlight">\(\mathbf\theta = (W,b)\)</span>, we define a feature mapping
+<span class="math notranslate nohighlight">\(\mathbf p: \mathbb{R}^d \rightarrow \mathbb{R}^k\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf p(x; \mathbf\theta)  = \sigma(Wx+b) = \frac{1}{\sum\limits_{i=1}^k e^{w_i x+b_i}}
+    \begin{pmatrix}
+    e^{w_1 x+b_1}\\
+    e^{w_2 x+b_2}\\
+    \vdots\\
+    e^{w_k x+b_k}
+    \end{pmatrix}
+    = \begin{pmatrix}
+    p_1(x; \mathbf\theta) \\
+    p_2(x; \mathbf\theta) \\
+    \vdots \\
+    p_k(x; \mathbf\theta)
+    \end{pmatrix}
+\end{split}\]</div>
+<p>where the <span class="math notranslate nohighlight">\(i\)</span>-th component</p>
+<div class="math notranslate nohighlight" id="equation-key">
+<span class="eqno">(10)<a class="headerlink" href="#equation-key" title="Permalink to this equation">¶</a></span>\[
+    p_i(x; \mathbf\theta) = \frac{e^{w_i x+b_i}}{\sum\limits_{i=1}^k e^{w_i x+b_i}}.
+\]</div>
+</div>
+<p>The soft-max mapping have several important properties.</p>
+<ol>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle 0&lt; p_i(x; \mathbf\theta) &lt;1,~\sum_i p_i(x; \mathbf\theta) = 1\)</span>.</p>
+<p>This implies that <span class="math notranslate nohighlight">\(\mathbf p(x; \mathbf\theta)\)</span> can be regarded as a
+probability distribution of data points which means that given
+<span class="math notranslate nohighlight">\(x\in \mathbb{R}^d\)</span>, we have <span class="math notranslate nohighlight">\(x\in A_i\)</span> with probability
+<span class="math notranslate nohighlight">\(p_i(x; \mathbf{\theta})\)</span>, <span class="math notranslate nohighlight">\(i = 1,\cdots,k\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(p_i(x; \mathbf\theta)&gt;p_j(x; \mathbf\theta)\Leftrightarrow w_ix+b_i&gt;w_j x+b_j.\)</span></p>
+<p>This implies that the linearly classifiable weights have an
+equivalent description as</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf{\Theta} = \left\{\mathbf\theta: p_i(x; \mathbf\theta)&gt;p_j(x,\mathbf\theta),~\forall x\in A_i, j\neq i, i= 1,\cdots,k\right\}
+\]</div>
+<ol>
+<li><p>We usually use the max-out method to do classification. For a given
+data point <span class="math notranslate nohighlight">\(x\)</span>, we first use a soft-max mapping to map it to
+<span class="math notranslate nohighlight">\(\mathbf p(x; \mathbf\theta)\)</span>, then we attach <span class="math notranslate nohighlight">\(x\)</span> to the class
+<span class="math notranslate nohighlight">\(i= \arg\max_j p_i(x; \mathbf\theta)\)</span>.</p>
+<p>This means that we pick the label <span class="math notranslate nohighlight">\(i\)</span> as the class of <span class="math notranslate nohighlight">\(x\)</span> such that
+<span class="math notranslate nohighlight">\(x\in A_i\)</span> has the biggest probability <span class="math notranslate nohighlight">\(p_i(x; \mathbf\theta)\)</span>.</p>
+</li>
+</ol>
+<p>more detailed discussion of logistic regression from the probability
+perspective will be presented in the nearly future.</p>
+<p>From the above properties, we can define the following likelihood
+function to help find elements in <span class="math notranslate nohighlight">\(\mathbf{\Theta}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+P (\mathbf\theta)=
+\prod\limits_{i = 1}^k \prod\limits_{x\in A_i} p_i(x; \mathbf\theta).
+\]</div>
+<p>Based on the property that</p>
+<div class="math notranslate nohighlight" id="equation-key1">
+<span class="eqno">(11)<a class="headerlink" href="#equation-key1" title="Permalink to this equation">¶</a></span>\[
+p_i (x; \mathbf \theta) = \max_{1\le j \le k} p_j(x; \mathbf \theta), \quad\forall x \in A_i,\ \mathbf \theta \in \Theta,
+\]</div>
+<p>we may use the next optimization problem</p>
+<div class="math notranslate nohighlight" id="equation-key2">
+<span class="eqno">(12)<a class="headerlink" href="#equation-key2" title="Permalink to this equation">¶</a></span>\[ 
+\max_{\mathbf \theta\in \mathbf{\Theta}} P(\mathbf \theta).
+\]</div>
+<p>to find an element in
+<span class="math notranslate nohighlight">\(\mathbf{\Theta}\)</span>. more precisely, let us introduce the next lemmas
+(properties) of <span class="math notranslate nohighlight">\(P(\mathbf \theta)\)</span>.</p>
+<div class="admonition-lemma admonition" id="lemmh12">
+<p class="admonition-title">Lemma</p>
+<p>Assume that the sets
+<span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly separable. Then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\{\mathbf \theta:~P(\mathbf\theta)&gt;\frac{1}{2}\right\}\subset \mathbf{\Theta}.
+\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> It suffices to show that if <span class="math notranslate nohighlight">\(\mathbf\theta \not\in \mathbf\Theta\)</span>, we
+must have <span class="math notranslate nohighlight">\(P(\mathbf\theta)\leq\frac{1}{2}\)</span>. For any <span class="math notranslate nohighlight">\(\mathbf\theta \not\in
+    \mathbf\Theta\)</span>, there must exist an <span class="math notranslate nohighlight">\(i_0\)</span> ,an <span class="math notranslate nohighlight">\(x_0\in A_{i_0}\)</span> and a
+<span class="math notranslate nohighlight">\(j_0\neq i_0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    w_{i_0} x_0 + b_{i_0} \leq w_{j_0}x_0 + b_{j_0}.
+\]</div>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    p_{i_0}(x_0; \mathbf\theta) \leq \frac{e^{w_{i_0} x_0 + b_{i_0}}}{e^{w_{i_0} x_0+b_{i_0}}+e^{w_{j_0} x_0+b_{j_0}}} \leq\frac{1}{2}.
+\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(p_i(x; \mathbf \theta) &lt; 1\)</span> for all <span class="math notranslate nohighlight">\(i = 1,\cdots,k\)</span>, <span class="math notranslate nohighlight">\(x\in A\)</span>.
+So</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\mathbf\theta) &lt;  p_{i_0}(x_0; \mathbf\theta) \leq \frac{1}{2}.
+\]</div>
+</div>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>If <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly separable and
+<span class="math notranslate nohighlight">\(\mathbf\theta \in \mathbf\Theta\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1\Leftrightarrow x\in A_i.
+\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> We first note that if <span class="math notranslate nohighlight">\(x\in A_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    p_i(x,\mathbf \theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \to 1, \quad \text{as} \quad \alpha \to \infty.\]</div>
+<p>On the other hand, if <span class="math notranslate nohighlight">\(x\not\in A_i\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    p_i(x; \mathbf\alpha\mathbf\theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \leq \frac{1}{2}.
+\]</div>
+<p>This implies that if <span class="math notranslate nohighlight">\(x\not\in A_i\)</span>,
+<span class="math notranslate nohighlight">\(\lim_{\alpha\rightarrow \infty}p_i(x; \alpha\mathbf \theta)\neq 1\)</span> which is
+equivalent to the proposition that if
+<span class="math notranslate nohighlight">\(\lim_{\alpha\rightarrow \infty}p_i(x; \alpha\mathbf \theta)= 1\)</span>, then
+<span class="math notranslate nohighlight">\(x\in A_i\)</span>.</p>
+</div>
+<div class="admonition-lemma admonition" id="thm1">
+<p class="admonition-title">Lemma</p>
+<p>If <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly
+separable,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf\Theta = \left\{\mathbf\theta: \lim_{\alpha\rightarrow +\infty}P(\alpha\mathbf\theta) = 1\right\}.
+\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> We first note that if <span class="math notranslate nohighlight">\(\mathbf\theta \in\mathbf\Theta\)</span>, we have
+<span class="math notranslate nohighlight">\(\displaystyle\lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1\)</span>
+for all <span class="math notranslate nohighlight">\(x\in A_i\)</span>. So</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim\limits_{\alpha\rightarrow +\infty} P(\alpha\mathbf\theta) = \lim\limits_{\alpha\rightarrow +\infty} \prod\limits_{i = 1}^k \prod\limits_{x\in A_i} p_i(x; \alpha\mathbf\theta) = \prod\limits_{i = 1}^k \prod\limits_{x\in A_i} \lim\limits_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1.    
+\]</div>
+<p>On the other hand, if
+<span class="math notranslate nohighlight">\(\lim\limits_{\alpha\rightarrow +\infty} P(\alpha\mathbf\theta) = 1\)</span>, there
+must exist one <span class="math notranslate nohighlight">\(\alpha_0&gt;0\)</span> such that
+<span class="math notranslate nohighlight">\(P(\alpha_0\mathbf\theta) &gt;\frac{1}{2}\)</span>. From <a class="reference internal" href="#lemmh12"><span class="std std-ref">Lemma</span></a>, we have <span class="math notranslate nohighlight">\(\alpha_0\mathbf\theta\in\mathbf\Theta\)</span>, which
+means <span class="math notranslate nohighlight">\(\mathbf\theta\in\mathbf\Theta\)</span>.</p>
+</div>
+<p>These properties above imply that if we can obtain a classifiable weight
+through maximizing <span class="math notranslate nohighlight">\(P(\mathbf\theta)\)</span>, while <a class="reference internal" href="#thm1"><span class="std std-ref">Lemma</span></a> tells us that
+<span class="math notranslate nohighlight">\(P(\mathbf\theta)\)</span> will not have a global minimum actually.</p>
+<p>more specifically, we just need to find some <span class="math notranslate nohighlight">\(\mathbf \theta \in \Theta\)</span>
+such that</p>
+<div class="math notranslate nohighlight">
+\[
+P(\mathbf \theta) &gt; \frac{1}{2} \Leftrightarrow  L(\mathbf \theta) : = -\log P(\mathbf \theta )  &lt; \log(2).
+\]</div>
+<div class="section" id="regularized-logistic-regression">
+<h2>Regularized logistic regression<a class="headerlink" href="#regularized-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>Here, we start from the regularization term
+<span class="math notranslate nohighlight">\(e^{-\lambda R(\|\mathbf\theta\|)}\)</span> with these next properties:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span> is a strictly increasing function on <span class="math notranslate nohighlight">\(\mathbb{R}^+\)</span> with
+<span class="math notranslate nohighlight">\(R(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\lim\limits_{t\rightarrow +\infty} R(t) = +\infty\)</span>. For
+example, <span class="math notranslate nohighlight">\(R(t) = t^2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\|\cdot\|\)</span> is a norm on <span class="math notranslate nohighlight">\(R^{k\times(d+1)}\)</span>, a commonly used norm is
+the following Frobenius norm: $<span class="math notranslate nohighlight">\(\label{key}
+    \|\mathbf \theta\|_F = \sqrt{\sum_{i,j}W_{ij}^2 + \sum_i b_i^2}.\)</span>$</p></li>
+</ol>
+<p>Based on this regularization term, we may consider the following
+regularized likelihood function <span class="math notranslate nohighlight">\(P_\lambda(\mathbf\theta)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+    P_\lambda(\mathbf\theta) = P(\mathbf\theta)e^{-\lambda R(\|\mathbf\theta\|)}.
+\]</div>
+<p>Here, let us define</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf\Theta_{\lambda} = \mathop{{\arg\max}}_{\mathbf\theta}  P_\lambda(\mathbf\theta),
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathop{\arg\max}_{\mathbf\theta}  P_\lambda(\mathbf\theta) = \left\{\mathbf \theta ~:~ P_\lambda(\mathbf \theta) = \max_{\mathbf \theta} P_\lambda(\mathbf \theta) \right\}.
+\]</div>
+<p>The next lemma show that the maximal set of modified objective is not
+empty.</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(A_1,A_2, \cdots, A_k\)</span> are linearly separable, then</p>
+<ol class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, <span class="math notranslate nohighlight">\(\mathbf\Theta_0 = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf\Theta_{\lambda}\)</span> must be nonempty for all <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>.</p></li>
+</ol>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> <span class="xref myst">Lemma</span>
+shows the first proposition. For the second proposition, we notice that</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_\lambda(\mathbf 0) = \frac{1}{k^N}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists\ m_{\lambda}&gt;0\)</span> such that
+<span class="math notranslate nohighlight">\(e^{-\lambda R(\|\mathbf\theta\|)}&lt;\frac{1}{k^N}\)</span> whenever
+<span class="math notranslate nohighlight">\(\|\mathbf\theta\|&gt; m_{\lambda}\)</span> because of the properties of
+<span class="math notranslate nohighlight">\(R(\|\mathbf\theta\|)\)</span>.</p></li>
+</ol>
+<p>So a maxima on <span class="math notranslate nohighlight">\(\{\mathbf\theta: \|\mathbf\theta\| \le m_{\lambda}\}\)</span> must be a
+global maxima. Then we can easily obtain the result in the lemma from
+the boundedness and closeness of
+<span class="math notranslate nohighlight">\(\{\mathbf\theta: \|\mathbf\theta\| \le m_{\lambda}\}\)</span>.</p>
+</div>
+<p>Furthermore, we have the next theorem which shows that we can indeed get
+<span class="math notranslate nohighlight">\(\Theta\)</span> by maximizing <span class="math notranslate nohighlight">\(P_\lambda(\mathbf \theta)\)</span>.</p>
+<div class="admonition-theorem admonition" id="thm-l-theta">
+<p class="admonition-title">Theorem</p>
+<p>If <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly separable,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf\Theta_{\lambda} \subset \mathbf\Theta,
+\]</div>
+<p>when <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> and sufficiently small.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Proof.</em> By <a class="reference internal" href="#lemmh12"><span class="std std-ref">Lemma</span></a>  we can take <span class="math notranslate nohighlight">\(\mathbf\theta_0\in \mathbf\Theta\)</span> such that
+<span class="math notranslate nohighlight">\(P(\mathbf\theta_0)&gt; \frac{3}{4}\)</span>. Then, for any
+<span class="math notranslate nohighlight">\(\lambda &lt; \frac{\log \frac{3}{2}}{R(\|\mathbf\theta_0\|)}\)</span>,
+<span class="math notranslate nohighlight">\(\mathbf\theta_{\lambda}\in \mathbf\Theta_{\lambda}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\mathbf\theta_{\lambda}) \geq  P_\lambda(\mathbf\theta_{\lambda})  \geq P_\lambda(\mathbf \theta_0) = P(\mathbf\theta_0)e^{-\lambda R(\|\mathbf\theta_0\|)} &gt; \frac{3}{4}\cdot \frac{2}{3} = \frac{1}{2},
+\]</div>
+<p>which implies that <span class="math notranslate nohighlight">\(\mathbf \theta_{\lambda} \in \Theta\)</span>. Thus, for any
+<span class="math notranslate nohighlight">\(0&lt; \lambda &lt; \frac{\log \frac{3}{2}}{R(\|\mathbf\theta_0\|)}\)</span>,
+<span class="math notranslate nohighlight">\(\mathbf\Theta_{\lambda} \subset \mathbf\Theta\)</span>. ◻</p>
+</div>
+<p>The design of logistic regression is that maximize
+<span class="math notranslate nohighlight">\(P_\lambda(\mathbf\theta)\)</span> is equivalent to minimize
+<span class="math notranslate nohighlight">\(-\log P_\lambda(\mathbf\theta)\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+    \max_{\mathbf \theta} \left\{ P_\lambda(\mathbf\theta) \right\} \Leftrightarrow \min_{\mathbf \theta} \left\{ -\log   P_\lambda(\mathbf\theta)\right\},
+\]</div>
+<p>while the second one is more convenient to evaluate the gradient.
+meanwhile, we add a regularization term <span class="math notranslate nohighlight">\(R(\mathbf\theta)\)</span> to the objective
+function which makes the optimization problem has a unique solution.</p>
+<p>mathematically, we can formulate Logistic regression as</p>
+<div class="math notranslate nohighlight">
+\[
+    \min_{\mathbf\theta} L_\lambda(\mathbf \theta),
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-logisticlambda">
+<span class="eqno">(13)<a class="headerlink" href="#equation-logisticlambda" title="Permalink to this equation">¶</a></span>\[
+    L_\lambda(\mathbf \theta)  := -\log P_\lambda(\mathbf\theta) = -\log P(\mathbf\theta) + \lambda R(\|\mathbf\theta\|) = L(\mathbf\theta) + \lambda R(\|\mathbf\theta\|),
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight" id="equation-logistic">
+<span class="eqno">(14)<a class="headerlink" href="#equation-logistic" title="Permalink to this equation">¶</a></span>\[
+L(\mathbf \theta) = - \sum_{i=1}^k \sum_{x\in A_i} \log p_{i}(x;\mathbf \theta).
+\]</div>
+<p>Then we have the next logistic regression algorithm.</p>
+<div class="admonition-algorithm admonition">
+<p class="admonition-title">Algorithm</p>
+<p>Given data <span class="math notranslate nohighlight">\(A_1, A_2, \cdots, A_k\)</span>, find</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf \theta^* = \mathop{\arg\min}_{\mathbf \theta}  L_\lambda(\mathbf \theta),
+\]</div>
+<p>for some sufficient small <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p>
+</div>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>Here</p>
+<div class="math notranslate nohighlight">
+\[
+    L(\mathbf \theta)  = -\log P(\mathbf\theta),
+\]</div>
+<p>is known as the loss function of logistic regression model. The next reasons may show that why <span class="math notranslate nohighlight">\(L(\mathbf \theta)\)</span> is popular.</p>
+<ol class="simple">
+<li><p>It is more convenient to take gradient for <span class="math notranslate nohighlight">\(L(\mathbf \theta)\)</span> than
+<span class="math notranslate nohighlight">\(P(\mathbf \theta)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L(\mathbf \theta)\)</span> is related the so-called cross-entropy loss function
+which will be discussed in the next section.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L(\mathbf \theta)\)</span> is a convex function which will be discussed later.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="m1_02.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Linearly separable sets</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="m1_04.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">KL-divergence and cross-entropy</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

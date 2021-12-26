@@ -1,0 +1,1466 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Python and Pytorch &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 1: Linear machine learning models" href="../Module1/module1_.html" />
+    <link rel="prev" title="Course background and introduction" href="ch0_2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_hw.html">
+     Download the Module 1 homework here: Homework1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
+     Week 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module0/ch0_3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module0/ch0_3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Python and Pytorch
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anaconda">
+   1. Anaconda
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   2. Python
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pytorch">
+   3. PyTorch
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-notebook">
+   4. Jupyter Notebook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-jupyter-notebook-to-do-programing-with-python-and-pytorch">
+   5. Use Jupyter Notebook to do programing with Python and Pytorch
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-a-basic-python-language">
+     Part A: Basic Python Language
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#arithmetic">
+       Arithmetic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variables">
+       Variables
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-elif-else">
+       if-elif-else
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-loop-and-list">
+       for loop and list
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logical-operators">
+       Logical operators
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparsion-operators">
+       Comparsion operators
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-b-some-examples">
+     Part B: Some examples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-1">
+       <strong>
+        Example 1
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1">
+       <strong>
+        Exercise 1
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-2">
+       <strong>
+        Example 2
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#f-x-x-2">
+       <span class="math notranslate nohighlight">
+        \(f(x) = x-2\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#h-x-x-2-cos-x-x-in-4-4">
+       <span class="math notranslate nohighlight">
+        \(h(x) = x + 2  cos(x),~~ x \in[-4,4].\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-2">
+       <strong>
+        Exercise 2
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#find-the-two-roots-of-the-function">
+       (1) Find the two roots of the function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve">
+       (2) Plot the curve of the function
+       <span class="math notranslate nohighlight">
+        \(f(x)\)
+       </span>
+       defined in (1) and mark all the roots on the curve.
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-3">
+       <strong>
+        Example 3
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#where-x-begin-bmatrix-x-1-x-2-x-3-end-bmatrix-are-unknown-variables">
+       where
+       <span class="math notranslate nohighlight">
+        \(x=\begin{bmatrix} x_1  \\ x_2 \\ x_3 \end{bmatrix}\)
+       </span>
+       are unknown variables.
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#remark-it-is-equivalent-to-solve">
+       Remark: it is equivalent to solve
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-1">
+       <strong>
+        Exercise 3.1
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-2">
+       Exercise
+       <strong>
+        3.2
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solve-a-2-x-b">
+       Solve
+       <span class="math notranslate nohighlight">
+        \(A^2 x = b\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-4">
+       <strong>
+        Example 4
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-4">
+       <strong>
+        Exercise 4
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-5">
+       <strong>
+        Example 5
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-5-1">
+       <strong>
+        Exercise 5.1
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-5-2">
+       <strong>
+        Exercise 5.2
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-5-3">
+       <strong>
+        Exercise 5.3
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_6e90qr52&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_joaa51cu&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_6e90qr52&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_joaa51cu"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="introduction-to-python-and-pytorch">
+<h1>Introduction to Python and Pytorch<a class="headerlink" href="#introduction-to-python-and-pytorch" title="Permalink to this headline">¶</a></h1>
+<p>TA: Lian Zhang</p>
+<p>Email: <a class="reference external" href="mailto:luz244&#37;&#52;&#48;psu&#46;edu">luz244<span>&#64;</span>psu<span>&#46;</span>edu</a></p>
+<ol>
+<li><p>Anaconda</p></li>
+<li><p>Python</p></li>
+<li><p>Pytorch</p></li>
+<li><p>Jupyter Notebook</p></li>
+<li><p>Use Jupyter Notebook to do programing with Python and Pytorch (reading material):</p>
+<p>Example 1: Plot the curve of a function</p>
+<p>Example 2: Root finding</p>
+<p>Example 3: Solve Ax=b</p>
+<p>Example 4: Calculate the derivative of a function</p>
+<p>Example 5: Find the maximum and minimum of a list of numbers</p>
+</li>
+</ol>
+</div>
+<div class="section" id="anaconda">
+<h1>1. Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h1>
+<p>Anaconda is a free and open-source distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. Package versions are managed by the package management system conda. The Anaconda distribution includes data-science packages suitable for Windows, Linux, and MacOS.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install Anaconda (Recommend: Python 3.7 version, Command Line version) from 
+https://www.anaconda.com/distribution/
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<h1>2. Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<p>Python is a high-level, general-purpose programming language. For examples:</p>
+<p>(1) Create a calculator (calculate tips, annual tax, monthly expense…)</p>
+<p>(2) Solve mathematical problems (root finding, plot some functions, solve Ax=b…)</p>
+<p>(3) Say “hello” to Machine Learning</p>
+<p>(4) Data mining (find all the online information which includes your name…)</p>
+<p>(5) Create personal webpage</p>
+<p>(6) Design games</p>
+<p>…</p>
+<p>Python is very powerful! If you want to do something with Python, just Google it!</p>
+<p>Note that if you have already downloaded Anaconda, Python will be automaticly installed.</p>
+</div>
+<div class="section" id="pytorch">
+<h1>3. PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
+<p>Pytorch is an open source machine learning library, used for applications such as computer vision and natural language processing. It is developed by Facebook’s AI Research lab. It is free and open-source software.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install Pytorch from https://pytorch.org/ , or use 
+
+conda install pytorch torchvision -c pytorch  (Mac User)
+
+conda install pytorch torchvision cpuonly -c pytorch  (Windows and Linux Users)    
+</pre></div>
+</div>
+</div>
+<div class="section" id="jupyter-notebook">
+<h1>4. Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<p>Jupyter Notebook is a web-based interactive computational environment for creating Jupyter notebook documents. A Jupyter Notebook document contains an ordered list of input/output “cells” which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the “.ipynb” extension.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through &quot;Download As&quot; in the web interface, via the nbconvert library or &quot;jupyter nbconvert&quot; command line interface in a shell. (Student can do their hw with Jupyter notebook, then submit a .ipynb file. Then the grader can run the code)
+</pre></div>
+</div>
+<p>e.g. This is an exapmle of Markdown cell with “Tex” equation.</p>
+<div class="math notranslate nohighlight">
+\[f(x)=x^2\]</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># e.g. This is an example of Python code cell.</span>
+<span class="mi">2</span><span class="o">/</span><span class="mi">8</span>
+
+<span class="c1"># A line started with a pound sign means it is a comment line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How to use Pytorch</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># We can initialize a matrix as a pytorch tensor:</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A is&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">9279</span><span class="n">f38d9c4d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># How to use Pytorch</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># We can initialize a matrix as a pytorch tensor:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install Jupyter Notebook from https://jupyter.org/install, or use
+conda install -c conda-forge notebook
+
+Run Jupyter Notebook:
+Step 1: type &quot;jupyter notebook&quot; in command line
+Step 2: Find the link shows in the command line
+Step 3: Open the link with your browser
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-jupyter-notebook-to-do-programing-with-python-and-pytorch">
+<h1>5. Use Jupyter Notebook to do programing with Python and Pytorch<a class="headerlink" href="#use-jupyter-notebook-to-do-programing-with-python-and-pytorch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-a-basic-python-language">
+<h2>Part A: Basic Python Language<a class="headerlink" href="#part-a-basic-python-language" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arithmetic">
+<h3>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h3>
+<p>Like every programming language, Python is a good calculator. Run the block of code below to make sure the answer is right!</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43.666666666666664
+</pre></div>
+</div>
+</div>
+</div>
+<p>Question: How to calculate the power of a number?</p>
+<p>In python, m ** n means <span class="math notranslate nohighlight">\(m^n\)</span></p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="mi">4</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pay attention: the rule of indent!</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">y</span><span class="o">=</span><span class="mi">3</span>
+<span class="c1"># The two &quot;spaces&quot; at the front of &quot;y=3&quot; are unexpected indent</span>
+<span class="c1"># Check the indent rule of python: https://docs.python.org/2.0/ref/indentation.html</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-10-ea97276566de&gt;&quot;</span><span class="gt">, line </span><span class="mi">2</span>
+    <span class="n">y</span><span class="o">=</span><span class="mi">3</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>So you just had a big meal, and now you need to calculate the tip.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meal</span> <span class="o">=</span> <span class="mf">220.00</span>
+<span class="n">tip_percent</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">meal</span> <span class="o">*</span> <span class="n">tip_percent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>“meal” and “tip_percent” are not numbers, they are called variables.</p>
+<p>In Python variables are like buckets (dump trucks?). You can put anything you want in them. Just give them a name and then you can use them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meal</span> <span class="o">=</span> <span class="mi">220</span>
+<span class="n">tip_percent</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">tip</span> <span class="o">=</span> <span class="n">meal</span> <span class="o">*</span> <span class="n">tip_percent</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, a variable will not be printed automatically.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a string is defined with &#39;your string&#39; or &quot;your string&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Hello World!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># will print the variable type</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">#will print the actual variable value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tip_words</span> <span class="o">=</span> <span class="s1">&#39;The tips should be:&#39;</span>
+<span class="n">tip</span> <span class="o">=</span> <span class="mi">220</span> <span class="o">*</span> <span class="mf">0.15</span>
+
+<span class="c1"># One can connect two string by using the sigh +</span>
+<span class="n">tip_words_total</span> <span class="o">=</span> <span class="n">tip_words</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tip</span><span class="p">)</span> <span class="c1">#str(tip) converts a number to a string </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tip_words_total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tips should be:33.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="if-elif-else">
+<h3>if-elif-else<a class="headerlink" href="#if-elif-else" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if-elif-else</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is strictly positive&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is strictly negative&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is zero&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is zero
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="for-loop-and-list">
+<h3>for loop and list<a class="headerlink" href="#for-loop-and-list" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># Given a list x</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The &#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;th element in list x is:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+New
+The  0 th element in list x is: 1
+The  1 th element in list x is: 0
+The  2 th element in list x is: 2
+The  3 th element in list x is: 8
+The  4 th element in list x is: 3
+The  5 th element in list x is: 5
+The  6 th element in list x is: 2
+1
+0
+2
+8
+3
+5
+2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="logical-operators">
+<h3>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Logical operators</span>
+<span class="c1"># bool type:  &quot;True&quot; (=1), &quot;False&quot; (=0)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">y</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type of x is:&#39;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1">#will print out variable type</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x and y is:&#39;</span><span class="p">,</span><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># boolean operator and</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x or y is:&#39;</span><span class="p">,</span><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># boolean operator or</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;not x is:&#39;</span><span class="p">,</span><span class="ow">not</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># boolean operator not</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type of x is: &lt;class &#39;bool&#39;&gt;
+x and y is: False
+x or y is: True
+not x is: False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparsion-operators">
+<h3>Comparsion operators<a class="headerlink" href="#comparsion-operators" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comparsion operator: the output is bool type</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># Output: x &gt; y (is x greater than y?)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x &gt; y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">&gt;</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Output: x &lt; y (is x less than y?)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x &lt; y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">&lt;</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">#Output: x == y (is x equal to y?)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x == y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">#Output: x!=y (is x not equal to y?)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x != y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">!=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">#There is also &#39;greater than or equal&#39; &gt;=  less than or equal&#39; &lt;=</span>
+<span class="c1"># Output: x &gt;= y is False</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x &gt;= y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Output: x &lt;= y is True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x &lt;= y is&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">&lt;=</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x &gt; y is False
+x &lt; y is True
+x == y is False
+x != y is True
+x &gt;= y is False
+x &lt;= y is True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Question: what is the difference between “x =10” and “x == 10”</p>
+<ul class="simple">
+<li><p>x=10 is an assignment setting the variable x equal to 10</p></li>
+<li><p>x==10 is a comparison (output true false) answering the question, Is x equal to 10?</p></li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># Am example combines the commands introduced above together</span>
+<span class="c1"># Pay more attention the indent rule</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1">#defines a vector of integers of length 10, it calls numpy package</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The length of the list is: &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Count how many numbers are bigger than 5 and how many numbers are less than 5 and how many numbers are equal to 5</span>
+<span class="c1"># We define and initialize the variables</span>
+<span class="n">count_bigger</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count_smaller</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count_equal</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+        <span class="n">count_bigger</span> <span class="o">=</span> <span class="n">count_bigger</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
+        <span class="n">count_smaller</span> <span class="o">=</span> <span class="n">count_smaller</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>   <span class="c1"># all other</span>
+        <span class="n">count_equal</span> <span class="o">=</span> <span class="n">count_equal</span> <span class="o">+</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number bigger than 5: &#39;</span><span class="p">,</span><span class="n">count_bigger</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number less than 5: &#39;</span><span class="p">,</span> <span class="n">count_smaller</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number equal to 5: &#39;</span><span class="p">,</span> <span class="n">count_equal</span><span class="p">)</span>
+
+<span class="c1">#Check by seeing if count_equal == len(x)-(count_bigger + count_smaller)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count_equal</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="n">count_bigger</span><span class="o">+</span><span class="n">count_smaller</span><span class="p">))</span>  <span class="c1"># boolen True/False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+4
+0
+1
+2
+5
+4
+8
+1
+6
+The length of the list is:  10
+number bigger than 5:  3
+number less than 5:  6
+number equal to 5:  1
+True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-b-some-examples">
+<h2>Part B: Some examples<a class="headerlink" href="#part-b-some-examples" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can use many Python packages by importing them. Check the reference: </span>
+<span class="c1">#https://docs.python.org/3/reference/import.html</span>
+
+<span class="c1"># NEED TO IMPORT numpy as np as notes use &quot;np&quot; to call numpy package, </span>
+<span class="c1"># numpy is a fundamental package for scientific computing with Python.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="c1"># matplotlib is a plotting library for the Python programming language </span>
+
+<span class="kn">import</span> <span class="nn">torch</span> 
+<span class="c1"># import Pytorch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-1">
+<h3><strong>Example 1</strong><a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Plot the curve of a funtion</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The above &quot;header&quot; was done using a &quot;markdown&quot; cell and markdown header designator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Define a function f(x) = x^2</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> 
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1000</span>
+<span class="c1">#generate a linear space with torch.linspace(start, end, steps)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;*--r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Function $f(x)=x^2$&#39;</span><span class="p">)</span> <span class="c1">#point is * and color is red and label embedded LaTeX</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;*--g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Function $g(x)=x^2 + 1000$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># plt.figure()</span>
+<span class="c1"># plt.plot(x, g(x), &#39;*--r&#39;, label=&#39;Function g(x)=x&#39;)</span>
+<span class="c1"># plt.legend()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x122090668&gt;
+</pre></div>
+</div>
+<img alt="../_images/ch0_3_45_1.png" src="../_images/ch0_3_45_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h3><strong>Exercise 1</strong><a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Plot the curve of function
+<span class="math notranslate nohighlight">\(
+f(x) = x^3 - x, x \in [-1,1].
+\)</span></p>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="example-2">
+<h3><strong>Example 2</strong><a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Find the roots of a function</p>
+</div>
+<div class="section" id="f-x-x-2">
+<h3><span class="math notranslate nohighlight">\(f(x) = x-2\)</span><a class="headerlink" href="#f-x-x-2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Above cell is a &#39;markdown&#39; cell written  $f(x) = x-2$ which is embedded LaTeX</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="c1"># We us root = fsolve(function, initial guess) to find ONE root of a function</span>
+<span class="c1"># If a function has multiple roots, the output &#39;root&#39; will be the one closest to &#39;initial guess&#39;</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The root is:&#39;</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root is: [2.]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="h-x-x-2-cos-x-x-in-4-4">
+<h3><span class="math notranslate nohighlight">\(h(x) = x + 2  cos(x),~~ x \in[-4,4].\)</span><a class="headerlink" href="#h-x-x-2-cos-x-x-in-4-4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Again, above cell is a &#39;markdown&#39; cell written $h(x)=x+2\cos(x),~~x\in[-4,4]$ which is embedded LaTeX</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The root is:&#39;</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;function $h(x)=x + 2 cos(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">)</span> <span class="c1"># draw the solution point on the curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root is: [-1.02986653]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10237fef28&gt;
+</pre></div>
+</div>
+<img alt="../_images/ch0_3_54_2.png" src="../_images/ch0_3_54_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h3><strong>Exercise 2</strong><a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="find-the-two-roots-of-the-function">
+<h3>(1) Find the two roots of the function<a class="headerlink" href="#find-the-two-roots-of-the-function" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(
+f(x) = 2x^2 - x - 1 , x \in [-1,2].
+\)</span></p>
+</div>
+<div class="section" id="plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve">
+<h3>(2) Plot the curve of the function <span class="math notranslate nohighlight">\(f(x)\)</span> defined in (1) and mark all the roots on the curve.<a class="headerlink" href="#plot-the-curve-of-the-function-f-x-defined-in-1-and-mark-all-the-roots-on-the-curve" title="Permalink to this headline">¶</a></h3>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="example-3">
+<h3><strong>Example 3</strong><a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+<p>create A vector and a matrix (generally use tensors in Pytorch) and solve <span class="math notranslate nohighlight">\(Ax=b\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+A=\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}, \quad\quad 
+b=\begin{bmatrix} 1  \\ 2 \\ 3 \end{bmatrix}
+\)</span></p>
+</div>
+<div class="section" id="where-x-begin-bmatrix-x-1-x-2-x-3-end-bmatrix-are-unknown-variables">
+<h3>where <span class="math notranslate nohighlight">\(x=\begin{bmatrix} x_1  \\ x_2 \\ x_3 \end{bmatrix}\)</span> are unknown variables.<a class="headerlink" href="#where-x-begin-bmatrix-x-1-x-2-x-3-end-bmatrix-are-unknown-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="remark-it-is-equivalent-to-solve">
+<h3>Remark: it is equivalent to solve<a class="headerlink" href="#remark-it-is-equivalent-to-solve" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(
+1 * x_1 + 2 * x_2 + 3 * x_3 = 1\\
+4 * x_1 + 5 * x_2 + 6 * x_3 = 2\\
+7 * x_1 + 8 * x_2 + 9 * x_3 = 3\\
+\)</span></p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># We can initialize a matrix as a Pytorch tensor: [[row 1],[row 2],[row 3]]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># the type of data is torch.float32</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A is&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+
+<span class="c1"># Print an empty line.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="c1"># We can initialize a column vector as a pytorch tensor:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b is&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A is tensor([[1., 2., 3.],
+        [4., 5., 6.],
+        [7., 8., 9.]])
+
+
+b is tensor([[1.],
+        [2.],
+        [3.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use LU factorization to solve Ax=b by calling torch.solve(b,A)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">LU</span> <span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">A</span><span class="p">)</span> 
+<span class="c1"># the ouput gives you the solution x and LU, which contains L and U factors for LU factorization of A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is tensor([[ 9.9341e-09],
+        [-1.9868e-08],
+        [ 3.3333e-01]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also initialize a zeroed tensor and check the data type of the tensor</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c1 is:&#39;</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of c1:&#39;</span><span class="p">,</span> <span class="n">c1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> 
+
+<span class="c1"># Print an empty line.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="c1"># Note that the default type of such a tensor is a 32-bit float.</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c2 is&#39;</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of c2:&#39;</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c1 is: tensor([[0., 0.],
+        [0., 0.]])
+Type of c1: torch.float32
+
+
+c2 is tensor([[0, 0],
+        [0, 0]], dtype=torch.int32)
+Type of c2: torch.int32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># some basic operations</span>
+
+<span class="c1"># plus</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1., 1.],
+        [1., 1.]])
+tensor([[2., 1.],
+        [1., 1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiply</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># multiplication of a matrix and a vector (generally two size-matched tensors)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[4., 2.],
+        [2., 2.]])
+
+
+tensor([[1.],
+        [2.]])
+tensor([[8.],
+        [6.]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-3-1">
+<h3><strong>Exercise 3.1</strong><a class="headerlink" href="#exercise-3-1" title="Permalink to this headline">¶</a></h3>
+<p>Given <span class="math notranslate nohighlight">\(P=\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4\end{bmatrix}\)</span>, investigate the two different multiplications <span class="math notranslate nohighlight">\(P*P\)</span> and <span class="math notranslate nohighlight">\(torch.mm(P,P)\)</span>.</p>
+</div>
+<div class="section" id="exercise-3-2">
+<h3>Exercise <strong>3.2</strong><a class="headerlink" href="#exercise-3-2" title="Permalink to this headline">¶</a></h3>
+<p>Given
+<span class="math notranslate nohighlight">\(
+A=\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}, \quad\quad 
+b=\begin{bmatrix} 1  \\ 2 \\ 3 \end{bmatrix}.
+\)</span></p>
+</div>
+<div class="section" id="solve-a-2-x-b">
+<h3>Solve <span class="math notranslate nohighlight">\(A^2 x = b\)</span><a class="headerlink" href="#solve-a-2-x-b" title="Permalink to this headline">¶</a></h3>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="example-4">
+<h3><strong>Example 4</strong><a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<p>Calculate the derivate of <span class="math notranslate nohighlight">\((xy)^2\)</span> at  <span class="math notranslate nohighlight">\(x=1, y=2\)</span> w.r.t  <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>We wish to calculate <span class="math notranslate nohighlight">\( \dfrac{\partial f}{\partial y}|_{x=1,y=2}\)</span> where <span class="math notranslate nohighlight">\(f(x,y)=(xy)^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(\dfrac{\partial f}{\partial y} = 2xy^2\)</span>, thus <span class="math notranslate nohighlight">\(\dfrac{\partial f(1,2)}{\partial y} = 2 \cdot 1 \cdot (2^2)=8\)</span></p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In order to calculate the gradient with respect to a tensor, we should set the requires_grad flag to True.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">])</span>
+
+<span class="c1"># By default, requires_grad is set to False if possible.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x requires_grad?&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y requires_grad?&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;z.requires_grad?&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+
+
+<span class="c1"># Calculate the derivative of out w.r.t. x. Automatically applies the chain rule as needed.</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x requires_grad? True
+y requires_grad? False
+z.requires_grad? True
+(tensor([8.]),)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4">
+<h3><strong>Exercise 4</strong><a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Calculate the derivative of <span class="math notranslate nohighlight">\(x^2+y^2+(xy)^3\)</span> at <span class="math notranslate nohighlight">\(x=1,y=2\)</span> w.r.t <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>=================================================================================================================</p>
+</div>
+<div class="section" id="example-5">
+<h3><strong>Example 5</strong><a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<p>Define a function to find the maximum of three numbers <span class="math notranslate nohighlight">\(a,~b,~c\)</span>. Test your code and print the maximum of the three numbers, where <span class="math notranslate nohighlight">\(a=\sqrt{2},~ b=\frac{4}{3},~ c=0.5e\)</span></p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function</span>
+<span class="c1"># def is a keyword, which means you are defining a function</span>
+<span class="c1"># f_max is the name of the function</span>
+<span class="c1"># (a,b,c) are the input of the function</span>
+<span class="c1"># return some_value gives you the output of the function</span>
+<span class="c1"># Pay attention on the indent rules</span>
+<span class="k">def</span> <span class="nf">f_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span> 
+    <span class="n">max_value</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">b</span><span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
+        <span class="n">max_value</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
+        <span class="n">max_value</span><span class="o">=</span><span class="n">c</span>
+    <span class="k">return</span> <span class="n">max_value</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a=&#39;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b=&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c=&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># call function f_max with input a=2 ** 0.5, b = 4/3, c = 0.5 * np.exp(1)</span>
+<span class="c1"># The function will return the maximum value of a,b,c</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximum of a,b,c is:&#39;</span><span class="p">,</span><span class="n">f_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a= 1.4142135623730951
+b= 1.3333333333333333
+c= 1.3591409142295225
+The maximum of a,b,c is: 1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-5-1">
+<h3><strong>Exercise 5.1</strong><a class="headerlink" href="#exercise-5-1" title="Permalink to this headline">¶</a></h3>
+<p>Define a function to find the minimum of three numbers <span class="math notranslate nohighlight">\(a,~b,~c\)</span>. Test your code and print the minimum of the three numbers, where <span class="math notranslate nohighlight">\(a=\sqrt{2},~ b=\frac{4}{3},~ c=0.5e\)</span></p>
+</div>
+<div class="section" id="exercise-5-2">
+<h3><strong>Exercise 5.2</strong><a class="headerlink" href="#exercise-5-2" title="Permalink to this headline">¶</a></h3>
+<p>Define a function to find the maximum and minimum of a sequence with n numbers.</p>
+<p>Hint: x = np.random.randint(a,b,size=n) can randomly generate n numbers (saved in a row vector x ) and each number is between a and b.</p>
+</div>
+<div class="section" id="exercise-5-3">
+<h3><strong>Exercise 5.3</strong><a class="headerlink" href="#exercise-5-3" title="Permalink to this headline">¶</a></h3>
+<p>Define a function to sort a sequence with n numbers in ascending order.</p>
+<p>=================================================================================================================</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch0_2.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Course background and introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../Module1/module1_.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Module 1: Linear machine learning models</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -6,10 +6,20 @@ root: intro
 parts:
 - caption: contents
   chapters:
+  - file: Module0/ch0_
+    sections:
+    - file: Module0/ch0_1.ipynb
+    - file: Module0/ch0_2.ipynb
+    - file: Module0/ch0_3.ipynb
   - file: Module1/module1_
     sections:
     - file: Module1/m1_01.ipynb
     - file: Module1/m1_02.ipynb
+    - file: Module1/m1_03.ipynb
+    - file: Module1/m1_04.ipynb
+    - file: Module1/m1_05.ipynb
+    - file: Module1/m1_06.ipynb
+    - file: Module1/m1_hw.ipynb
     - file: Module1/Programming_Assignment_1.ipynb
 
     
