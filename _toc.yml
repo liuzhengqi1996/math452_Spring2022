@@ -29,7 +29,19 @@ parts:
     - file: Module2/m2_04.ipynb
     - file: Module2/m2_05.ipynb
     - file: Module2/m2_hw.ipynb
-    - file: Module2/Programming_Assignment_12.ipynb
+    - file: Module2/Programming_Assignment_2.ipynb
+  - file: Module3/module3_
+    sections:
+    - file: Module3/m3_01.ipynb
+    - file: Module3/m3_02.ipynb
+    - file: Module3/m3_03.ipynb
+    - file: Module3/m3_04.ipynb
+    - file: Module3/m3_05.ipynb
+    - file: Module3/m3_06.ipynb
+    - file: Module3/m3_07.ipynb
+    - file: Module3/C08_DNN.ipynb
+    - file: Module3/m3_hw.ipynb
+    - file: Module3/Programming_Assignment_3.ipynb
 
     
 
