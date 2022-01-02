@@ -21,6 +21,15 @@ parts:
     - file: Module1/m1_06.ipynb
     - file: Module1/m1_hw.ipynb
     - file: Module1/Programming_Assignment_1.ipynb
+  - file: Module2/module2_
+    sections:
+    - file: Module2/m2_01.ipynb
+    - file: Module2/m2_02.ipynb
+    - file: Module2/m2_03.ipynb
+    - file: Module2/m2_04.ipynb
+    - file: Module2/m2_05.ipynb
+    - file: Module2/m2_hw.ipynb
+    - file: Module2/Programming_Assignment_12.ipynb
 
     
 

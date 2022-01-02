@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stochastic gradient descent method and convergence theory &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MNIST: training and generalization accuracy" href="m2_05.html" />
+    <link rel="prev" title="Convex functions and convergence of gradient descen" href="m2_03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module2/m2_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module2/m2_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Stochastic gradient descent method and convergence theory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convergence-of-sgd">
+     Convergence of SGD
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sgd-with-mini-batch">
+     SGD with mini-batch
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="stochastic-gradient-descent-method-and-convergence-theory">
+<h1>Stochastic gradient descent method and convergence theory<a class="headerlink" href="#stochastic-gradient-descent-method-and-convergence-theory" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_80cz6xki&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_ca2yxlxv&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_80cz6xki&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ca2yxlxv"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_9g3lrg1l&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_ddb7qq2t&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_9g3lrg1l&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ddb7qq2t"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/B04SGDConvergence_Video_Notes.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>Stochastic gradient descent method and convergence theory<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The next optimization problem is the most common case in machine
+learning.</p>
+<p>One version of stochastic gradient descent (SGD) algorithm is:</p>
+<div class="proof algorithm admonition" id="algorithm-0">
+<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (SGD)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>
+<p><strong>For</strong>: t = 0,1,2,<span class="math notranslate nohighlight">\(\dots\)</span></p>
+<p>Randomly pick <span class="math notranslate nohighlight">\(i_t \in \{1, 2, \cdots, N\}\)</span> independently with
+probability <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    x_{t+1} = x_{t} - \eta_t \nabla f_{i_t}(x_t).
+\]</div>
+</div>
+</div><div class="section" id="convergence-of-sgd">
+<h3>Convergence of SGD<a class="headerlink" href="#convergence-of-sgd" title="Permalink to this headline">¶</a></h3>
+<div class="proof theorem admonition" id="theorem-1">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Theorem)</p>
+<div class="theorem-content section" id="proof-content">
+<p>Assume that each <span class="math notranslate nohighlight">\(f_i(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex and
+<span class="math notranslate nohighlight">\(\|\nabla f_i(x)\| \le M\)</span> for some <span class="math notranslate nohighlight">\(M &gt;0\)</span>. If we take
+<span class="math notranslate nohighlight">\(\eta_t = \frac{a}{\lambda (t+1)}\)</span> with sufficiently large <span class="math notranslate nohighlight">\(a\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \|x_0 - x^*\|^2 \le \frac{a^2M^2}{(a-1)\lambda^2}
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}e_{t}^2 \le \frac{a^2M^2}{(a-1)\lambda^2 (t+1)}, \quad  t\ge 1,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(e_t = \|x_t - x^*\|\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Proof
+<em>Proof.</em> The <span class="math notranslate nohighlight">\(L^2\)</span> error of SGD can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+      \begin{split}
+            \mathbb{E} \|x_{t+1} - x^*\|^2 &amp;\le \mathbb{E}\| x_{t} - \eta_t \nabla f_{i_t}(x_t) - x^* \|^2 \\
+            &amp;\le \mathbb{E} \|x_t - x^*\|^2 
+            - 2 \eta_t \mathbb{E} (\nabla f_{i_t}(x_t) \cdot (x_t - x^*)) 
+            + \eta_t^2 \mathbb{E} \|\nabla f_{i_t}(x_t)\|^2 \\
+            &amp; \le \mathbb{E} \|x_t - x^*\|^2 - 2 \eta_t \mathbb{E} (\nabla f (x_t) \cdot (x_t - x^*))
+            + \eta_t^2 M^2 \\
+            &amp; \le \mathbb{E} \|x_t - x^*\|^2 -  \eta_t \lambda \mathbb{E} \|x_t - x^*\|^2 + \eta_t^2 M^2 \\
+            &amp; = (1 - \eta_t\lambda) \mathbb{E} \|x_t - x^*\|^2 + \eta_t^2 M^2
+      \end{split}
+\end{split}\]</div>
+<p>The third line comes from the fact that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \mathbb{E} (\nabla f_{i_t}(x_t) \cdot (x_t - x^*))  &amp;= \mathbb{E}_{i_1i_2\cdots i_t} (\nabla f_{i_t}(x_t) \cdot (x_t - x^*)) \\
+&amp;= \mathbb{E}_{i_1i_2\cdots i_{t-1}} \frac{1}{N} \sum_{i=1}^N \nabla f_i(x_t)\cdot (x_t - x^*) \\
+&amp;= \mathbb{E}_{i_1i_2\cdots i_{t-1}}  \nabla f(x_t)\cdot (x_t - x^*) \\
+&amp;= \mathbb{E}\nabla f(x_t)\cdot (x_t - x^*),
+\end{aligned}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E} \|\nabla f_{i_t}(x_t)\|^2 \le \mathbb{E} M^2 = M^2.
+\]</div>
+<p>Note when <span class="math notranslate nohighlight">\(t=0\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E} e_0^2 = \|x_0 - x^*\|^2 \le \frac{a^2M^2}{(a-1)\lambda},
+\]</div>
+<p>based on the assumption.</p>
+<p>In the case of SDG, by the inductive hypothesis,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{split}
+            \mathbb{E}e_{t+1}^2 &amp; \le (1 - \eta_t\lambda)\mathbb{E}e_{t}^2  + \eta_t^2 M^2\\
+            &amp;\le  (1 - \frac{a}{t+1}) \frac{a^2M^2}{(a-1)\lambda^2 (t+1)} + \frac{a^2M^2}{\lambda^2 (t+1)^2} \\
+            &amp; \le \frac{a^2M^2}{(a-1)\lambda^2} \frac{1}{(t+1)^2}(t+1 -a + a-1) \\
+            &amp; = \frac{a^2M^2}{(a-1)\lambda^2} \frac{t}{(t+1)^2} \\
+            &amp; \le \frac{a^2M^2}{(a-1)\lambda^2(t+2)}. \quad \left(\frac{t}{(t+1)^2} \le \frac{1}{t+2}\right),
+      \end{split}
+\end{split}\]</div>
+<p>which completes the proof. ◻</p>
+</div>
+</div>
+<div class="section" id="sgd-with-mini-batch">
+<h3>SGD with mini-batch<a class="headerlink" href="#sgd-with-mini-batch" title="Permalink to this headline">¶</a></h3>
+<p>Firstly, we will introduce a natural extended version of the SGD
+discussed above with introducing mini-batch.</p>
+<div class="proof algorithm admonition" id="algorithm-2">
+<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (SGD with mini-batch)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>
+<p><strong>For</strong>: t = 0,1,2,<span class="math notranslate nohighlight">\(\dots\)</span></p>
+<p>Randomly pick <span class="math notranslate nohighlight">\(B_t \subset \{1, 2, \cdots, N\}\)</span> independently with
+probability <span class="math notranslate nohighlight">\(\frac{m!(N-m)!}{N!}\)</span><br />
+and <span class="math notranslate nohighlight">\(\# B_t = m\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{t+1} = x_{t} - \eta_t g_t(x_t).
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    g_{t}(x_t) = \frac{1}{m} \sum_{i \in B_{t}}  \nabla f_i(x_t)
+\]</div>
+</div>
+</div><p>Now we introduce the SGD algorithm with mini-batch without replacement
+which is the most commonly used version of SGD in machine learning.</p>
+<div class="proof algorithm admonition" id="algorithm-3">
+<p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (Shuffle SGD with mini-batch)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Input</strong>: learning rate <span class="math notranslate nohighlight">\(\eta_k\)</span>, mini-batch size <span class="math notranslate nohighlight">\(m\)</span>, parameter
+initialization <span class="math notranslate nohighlight">\(x_{0}\)</span> and denote <span class="math notranslate nohighlight">\(M = \lceil \frac{N}{m} \rceil\)</span>.</p>
+<p><strong>For</strong> Epoch <span class="math notranslate nohighlight">\(k = 1,2,\dots\)</span></p>
+<p>Randomly pick <span class="math notranslate nohighlight">\(B_t \subset \{1, 2, \cdots, N \}\)</span> without replacement<br />
+with <span class="math notranslate nohighlight">\(\# B_t = m\)</span> for <span class="math notranslate nohighlight">\(t = 1,2,\cdots,M\)</span>.</p>
+<p>mini-batch <span class="math notranslate nohighlight">\(t = 1:M\)</span></p>
+<p>Compute the gradient on <span class="math notranslate nohighlight">\(B_{t}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    g_{t}(x) = \frac{1}{m} \sum_{i \in B_{t}}  \nabla f_i(x)
+\]</div>
+<p>Update <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    x  \leftarrow  x - \eta_k g_t(x),
+\]</div>
+<p><strong>EndFor</strong></p>
+</div>
+</div><p>To “randomly pick <span class="math notranslate nohighlight">\(B_i \subset \{1, 2, \cdots, N \}\)</span> without
+replacement with <span class="math notranslate nohighlight">\(\# B_i = m\)</span> for <span class="math notranslate nohighlight">\(i = 1,2,\cdots,t\)</span>”, we usually just
+randomly shuffle the index set first and then consecutively pick every
+<span class="math notranslate nohighlight">\(m\)</span> elements in the shuffled index set. That is the reason why we would
+like to call the algorithm as shuffled SGD while this is the mostly used
+version of SGD in machine learning.</p>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>Let us recall a general machine learning loss function</p>
+<div class="math notranslate nohighlight">
+\[
+    \label{key}
+    L(\theta) = \frac{1}{N}\sum_{i=1}^N \ell(h(X_i; \theta), Y_i),
+\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\{(X_i, Y_i)\}_{i=1}^N\)</span> correspond to these data pairs. For example,
+<span class="math notranslate nohighlight">\(\ell(\cdot, \cdot)\)</span> takes cross-entropy and
+<span class="math notranslate nohighlight">\(h(x; \theta) = p(x;\theta)\)</span> as we discussed in Section 2.2.1. Thus, we
+have the following corresponding relation</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) \leftrightsquigarrow L(\theta), \quad
+    f_i(x) \leftrightsquigarrow \ell(h(X_i; \theta), Y_i).
+\]</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="m2_03.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Convex functions and convergence of gradient descen</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="m2_05.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">MNIST: training and generalization accuracy</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
