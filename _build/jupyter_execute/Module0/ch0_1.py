@@ -14,7 +14,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ## Course Instructor and Assistants
 # - Instructor: Qingguo Hong
 # - Email: huq11@psu.edu
-# - Grader(TA): Haiyang Luo
+# - Grader: Haiyang Luo
 # - Email: hml5369@psu.edu
 # - Live section: T,Th,F: 11:30 -12:20 AM [https://psu.zoom.us/s/97938047724]
 # - Questions and additional office hours: email to huq11@psu.edu
