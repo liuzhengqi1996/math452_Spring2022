@@ -11,9 +11,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 
 # # Introduction to Python and Pytorch
 # 
-# TA: TBA
+# Grader: Haiyang Luo
 # 
-# Email: TBA
+# Email:  hml5369@psu.edu
 # 
 # 1. Anaconda
 # 2. Python
@@ -33,14 +33,14 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 
-# # 1. Anaconda
+# ## 1. Anaconda
 # Anaconda is a free and open-source distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. Package versions are managed by the package management system conda. The Anaconda distribution includes data-science packages suitable for Windows, Linux, and MacOS.
 
 #     Install Anaconda (Recommend: Python 3.7 version, Command Line version) from 
 #     https://www.anaconda.com/distribution/
 # 
 
-# # 2. Python
+# ## 2. Python
 # 
 # Python is a high-level, general-purpose programming language. For examples:
 # 
@@ -64,7 +64,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 #  
 
-# # 3. PyTorch 
+# ## 3. PyTorch 
 # Pytorch is an open source machine learning library, used for applications such as computer vision and natural language processing. It is developed by Facebook's AI Research lab. It is free and open-source software.
 # 
 
@@ -74,7 +74,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     
 #     conda install pytorch torchvision cpuonly -c pytorch  (Windows and Linux Users)    
 
-# # 4. Jupyter Notebook 
+# ## 4. Jupyter Notebook 
 # Jupyter Notebook is a web-based interactive computational environment for creating Jupyter notebook documents. A Jupyter Notebook document contains an ordered list of input/output "cells" which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension. 
 
 #     A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through "Download As" in the web interface, via the nbconvert library or "jupyter nbconvert" command line interface in a shell. (Student can do their hw with Jupyter notebook, then submit a .ipynb file. Then the grader can run the code)

@@ -484,26 +484,28 @@
   <a class="reference internal nav-link" href="#">
    Introduction to Python and Pytorch
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anaconda">
-   1. Anaconda
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   2. Python
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pytorch">
-   3. PyTorch
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyter-notebook">
-   4. Jupyter Notebook
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anaconda">
+     1. Anaconda
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     2. Python
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch">
+     3. PyTorch
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook">
+     4. Jupyter Notebook
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-jupyter-notebook-to-do-programing-with-python-and-pytorch">
@@ -730,8 +732,8 @@
 </div>
 <div class="section" id="introduction-to-python-and-pytorch">
 <h1>Introduction to Python and Pytorch<a class="headerlink" href="#introduction-to-python-and-pytorch" title="Permalink to this headline">¶</a></h1>
-<p>TA: TBA</p>
-<p>Email: TBA</p>
+<p>Grader: Haiyang Luo</p>
+<p>Email:  <a class="reference external" href="mailto:hml5369&#37;&#52;&#48;psu&#46;edu">hml5369<span>&#64;</span>psu<span>&#46;</span>edu</a></p>
 <ol>
 <li><p>Anaconda</p></li>
 <li><p>Python</p></li>
@@ -745,9 +747,8 @@
 <p>Example 5: Find the maximum and minimum of a list of numbers</p>
 </li>
 </ol>
-</div>
 <div class="section" id="anaconda">
-<h1>1. Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h1>
+<h2>1. Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h2>
 <p>Anaconda is a free and open-source distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. Package versions are managed by the package management system conda. The Anaconda distribution includes data-science packages suitable for Windows, Linux, and MacOS.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install Anaconda (Recommend: Python 3.7 version, Command Line version) from 
 https://www.anaconda.com/distribution/
@@ -755,7 +756,7 @@ https://www.anaconda.com/distribution/
 </div>
 </div>
 <div class="section" id="python">
-<h1>2. Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<h2>2. Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Python is a high-level, general-purpose programming language. For examples:</p>
 <p>(1) Create a calculator (calculate tips, annual tax, monthly expense…)</p>
 <p>(2) Solve mathematical problems (root finding, plot some functions, solve Ax=b…)</p>
@@ -768,7 +769,7 @@ https://www.anaconda.com/distribution/
 <p>Note that if you have already downloaded Anaconda, Python will be automaticly installed.</p>
 </div>
 <div class="section" id="pytorch">
-<h1>3. PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
+<h2>3. PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h2>
 <p>Pytorch is an open source machine learning library, used for applications such as computer vision and natural language processing. It is developed by Facebook’s AI Research lab. It is free and open-source software.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install Pytorch from https://pytorch.org/ , or use 
 
@@ -779,7 +780,7 @@ conda install pytorch torchvision cpuonly -c pytorch  (Windows and Linux Users)
 </div>
 </div>
 <div class="section" id="jupyter-notebook">
-<h1>4. Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<h2>4. Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h2>
 <p>Jupyter Notebook is a web-based interactive computational environment for creating Jupyter notebook documents. A Jupyter Notebook document contains an ordered list of input/output “cells” which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the “.ipynb” extension.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through &quot;Download As&quot; in the web interface, via the nbconvert library or &quot;jupyter nbconvert&quot; command line interface in a shell. (Student can do their hw with Jupyter notebook, then submit a .ipynb file. Then the grader can run the code)
 </pre></div>
@@ -816,7 +817,7 @@ conda install pytorch torchvision cpuonly -c pytorch  (Windows and Linux Users)
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_73049</span><span class="o">/</span><span class="mf">1310228693.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_75020</span><span class="o">/</span><span class="mf">1310228693.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># How to use Pytorch</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">torch</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -836,6 +837,7 @@ Step 1: type &quot;jupyter notebook&quot; in command line
 Step 2: Find the link shows in the command line
 Step 3: Open the link with your browser
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="use-jupyter-notebook-to-do-programing-with-python-and-pytorch">
