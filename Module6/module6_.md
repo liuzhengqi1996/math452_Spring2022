@@ -1,4 +1,4 @@
-# Module 1: Linear machine learning models
+# Module 6: MgNet
 ```{tableofcontents}
 ```
 

@@ -288,7 +288,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Module4/module4_.html">
-   Module 1: Linear machine learning models
+   Module 4: Convolutional neural networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -325,7 +325,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Module5/module5_.html">
-   Module 1: Linear machine learning models
+   Module 5: Normalization, ResNet and Multigrid
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -362,7 +362,7 @@
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="module6_.html">
-   Module 1: Linear machine learning models
+   Module 6: MgNet
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -728,7 +728,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_69014</span><span class="o">/</span><span class="mf">4091978758.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_69576</span><span class="o">/</span><span class="mf">4091978758.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -743,8 +743,8 @@
 </div>
 <div class="section" id="apply-multigrid-to-solve-the-solving-the-following-system">
 <h2>2. Apply Multigrid to solve the solving the following system<a class="headerlink" href="#apply-multigrid-to-solve-the-solving-the-following-system" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-b2d1234f-7324-4d08-b995-8682e35529e5">
-<span class="eqno">(22)<a class="headerlink" href="#equation-b2d1234f-7324-4d08-b995-8682e35529e5" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-20f1663e-ba33-4b4a-968e-c02f42979ae8">
+<span class="eqno">(22)<a class="headerlink" href="#equation-20f1663e-ba33-4b4a-968e-c02f42979ae8" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast u =f,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\ast\)</span> is a convolution for one channel with stride 1 and zero padding <span class="math notranslate nohighlight">\(1\)</span>

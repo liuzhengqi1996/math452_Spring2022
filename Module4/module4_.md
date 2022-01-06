@@ -1,4 +1,4 @@
-# Module 1: Linear machine learning models
+# Module 4: Convolutional neural networks
 ```{tableofcontents}
 ```
 
