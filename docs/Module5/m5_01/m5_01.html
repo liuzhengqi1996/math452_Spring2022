@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contents &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Batch normalization" href="../m5_02/m5_02.html" />
+    <link rel="prev" title="Module 1: Linear machine learning models" href="../module5_.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_01/m3_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_02/m3_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module4/module4_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_01/m4_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_02/m4_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_03/m4_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module5_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_04/m5_04.html">
+     Finite Element Method and Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module6/module6_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_01.html">
+     1D and 2D Finite Element and Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module5/m5_01/m5_01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialization-and-normalization-in-dnn-and-cnn">
+   Initialization and Normalization in DNN and CNN
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-normalization-in-dnns-and-cnns">
+     Data normalization in DNNs and CNNs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#normalization-for-input-data-of-dnns">
+       Normalization for input data of DNNs
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-normalization-for-images-in-cnns">
+       Data normalization for images in CNNs
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-of-sqrt-left-sigma-x-right-j-and-sqrt-left-tilde-sigma-x-right-j-on-cifar10">
+       Comparison of
+       <span class="math notranslate nohighlight">
+        \(\sqrt{\left[\sigma_{X}\right]_{j}}\)
+       </span>
+       and
+       <span class="math notranslate nohighlight">
+        \(\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}\)
+       </span>
+       on CIFAR10.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initialization-for-deep-neural-networks">
+     Initialization for deep neural networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xaviers-initialization">
+       Xavier’s Initialization
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kaimings-initialization">
+       Kaiming’s initialization
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialization-in-cnn-models-and-experiments">
+       Initialization in CNN models and experiments
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-normalization-in-dnn-and-cnn">
+     Batch Normalization in DNN and CNN
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recall-the-original-dnn-model">
+       Recall the original DNN model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-batch-normalization-and-new-model">
+     2 “’Real’” Batch Normalization and “’new’ model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-of-b-n-operation-based-on-the-batch">
+   Definition of
+   <span class="math notranslate nohighlight">
+    \(B N\)
+   </span>
+   operation based on the batch
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-model-for-bn">
+   “New” model for BN
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bn-some-modified-sgd-on-new-batch-normalized-model">
+     BN: some ’modified” SGD on new batch normalized model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-phase-in-batch-normalized-dnn">
+     Testing phase in Batch-Normalized DNN
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-normalization-for-cnn">
+     Batch Normalization for CNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<p><span class="math notranslate nohighlight">\(1 \quad\)</span> Initialization and Normalization in DNN and CNN
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>1.1 Data normalization in DNNs and
+<span class="math notranslate nohighlight">\(\mathrm{CNNs} \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>1.1.1 Normalization for input data of DNNs ……………….</p>
+<p>1.1.2 Data normalization for images in CNNs
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots .\)</span></p>
+<p>1.1.3 Comparison of <span class="math notranslate nohighlight">\(\sqrt{\left[\sigma_{X}\right]_{j}}\)</span> and
+<span class="math notranslate nohighlight">\(\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}} \mathrm{~ o}\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.2\)</span> Initialization for deep neural networks
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>1.2.1 Xavier’s Initialization
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . .\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.2 .2\)</span> Kaiming’s initialization
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots . . . . . . .\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.2 .3 \quad\)</span> Initialization in CNN models and experiments
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots . . .8\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.3\)</span> Batch Normalization in DNN and CNN
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>1.3.1 Recall the original DNN model <span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.3 .2\)</span> “Real” Batch Normalization and “new” model ………… 10</p>
+<p><span class="math notranslate nohighlight">\(1.3 .3 \quad\)</span> BN: some “modified” SGD on new batch normalized model 12</p>
+<p>1.3.4 Testing phase in Batch-Normalized DNN ……………. 13</p>
+<p>1.3.5 Batch Normalization for CNN
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . . . . .\)</span></p>
+<p>References
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p><img alt="image" src="Module5/m5_01/2022_01_06_7122b544778bcd520335g-02" />{width=”\textwidth”}</p>
+</div>
+<div class="section" id="initialization-and-normalization-in-dnn-and-cnn">
+<h1>Initialization and Normalization in DNN and CNN<a class="headerlink" href="#initialization-and-normalization-in-dnn-and-cnn" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-normalization-in-dnns-and-cnns">
+<h2>Data normalization in DNNs and CNNs<a class="headerlink" href="#data-normalization-in-dnns-and-cnns" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="normalization-for-input-data-of-dnns">
+<h3>Normalization for input data of DNNs<a class="headerlink" href="#normalization-for-input-data-of-dnns" title="Permalink to this headline">¶</a></h3>
+<p>Consider that we have the all training data as
+$<span class="math notranslate nohighlight">\((X, Y):=\left\{\left(x_{i}, y_{i}\right)\right\}_{i=1}^{N}\)</span><span class="math notranslate nohighlight">\( for
+\)</span>x_{i} \in \mathbb{R}^{d}<span class="math notranslate nohighlight">\( and \)</span>y_{i} \in \mathbb{R}^{k}$.</p>
+<p>Before we input every data into a DNN model, we will apply the following
+normalization for all data <span class="math notranslate nohighlight">\(x_{i}\)</span> for each component. Let denote
+$<span class="math notranslate nohighlight">\(\left[x_{i}\right]_{j} \longleftrightarrow \text { the } \mathrm{j} \text {-th component of data } x_{i}\)</span><span class="math notranslate nohighlight">\(
+Then we have following formula of for all \)</span>j=1,2, \cdots, d<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\left[\tilde{x}_{i}\right]_{j}=\frac{\left[x_{i}\right]_{j}-\left[\mu_{X}\right]_{j}}{\sqrt{\left[\sigma_{X}\right]_{j}}}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\left[\mu_{X}\right]_{j}=\mathbb{E}_{x \sim X}\left[[x]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left[x_{i}\right]_{j}, \quad\left[\sigma_{X}\right]_{j}=\mathbb{V}_{x \sim X}\left[[x]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(\left[x_{i}\right]_{j}-\left[\mu_{X}\right]_{j}\right)^{2} .\)</span><span class="math notranslate nohighlight">\(
+Here \)</span>x \sim X<span class="math notranslate nohighlight">\( means that \)</span>x<span class="math notranslate nohighlight">\( is a discrete random variable on \)</span>X<span class="math notranslate nohighlight">\( with
+probability \)</span><span class="math notranslate nohighlight">\(\mathbb{P}\left(x=x_{i}\right)=\frac{1}{N},\)</span><span class="math notranslate nohighlight">\( for any
+\)</span>x_{i} \in X$.</p>
+<p>For simplicity, we rewrite the element-wise definition above as the
+following compact form
+$<span class="math notranslate nohighlight">\(\tilde{x}_{i}=\frac{x_{i}-\mu_{X}}{\sqrt{\sigma_{X}}}\)</span><span class="math notranslate nohighlight">\( where
+\)</span><span class="math notranslate nohighlight">\(x_{i}, \tilde{x}_{i}, \mu_{X}, \sigma_{X} \in \mathbb{R}^{d}\)</span>$ defined
+as before and all operations in (1.6) are element-wise.</p>
+<p>Here we note that, by normalizing the data set, we have the next
+properties for new data <span class="math notranslate nohighlight">\(\tilde{x} \in \tilde{X}\)</span> with component
+<span class="math notranslate nohighlight">\(j=1,2, \cdots, d\)</span>,
+$<span class="math notranslate nohighlight">\(\mathbb{E}_{\bar{X}}\left[[\tilde{x}]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left[\tilde{x}_{i}\right]_{j}=0\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}_{\tilde{X}}\left[[\tilde{x}]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(\left[\tilde{x}_{i}\right]_{j}-\mathbb{E}_{\tilde{X}}\left[[\tilde{x}]_{j}\right]\right)^{2}=1\)</span><span class="math notranslate nohighlight">\(
+Finally, we will have a “new” data set
+\)</span><span class="math notranslate nohighlight">\(\tilde{X}=\left\{\tilde{x}_{1}, \tilde{x}_{2}, \cdots, \tilde{x}_{N}\right\}\)</span><span class="math notranslate nohighlight">\(
+with unchanged label set \)</span>Y<span class="math notranslate nohighlight">\(. For the next sections, without special
+notices, we use \)</span>X$ data set as the normalized one as default.</p>
+</div>
+<div class="section" id="data-normalization-for-images-in-cnns">
+<h3>Data normalization for images in CNNs<a class="headerlink" href="#data-normalization-for-images-in-cnns" title="Permalink to this headline">¶</a></h3>
+<p>For images, consider we have a color image data set
+<span class="math notranslate nohighlight">\((X, Y):=\left\{\left(x_{i}, y_{i}\right)\right\}_{i=1}^{N}\)</span> where
+$<span class="math notranslate nohighlight">\(x_{i} \in \mathbb{R}^{3 \times m \times n}\)</span><span class="math notranslate nohighlight">\( We further denote these
+the \)</span>(s, t)<span class="math notranslate nohighlight">\( pixel value for data \)</span>x_{i}<span class="math notranslate nohighlight">\( at channel \)</span>j<span class="math notranslate nohighlight">\( as:
+\)</span><span class="math notranslate nohighlight">\(\left[x_{i}\right]_{j ; s t} \longleftrightarrow(s, t) \text { pixel value for } x_{i} \text { at channel } j\)</span><span class="math notranslate nohighlight">\(
+where \)</span>1 \leq i \leq N, 1 \leq j \leq 3,1 \leq s \leq m<span class="math notranslate nohighlight">\(, and
+\)</span>1 \leq j \leq n .$</p>
+<p>Then, the normalization for <span class="math notranslate nohighlight">\(x_{i}\)</span> is defined by
+$<span class="math notranslate nohighlight">\(\left[\tilde{x}_{i}\right]_{j ; s t}=\frac{\left[x_{i}\right]_{j ; s t}-\left[\mu_{X}\right]_{j}}{\sqrt{\left[\sigma_{X}\right]_{j}}}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\left[x_{i}\right]_{j ; s t},\left[\tilde{x}_{i}\right]_{j ; s t},\left[\mu_{X}\right]_{j},\left[\sigma_{X}\right]_{j} \in \mathbb{R}\)</span><span class="math notranslate nohighlight">\(
+Here
+\)</span><span class="math notranslate nohighlight">\(\left[\mu_{X}\right]_{j}=\frac{1}{m \times n \times N} \sum_{1 \leq i \leq N} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left[x_{i}\right]_{j ; s t}\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(\left[\sigma_{X}\right]_{j}=\frac{1}{N \times m \times n} \sum_{1 \leq i \leq N} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left(\left[x_{i}\right]_{j ; s t}-\left[\mu_{X}\right]_{j}\right)^{2}\)</span><span class="math notranslate nohighlight">\(
+In batch normalization, we confirmed with Lian by both numerical test
+and code checking that \)</span>\mathrm{BN}<span class="math notranslate nohighlight">\( also use the above formula to
+compute the variance in \)</span>\mathrm{CNN}$ for each channel.</p>
+<p>Another way to compute the variance over each channel is to compute the
+standard deviation on each channel for every data, and then average them
+in the data direction.
+$<span class="math notranslate nohighlight">\(\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=\frac{1}{N} \sum_{1 \leq i \leq N}\left(\frac{1}{m \times n} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left(\left[x_{i}\right]_{j ; s t}-\left[\mu_{i}\right]_{j}\right)^{2}\right)^{\frac{1}{2}},\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\left[\mu_{i}\right]_{j}=\frac{1}{m \times n} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left[x_{i}\right]_{j ; s t} .\)</span>$</p>
+</div>
+<div class="section" id="comparison-of-sqrt-left-sigma-x-right-j-and-sqrt-left-tilde-sigma-x-right-j-on-cifar10">
+<h3>Comparison of <span class="math notranslate nohighlight">\(\sqrt{\left[\sigma_{X}\right]_{j}}\)</span> and <span class="math notranslate nohighlight">\(\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}\)</span> on CIFAR10.<a class="headerlink" href="#comparison-of-sqrt-left-sigma-x-right-j-and-sqrt-left-tilde-sigma-x-right-j-on-cifar10" title="Permalink to this headline">¶</a></h3>
+<p>They share the same <span class="math notranslate nohighlight">\(\mu_{X}\)</span> as $<span class="math notranslate nohighlight">\(\mu_{X}=\left(\begin{array}{lll}
+0.49140105 &amp; 0.48215663 &amp; 0.44653168
+\end{array}\right)\)</span><span class="math notranslate nohighlight">\( But they had different standard deviation
+estimates: \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp;\sqrt{\left[\sigma_{X}\right]_{j}}=(0.247032840 .243484990 .26158834) \\
+&amp;\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=(0.202201930 .199316350 .20086373)
+\end{aligned}\)</span>$</p>
+</div>
+</div>
+<div class="section" id="initialization-for-deep-neural-networks">
+<h2>Initialization for deep neural networks<a class="headerlink" href="#initialization-for-deep-neural-networks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="xaviers-initialization">
+<h3>Xavier’s Initialization<a class="headerlink" href="#xaviers-initialization" title="Permalink to this headline">¶</a></h3>
+<p>The goal of Xavier initialization [1] is to initialize the deep neural
+network to avoid gradient vanishing or blowup when the input is white
+noise.</p>
+<p>Let us denote the DNN models as:
+$<span class="math notranslate nohighlight">\(\begin{cases}f^{1}(x) &amp; =W^{1} x+b^{1} \\ f^{\ell}(x) &amp; =W^{\ell} \sigma\left(f^{\ell-1}(x)\right)+b^{\ell} \quad \ell=2: L, \\ f(x) &amp; =f^{L}\end{cases}\)</span><span class="math notranslate nohighlight">\(
+with \)</span>x \in \mathbb{R}^{n_{0}}<span class="math notranslate nohighlight">\( and
+\)</span>f^{\ell} \in \mathbb{R}^{n_{\ell}}<span class="math notranslate nohighlight">\(. More precisely, we have
+\)</span><span class="math notranslate nohighlight">\(W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}} .\)</span>$ The basic
+assumptions that we make are:</p>
+<ul class="simple">
+<li><p>The initial weights <span class="math notranslate nohighlight">\(W_{i j}^{\ell}\)</span> are i.i.d symmetric random
+variables with mean 0, namely the probability density function of
+<span class="math notranslate nohighlight">\(W_{i j}^{\ell}\)</span> is even.</p></li>
+<li><p>The initial bias <span class="math notranslate nohighlight">\(b^{\ell}=0\)</span>.</p></li>
+</ul>
+<p>Now we choose the variance of the initial weights to ensure that the
+features <span class="math notranslate nohighlight">\(f^{L}\)</span> and gradients don’t blow up or vanish. To this end we
+have the following lemma.</p>
+<p>Lemma 1. Under the previous assumptions <span class="math notranslate nohighlight">\(f_{i}^{\ell}\)</span> is a symmetric
+random variable with <span class="math notranslate nohighlight">\(\mathbb{E}\left[f^{\ell}\right]=0 .\)</span> Moreover, we
+have the following identity
+$<span class="math notranslate nohighlight">\(\mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]\)</span><span class="math notranslate nohighlight">\(
+Now, if \)</span>\sigma=i d<span class="math notranslate nohighlight">\(, we can prove by induction from \)</span>\ell=1<span class="math notranslate nohighlight">\( that
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[f_{i}^{L}\right]=\left(\Pi_{\ell=2}^{L} n_{\ell-1} \operatorname{Var}\left[W_{s t}^{\ell}\right]\right)\left(\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\right)\)</span><span class="math notranslate nohighlight">\(
+We make this assumption that \)</span>\sigma=i d$, which is pretty reasonably
+since most activation functions in use at the time (such as the
+hyperbolic tangent) were close to the identity near 0 .</p>
+<p>Now, if we set
+$<span class="math notranslate nohighlight">\(\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell-1}}, \quad \forall \ell \geq 2\)</span><span class="math notranslate nohighlight">\(
+we will obtain
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[f_{i}^{L}\right]=\mathbb{V}\left[f_{j}^{L-1}\right]=\cdots=\mathbb{V}\left[f_{k}^{1}\right]=\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\)</span><span class="math notranslate nohighlight">\(
+Thus, in pure DNN models, it is enough to just control
+\)</span>\sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right] .$</p>
+<p>A similar analysis of the propagation of the gradient
+<span class="math notranslate nohighlight">\(\left(\frac{\partial L(\theta)}{\partial f^{t}}\right)\)</span> suggests that
+we set $<span class="math notranslate nohighlight">\(\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell}}\)</span><span class="math notranslate nohighlight">\(
+Thus, the Xavier’s initialization suggests to initialize
+\)</span>W_{i k}^{\ell}$ with variance as:</p>
+<ul class="simple">
+<li><p>To control <span class="math notranslate nohighlight">\(\mathbb{V}\left[f_{i}^{\ell}\right]:\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell-1}}\]</div>
+<ul class="simple">
+<li><p>To control
+<span class="math notranslate nohighlight">\(\mathbb{V}\left[\frac{\partial L(\theta)}{\partial f_{i}^{l}}\right]:\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell}}\]</div>
+<ul class="simple">
+<li><p>Trade-off to control
+<span class="math notranslate nohighlight">\(\mathbb{V}\left[\frac{\partial L(\theta)}{\partial W_{i k}^{l}}\right]:\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}+n_{\ell}}\]</div>
+<p>Here we note that, this analysis works for all symmetric type
+distribution around zero, but we often just choose uniform distribution
+<span class="math notranslate nohighlight">\(\mathcal{U}(-a, a)\)</span> and normal distribution
+<span class="math notranslate nohighlight">\(\mathcal{N}\left(0, s^{2}\right) .\)</span> Thus, the final version of Xavier’s
+initialization takes the trade-off type as
+$<span class="math notranslate nohighlight">\(W_{i k}^{\ell} \sim \mathcal{U}\left(-\sqrt{\frac{6}{n_{\ell}+n_{\ell-1}}}, \sqrt{\frac{6}{n_{\ell}+n_{\ell-1}}}\right)\)</span><span class="math notranslate nohighlight">\(
+or
+\)</span><span class="math notranslate nohighlight">\(W_{i k}^{\ell} \sim \mathcal{N}\left(0, \frac{2}{n_{\ell}+n_{\ell-1}}\right) .\)</span>$</p>
+</div>
+<div class="section" id="kaimings-initialization">
+<h3>Kaiming’s initialization<a class="headerlink" href="#kaimings-initialization" title="Permalink to this headline">¶</a></h3>
+<p>In [2], Kaiming He and others extended this analysis to get an exact
+result when the activation function is the ReLU.</p>
+<p>We first have the following lemma for symmetric distribution.</p>
+<p>Lemma 2. If <span class="math notranslate nohighlight">\(X_{i} \in \mathbb{R}\)</span> for <span class="math notranslate nohighlight">\(i=1:\)</span> n are i.i.d with symmetric
+probability density function <span class="math notranslate nohighlight">\(p(x)\)</span>, i.e. <span class="math notranslate nohighlight">\(p(x)\)</span> is even. Then for any
+nonzero random vector
+<span class="math notranslate nohighlight">\(Y=\left(Y_{1}, Y_{2}, \cdots, Y_{n}\right) \in \mathbb{R}^{n}\)</span> which is
+independent with <span class="math notranslate nohighlight">\(X_{i}\)</span>, the following random variable
+$<span class="math notranslate nohighlight">\(Z=\sum_{i=1}^{n} X_{i} Y_{i}\)</span>$ is also symmetric.</p>
+<p>Then state the following result for ReLU function and random variable
+with symmetric distribution around 0 .</p>
+<p>Lemma 3. If <span class="math notranslate nohighlight">\(X\)</span> is a random variable on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> with symmetric
+probability density <span class="math notranslate nohighlight">\(p(x)\)</span> around zero, i.e., $<span class="math notranslate nohighlight">\(p(x)=p(-x)\)</span><span class="math notranslate nohighlight">\( Then we
+have \)</span>\mathbb{E} X=0<span class="math notranslate nohighlight">\( and
+\)</span><span class="math notranslate nohighlight">\(\mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]\)</span><span class="math notranslate nohighlight">\(
+Based on the previous Lemma 1, we know that \)</span>f_{k}^{\ell-1}<span class="math notranslate nohighlight">\( is a
+symmetric distribution around 0 . The most important observation in
+Kaiming’s paper \[2\] is that:
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[f_{i}^{\ell}\right]=n_{\ell-1} \mathbb{V}\left[W_{i j}^{\ell}\right] \mathbb{E}\left[\left[\sigma\left(f_{j}^{\ell-1}\right)\right]^{2}\right]=n_{\ell-1} \mathbb{V}\left[W_{i k}^{\ell}\right] \frac{1}{2} \mathbb{V}\left[f_{k}^{\ell-1}\right]\)</span><span class="math notranslate nohighlight">\(
+if \)</span>\sigma=<span class="math notranslate nohighlight">\( ReLU. Thus, Kaiming’s initialization suggests to take:
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}}, \quad \forall \ell \geq 2\)</span><span class="math notranslate nohighlight">\(
+For the first layer \)</span>\ell=1<span class="math notranslate nohighlight">\(, by definition \)</span><span class="math notranslate nohighlight">\(f^{1}=W^{1} x+b^{1},\)</span><span class="math notranslate nohighlight">\(
+there is no ReLU, thus it should be
+\)</span>\mathbb{V}\left[W_{i k}^{1}\right]=\frac{1}{d} .<span class="math notranslate nohighlight">\( For simplicity, they
+still use \)</span>\mathbb{V}\left[W_{i k}^{1}\right]=<span class="math notranslate nohighlight">\( \)</span>\frac{2}{d}<span class="math notranslate nohighlight">\( in the
+paper \[2\]. Similarly, an analysis of the propagation of the gradient
+suggests that we set
+\)</span>\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell}}<span class="math notranslate nohighlight">\(. However, in
+paper \[2\] authors did not suggest to take the trade-off version, they
+just chose
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}}\)</span>$ as
+default.</p>
+<p>Thus, the final version of Kaiming’s initialization takes the forward
+type as
+$<span class="math notranslate nohighlight">\(W_{i k}^{\ell} \sim \mathcal{U}\left(-\sqrt{\frac{6}{n_{\ell-1}}}, \sqrt{\frac{6}{n_{\ell-1}}}\right),\)</span><span class="math notranslate nohighlight">\(
+or
+\)</span><span class="math notranslate nohighlight">\(W_{i k}^{\ell} \sim \mathcal{N}\left(0, \frac{2}{n_{\ell-1}}\right)\)</span>$</p>
+</div>
+<div class="section" id="initialization-in-cnn-models-and-experiments">
+<h3>Initialization in CNN models and experiments<a class="headerlink" href="#initialization-in-cnn-models-and-experiments" title="Permalink to this headline">¶</a></h3>
+<p>For CNN models, following the analysis above we have the next iterative
+scheme in CNNs
+$<span class="math notranslate nohighlight">\(f^{\ell, i}=K^{\ell, i} * \sigma\left(f^{\ell, i-1}\right),\)</span><span class="math notranslate nohighlight">\( where
+\)</span>f^{\ell, i-1} \in \mathbb{R}^{c_{\ell} \times n_{\ell} \times m_{\ell}}, f^{\ell, i} \in \mathbb{R}^{h_{\ell} \times n_{\ell} \times m_{\ell}}<span class="math notranslate nohighlight">\(
+and
+\)</span>K \in \mathbb{R}^{(2 k+1) \times(2 k+1) \times h_{\ell} \times c_{\ell}}<span class="math notranslate nohighlight">\(.
+Thus we have
+\)</span><span class="math notranslate nohighlight">\(\left[f^{\ell, i}\right]_{h ; p, q}=\sum_{c=1}^{c_{l}} \sum_{s, t=-k}^{k} K_{h, c ; s, t}^{\ell, i} * \sigma\left(\left[f^{\ell, i-1}\right]_{c ; p+s, q+t}\right)\)</span><span class="math notranslate nohighlight">\(
+Take variance on both sides, we will get
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[\left[f^{\ell, i}\right]_{h ; p, q}\right]=c_{\ell}(2 k+1)^{2} \mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right] \mathbb{E}\left[\left(\left[f^{\ell, i-1}\right]_{o ; p+s, q+t}\right)^{2}\right]\)</span><span class="math notranslate nohighlight">\(
+thus we have the following initialization strategies: Xavier’s
+initialization
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{2}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}}\)</span><span class="math notranslate nohighlight">\(
+Kaiming’s initialization
+\)</span><span class="math notranslate nohighlight">\(\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{2}{c_{\ell}(2 k+1)^{2}}\)</span>$
+Here we can take this Kaiming’s initialization as:</p>
+<ul class="simple">
+<li><p>Double the Xavier’s choice, and get</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{4}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}} .\]</div>
+<ul class="simple">
+<li><p>Then pick <span class="math notranslate nohighlight">\(c_{\ell}\)</span> or <span class="math notranslate nohighlight">\(h_{\ell}\)</span> for final result</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{4}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}}=\frac{2}{c_{\ell}(2 k+1)^{2}} .\]</div>
+<p>And they have the both uniform and normal distribution type.</p>
+<p><img alt="image" src="Module5/m5_01/2022_01_06_7122b544778bcd520335g-09" />{width=”\textwidth”}</p>
+<p>Fig. 1.1. The convergence of a 22-layer large model. The <span class="math notranslate nohighlight">\(x\)</span>-axis is the
+number of training epochs. The y-axis is the top-1 error of 3,000 random
+val samples, evaluated on the center crop. Use ReLU as the activation
+for both cases. Both Kaiming’s initialization (red) and “Xavier’s”
+(blue) [1] lead to convergence, but Kaiming’s initialization starts
+reducing error earlier.</p>
+<p><img alt="image" src="Module5/m5_01/2022_01_06_7122b544778bcd520335g-09(1)" />{width=”\textwidth”}</p>
+<p>Fig. 1.2. The convergence of a 30-layer small model (see the main text).
+Use ReLU as the activation for both cases. Kaiming’s initialization
+(red) is able to make it converge. But “Xavier’s” (blue) [1]
+completely stalls - It is also verified that that its gradients are all
+diminishing. It does not converge even given more epochs. Given a
+22-layer model, in cifar10 the convergence with Kaiming’s initialization
+is faster than Xavier’s, but both of them are able to converge and the
+validation accuracies with two different initialization are about the
+same(error is <span class="math notranslate nohighlight">\(33.82,33.90)\)</span>.</p>
+<p>With extremely deep model with up to 30 layers, Kaiming’s initialization
+is able to make the model convergence. On the contrary, Xavier’s method
+completely stalls the learning.</p>
+</div>
+</div>
+<div class="section" id="batch-normalization-in-dnn-and-cnn">
+<h2>Batch Normalization in DNN and CNN<a class="headerlink" href="#batch-normalization-in-dnn-and-cnn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recall-the-original-dnn-model">
+<h3>Recall the original DNN model<a class="headerlink" href="#recall-the-original-dnn-model" title="Permalink to this headline">¶</a></h3>
+<p>Consider the classical (fully connected) artificial deep neural network
+(DNN) <span class="math notranslate nohighlight">\(f^{L}\)</span>,
+$<span class="math notranslate nohighlight">\(\begin{cases}f^{1} &amp; =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} &amp; =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x \in \mathbb{R}^{n}<span class="math notranslate nohighlight">\( is the input vector, \)</span>\sigma$ is a
+non-linear function (activation).</p>
+</div>
+</div>
+<div class="section" id="real-batch-normalization-and-new-model">
+<h2>2 “’Real’” Batch Normalization and “’new’ model<a class="headerlink" href="#real-batch-normalization-and-new-model" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="definition-of-b-n-operation-based-on-the-batch">
+<h1>Definition of <span class="math notranslate nohighlight">\(B N\)</span> operation based on the batch<a class="headerlink" href="#definition-of-b-n-operation-based-on-the-batch" title="Permalink to this headline">¶</a></h1>
+<p>Following the idea in normalization, we consider that we have the all
+training data as $<span class="math notranslate nohighlight">\((X, Y):=\left\{x_{i}, y_{i}\right\}_{i=1}^{N} .\)</span><span class="math notranslate nohighlight">\(
+Since the normalization is applied to each activation independently, let
+us focus on a particular activation \)</span>\left[f^{\ell}\right]<em>{k}<span class="math notranslate nohighlight">\( and omit
+\)</span>k<span class="math notranslate nohighlight">\( as \)</span>f^{\ell}<span class="math notranslate nohighlight">\( for clarity. We have \)</span>N<span class="math notranslate nohighlight">\( values of this activation in
+the batch, \)</span><span class="math notranslate nohighlight">\(X=\left\{x_{1}, \cdots, x_{N}\right\}\)</span><span class="math notranslate nohighlight">\( Let the normalized
+values be \)</span>\hat{f}^{\ell}<span class="math notranslate nohighlight">\(, and their linear transformations be
+\)</span>\tilde{f}^{\ell} .<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(\begin{gathered}
+\mu_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]=\frac{1}{N} \sum_{i=1}^{N} f^{\ell}\left(x_{i}\right) \\
+\sigma_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(f^{\ell}\left(x_{i}\right)-\mu_{X}\right)^{2} \quad \text { batch mean } \\
+\hat{f}^{\ell}(x) \leftarrow \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}} \\
+\tilde{f}^{\ell}(x) \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell}
+\end{gathered}\)</span><span class="math notranslate nohighlight">\( Here we note that all these operations in the previous
+equation are defined by element-wise. Then at last, we define the BN
+operation based on the batch set as
+\)</span><span class="math notranslate nohighlight">\(\mathrm{BN}_{X}\left(f^{\ell}(x)\right)=\tilde{f}^{\ell}(x):=\gamma^{\ell} \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}}+\beta^{\ell}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tilde{f}^{\ell}(x), \mu</em>{X}^{\ell}<span class="math notranslate nohighlight">\( and \)</span>\sigma_{X}^{\ell}$ are
+given above.</p>
+</div>
+<div class="section" id="new-model-for-bn">
+<h1>“New” model for BN<a class="headerlink" href="#new-model-for-bn" title="Permalink to this headline">¶</a></h1>
+<p>In summary, we have the new DNN model with BN as:
+$<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =\left(\theta^{1}\left(x_{i}\right)\right) \\ \tilde{f}^{\ell} &amp; =\theta^{\ell} \circ \sigma \circ \mathrm{BN}_{X}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
+For a more comprehensive notation, we can use the next notation
+\)</span><span class="math notranslate nohighlight">\(\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{X}\)</span><span class="math notranslate nohighlight">\( Here one thing is
+important that we need to mention is that because of the new scale
+\)</span>\gamma^{\ell}<span class="math notranslate nohighlight">\( and shift \)</span>\beta^{\ell}<span class="math notranslate nohighlight">\( added after the BN operation.
+We can remove the basis \)</span>b^{\ell}<span class="math notranslate nohighlight">\( in \)</span>\theta^{\ell}<span class="math notranslate nohighlight">\(, thus to say the
+real model we will compute should be
+\)</span><span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i} \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
+Combine the two definition, we note
+\)</span><span class="math notranslate nohighlight">\(\tilde{\Theta}:=\{W, \gamma, \beta\}\)</span><span class="math notranslate nohighlight">\( where
+\)</span>W=\left{W^{1}, \cdots, W^{l}\right}, \gamma:=\left{\gamma^{2}, \cdots, \gamma^{L}\right}<span class="math notranslate nohighlight">\(
+and \)</span>\beta:=\left{\beta^{2}, \cdots, \beta^{L}\right}$</p>
+<p>Finally, we have the loss function as:
+$<span class="math notranslate nohighlight">\(\mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\)</span><span class="math notranslate nohighlight">\(
+A key observation in \)</span>(1.57)<span class="math notranslate nohighlight">\( and the new BN model \)</span>(1.55)<span class="math notranslate nohighlight">\( is that
+\)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+\mu_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right] \\
+\sigma_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right] \\
+\mathcal{L}(\tilde{\Theta}) &amp;=\mathbb{E}_{(x, y) \sim(X, Y)}\left[\ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\right]
+\end{aligned}\)</span><span class="math notranslate nohighlight">\( Here we need to mention that \)</span><span class="math notranslate nohighlight">\(x \sim X\)</span><span class="math notranslate nohighlight">\( means \)</span>x<span class="math notranslate nohighlight">\(
+subject to the discrete distribution of all data \)</span>X$.</p>
+<div class="section" id="bn-some-modified-sgd-on-new-batch-normalized-model">
+<h2>BN: some ’modified” SGD on new batch normalized model<a class="headerlink" href="#bn-some-modified-sgd-on-new-batch-normalized-model" title="Permalink to this headline">¶</a></h2>
+<p>Following the key observation in (1.58), and recall the similar case in
+SGD, we do the the sampling trick in (1.57) and obtain the mini-batch
+SGD: $<span class="math notranslate nohighlight">\(x \sim X \approx x \sim \mathcal{B},\)</span><span class="math notranslate nohighlight">\( here \)</span>\mathcal{B}<span class="math notranslate nohighlight">\( is a
+mini-batch of batch \)</span>X<span class="math notranslate nohighlight">\( with \)</span>\mathcal{B} \subset X .$</p>
+<p>However, for problem in (1.57), it is very difficult to find some subtle
+sampling method because of the composition of <span class="math notranslate nohighlight">\(\mu_{X}^{\ell}\)</span> and
+<span class="math notranslate nohighlight">\(\left[\sigma_{X}^{\ell}\right]^{2}\)</span>. However, one simple way for
+sampling (1.57) can be chosen as taking (1.59) for all the expectation
+case in (1.57) and (1.58).</p>
+<p>This is to say, in training process ( <span class="math notranslate nohighlight">\(t\)</span>-th step for example), once we
+choose <span class="math notranslate nohighlight">\(B_{t} \subset X\)</span> as the mini-batch, then the model becomes
+$<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i}, \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{\mathcal{B}_{t}},\)</span><span class="math notranslate nohighlight">\( or
+we can say that \)</span>X<span class="math notranslate nohighlight">\( is replaced by \)</span>\mathcal{B}_{t}$ in this case.</p>
+<p>Here <span class="math notranslate nohighlight">\(\mathrm{BN}_{\mathcal{B}_{t}}\)</span> is defined by $<span class="math notranslate nohighlight">\(\begin{array}{cr}
+\mu_{\mathcal{B}_{t}}^{\ell} &amp; \leftarrow \frac{1}{m} \sum_{i=1}^{m} f^{\ell}\left(x_{i}\right) \\
+\sigma_{\mathcal{B}_{t}}^{\ell} &amp; \leftarrow \frac{1}{m} \sum_{i=1}^{m}\left(f^{\ell}\left(x_{i}\right)-\mu_{\mathcal{B}_{t}}\right)^{2} \quad \text { mini-batch mean } \\
+\hat{f}^{\ell}(x) &amp; \leftarrow \frac{f^{\ell}(x)-\mu_{\mathcal{B}_{t}}^{\ell}}{\sqrt{\sigma_{\mathcal{B}_{t}}^{\ell}+\epsilon}} \\
+\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right):=\tilde{f}^{\ell}(x) &amp; \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell} \\
+&amp; \text { normalize }
+\end{array}\)</span><span class="math notranslate nohighlight">\( Here BN operation introduce some new parameters as
+\)</span>\gamma<span class="math notranslate nohighlight">\( and \)</span>\beta<span class="math notranslate nohighlight">\(. Thus to say, for training phase, if we choose
+mini-batch as \)</span>\mathcal{B}<em>{t}<span class="math notranslate nohighlight">\( in \)</span>t<span class="math notranslate nohighlight">\(-th training step, we need to take
+gradient as
+\)</span><span class="math notranslate nohighlight">\(\frac{1}{m} \nabla_{\tilde{\Theta}} \sum_{i \in \mathcal{B}_{t}} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\)</span><span class="math notranslate nohighlight">\(
+which needs us the to take gradient for \)</span>\mu</em>{B}^{\ell}<span class="math notranslate nohighlight">\( or
+\)</span>\left[\sigma_{B}^{\ell}\right]^{2}<span class="math notranslate nohighlight">\( w.r.t \)</span>w^{i}<span class="math notranslate nohighlight">\( for \)</span>i \leq \ell$.</p>
+<p>Questions: To derive the new gradient formula for BN step because of the
+fact that
+$<span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}^{\ell}, \quad \text { and } \quad \sigma_{\mathcal{B}_{t}}^{\ell}\)</span><span class="math notranslate nohighlight">\(
+contain the output of \)</span>\tilde{f}^{\ell-1}$.</p>
+<p>This is exact the batch normalization method described in [3].</p>
+</div>
+<div class="section" id="testing-phase-in-batch-normalized-dnn">
+<h2>Testing phase in Batch-Normalized DNN<a class="headerlink" href="#testing-phase-in-batch-normalized-dnn" title="Permalink to this headline">¶</a></h2>
+<p>One key problem is that, in the BN operator, we need to compute the mean
+and variance in a data set (batch or mini-batch). However, in the
+inference step, we just input one data into this DNN, how to compute the
+BN operator in this situation.</p>
+<p>Actually, the <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> parameter is fixed after training,
+the only problem is to compute the mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>.
+All the mean <span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}\)</span> and variance
+<span class="math notranslate nohighlight">\(\sigma_{\mathcal{B}}^{2}\)</span> during the training phase are just the
+approximation of the mean and variance of whole batch i.e. <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
+<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> as shown in (1.58).</p>
+<p>One natural idea might be just use the BN operator w.r.t to the whole
+training data set, thus to say just compute <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
+<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> by definition in (1.51).</p>
+<p>However, there are at least the next few problems:</p>
+<ul class="simple">
+<li><p>computation cost,</p></li>
+<li><p>ignoring the statistical approximation (don’t make use of the
+<span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\mathcal{B}_{t}}^{2}\)</span> in
+training phase).</p></li>
+</ul>
+<p>Considering that we have the statistical approximation for <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
+<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> during each SGD step, moving average might be a more
+straightforward way. Thus two say, we define the <span class="math notranslate nohighlight">\(\mu^{\ell}\)</span> and
+<span class="math notranslate nohighlight">\(\left[\sigma^{\ell}\right]^{2}\)</span> for the inference (test) phase as
+$<span class="math notranslate nohighlight">\(\mu^{\ell}=\frac{1}{T} \sum_{t=1}^{T} \mu_{\mathcal{B}_{t}}^{\ell}, \quad \sigma^{\ell}=\frac{1}{T} \frac{m}{m-1} \sum_{t=1}^{T} \sigma_{\mathcal{B}_{t}}^{\ell}\)</span>$
+Here we take Bessel’s correction for unbiased variance. The above moving
+average step is found in the original paper of BN in [3].</p>
+<p>Another way to do this is to call the similar idea in momentum. At each
+time step we update the running averages for mean and variance using an
+exponential decay based on the momentum parameter: $<span class="math notranslate nohighlight">\(\begin{aligned}
+&amp;\mu_{\mathcal{B}_{t}}^{\ell}=\alpha \mu_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \mu_{\mathcal{B}_{t}}^{\ell} \\
+&amp;\sigma_{\mathcal{B}_{t}}^{\ell}=\alpha \sigma_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \sigma_{\mathcal{B}_{t}}^{\ell}
+\end{aligned}\)</span><span class="math notranslate nohighlight">\( \)</span>\alpha<span class="math notranslate nohighlight">\( is close to 1 , we can take it as \)</span>0.9<span class="math notranslate nohighlight">\(
+generally. Then we all take bath mean and variance as
+\)</span>\mu_{X}^{\ell} \approx \mu_{\mathcal{B}<em>{T}}^{\ell}<span class="math notranslate nohighlight">\( and
+\)</span>\sigma</em>{X}^{\ell} \approx \sigma_{\mathcal{B}_{T}}^{\ell} .$</p>
+<p>Many people argue that the variance here should also use Bessel’s
+correction.</p>
+</div>
+<div class="section" id="batch-normalization-for-cnn">
+<h2>Batch Normalization for CNN<a class="headerlink" href="#batch-normalization-for-cnn" title="Permalink to this headline">¶</a></h2>
+<p>One key idea in <span class="math notranslate nohighlight">\(\mathrm{BN}\)</span> is to do normalization with each scalar
+features (neurons) separately along a mini-batch. Thus to say, we need
+one to identify what is neuron in CNN. This is a historical problem,
+some people think neuron in CNN should be the pixel in each channel some
+thing that each channel is just one neuron. BN choose the later one. One
+(most ?) important reason for this choice is the fact of computation
+cost. For convolutional layers, BN additionally wants the normalization
+to obey the convolutional property - so that different elements of the
+same feature map, at different locations, are normalized in the same
+way. To compute <span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}^{\ell}\)</span>, we take mean of the set
+of all values in a feature map across both the elements of a mini-batch
+and spatial locations - so for a mini-batch of size <span class="math notranslate nohighlight">\(m\)</span> and feature maps
+of size <span class="math notranslate nohighlight">\(m_{\ell} \times n_{\ell}\)</span> (image geometrical size), we use the
+effective mini-batch of size <span class="math notranslate nohighlight">\(m m_{\ell} n_{\ell}\)</span>. We learn a pair of
+parameters <span class="math notranslate nohighlight">\(\gamma_{k}\)</span> and <span class="math notranslate nohighlight">\(\beta_{k}\)</span> per feature map (k-th channel),
+rather than per activation</p>
+<p>For simplicity, then have the following BN scheme for CNN
+$<span class="math notranslate nohighlight">\(\begin{array}{cc}
+{\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}} &amp; \text { mean on channel } j \\
+{\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left(\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}\right)^{2}} &amp; \text { variance on channel } j \\
+{\left[\hat{f}^{\ell}(x)\right]_{j ; s t} \leftarrow \frac{\left[f^{\ell}(x)\right]_{j, s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}}{\sqrt{\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j}+\epsilon}}} &amp; \text { normalize }
+\end{array}\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\left[\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right)\right]_{j ; s t}:=\left[\tilde{f}^{\ell}(x)\right]_{j ; s t} \leftarrow\left[\gamma^{\ell}\right]_{j}\left[\hat{f}^{\ell}(x)\right]_{j ; s t}+\left[\beta^{\ell}\right]_{j}\)</span>$
+scale and shift on channel</p>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>[1] X. Glorot and Y. Bengio. Understanding the difficulty of training
+deep feedforward neural networks. In Proceedings of the thirteenth
+international conference on artificial intelligence and statistics,
+pages 249-256, 2010 .</p>
+<p>[2] K. He, X. Zhang, S. Ren, and J. Sun. Delving deep into rectifiers:
+Surpassing human-level performance on imagenet classification. In
+Proceedings of the IEEE international conference on computer vision,
+pages <span class="math notranslate nohighlight">\(1026-1034,2015 .\)</span></p>
+<p>[3] S. Ioffe and C. Szegedy. Batch normalization: Accelerating deep
+network training by reducing internal covariate shift. In International
+conference on machine learning, pages 448-456, 2015 .</p>
+<p>[4] Y. LeCun, L. Bottou, G. B. Orr, K.-R. Müller, et al. Neural
+networks: Tricks of the trade. Springer Lecture Notes in Computer
+Sciences, 1524(5-50): <span class="math notranslate nohighlight">\(6,1998 .\)</span></p>
+<p>[5] S. Wiesler and H. Ney. A convergence analysis of <span class="math notranslate nohighlight">\(\log\)</span>-linear
+training. In <span class="math notranslate nohighlight">\(A d\)</span> vances in Neural Information Processing Systems,
+pages 657-665, 2011.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module5/m5_01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../module5_.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Module 1: Linear machine learning models</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../m5_02/m5_02.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Batch normalization</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
