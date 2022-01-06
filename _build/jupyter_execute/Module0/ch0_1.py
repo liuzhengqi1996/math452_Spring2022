@@ -33,6 +33,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ### Interactive programming environment:
 # - Click the "Binder" icon under Rocket icon:
 # ![rocket](./rocket.png)
+# - !!! Attention: the interactive programming environment won't save your code
 
 # ## Course Description and Syllabus
 # Main topics include:
