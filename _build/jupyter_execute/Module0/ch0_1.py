@@ -16,7 +16,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # - Email: huq11@psu.edu
 # - Grader: Haiyang Luo
 # - Email: hml5369@psu.edu
-# - Live section: T,Th,F: 11:30 -12:20 AM [https://psu.zoom.us/s/97938047724]
+# - Live section: T,Th: 11:30 -12:20 AM [https://psu.zoom.us/s/97938047724]
 # - Questions and additional office hours: email to huq11@psu.edu
 # - Consultant: Professor Stanley Smith
 
