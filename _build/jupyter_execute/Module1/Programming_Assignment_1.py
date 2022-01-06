@@ -4,11 +4,6 @@
 # # Module 1 Programming Assignment 
 # 
 # 
-# Remark: 
-# 
-# (1) There are 9 problems, among which 7 problems are for 10 points whlie the other 2 problems are optional. Although the optional problems will not be counted, you are suggested to finish them as possible as you can.
-# 
-# (2) Please upload your solutions of this assignment to Canvas with a file named "Programming_Assignment_1 _yourname.ipynb" 
 
 # =================================================================================================================
 

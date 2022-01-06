@@ -22,7 +22,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \min_{x\in \mathbb{R}^n } f(x).
 # $$ (problem)
 # 
-# ![image](../figures/diag_GD.png){height="5cm" width="7cm"}
+# ![image](../figures/diag_GD.png)
 # 
 # #### A general approach: line search method
 # 
@@ -36,9 +36,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # to produce $\{ x_{t}\}_{t=1}^{\infty}$ 
 # 
 # $$
-#     \label{line-search}
 #     x_{t+1} = x_{t} - \eta_t p_t.
-# $$
+# $$ (line-search)
 # 
 # Here $\eta_t$ is called the step size in
 # optimization and also learning rate in machine learn
@@ -124,8 +123,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Since at each point, $f(x)$ decreases most rapidly along the negative
 # gradient direction, it is then natural to choose the search direction in
-# [\[line-search\]](#line-search){reference-type="eqref"
-# reference="line-search"} in the negative gradient direction and the
+# {eq}`line-search`  in the negative gradient direction and the
 # resulting algorithm is the so-called gradient descent method.
 # 
 # ```{prf:algorithm} Algrihthm

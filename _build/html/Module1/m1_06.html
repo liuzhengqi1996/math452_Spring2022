@@ -423,7 +423,7 @@
     \label{optmodel}
     \min_{x\in \mathbb{R}^n } f(x).
 \]</div>
-<p><img alt="image" src="../_images/diag_GD.png" />{height=”5cm” width=”7cm”}</p>
+<p><img alt="image" src="../_images/diag_GD.png" /></p>
 <div class="section" id="a-general-approach-line-search-method">
 <h3>A general approach: line search method<a class="headerlink" href="#a-general-approach-line-search-method" title="Permalink to this headline">¶</a></h3>
 <p>Given any initial guess <span class="math notranslate nohighlight">\(x_1\)</span>, the line search method uses the following
@@ -433,9 +433,8 @@ algorithm</p>
     \eta_t= argmin_{\eta\in \mathbb{R}^1} f(x_t - \eta p_t)\qquad \mbox{(1D minimization problem)}
 \]</div>
 <p>to produce <span class="math notranslate nohighlight">\(\{ x_{t}\}_{t=1}^{\infty}\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-    \label{line-search}
+<div class="math notranslate nohighlight" id="equation-line-search">
+<span class="eqno">(18)<a class="headerlink" href="#equation-line-search" title="Permalink to this equation">¶</a></span>\[
     x_{t+1} = x_{t} - \eta_t p_t.
 \]</div>
 <p>Here <span class="math notranslate nohighlight">\(\eta_t\)</span> is called the step size in
@@ -510,8 +509,7 @@ fastest local decrease of the function <span class="math notranslate nohighlight
 <p>Here is a simple diagram for this property.</p>
 <p>Since at each point, <span class="math notranslate nohighlight">\(f(x)\)</span> decreases most rapidly along the negative
 gradient direction, it is then natural to choose the search direction in
-<a class="reference external" href="#line-search">[line-search]</a>{reference-type=”eqref”
-reference=”line-search”} in the negative gradient direction and the
+<a class="reference internal" href="#equation-line-search">(18)</a>  in the negative gradient direction and the
 resulting algorithm is the so-called gradient descent method.</p>
 <div class="proof algorithm admonition" id="my-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Algrihthm)</p>
