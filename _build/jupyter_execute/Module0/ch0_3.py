@@ -115,7 +115,7 @@ print('A is', A)
 #     Step 2: Find the link shows in the command line
 #     Step 3: Open the link with your browser
 
-# # 5. Use Jupyter Notebook to do programing with Python and Pytorch
+# ## 5. Use Jupyter Notebook to do programing with Python and Pytorch
 
 # ## Part A: Basic Python Language
 
