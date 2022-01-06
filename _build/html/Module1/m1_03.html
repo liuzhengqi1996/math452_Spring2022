@@ -239,26 +239,6 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Module3/m3_01.html">
-     Nonlinear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Module3/m3_02.html">
-     Polynomials and Weierstrass theorem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Module3/m3_03.html">
-     Finite element method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Module3/m3_04.html">
-     Deep neural network functions
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../Module3/m3_05.html">
      Universal approximation properties
     </a>
@@ -449,6 +429,41 @@ weights as</p>
 <p>Our linearly separable assumption implies that
 <span class="math notranslate nohighlight">\(\mathbf\Theta\neq \emptyset\)</span>. Now we know the existence of linearly
 classifiable weights. But how can we find one element in <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span>?</p>
+<div class="admonition-definition-softmax admonition" id="softmax">
+<p class="admonition-title">Definition (softmax)</p>
+<p>Given <span class="math notranslate nohighlight">\(s = (s_1,s_2,\cdots,s_k)^T\in \mathbb{R}^k\)</span>, we define the soft-max
+mapping <span class="math notranslate nohighlight">\(\sigma: \mathbb{R}^k \rightarrow\mathbb{R}^k\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \sigma(s)  = \frac{e^{s}}{e^{s}\cdot \mathbf{1}} = \frac{1}{\sum\limits_{i=1}^k e^{s_i}}
+    \begin{pmatrix}
+    e^{s_1}\\
+    e^{s_2}\\
+    \vdots\\
+    e^{s_k}
+    \end{pmatrix}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    e^{s} = 
+    \begin{pmatrix}
+    e^{s_1}\\
+    e^{s_2}\\
+    \vdots\\
+    e^{s_k}
+    \end{pmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \mathbf{1} = 
+    \begin{pmatrix}
+    1\\
+    1 \\
+    \vdots \\
+    1
+    \end{pmatrix} \in\mathbb{R}^k
+\end{split}\]</div>
+</div>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>Given parameter <span class="math notranslate nohighlight">\(\mathbf\theta = (W,b)\)</span>, we define a feature mapping

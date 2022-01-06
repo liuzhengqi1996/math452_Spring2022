@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.9 Bayesian Approach to Machine Learning &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.10 General Covariance" href="ch3_10.html" />
+    <link rel="prev" title="3.8 Classfication/ Logistic Regression" href="ch3_8.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch00/ch0_.html">
+   Ch0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_1.html">
+     0.1 Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_2.html">
+     0.2 Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_3.html">
+     0.3 Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch01/ch1_.html">
+   Ch1 Machine Learning and Image Classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/video.html">
+     Chapter 1 video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_1_video.html">
+     1.1 A basic machine learning problem: image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_2_video.html">
+     1.2 Image classification problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_3_video.html">
+     1.3 Some popular data sets in image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/hw2.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch02/ch2_.html">
+   Ch2 Linear Machine Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_1_video.html">
+     2.1 Definition of linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_2.html">
+     2.2 Introduction to logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_3.html">
+     2.3 KL divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_4.html">
+     2.4 Support vector machine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch3_.html">
+   Ch3 Probability
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_1.html">
+     3.1 Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_2.html">
+     3.2 Basic probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_3.html">
+     3.3 Basic Probability Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_4.html">
+     3.4 Random, Variable, Mean, Variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_5.html">
+     3.5 Probability interpretation of logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_6.html">
+     3.6 Maximamum Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_7.html">
+     3.7 Basic Statistical Learning Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_8.html">
+     3.8 Classfication/ Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.9 Bayesian Approach to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_10.html">
+     3.10 General Covariance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch04/ch4_.html">
+   Chapter 4 Training Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_1.html">
+     4.1 Line search and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_2.html">
+     4.2 Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch05/ch5_.html">
+   Chapter 5 Polynomials and Weierstrass theorem
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_1.html">
+     5.1 Weierstrass Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_2.html">
+     5.2 Fourier transform and Fourier series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch07/ch7_.html">
+   Chapter 7 Deep Neural Network Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_1.html">
+     7.1 Motivation: from finite element to neural network {#FE2NN}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_2.html">
+     7.2 Why we need deep neural networks via composition {#whydeep}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_3.html">
+     7.3.4 Fourier transform of polynomials
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch03/ch3_9.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452/main?urlpath=lab/tree/ch03/ch3_9.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goal">
+   3.9.1 Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-image-classification-logistic-regression">
+   3.9.2 Example: Image Classification/ Logistic Regression
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bayesian-approach-to-machine-learning">
+<h1>3.9 Bayesian Approach to Machine Learning<a class="headerlink" href="#bayesian-approach-to-machine-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goal">
+<h2>3.9.1 Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Goal: Estimate an unknown distribution on X from data
+<span class="math notranslate nohighlight">\(\left\{x_{j}\right\}_{j=1}^{n}\)</span></p>
+<ul>
+<li><p>Build a model</p>
+<ul>
+<li><p>Set of parameters <span class="math notranslate nohighlight">\(\Theta\)</span></p></li>
+<li><p>Family of distribution on X,</p>
+<div class="math notranslate nohighlight">
+\[
+                p(x|\theta)\quad \mbox{with}\quad \theta \in \Theta
+            \]</div>
+</li>
+<li><p>Prior distribution on the parameters <span class="math notranslate nohighlight">\(\Theta\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+                q(\theta).
+            \]</div>
+</li>
+</ul>
+</li>
+<li><p>Use Bayes’ Law</p>
+<div class="math notranslate nohighlight">
+\[
+            p(\theta|x) p(x)=p(x \  and \   \theta )=p(x | \theta) p(\theta)
+        \]</div>
+</li>
+<li><p>Recall if <span class="math notranslate nohighlight">\(A_{1} , A_{2}\)</span> are events:</p>
+<div class="math notranslate nohighlight">
+\[
+            p\left(A_{1} | A_{2}\right)=\frac{P\left(A_{1} \cap A_{2}\right)}{P\left(A_{2}\right)}
+        \]</div>
+<div class="math notranslate nohighlight">
+\[
+            p(\theta | x)=\frac{p(x | \theta) q(\theta)}{p(x)}
+        \]</div>
+<div class="math notranslate nohighlight">
+\[
+            p(\theta |x) \sim p(x | \theta) q(\theta)
+        \]</div>
+<p>where
+<span class="math notranslate nohighlight">\(p(\theta |x)\)</span> is the posteriori distribution, <span class="math notranslate nohighlight">\(q(\theta)\)</span> is
+the prior distribution and <span class="math notranslate nohighlight">\(p(x | \theta)\)</span> is the likelihood
+function.</p>
+</li>
+</ul>
+</li>
+<li><p>Stant with: prior <span class="math notranslate nohighlight">\(q(\theta)\)</span></p></li>
+<li><p>Add data <span class="math notranslate nohighlight">\(x\)</span>, replace <span class="math notranslate nohighlight">\(q\)</span> with the posterior</p>
+<div class="math notranslate nohighlight">
+\[
+        p(\theta | x) \sim p(x | \theta) q(\theta)
+    \]</div>
+</li>
+<li><p>More data: multiply by likelihood function and then normalize</p></li>
+<li><p>Left with a posterior distribution</p>
+<ul>
+<li><p>Sample from posterion distribution to approximate</p>
+<div class="math notranslate nohighlight">
+\[
+            P_{pred}(x)=\int_{\Theta} p(x | \theta) p(\theta) d \theta
+        \]</div>
+</li>
+<li><p>Choose <span class="math notranslate nohighlight">\(\theta\)</span> to maximize posterior distribution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+            \begin{aligned}
+            \theta^{*}&amp;=\arg \max _{\theta \in \Theta} p(\theta|x)\\
+            &amp;=\arg \min _{\theta \in \Theta}-\log p(\theta|x)\\
+            &amp;=\arg \min _{\theta \in \Theta}-\log (p(x | \theta))-\log (q(\theta))+\log (p(x))\\
+            &amp;=\arg \min _{\theta \in \Theta}-\log (p(x | \theta))-\log (q(\theta))\end{aligned}
+        \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(-\log (p(x | \theta))\)</span> is the negative log likelihood and
+<span class="math notranslate nohighlight">\(-\log (q(\theta))\)</span> is the regularization coming from prior.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="example-image-classification-logistic-regression">
+<h2>3.9.2 Example: Image Classification/ Logistic Regression<a class="headerlink" href="#example-image-classification-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Images <span class="math notranslate nohighlight">\(x \in X=\mathbb{R}^{d}\)</span></p></li>
+<li><p>Labels <span class="math notranslate nohighlight">\(y \in Y=\left\{e_{1}, \ldots, e_{k}\right\}\)</span> with <span class="math notranslate nohighlight">\(k\)</span> is the
+dimension of labels</p></li>
+<li><p>Data <span class="math notranslate nohighlight">\(\left\{(x_{j},y_{j})\right\}_{j=1}^{n}\)</span></p></li>
+<li><p>Model
+<span class="math notranslate nohighlight">\(\theta=(W, b) \in \mathbb{R}^{k \times d} \times \mathbb{R}^{k}\)</span>.
+By [refernce before],</p>
+<div class="math notranslate nohighlight">
+\[
+        p(y | x, \theta)=\frac{e^{Wx+b} \cdot y}{e^{Wx+b} \cdot \mathbb{I}}
+    \]</div>
+</li>
+<li><p>Prior distribution: suppose it is a Gaussian,</p>
+<div class="math notranslate nohighlight">
+\[
+        q(W, b)=C e^{-\alpha\left(\left\|W\right\|_{2}^{2}+ \left\|b\right\|_{2}^{2}\right)}
+    \]</div>
+<ul>
+<li><p>Calculate the posterior: here <span class="math notranslate nohighlight">\(q(W,b)=p(W, b|x)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+            p(W, b | x, y)=\frac{p(y | x, W, b) p(W, b|x) }{p(y | x)}
+        \]</div>
+<div class="math notranslate nohighlight">
+\[
+            p(y | x)=\int_{\Theta} p(y|x, W, b) q(W, b) d \theta
+        \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+            \begin{aligned}
+            (W, b)^{*}&amp;=\underset{W,b}{\arg \min }-\log \left( p\left(W, b |\left\{x_{j},y_{j}\right\}_{j=1}^{n}\right)\right) \\
+        &amp;=\underset {W,b}\arg  \min -\log \left( p\left(\left\lbrace y_{j}\right\rbrace _{j=1}^{n} | \left\lbrace x_{j}\right\rbrace _{j=1}^{n}, W, b\right)\right)-\log (q(W, b))\\
+        &amp;=\underset {W,b}\arg  \min -\log \left(\prod_{i=1}^{n} p\left(y_{j} | x_{j}, W, b\right)\right)-\log (q(W, b))\\
+        &amp;=\underset{W, b}{\operatorname{argmin}} \sum_{j=1}^{n} \log \left(e^{Wx+b} \cdot \mathbb{I}\right)-\log \left(e^{Wx_j+b} \cdot y_{j}\right)+\alpha\left(\|W\|_{2}^{2}+\| b\|_{2}^{2}\right).
+            \end{aligned}
+         \end{split}\]</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch3_8.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">3.8 Classfication/ Logistic Regression</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ch3_10.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">3.10 General Covariance</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-206078372-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>

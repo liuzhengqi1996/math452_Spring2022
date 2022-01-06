@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.2 Fourier transform and Fourier series &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 7 Deep Neural Network Functions" href="../ch07/ch7_.html" />
+    <link rel="prev" title="5.1 Weierstrass Theorem" href="ch5_1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch00/ch0_.html">
+   Ch0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_1.html">
+     0.1 Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_2.html">
+     0.2 Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_3.html">
+     0.3 Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch01/ch1_.html">
+   Ch1 Machine Learning and Image Classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/video.html">
+     Chapter 1 video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_1_video.html">
+     1.1 A basic machine learning problem: image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_2_video.html">
+     1.2 Image classification problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_3_video.html">
+     1.3 Some popular data sets in image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/hw2.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch02/ch2_.html">
+   Ch2 Linear Machine Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_1_video.html">
+     2.1 Definition of linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_2.html">
+     2.2 Introduction to logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_3.html">
+     2.3 KL divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_4.html">
+     2.4 Support vector machine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch03/ch3_.html">
+   Ch3 Probability
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_1.html">
+     3.1 Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_2.html">
+     3.2 Basic probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_3.html">
+     3.3 Basic Probability Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_4.html">
+     3.4 Random, Variable, Mean, Variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_5.html">
+     3.5 Probability interpretation of logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_6.html">
+     3.6 Maximamum Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_7.html">
+     3.7 Basic Statistical Learning Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_8.html">
+     3.8 Classfication/ Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_9.html">
+     3.9 Bayesian Approach to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_10.html">
+     3.10 General Covariance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch04/ch4_.html">
+   Chapter 4 Training Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_1.html">
+     4.1 Line search and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_2.html">
+     4.2 Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch5_.html">
+   Chapter 5 Polynomials and Weierstrass theorem
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch5_1.html">
+     5.1 Weierstrass Theorem
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.2 Fourier transform and Fourier series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch07/ch7_.html">
+   Chapter 7 Deep Neural Network Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_1.html">
+     7.1 Motivation: from finite element to neural network {#FE2NN}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_2.html">
+     7.2 Why we need deep neural networks via composition {#whydeep}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_3.html">
+     7.3.4 Fourier transform of polynomials
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch05/ch5_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452/main?urlpath=lab/tree/ch05/ch5_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-transform">
+   5.2.1 Fourier transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-summation-formula">
+   5.2.2 Poisson summation formula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-special-cut-off-function">
+   5.2.3 A special cut-off function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-transform-of-polynomials">
+   5.2.4 Fourier transform of polynomials
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="fourier-transform-and-fourier-series">
+<h1>5.2 Fourier transform and Fourier series<a class="headerlink" href="#fourier-transform-and-fourier-series" title="Permalink to this headline">¶</a></h1>
+<p>We make use of the theory of tempered distributions (see
+[&#64;strichartz2003guide] for an introduction) and we begin by collecting
+some results of independent interest, which will also be important
+later.</p>
+<div class="section" id="fourier-transform">
+<h2>5.2.1 Fourier transform<a class="headerlink" href="#fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>Before studying the Fourier transform, we first consider Schwartz space
+which is defined below.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<div class="definition-content section" id="proof-content">
+<p>The Schwartz space
+<span class="math notranslate nohighlight">\(\mathcal{S}\left(\mathbb{R}^{n}\right)\)</span> is the topological vector space
+of functions <span class="math notranslate nohighlight">\(f: \mathbb{R}^{n} \rightarrow \mathbb{C}\)</span> such that
+<span class="math notranslate nohighlight">\(f \in C^{\infty}\left(\mathbb{R}^{n}\right)\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    x^{\alpha} \partial^{\beta} f(x) \rightarrow 0 \quad \text { as }|x| \rightarrow \infty
+\]</div>
+<p>for every pair of multi-indices <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{N}_{0}^{n} .\)</span>
+For <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{N}_{0}^{n}\)</span> and
+<span class="math notranslate nohighlight">\(f \in \mathcal{S}\left(\mathbb{R}^{n}\right)\)</span> let (5.10)</p>
+<div class="math notranslate nohighlight">
+\[
+    \|f\|_{\alpha, \beta}=\sup _{\mathbb{R}^{n}}\left|x^{\alpha} \partial^{\beta} f\right|
+\]</div>
+<p>A sequence of functions <span class="math notranslate nohighlight">\(\left\{f_{k}: k \in \mathbb{N}\right\}\)</span>
+converges to a function <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(\mathcal{S}\left(\mathbb{R}^{n}\right)\)</span>
+if</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\|f_{n}-f\right\|_{\alpha, \beta} \rightarrow 0 \quad \text { as } k \rightarrow \infty
+\]</div>
+<p>for every <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{N}_{0}^{n}\)</span>.</p>
+</div>
+</div><p>The Schwartz space consists of smooth functions whose derivatives and
+the function itself decay at infinity faster than any power. Schwartz
+functions are rapidly decreasing. When there is no ambiguity, we will
+write <span class="math notranslate nohighlight">\(\mathcal{S}\left(\mathbb{R}^{n}\right)\)</span> as <span class="math notranslate nohighlight">\(\mathcal{S}\)</span>. Roughly
+speaking, tempered distributions grow no faster than a polynomial at
+infinity.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<div class="definition-content section" id="proof-content">
+<p>A tempered distribution <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> is a continuous linear
+functional
+<span class="math notranslate nohighlight">\(T: \mathcal{S}\left(\mathbb{R}^{n}\right) \rightarrow \mathbb{C} .\)</span> The
+topological vector space of tempered distributions is denoted by
+<span class="math notranslate nohighlight">\(\mathcal{S}^{\prime}\left(\mathbb{R}^{n}\right)\)</span> or
+<span class="math notranslate nohighlight">\(\mathcal{S}^{\prime} .\)</span> If <span class="math notranslate nohighlight">\(\langle T, f\rangle\)</span> denotes the value of
+<span class="math notranslate nohighlight">\(T \in \mathcal{S}^{\prime}\)</span> acting on <span class="math notranslate nohighlight">\(f \in \mathcal{S}\)</span> then a
+sequence <span class="math notranslate nohighlight">\(\left\{T_{k}\right\}\)</span> converges to <span class="math notranslate nohighlight">\(T\)</span> in
+<span class="math notranslate nohighlight">\(\mathcal{S}^{\prime}\)</span>, written <span class="math notranslate nohighlight">\(T_{k} \rightarrow T\)</span>, if</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\langle T_{k}, f\right\rangle \rightarrow\langle T, f\rangle
+\]</div>
+<p>for every <span class="math notranslate nohighlight">\(f \in \mathcal{S}\)</span>.</p>
+</div>
+</div><p>Since <span class="math notranslate nohighlight">\(\mathcal{D} \subset \mathcal{S}\)</span> is densely and continuously
+imbedded, we have <span class="math notranslate nohighlight">\(\mathcal{S}^{\prime} \subset \mathcal{D}^{\prime} .\)</span>
+Moreover, a distribution <span class="math notranslate nohighlight">\(T \in \mathcal{D}^{\prime}\)</span> extends uniquely
+to a tempered distribution <span class="math notranslate nohighlight">\(T \in \mathcal{S}^{\prime}\)</span> if and only if
+it is continuous on <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> with respect to the topology on
+<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>. Every function <span class="math notranslate nohighlight">\(f \in L_{\text {loc }}^{1}\)</span> defines a
+regular distribution <span class="math notranslate nohighlight">\(T_{f} \in \mathcal{D}^{\prime}\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\langle T_{f}, \phi\right\rangle=\int f \phi d x \quad \text { for all } \phi \in \mathcal{D}.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(|f| \leq p\)</span> is bounded by some polynomial <span class="math notranslate nohighlight">\(p,\)</span> then <span class="math notranslate nohighlight">\(T_{f}\)</span> extends
+to a tempered distribution <span class="math notranslate nohighlight">\(T_{f} \in \mathcal{S}^{\prime}\)</span>, but this is
+not the case for functions <span class="math notranslate nohighlight">\(f\)</span> that grow too rapidly at infinity.</p>
+<p>The Schwartz space is a natural one to use for the Fourier transform.
+Differentiation and multiplication exchange roles under the Fourier
+transform and therefore so do the properties of smoothness and rapid
+decrease. As a result, the Fourier transform is an automorphism of the
+Schwartz space. By duality, the Fourier transform is also an
+automorphism of the space of tempered distributions.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
+<div class="definition-content section" id="proof-content">
+<p>The Fourier transform of a function <span class="math notranslate nohighlight">\(f \in \mathcal{S}\left(\mathbb{R}^{n}\right)\)</span>
+is the function <span class="math notranslate nohighlight">\(\hat{f}: \mathbb{R}^{n} \rightarrow \mathbb{C}\)</span> defined
+by</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{f}(\omega)= \int f(x) e^{-2 \pi i\omega \cdot x} d x.
+\]</div>
+<p>The inverse Fourier transform of <span class="math notranslate nohighlight">\(f\)</span> is the function
+<span class="math notranslate nohighlight">\(\check{f}: \mathbb{R}^{n} \rightarrow \mathbb{C}\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[
+    \check{f}(x)=\int f(\omega) e^{2 \pi i\omega \cdot x} d k.
+\]</div>
+</div>
+</div><div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+<div class="definition-content section" id="proof-content">
+<p>The Fourier transform of a tempered distribution <span class="math notranslate nohighlight">\(f \in \mathcal{S}'\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+    \langle \hat{f}, \phi\rangle = \langle f, \hat \phi\rangle,\quad \forall \phi\in \mathcal{S}.
+\]</div>
+</div>
+</div><p>The support of a continuous function <span class="math notranslate nohighlight">\(f\)</span> is the closure of the set
+<span class="math notranslate nohighlight">\(\{x\in \mathbb{R}: f(x)\neq 0\}\)</span>.</p>
+<div class="admonition-properties admonition">
+<p class="admonition-title">Properties</p>
+<p>The Fourier transform has the following properties</p>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f\in \mathcal{S}'\)</span> and the support of <span class="math notranslate nohighlight">\(\hat f\)</span> is <span class="math notranslate nohighlight">\(\{0\}\)</span>, then
+<span class="math notranslate nohighlight">\(f\)</span> is a polynomial.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f\in \mathcal{S}'\)</span> and the support of <span class="math notranslate nohighlight">\(\hat f\)</span> is a single point
+<span class="math notranslate nohighlight">\(\{a\}\)</span>, then <span class="math notranslate nohighlight">\(f(x)=e^{2\pi iax}P(x)\)</span>, where <span class="math notranslate nohighlight">\(P(x)\)</span> is a polynomial.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="poisson-summation-formula">
+<h2>5.2.2 Poisson summation formula<a class="headerlink" href="#poisson-summation-formula" title="Permalink to this headline">¶</a></h2>
+<div class="proof theorem admonition" id="theorem-4">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(f \in L^{1}(\mathbb{R})\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is continuous. Then we have for
+almost all <span class="math notranslate nohighlight">\((x, \omega ) \in \mathbb{R} \times \hat{\mathbb{R}}\)</span> that</p>
+<div class="math notranslate nohighlight">
+\[
+    T \sum_{n \in \mathbb{Z}} f(x+n T) e^{-2 \pi i \omega (x+n T)}=\sum_{n \in \mathbb{Z}} \hat{f}\left(\omega +\frac{n}{T}\right) e^{2 \pi i n x / T}
+\]</div>
+<p>where both sides converge absolutely.</p>
+<p>In addition, let <span class="math notranslate nohighlight">\(\Lambda\)</span> be the lattice in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> consisting
+of points with integer coordinates. For a function <span class="math notranslate nohighlight">\(f\)</span> in
+<span class="math notranslate nohighlight">\(L^{1}\left(\mathbb{R}^{d}\right)\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is continuous, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{\omega  \in \Lambda} f(x+\omega )=\sum_{\nu \in \Lambda} \hat{f}(\omega ) e^{2 \pi i x \cdot \omega }.
+\]</div>
+<p>where both series converge absolutely and uniformly on <span class="math notranslate nohighlight">\(\Lambda\)</span>.</p>
+</div>
+</div></div>
+<div class="section" id="a-special-cut-off-function">
+<h2>5.2.3 A special cut-off function<a class="headerlink" href="#a-special-cut-off-function" title="Permalink to this headline">¶</a></h2>
+<p>Let us first state the following simple result that can be obtained by
+following a calculation given in Section 3 of [&#64;johnson2015saddle].</p>
+<div class="proof lemma admonition" id="lemma-5">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Given <span class="math notranslate nohighlight">\(\alpha&gt;1\)</span>, consider</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \label{alpha-g}
+    g(t) = \begin{cases} 
+    e^{-(1-t^2)^{1 - \alpha}} &amp; t\in (-1,1) \\
+    0 &amp; \text{otherwise}.
+    \end{cases}
+\end{split}\]</div>
+<p>then there is a constant <span class="math notranslate nohighlight">\(c_\alpha\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+  |\hat{g}(\omega )|\lesssim e^{-c_\alpha|\omega |^{1-\alpha^{-1}}},
+\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. <em>Proof.</em> Consider the asymptotic behavior of the Fourier transform</p>
+<div class="math notranslate nohighlight">
+\[
+    F(\omega )=\int_{-\infty}^{\infty} g(t) e^{2\pi i \omega  t} dt=2 \operatorname{Re} \int_{0}^{1} e^{2\pi i \omega  t- (1-t^{2})^{1-\alpha}} dt
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(|\operatorname{Re} \omega | \gg 1.\)</span> (Without loss of generality, we
+can restrict ourselves to real <span class="math notranslate nohighlight">\(\omega  \geq 0\)</span>). With a change of
+variable <span class="math notranslate nohighlight">\(x=1-t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    F(\omega )=2 \operatorname{Re} \int_{0}^{1} e^{f(x)} dx
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(f(x)=2\pi i \omega  - 2\pi i \omega   x- (2x-x^2)^{1-\alpha}\approx \tilde f(x)+O\left(x^{2-\alpha}\right)\)</span>
+and</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde f(x) = 2\pi i \omega  - 2\pi i \omega    x - (2 x)^{1-\alpha}.
+\]</div>
+<p>The saddle point is the <span class="math notranslate nohighlight">\(x=x_0\)</span> where <span class="math notranslate nohighlight">\(f'(x_0)=0\)</span>. Since
+<span class="math notranslate nohighlight">\(\tilde f'(x)=-2\pi i \omega  + (\alpha-1)2^{1-\alpha} x^{-\alpha},\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    x_{0} \approx \tilde x_0=\left (2^{-\alpha} (\alpha-1) / i \omega \pi \right )^{1 / \alpha} \sim \omega ^{-1 / \alpha}.
+\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(\tilde f(\tilde x_{0}) \sim \omega ^{(\alpha-1) / \alpha}\)</span>
+asymptotically. The second derivative is</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde f'' (\tilde x_{0} )=-2^{1-\alpha}  \alpha(\alpha-1) \tilde x_{0}^{-\alpha-1}=-i^{(\alpha+1) / \alpha} 2 A \omega ^{(\alpha+1)/\alpha},
+\]</div>
+<p>where $<span class="math notranslate nohighlight">\(A=2\alpha  (\alpha-1)^{-1/\alpha}\pi^{(\alpha+1)/\alpha}.\)</span>$ Now,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{split}
+    \tilde f(x)\approx &amp;\tilde f(\tilde x_0) + {\tilde f''(\tilde x_0)\over 2} (x-\tilde x_0)^2
+    \\
+    =&amp;2\pi i \omega  - (\alpha - 1)^{1\over \alpha}(i\omega \pi )^{\alpha -1\over \alpha}  - (\alpha - 1)^{1-\alpha\over \alpha} (i\omega \pi )^{\alpha -1\over \alpha}
+    \\
+    &amp;-i^{(\alpha+1) / \alpha} A \omega ^{(\alpha+1)/\alpha}(x- 2^{-1}(\alpha - 1)^{-{1\over \alpha}}(i\omega \pi )^{-{1\over \alpha}} )^2.
+    \end{split}    
+\end{split}\]</div>
+<p>Choose a contour <span class="math notranslate nohighlight">\(x=i^{-1 / \alpha}u\)</span>, in which case</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde f(x) \approx \tilde f(\tilde x_{0}) -i^{(\alpha-1) / \alpha} A \omega ^{(\alpha+1) / \alpha}\left(u-u_{0}\right)^{2},
+\]</div>
+<p>which is a path of descent so we can perform a Gaussian integral.</p>
+<p>Recall that the integral of</p>
+<div class="math notranslate nohighlight">
+\[
+    \label{gaussInt}
+    \int_{-\infty}^{\infty} e^{-a u^{2}} d u=\sqrt{\pi / a}
+\]</div>
+<p>as long as Re<span class="math notranslate nohighlight">\(a&gt;0,\)</span> which is true here. Note also that, in the limit as <span class="math notranslate nohighlight">\(\omega\)</span>
+becomes large, the integrand becomes zero except close to
+<span class="math notranslate nohighlight">\(u=\sqrt{1 / 2 \omega },\)</span> so we can neglect the rest of the contour and
+treat the integral over <span class="math notranslate nohighlight">\(u\)</span> as going from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>.
+(Thankfully, the width of the Gaussian <span class="math notranslate nohighlight">\(\Delta u \sim \omega ^{-3 / 4}\)</span>
+goes to zero faster than the location of the maximum
+<span class="math notranslate nohighlight">\(u_{0} \sim \omega ^{-1 / 2},\)</span> so we don’t have to worry about the <span class="math notranslate nohighlight">\(u=0\)</span>
+origin). Also note that the change of variables from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(u\)</span> gives us
+the Jacobian factor for $<span class="math notranslate nohighlight">\(dx=i^{-1 / \alpha}d u.\)</span><span class="math notranslate nohighlight">\( Thus, when all is
+said and done, we obtain the exact asymptotic form of the Fourier
+integral for \)</span>\omega  \gg 1$:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{split}
+    F(\omega ) \approx &amp;2 \operatorname{Re}\int_{0}^{1} e^{\tilde f(\tilde x_0) - i^{(\alpha-1) / \alpha} A \omega ^{(\alpha+1) / \alpha}\left(u-u_{0}\right)^{2}} dx
+    \\
+    =&amp;2 \operatorname{Re} e^{\tilde f(\tilde x_0)} i^{-1 / \alpha} \int_{-\infty}^{\infty} e^{- i^{(\alpha-1) \over  \alpha} A \omega ^{(\alpha+1) / \alpha}\left(u-u_{0}\right)^{2}} du
+    \\
+    =&amp;2 \operatorname{Re} e^{\tilde f(\tilde x_0)} \pi^{1/2}i^{-1 / \alpha}  i^{(1-\alpha) \over  2\alpha} A^{-1/2} \omega ^{-(\alpha+1) / 2\alpha}\qquad \text{ by \eqref{gaussInt}} 
+    \\
+    =&amp;2 \operatorname{Re}\left[\sqrt{\frac{\pi}{(i \omega )^{(\alpha+1) / \alpha} A}} e^{\tilde f(\tilde x_0)}\right]
+    \\
+    \approx &amp;2 \operatorname{Re}\left[\sqrt{\frac{\pi}{(i \omega )^{(\alpha+1) / \alpha} A}} e^{ 2\pi i \omega - 2\pi i \omega  \tilde x_{0}- \left[\left(2-\tilde x_{0}\right) \tilde x_{0}\right]^{1-\alpha}}\right]
+    \end{split}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_{0}\)</span> and <span class="math notranslate nohighlight">\(A\)</span> given above. Notice that
+<span class="math notranslate nohighlight">\(\tilde x_0\sim \omega ^{-1 / \alpha}\)</span>. Thus,</p>
+<p>$<span class="math notranslate nohighlight">\(
+    |F(\omega ) | \approx  e^{-c_\alpha|\omega |^{1-\alpha^{-1}}}.
+\)</span>$ ◻</p>
+</div>
+</div>
+<div class="section" id="fourier-transform-of-polynomials">
+<h2>5.2.4 Fourier transform of polynomials<a class="headerlink" href="#fourier-transform-of-polynomials" title="Permalink to this headline">¶</a></h2>
+<p>We begin by noting that an activation function <span class="math notranslate nohighlight">\(\sigma\)</span>, which satisfies
+a polynomial growth condition <span class="math notranslate nohighlight">\(|\sigma(x)| \leq C(1 + |x|)^n\)</span> for some
+constants <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, is a tempered distribution. As a result, we make
+this assumption on our activation functions in the following theorems.
+We briefly note that this condition is sufficient, but not necessary
+(for instance an integrable function need not satisfy a pointwise
+polynomial growth bound) for <span class="math notranslate nohighlight">\(\sigma\)</span> to be represent a tempered
+distribution.</p>
+<p>We begin by studying the convolution of <span class="math notranslate nohighlight">\(\sigma\)</span> with a Gaussian
+mollifier. Let <span class="math notranslate nohighlight">\(\eta\)</span> be a Gaussian mollifier</p>
+<div class="math notranslate nohighlight">
+\[
+    \eta(x) = \frac{1}{\sqrt{\pi}}e^{-x^2}.
+\]</div>
+<p>Set
+<span class="math notranslate nohighlight">\(\eta_\epsilon=\frac{1}{\epsilon}\eta(\frac{x}{\epsilon})\)</span>. Then
+consider</p>
+<div class="math notranslate nohighlight" id="equation-sigma-epsilon">
+<span class="eqno">(22)<a class="headerlink" href="#equation-sigma-epsilon" title="Permalink to this equation">¶</a></span>\[
+    \sigma_{\epsilon}(x):=\sigma\ast{\eta_\epsilon}(x)=\int_{\mathbb{R}}\sigma(x-y){\eta_\epsilon}(y)dy
+\]</div>
+<p>for a given activation function <span class="math notranslate nohighlight">\(\sigma\)</span>. It is clear that
+<span class="math notranslate nohighlight">\(\sigma_{\epsilon}\in C^\infty(\mathbb{R})\)</span>. Moreover, by considering
+the Fourier transform (as a tempered distribution) we see that</p>
+<div class="math notranslate nohighlight" id="equation-eq-278">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-278" title="Permalink to this equation">¶</a></span>\[
+    \hat{\sigma}_{\epsilon} = \hat{\sigma}\hat{\eta}_{\epsilon} = \hat{\sigma}\eta_{\epsilon^{-1}}.
+\]</div>
+<p>We begin by stating a lemma which characterizes the set of polynomials
+in terms of their Fourier transform.</p>
+<div class="proof lemma admonition" id="polynomial_lemma">
+<p class="admonition-title"><span class="caption-number">Lemma 2 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Given
+a tempered distribution <span class="math notranslate nohighlight">\(\sigma\)</span>, the following statements are
+equivalent:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> is a polynomial</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_\epsilon\)</span> given by <a class="reference internal" href="#equation-sigma-epsilon">(22)</a> is a polynomial for any <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{supp}(\hat{\sigma})\subset \{0\}\)</span>.</p></li>
+</ol>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. <em>Proof.</em> We begin by proving that (3) and (1) are equivalent. This
+follows from a characterization of distributions supported at a single
+point (see [&#64;strichartz2003guide], section 6.3). In particular, a
+distribution supported at <span class="math notranslate nohighlight">\(0\)</span> must be a finite linear combination of
+Dirac masses and their derivatives. In particular, if <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> is
+supported at <span class="math notranslate nohighlight">\(0\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{\sigma} = \displaystyle\sum_{i=1}^n a_i\delta^{(i)}.
+\]</div>
+<p>Taking the inverse Fourier transform and noting that the inverse Fourier transform
+of <span class="math notranslate nohighlight">\(\delta^{(i)}\)</span> is <span class="math notranslate nohighlight">\(c_ix^i\)</span>, we see that <span class="math notranslate nohighlight">\(\sigma\)</span> is a polynomial.
+This shows that (3) implies (1), for the converse we simply take the
+Fourier transform of a polynomial and note that it is a finite linear
+combination of Dirac masses and their derivatives.</p>
+<p>Finally, we prove the equivalence of (2) and (3). For this it suffices
+to show that <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> is supported at <span class="math notranslate nohighlight">\(0\)</span> iff
+<span class="math notranslate nohighlight">\(\hat{\sigma}_\epsilon\)</span> is supported at <span class="math notranslate nohighlight">\(0\)</span>. This follows from equation
+<a class="reference internal" href="#equation-eq-278">(23)</a> and the
+fact that <span class="math notranslate nohighlight">\(\eta_{\epsilon^{-1}}\)</span> is nowhere vanishing. ◻</p>
+</div>
+<p>As an application of Lemma <a class="reference internal" href="#polynomial_lemma">Lemma 2</a>, we give a simple proof of the result in
+the next section.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch5_1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">5.1 Weierstrass Theorem</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../ch07/ch7_.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Chapter 7 Deep Neural Network Functions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-206078372-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>

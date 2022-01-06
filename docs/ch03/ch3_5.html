@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.5 Probability interpretation of logistic regression &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.6 Maximamum Likelihood" href="ch3_6.html" />
+    <link rel="prev" title="3.4 Random, Variable, Mean, Variance" href="ch3_4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch00/ch0_.html">
+   Ch0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_1.html">
+     0.1 Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_2.html">
+     0.2 Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_3.html">
+     0.3 Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch01/ch1_.html">
+   Ch1 Machine Learning and Image Classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/video.html">
+     Chapter 1 video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_1_video.html">
+     1.1 A basic machine learning problem: image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_2_video.html">
+     1.2 Image classification problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_3_video.html">
+     1.3 Some popular data sets in image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/hw2.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch02/ch2_.html">
+   Ch2 Linear Machine Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_1_video.html">
+     2.1 Definition of linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_2.html">
+     2.2 Introduction to logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_3.html">
+     2.3 KL divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_4.html">
+     2.4 Support vector machine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch3_.html">
+   Ch3 Probability
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_1.html">
+     3.1 Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_2.html">
+     3.2 Basic probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_3.html">
+     3.3 Basic Probability Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_4.html">
+     3.4 Random, Variable, Mean, Variance
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.5 Probability interpretation of logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_6.html">
+     3.6 Maximamum Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_7.html">
+     3.7 Basic Statistical Learning Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_8.html">
+     3.8 Classfication/ Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_9.html">
+     3.9 Bayesian Approach to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3_10.html">
+     3.10 General Covariance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch04/ch4_.html">
+   Chapter 4 Training Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_1.html">
+     4.1 Line search and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_2.html">
+     4.2 Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch05/ch5_.html">
+   Chapter 5 Polynomials and Weierstrass theorem
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_1.html">
+     5.1 Weierstrass Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_2.html">
+     5.2 Fourier transform and Fourier series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch07/ch7_.html">
+   Chapter 7 Deep Neural Network Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_1.html">
+     7.1 Motivation: from finite element to neural network {#FE2NN}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_2.html">
+     7.2 Why we need deep neural networks via composition {#whydeep}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_3.html">
+     7.3.4 Fourier transform of polynomials
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch03/ch3_5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452/main?urlpath=lab/tree/ch03/ch3_5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-model">
+   3.5.1 Logistic Regression Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-the-parameters-vec-a-b-from-data">
+   3.5.2 Learning the parameters
+   <span class="math notranslate nohighlight">
+    \(\vec{a}, b\)
+   </span>
+   from data
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability-interpretation-of-logistic-regression">
+<h1>3.5 Probability interpretation of logistic regression<a class="headerlink" href="#probability-interpretation-of-logistic-regression" title="Permalink to this headline">¶</a></h1>
+<p>Logistic regression models the probabilities for classification problems
+with two possible outcomes. It’s an extension of the linear regression
+model for classification problems.</p>
+<ul class="simple">
+<li><p>Input: d-dimension feature vector <span class="math notranslate nohighlight">\(x\in R^{d}\)</span></p></li>
+<li><p>Output: a class or label <span class="math notranslate nohighlight">\(l \in\{1, \ldots, k\}\)</span> (how to classify)</p></li>
+<li><p>Example 1: Image classfication: Given input image
+<span class="math notranslate nohighlight">\(x \in R^{n \times n}\)</span>, predict a label for the image. e.g. cat/
+dog; MNIST: <span class="math notranslate nohighlight">\(\{0, \ldots, 9\}\)</span>; CIFAR-10, <span class="math notranslate nohighlight">\(\{0, \ldots, 9\}\)</span></p></li>
+<li><p>Example 2: Binary Classfication: Given some medical data
+<span class="math notranslate nohighlight">\(x\in R^{d}\)</span>(features, like heart pressure, resting heart rate,
+family history, etc), we try to predict incidence of heart disease.
+The label will be binary <span class="math notranslate nohighlight">\(\{0, 1\}\)</span>, called binary classification.</p></li>
+</ul>
+<div class="section" id="logistic-regression-model">
+<h2>3.5.1 Logistic Regression Model<a class="headerlink" href="#logistic-regression-model" title="Permalink to this headline">¶</a></h2>
+<p>Given input feature vector <span class="math notranslate nohighlight">\(x\in R^{n}\)</span>, the model predicts a
+probability distribution over the labels <span class="math notranslate nohighlight">\(\{0, \ldots, k\}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    \mbox{affine linear map: }Ax+b:\quad R^{n} \rightarrow R^{k}
+\]</div>
+<p>with
+<span class="math notranslate nohighlight">\(A\in R^{k \times n}\)</span>, <span class="math notranslate nohighlight">\(x\in R^{n}\)</span>, <span class="math notranslate nohighlight">\(b\in R^{k}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    \mbox{softmax} \left( Ax+b\right) : \quad R^{n} \rightarrow R^{k} \xrightarrow{softmax}P\left( \{1, \ldots, k\}\right)
+\]</div>
+<p>Softmax:</p>
+<ol class="simple">
+<li><p>Input:
+<span class="math notranslate nohighlight">\(y \in \mathbb{R}^{k}=\left(\begin{array}{l}y_{1} \\ \vdots \\ y_{k}\end{array}\right)\)</span></p></li>
+<li><p>Output: Distribution
+<span class="math notranslate nohighlight">\(p(j)=\frac{e^{y_{j}}}{\sum_{i=1}^{n} e^{y_{i}}}\)</span></p></li>
+<li><p>Take exponential and normalize</p></li>
+</ol>
+<p><strong>Logistic Regression Model</strong>: Given input (feature/data) <span class="math notranslate nohighlight">\(x \in R^{n}\)</span>,
+we return the distribution softmax <span class="math notranslate nohighlight">\(\left( Ax+b\right)\)</span> where A, b are
+parameters.</p>
+<ul>
+<li><p>Example 1: Divide data into two classes: parameters are
+<span class="math notranslate nohighlight">\(\vec{a}\in \mathbb{R}^{n}, b \in \mathbb{R}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+        A\in \mathbb{R}^{1\times n},\quad Ax+b\in \mathbb{R}.
+    \]</div>
+<p>The
+probability that the data <span class="math notranslate nohighlight">\(x\)</span> belongs to class 1 is</p>
+<div class="math notranslate nohighlight">
+\[
+        P(1)=\frac{e^{\vec{a}\cdot x+b}}{e^{\vec{a} \cdot x+b}+1},
+    \]</div>
+<p>and
+the probability that the data <span class="math notranslate nohighlight">\(x\)</span> belongs to class 2 is</p>
+<div class="math notranslate nohighlight">
+\[
+        P(2)=\frac{1}{e^{\vec{a} \cdot x+ b}+1}.
+    \]</div>
+<p>If
+<span class="math notranslate nohighlight">\(\vec{a} \cdot x+ b=0\)</span>, <span class="math notranslate nohighlight">\(P(1)=   P(2)={1\over 2}\)</span>. We don’t know how
+to classify the data lying on the line <span class="math notranslate nohighlight">\(\vec{a} \cdot x+ b=0\)</span> as
+shown in the figure below.</p>
+</li>
+</ul>
+<p><img alt="image" src="../_images/probabilityLR1.png" />{width=”.55\textwidth”}</p>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{p(1)}{p(2)}=e^{\vec{a} \cdot x+b},\quad \log \left(\frac{p(1)}{p(2)}\right)=\vec{a} \cdot x+b.
+\]</div>
+<p>By the above equation, <span class="math notranslate nohighlight">\(\vec{a}\)</span> means which feature is important.
+Logarithm of the odds: <span class="math notranslate nohighlight">\(\log \left(\frac{p(1)}{p(2)}\right)\)</span>.
+Assumption: <span class="math notranslate nohighlight">\(\log \left(\frac{p(1)}{p(2)}\right)\)</span> is linear in the
+feature vector</p>
+</div>
+<div class="section" id="learning-the-parameters-vec-a-b-from-data">
+<h2>3.5.2 Learning the parameters <span class="math notranslate nohighlight">\(\vec{a}, b\)</span> from data<a class="headerlink" href="#learning-the-parameters-vec-a-b-from-data" title="Permalink to this headline">¶</a></h2>
+<p>Data: feature vectors <span class="math notranslate nohighlight">\(x\)</span> and corresponding labels <span class="math notranslate nohighlight">\(l\)</span>. Given data</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\{\left(x_{1}, l_{1}\right), \ldots,\left(x_{n}, l_{1}\right)\right\}=D
+\]</div>
+<p>How can we estimate A, b?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch3_4.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">3.4 Random, Variable, Mean, Variance</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ch3_6.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">3.6 Maximamum Likelihood</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-206078372-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>

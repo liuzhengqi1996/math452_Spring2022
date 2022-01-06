@@ -12,9 +12,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 
 
 # ## Course Instructor and Assistants
-# - Instructor: Professor Jinchao Xu
-# - Email: xu@math.psu.edu, 497@multigrid.org
-# - Questions and additional office hours: email to 497@multigrid.org
+# - Instructor: Qingguo Hong
+# - Email: huq11@psu.edu
+# - Questions and additional office hours: email to huq11@psu.edu
 # - Consultant: Professor Stanley Smith
 
 # ## Course Description

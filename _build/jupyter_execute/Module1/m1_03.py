@@ -32,8 +32,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\mathbf\Theta\neq \emptyset$. Now we know the existence of linearly
 # classifiable weights. But how can we find one element in $\mathbf\Theta$?
 # 
-# ```{adnomition} Definition(softmax)
-# :class: tip
+# ```{admonition} Definition (softmax)
 # :name: softmax
 # Given $s = (s_1,s_2,\cdots,s_k)^T\in \mathbb{R}^k$, we define the soft-max
 # mapping $\sigma: \mathbb{R}^k \rightarrow\mathbb{R}^k$ as
@@ -48,19 +47,29 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \end{pmatrix}
 # $$ 
 # 
-# where $e^{s} = 
-# \begin{pmatrix}
-# e^{s_1}\\
-# e^{s_2}\\
-# \vdots\\
-# e^{s_k}
-# \end{pmatrix}$, $\mathbf{1} = 
-# \begin{pmatrix}
-# 1\\
-# 1 \\
-# \vdots \\
-# 1
-# \end{pmatrix} \in\mathbb{R}^k$.
+# where 
+# 
+# $$
+#     e^{s} = 
+#     \begin{pmatrix}
+#     e^{s_1}\\
+#     e^{s_2}\\
+#     \vdots\\
+#     e^{s_k}
+#     \end{pmatrix}
+# $$
+# 
+# $$
+# 
+#     \mathbf{1} = 
+#     \begin{pmatrix}
+#     1\\
+#     1 \\
+#     \vdots \\
+#     1
+#     \end{pmatrix} \in\mathbb{R}^k
+# $$
+# 
 # ```
 # 
 # ```{admonition} Definition

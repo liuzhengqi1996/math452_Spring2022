@@ -11,9 +11,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 
 # # Introduction to Python and Pytorch
 # 
-# TA: Lian Zhang 
+# TA: TBA
 # 
-# Email: luz244@psu.edu
+# Email: TBA
 # 
 # 1. Anaconda
 # 2. Python

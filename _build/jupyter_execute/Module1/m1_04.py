@@ -16,9 +16,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # Cross-entropy minimization is frequently used in optimization and
 # rare-event probability estimation. When comparing a distribution against
 # a fixed reference distribution, cross-entropy and KL divergence are
-# identical up to an additive constant. See more details in
-# [@murphy2012machine; @kullback1951information; @kullback1997information]
-# and the reference therein.
+# identical up to an additive constant.
 # 
 # The KL(Kullback--Leibler) divergence defines a special distance between
 # two discrete probability distributions 

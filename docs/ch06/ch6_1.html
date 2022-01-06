@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.1 Linear finite element spaces &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch00/ch0_.html">
+   Ch0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_1.html">
+     0.1 Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_2.html">
+     0.2 Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch00/ch0_3.html">
+     0.3 Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch01/ch1_.html">
+   Ch1 Machine Learning and Image Classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/video.html">
+     Chapter 1 video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_1_video.html">
+     1.1 A basic machine learning problem: image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_2_video.html">
+     1.2 Image classification problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/ch1_3_video.html">
+     1.3 Some popular data sets in image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch01/hw2.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch02/ch2_.html">
+   Ch2 Linear Machine Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_1_video.html">
+     2.1 Definition of linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_2.html">
+     2.2 Introduction to logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_3.html">
+     2.3 KL divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch02/ch2_4.html">
+     2.4 Support vector machine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch03/ch3_.html">
+   Ch3 Probability
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_1.html">
+     3.1 Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_2.html">
+     3.2 Basic probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_3.html">
+     3.3 Basic Probability Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_4.html">
+     3.4 Random, Variable, Mean, Variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_5.html">
+     3.5 Probability interpretation of logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_6.html">
+     3.6 Maximamum Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_7.html">
+     3.7 Basic Statistical Learning Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_8.html">
+     3.8 Classfication/ Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_9.html">
+     3.9 Bayesian Approach to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch03/ch3_10.html">
+     3.10 General Covariance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch04/ch4_.html">
+   Chapter 4 Training Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_1.html">
+     4.1 Line search and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch04/ch4_2.html">
+     4.2 Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch05/ch5_.html">
+   Chapter 5 Polynomials and Weierstrass theorem
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_1.html">
+     5.1 Weierstrass Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch05/ch5_2.html">
+     5.2 Fourier transform and Fourier series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch07/ch7_.html">
+   Chapter 7 Deep Neural Network Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_1.html">
+     7.1 Motivation: from finite element to neural network {#FE2NN}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_2.html">
+     7.2 Why we need deep neural networks via composition {#whydeep}
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch07/ch7_3.html">
+     7.3.4 Fourier transform of polynomials
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch06/ch6_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452/main?urlpath=lab/tree/ch06/ch6_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triangulations">
+   6.1.1 Triangulations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-linear-finite-element-spaces-linearfe">
+   6.1.2 Continuous linear finite element spaces {#linearFE}
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nodal-basis-functions-and-dual-basis">
+     Nodal basis functions and dual basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nodal-value-interpolant">
+     Nodal value interpolant
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="linear-finite-element-spaces">
+<h1>6.1 Linear finite element spaces<a class="headerlink" href="#linear-finite-element-spaces" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we introduce linear finite element spaces. We will walk
+through the basic setup, and derive some error estimates.</p>
+<div class="section" id="triangulations">
+<h2>6.1.1 Triangulations<a class="headerlink" href="#triangulations" title="Permalink to this headline">¶</a></h2>
+<p>Given a bounded polyhedral domain <span class="math notranslate nohighlight">\(\Omega \subset \mathbb {R}^d\)</span>, a
+geometric triangulation (also called mesh or grid)
+<span class="math notranslate nohighlight">\(\mathcal T_h=\{\tau\}\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span> is a set of <span class="math notranslate nohighlight">\(d\)</span>-simplices such that</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overline \Omega=\cup \tau\)</span>, where <span class="math notranslate nohighlight">\(\overline \Omega\)</span> denotes the
+closure of <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\tau_1\)</span> and <span class="math notranslate nohighlight">\(\tau_2\)</span> are distinct elements in <span class="math notranslate nohighlight">\(\mathcal T_h\)</span>
+then
+<span class="math notranslate nohighlight">\(\stackrel{\circ}{\tau _1}\cap \stackrel{\circ}{\tau _2} = \varnothing\)</span>,
+where <span class="math notranslate nohighlight">\(\stackrel{\circ}{\tau _i}\)</span> denotes the interior of
+<span class="math notranslate nohighlight">\(\tau_i, i=1,2\)</span> .</p></li>
+</ol>
+<p>Examples of triangulations for <span class="math notranslate nohighlight">\(\Omega=(0,1)\)</span> (<span class="math notranslate nohighlight">\(d=1\)</span>) and for
+<span class="math notranslate nohighlight">\(\Omega=(0,1)^2\)</span> (<span class="math notranslate nohighlight">\(d=2\)</span>) are shown in</p>
+<p>Figure <a class="reference external" href="#fig:1dpartition">[fig:1dpartition]</a>{reference-type=”ref”
+reference=”fig:1dpartition”} and
+Figure <a class="reference external" href="#2duniform">3</a>{reference-type=”ref” reference=”2duniform”},
+respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Given $\Omega=(0,1)$, we consider the mesh: $$\label{partitionyx}
+ 0=x_0&lt;x_1&lt;\cdots&lt;x_{n+1}=1, \quad x_i=\frac{i}{n+1},\quad (i=0,\cdots,n+1)$$
+which is the 1D uniform grid shown in Figure
+[\[fig:1dpartition\]](#fig:1dpartition){reference-type=&quot;ref&quot;
+reference=&quot;fig:1dpartition&quot;}.
+
+::: {.center}
+![2D grids](figures/grid1.png &quot;fig:&quot;){#2duniform width=&quot;.25\\textwidth&quot;}
+![2D grids](figures/u00.pdf &quot;fig:&quot;){#2duniform width=&quot;.25\\textwidth&quot;}
+![2D grids](figures/2ddiskpartition.pdf &quot;fig:&quot;){#2duniform
+width=&quot;.25\\textwidth&quot;}
+</pre></div>
+</div>
+<p>Denote
+$<span class="math notranslate nohighlight">\(h_\tau=\mbox{\rm diam} (\tau)\quad  \hbox{(diameter of the smallest sphere containing \)</span>\overline{\tau}<span class="math notranslate nohighlight">\()},\)</span><span class="math notranslate nohighlight">\(
+and \)</span><span class="math notranslate nohighlight">\(h=\max_{\tau\in\mathcal T_h} h_\tau;\quad
+\underline{h}=\min_{\tau\in\mathcal T_h} h_\tau.\)</span><span class="math notranslate nohighlight">\( A set of
+triangulations \)</span>\mathscr T<span class="math notranslate nohighlight">\( is called *shape regular* if there exists a
+constant \)</span>c_0<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\(\label{shape} \max _{\tau \in \mathcal T_h} \frac{h_{\tau}^d}{|\tau|}\leq c_0, \quad \forall \, \mathcal T_h\in
+\mathscr T,\)</span><span class="math notranslate nohighlight">\( where \)</span>|\tau|<span class="math notranslate nohighlight">\( is the measure of \)</span>\tau<span class="math notranslate nohighlight">\( in \)</span>\mbb R^d<span class="math notranslate nohighlight">\(.
+This assumption can also be represented as \)</span><span class="math notranslate nohighlight">\(\Label{A3.1}
+\max_{\tau\in\ct_h}\frac{h_\tau}{\rho_\tau}\le\sigma_1,\quad \forall \, \mathcal T_h\in
+\mathscr T,\)</span><span class="math notranslate nohighlight">\( where \)</span>\rho_\tau<span class="math notranslate nohighlight">\( denotes the radius of the ball inscribed
+in \)</span>\tau$. In two dimensions, it is equivalent to the minimal angle of
+each triange is bounded below uniformly in the shape regular class.</p>
+<p>In addition to (<a class="reference external" href="#shape">[shape]</a>{reference-type=”ref”
+reference=”shape”}), if $<span class="math notranslate nohighlight">\(\Label{A3.2}
+  \frac{\max _{\tau \in \mathcal T_h}|\tau|}{\min _{\tau \in \mathcal T_h}|\tau|} \leq \rho,\quad \forall \, \mathcal T_h\in \mathscr T,\)</span><span class="math notranslate nohighlight">\(
+\)</span>\mathscr T<span class="math notranslate nohighlight">\( is called *quasi-uniform*. For quasi-uniform grids,
+\)</span>h=\max <em>{\tau \in \mathcal T_h} h</em>{\tau}<span class="math notranslate nohighlight">\(, the mesh size of
+\)</span>\mathcal T_h$, is used to measure the approximation rate.</p>
+<p>The assumption is a local assumption, as is meant by above definition,
+for <span class="math notranslate nohighlight">\(d=2\)</span> for example, it assures that each triangle will not degenerate
+into a segment in the limiting case.</p>
+<p>On the other hand, the assumption is a global assumption, which says
+that the smallest mesh size is not too small compared with the largest
+mesh size of the same triangulation. By the definition, in a
+quasi-uniform triangulation, all the elements are about the same size
+asymptotically.</p>
+<p>Let <span class="math notranslate nohighlight">\(x_{i}=(x^1_{i}, \cdots, x^d_{i})^t, i=1,\cdots, d+1\)</span> be <span class="math notranslate nohighlight">\(d+1\)</span>
+points in <span class="math notranslate nohighlight">\(\mbb R^d\)</span> which do not all lie in one hyper-plane. The
+<em>convex hull</em> of the <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\(x_1, \cdots,  x_{d+1}\)</span> (See Figure
+<a class="reference external" href="#fig:barycentricCoor">6</a>{reference-type=”ref”
+reference=”fig:barycentricCoor”})
+$<span class="math notranslate nohighlight">\(\tau :=\{ x=\sum _{i=1}^{d+1}\lambda _i x_i \, | \, 0\leq \lambda_i\leq 1, i=1:d+1, \sum _{i=1}^{d+1}\lambda _i=1 \}\)</span><span class="math notranslate nohighlight">\(
+is defined as a *geometric \)</span>d<span class="math notranslate nohighlight">\(-simplex* generated (or spanned) by the
+vertices \)</span>x_1, \cdots,  x_{d+1}<span class="math notranslate nohighlight">\(. For example, a triangle is a
+\)</span>2<span class="math notranslate nohighlight">\(-simplex and a tetrahedron is a \)</span>3<span class="math notranslate nohighlight">\(-simplex. For an integer
+\)</span>0\leq m \leq d-1<span class="math notranslate nohighlight">\(, an \)</span>m<span class="math notranslate nohighlight">\(-dimensional face of \)</span>\tau<span class="math notranslate nohighlight">\( is any \)</span>m<span class="math notranslate nohighlight">\(-simplex
+generated by \)</span>m+1<span class="math notranslate nohighlight">\( of the vertices of \)</span>\tau<span class="math notranslate nohighlight">\(. Zero-dimenisonal faces are
+vertices and one-dimensional faces are called edges of \)</span>\tau<span class="math notranslate nohighlight">\(. The
+\)</span>(d-1)<span class="math notranslate nohighlight">\(-face opposite to the vertex \)</span>x_i<span class="math notranslate nohighlight">\( will be denoted by \)</span>F_i$.</p>
+<p><img alt="Geometric explanation of barycentriccoordinates" src="ch06/figures/barycentricCoor1D.pdf" />{#fig:barycentricCoor
+width=”2.5cm”} <img alt="Geometric explanation of barycentriccoordinates" src="ch06/figures/barycentricCoor2D.pdf" />{#fig:barycentricCoor
+width=”3cm”} <img alt="Geometric explanation of barycentriccoordinates" src="ch06/figures/barycentricCoor3D.pdf" />{#fig:barycentricCoor
+width=”3.1cm”}</p>
+<p>On the other hand, for any <span class="math notranslate nohighlight">\(x\in \tau\)</span>, there exist unique numbers
+<span class="math notranslate nohighlight">\(\lambda _1,\cdots, \lambda _{d+1}\)</span> satisfying
+<span class="math notranslate nohighlight">\(\displaystyle 0\leq \lambda_i\leq 1, i=1:d+1, \sum _{i=1}^{d+1}\lambda _i=1\)</span>
+such that <span class="math notranslate nohighlight">\(\displaystyle x=\sum _{i=1}^{d+1}\lambda _i x_i\)</span>, thus we can
+denote <span class="math notranslate nohighlight">\(\lambda _1,\cdots, \lambda _{d+1}\)</span> as
+<span class="math notranslate nohighlight">\(\lambda _1( x),\cdots, \lambda _{d+1}( x)\)</span>. In fact, the numbers
+<span class="math notranslate nohighlight">\(\lambda _1( x),\cdots, \lambda _{d+1}( x)\)</span> are called <em>barycentric
+coordinates</em> of <span class="math notranslate nohighlight">\(x\)</span> with respect to the <span class="math notranslate nohighlight">\(d+1\)</span> points
+<span class="math notranslate nohighlight">\(x_1, \cdots,  x_{d+1}\)</span>. There is a simple geometric meaning of the
+barycentric coordinates. Given a <span class="math notranslate nohighlight">\(x\in
+\tau\)</span>, let <span class="math notranslate nohighlight">\(\tau _i( x)\)</span> be the simplex with vertices <span class="math notranslate nohighlight">\(x_i\)</span> replaced by
+<span class="math notranslate nohighlight">\(x\)</span>. Then it can be easily shown that $<span class="math notranslate nohighlight">\(\label{eq:lambdasolution}
+\lambda _i( x) = |\tau _i( x)|/|\tau|,\)</span><span class="math notranslate nohighlight">\( where \)</span>|\cdot|<span class="math notranslate nohighlight">\( is the
+Lebesgure measure in \)</span>\mbb R^d<span class="math notranslate nohighlight">\(, namely area in two dimensions and
+volume in three dimensions. Note that \)</span>\lambda
+_i( x)<span class="math notranslate nohighlight">\( is affine function of \)</span>x<span class="math notranslate nohighlight">\( and vanishes on the face \)</span>F_i$. We
+list the four basic properties of barycentric coordinate below:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\leq \lambda_i( x)\leq 1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^{d+1} \lambda_i( x)=1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_i( x)\in P_1(\tau)\)</span>, where <span class="math notranslate nohighlight">\(P_1(\tau)\)</span> denotes the space of
+polynomials of degree <span class="math notranslate nohighlight">\(1\)</span> (linear) on <span class="math notranslate nohighlight">\(\tau\in \mathcal T_h\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_i( x_j)=\delta_{ij}=\begin{cases}
+1, \quad &amp;\text{if}  \quad  i=j\\
+0, \quad &amp;\text{if} \quad i\neq j
+\end{cases}.\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="continuous-linear-finite-element-spaces-linearfe">
+<h2>6.1.2 Continuous linear finite element spaces {#linearFE}<a class="headerlink" href="#continuous-linear-finite-element-spaces-linearfe" title="Permalink to this headline">¶</a></h2>
+<p>A conforming linear finite element function in a domain <span class="math notranslate nohighlight">\(\Omega\subset
+\mathbb R^d\)</span> is a continuous function that is piecewise linear function
+with respect to a grid or mesh consisting of a union of simplices.</p>
+<p>Given a shape regular triangulation <span class="math notranslate nohighlight">\(\mathcal T_h\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span>, we
+define the continuous linear finite element space as $<span class="math notranslate nohighlight">\(\label{LinFE}
+V_h:=\{v\,|\, v\in C(\overline \Omega), \,\hbox{ and }\, v|_{\tau}\in
+P_1(\tau), \forall \tau \in \mathcal T_h\},\)</span><span class="math notranslate nohighlight">\( where \)</span>P_1(\tau)<span class="math notranslate nohighlight">\( denotes
+the space of polynomials of degree \)</span>1<span class="math notranslate nohighlight">\( (linear) on
+\)</span>\tau\in \mathcal T_h<span class="math notranslate nohighlight">\(. Whenever we need to deal with boundary
+conditions, we further define \)</span>V_{h,0}=V_h\cap H_0^1(\Omega)$.</p>
+<p>We note here that the global continuity is also necessary in the
+definition of <span class="math notranslate nohighlight">\(V_h\)</span> in the sense that if <span class="math notranslate nohighlight">\(u\)</span> has a square interable
+gradient, that is <span class="math notranslate nohighlight">\(u\in H^1(\Omega)\)</span>, and <span class="math notranslate nohighlight">\(u\)</span> is piecewise smooth, then
+<span class="math notranslate nohighlight">\(u\)</span> is continuous.</p>
+<p>We always use <span class="math notranslate nohighlight">\(n_h\)</span> to denote the dimension of finite element spaces.
+For <span class="math notranslate nohighlight">\(V_h\)</span>, <span class="math notranslate nohighlight">\(n_h\)</span> is the number of vertices of the triangulation
+<span class="math notranslate nohighlight">\(\mathcal T_h\)</span> and for <span class="math notranslate nohighlight">\(V_{h,0}\)</span>, <span class="math notranslate nohighlight">\(n_h\)</span> is the number of interior
+vertices.</p>
+<div class="section" id="nodal-basis-functions-and-dual-basis">
+<h3>Nodal basis functions and dual basis<a class="headerlink" href="#nodal-basis-functions-and-dual-basis" title="Permalink to this headline">¶</a></h3>
+<p>For linear finite element spaces, we have the so called <em>a standard
+nodal basis functions</em> <span class="math notranslate nohighlight">\(\{\varphi
+_i,i=1,\cdots n_h\}\)</span> such that <span class="math notranslate nohighlight">\(\varphi_i\)</span> is piecewise linear (with
+respect to the triangulation) and <span class="math notranslate nohighlight">\(\varphi_i(x_j)=\delta_{i,j}\)</span>. Note
+that <span class="math notranslate nohighlight">\(\varphi _i|_\tau\)</span> is the corresponding barycentrical coordinates
+of <span class="math notranslate nohighlight">\(x_i\)</span>. See Figure <a class="reference external" href="#fig:nodalbasis">9</a>{reference-type=”ref”
+reference=”fig:nodalbasis”} for an illustration in 2D.</p>
+<p><img alt="Dual basis functions of  in 1D for." src="ch06/6DL/figures/Dualbasis.png" />{#fig:dualbasis height=”4.5cm”
+width=”7cm”}</p>
+<p>Let <span class="math notranslate nohighlight">\((\varphi_i^*)_{i=1}^{n_h}\)</span> be the dual basis of
+<span class="math notranslate nohighlight">\((\varphi_i)_{i=1}^{n_h}\)</span>, namely $<span class="math notranslate nohighlight">\(\label{eq:1}
+(\varphi_i^*, \varphi_j) =\delta_{i, j}, \quad i, j=1,\ldots, n_h.\)</span><span class="math notranslate nohighlight">\( We
+notice that all the nodal basis functions \)</span>{\varphi_i}<span class="math notranslate nohighlight">\( are locally
+supported, but their dual basis functions \)</span>{\varphi_i^<em>}<span class="math notranslate nohighlight">\( are in
+general not locally supported (see Figure
+[7](#fig:dualbasis){reference-type=&quot;ref&quot; reference=&quot;fig:dualbasis&quot;}).
+The nodal basis functions \)</span>{\varphi_i}<span class="math notranslate nohighlight">\( are easily constructed in
+terms of barycentric coordinate functions. The dual basis
+\)</span>{\varphi_i^</em>}$ are only interesting for theoretical consideration and
+it is not necessary to know the actual constructions of these functions.</p>
+<p><img alt="Nodal basis functions in 1d and2d" src="ch06/figures/basisfunction.pdf" />{#fig:nodalbasis height=”4.5cm”
+width=”7cm”} <img alt="Nodal basis functions in 1d and2d" src="ch06/figures/nodalbasis.pdf" />{#fig:nodalbasis height=”5cm”
+width=”7cm”}</p>
+<p>Since <span class="math notranslate nohighlight">\(\{\varphi_i,i=1,\cdots n_h\}\)</span> is a basis of <span class="math notranslate nohighlight">\(V_h\)</span>, therefore for
+any <span class="math notranslate nohighlight">\(v_h\in V_h\)</span>, we have the representation
+$<span class="math notranslate nohighlight">\(v_h(x)=\sum_{i=1}^{n_h}v_h(x_i)\varphi_i(x).\)</span>$</p>
+<p>Let us see how our construction of continuous linear finite space and
+the nodal basis looks like in one spatial dimension. Associated with the
+mesh $<span class="math notranslate nohighlight">\(\mathcal T_h=\{0=x_0&lt;x_1&lt;\ldots&lt;x_{n_h}&lt;x_{n_h+1}=1\},\)</span><span class="math notranslate nohighlight">\( by the
+definition given in [\[LinFE\]](#LinFE){reference-type=&quot;eqref&quot;
+reference=&quot;LinFE&quot;} and the definition \)</span>V_{h,0}=V_{h}\cap H_0^1(\Omega)<span class="math notranslate nohighlight">\(,
+we have \)</span><span class="math notranslate nohighlight">\(\begin{array}{ll}
+V_{h,0}=\{v:~\mbox{\)</span>v<span class="math notranslate nohighlight">\( is continuous and piecewise linear}~ \mbox{w.~r.~t. \)</span>\mathcal T_h<span class="math notranslate nohighlight">\(, } v(0)=v(1)=0\}.
+\end{array}\)</span><span class="math notranslate nohighlight">\( A plot of a typical element of \)</span>V_{h,0}$ is shown in
+Fig. <a class="reference external" href="#fig:1dtypical">10</a>{reference-type=”ref”
+reference=”fig:1dtypical”}.</p>
+<p>It is easily calculated (as we already mentioned), that the dimension of
+<span class="math notranslate nohighlight">\(V_{h,0}\)</span> is equal to the number of internal vertices, and the nodal
+basis functions spanning <span class="math notranslate nohighlight">\(V_{h,0}\)</span> (for <span class="math notranslate nohighlight">\(i=1,2,\cdots,n_h\)</span>) are (see
+also Fig. <a class="reference external" href="#fig:nodalbasis">9</a>{reference-type=”ref”
+reference=”fig:nodalbasis”}): $<span class="math notranslate nohighlight">\(\label{1dbasis:function}
+\varphi_i(x)=\left\{\begin{array}{cl}
+\displaystyle \frac{x-x_{i-1}}{h}, &amp; x\in[x_{i-1},x_i];\\
+\displaystyle \frac{x_{i+1}-x}{h}, &amp; x\in[x_{i},x_{i+1}];\\
+0 &amp;\mbox{elsewhere}.
+\end{array}\right.\)</span>$</p>
+<p><img alt="Plot of a typical element from." src="ch06/figures/femfunction1.pdf" />{#fig:1dtypical width=”2in”}</p>
+</div>
+<div class="section" id="nodal-value-interpolant">
+<h3>Nodal value interpolant<a class="headerlink" href="#nodal-value-interpolant" title="Permalink to this headline">¶</a></h3>
+<p>For any continuous function <span class="math notranslate nohighlight">\(u\)</span>, we define its linear finite element
+interpolation, <span class="math notranslate nohighlight">\((I_h u)(x)\in V_{h,0}\)</span>, as follows: $<span class="math notranslate nohighlight">\(\label{u-interp}
+(I_h u)(x)= \sum_{i=1}^{n_h}u(x_i)\varphi_i(x).\)</span><span class="math notranslate nohighlight">\( Usually, we also
+denote \)</span>(I_h u)(x)<span class="math notranslate nohighlight">\( as \)</span>u_I(x)$. Using interpolation, we can obtain the
+following approximation property of linear finite element space.</p>
+<p>As a result of Theorem <a class="reference external" href="#interp00">[interp00]</a>{reference-type=”ref”
+reference=”interp00”}, we have</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-206078372-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>
