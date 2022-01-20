@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -43,6 +43,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -73,6 +75,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -627,7 +633,7 @@ The number of students in Math497 is: 42
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_73144</span><span class="o">/</span><span class="mf">4050462307.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">ed6c2e0bf6a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">Course</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#  If our module changed, we would have to reload it with the following commands</span>
@@ -648,13 +654,8 @@ The number of students in Math497 is: 42
 <li><p><span class="math notranslate nohighlight">\(l\)</span>-hidden layers: denote <span class="math notranslate nohighlight">\(x^{0}=x\)</span>
 $$</p></li>
 </ul>
-<<<<<<< HEAD
-<div class="amsmath math notranslate nohighlight" id="equation-93511918-553b-479d-aaf1-8396dd8fd18e">
-<span class="eqno">(19)<a class="headerlink" href="#equation-93511918-553b-479d-aaf1-8396dd8fd18e" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
-=======
-<div class="amsmath math notranslate nohighlight" id="equation-f07b3db8-406b-4eea-a329-e834f0c20949">
-<span class="eqno">(19)<a class="headerlink" href="#equation-f07b3db8-406b-4eea-a329-e834f0c20949" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
->>>>>>> c5b3056da3af50e852fd15330a2af4be20c729c3
+<div class="amsmath math notranslate nohighlight" id="equation-bfac308e-bc5c-48d4-9af4-2385ced6e7f6">
+<span class="eqno">(19)<a class="headerlink" href="#equation-bfac308e-bc5c-48d4-9af4-2385ced6e7f6" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 &amp;x^{1} = \sigma (x^0{W^0}^{T}+b^0), &amp;&amp;\text{first hidden layer}\\
 &amp;x^{2} = \sigma (x^1{W^1}^{T}+b^1), &amp;&amp;\text{second hidden layer}\\
 &amp;\vdots &amp;&amp;\\
@@ -877,7 +878,7 @@ Epoch: 2, the training accuracy: 0.9261, the test accuracy: 0.9284
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

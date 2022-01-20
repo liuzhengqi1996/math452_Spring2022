@@ -50,63 +50,9 @@ w0.observe(on_change)
 w0
 
 
-# In[4]:
-
-
-import numpy as np
-import nbinteract as nbi
-
-def normal(mean, sd):
-    '''Returns 1000 points drawn at random fron N(mean, sd)'''
-    return np.random.normal(mean, sd, 1000)
-
-# Pass in the `normal` function and let user change mean and sd.
-# Whenever the user interacts with the sliders, the `normal` function
-# is called and the returned data are plotted.
-nbi.hist(normal, mean=(0, 10), sd=(0, 2.0))
-
-
 # ```{dropdown} Show answer
 # Answer: III
 # ```
-
-# In[5]:
-
-
-w = widgets.Dropdown(
-    options=['Addition', 'Multiplication', 'Subtraction', 'Division'],
-    value='Addition',
-    description='Task:',
-)
-
-def on_change(change):
-    if change['type'] == 'change' and change['name'] == 'value':
-        print("changed to %s" % change['new'])
-
-w.observe(on_change)
-
-display(w)
-
-
-# In[6]:
-
-
-w
-
-
-# In[7]:
-
-
-button = widgets.Button(
-    description='Click me',
-    disabled=False,
-    button_style='', # 'success', 'info', 'warning', 'danger' or ''
-    tooltip='Click me',
-    icon='check' # (FontAwesome names without the `fa-` prefix)
-)
-button.on_click(on_change)
-button
-
 
 # ## Question 2
 # Let 
@@ -117,7 +63,7 @@ button
 # 
 # where $t$ is a scalar variable. Find $g^{'}(0)$ at $x=(1,1,1)$
 
-# In[8]:
+# In[4]:
 
 
 widgets.Dropdown(
@@ -128,6 +74,15 @@ widgets.Dropdown(
 )
 
 
+# ```{dropdown} Show answer
+# Answer: 
+# 
+# $$
+#     3\sqrt{3}
+# $$
+# 
+# ```
+
 # ## Question 3
 # Determine the global maximum and global minimum of the function
 # 
@@ -136,7 +91,7 @@ widgets.Dropdown(
 # $$
 #  on the interval $[-2,3]$
 
-# In[9]:
+# In[5]:
 
 
 widgets.IntText(
@@ -146,7 +101,7 @@ widgets.IntText(
 )
 
 
-# In[10]:
+# In[6]:
 
 
 widgets.IntText(
