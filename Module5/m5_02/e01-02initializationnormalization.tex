@@ -1,0 +1,500 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{bbold}
+
+\begin{document}
+\section{Contents}
+$1 \quad$ Initialization and Normalization in DNN and CNN $\ldots \ldots \ldots \ldots \ldots \ldots$
+
+1.1 Data normalization in DNNs and $\mathrm{CNNs} \ldots \ldots \ldots \ldots \ldots \ldots \ldots$
+
+1.1.1 Normalization for input data of DNNs ...................
+
+1.1.2 Data normalization for images in CNNs $\ldots \ldots \ldots \ldots \ldots .$
+
+1.1.3 Comparison of $\sqrt{\left[\sigma_{X}\right]_{j}}$ and $\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}} \mathrm{~ o}$
+
+$1.2$ Initialization for deep neural networks $\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots$
+
+1.2.1 Xavier's Initialization $\ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . .$
+
+$1.2 .2$ Kaiming's initialization $\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots . . . . . . .$
+
+$1.2 .3 \quad$ Initialization in CNN models and experiments $\ldots \ldots \ldots . . .8$
+
+$1.3$ Batch Normalization in DNN and CNN $\ldots \ldots \ldots \ldots \ldots \ldots$
+
+1.3.1 Recall the original DNN model $\ldots \ldots \ldots \ldots \ldots$
+
+$1.3 .2$ "Real" Batch Normalization and "new" model ............ 10
+
+$1.3 .3 \quad$ BN: some "modified" SGD on new batch normalized model 12
+
+1.3.4 Testing phase in Batch-Normalized DNN ................ 13
+
+1.3.5 Batch Normalization for CNN $\ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . . . . .$
+
+References $\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots$
+
+\includegraphics[max width=\textwidth]{2022_01_06_7122b544778bcd520335g-02}
+
+\section{Initialization and Normalization in DNN and CNN}
+\subsection{Data normalization in DNNs and CNNs}
+\subsubsection{Normalization for input data of DNNs}
+Consider that we have the all training data as
+$$
+(X, Y):=\left\{\left(x_{i}, y_{i}\right)\right\}_{i=1}^{N}
+$$
+for $x_{i} \in \mathbb{R}^{d}$ and $y_{i} \in \mathbb{R}^{k}$.
+
+Before we input every data into a DNN model, we will apply the following normalization for all data $x_{i}$ for each component. Let denote
+$$
+\left[x_{i}\right]_{j} \longleftrightarrow \text { the } \mathrm{j} \text {-th component of data } x_{i}
+$$
+Then we have following formula of for all $j=1,2, \cdots, d$
+$$
+\left[\tilde{x}_{i}\right]_{j}=\frac{\left[x_{i}\right]_{j}-\left[\mu_{X}\right]_{j}}{\sqrt{\left[\sigma_{X}\right]_{j}}}
+$$
+where
+$$
+\left[\mu_{X}\right]_{j}=\mathbb{E}_{x \sim X}\left[[x]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left[x_{i}\right]_{j}, \quad\left[\sigma_{X}\right]_{j}=\mathbb{V}_{x \sim X}\left[[x]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(\left[x_{i}\right]_{j}-\left[\mu_{X}\right]_{j}\right)^{2} .
+$$
+Here $x \sim X$ means that $x$ is a discrete random variable on $X$ with probability
+$$
+\mathbb{P}\left(x=x_{i}\right)=\frac{1}{N},
+$$
+for any $x_{i} \in X$.
+
+For simplicity, we rewrite the element-wise definition above as the following compact form
+$$
+\tilde{x}_{i}=\frac{x_{i}-\mu_{X}}{\sqrt{\sigma_{X}}}
+$$
+where
+$$
+x_{i}, \tilde{x}_{i}, \mu_{X}, \sigma_{X} \in \mathbb{R}^{d}
+$$
+defined as before and all operations in (1.6) are element-wise.
+
+Here we note that, by normalizing the data set, we have the next properties for new data $\tilde{x} \in \tilde{X}$ with component $j=1,2, \cdots, d$,
+$$
+\mathbb{E}_{\bar{X}}\left[[\tilde{x}]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left[\tilde{x}_{i}\right]_{j}=0
+$$
+and
+$$
+\mathbb{V}_{\tilde{X}}\left[[\tilde{x}]_{j}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(\left[\tilde{x}_{i}\right]_{j}-\mathbb{E}_{\tilde{X}}\left[[\tilde{x}]_{j}\right]\right)^{2}=1
+$$
+Finally, we will have a "new" data set
+$$
+\tilde{X}=\left\{\tilde{x}_{1}, \tilde{x}_{2}, \cdots, \tilde{x}_{N}\right\}
+$$
+with unchanged label set $Y$. For the next sections, without special notices, we use $X$ data set as the normalized one as default.
+
+\subsubsection{Data normalization for images in CNNs}
+For images, consider we have a color image data set $(X, Y):=\left\{\left(x_{i}, y_{i}\right)\right\}_{i=1}^{N}$ where
+$$
+x_{i} \in \mathbb{R}^{3 \times m \times n}
+$$
+We further denote these the $(s, t)$ pixel value for data $x_{i}$ at channel $j$ as:
+$$
+\left[x_{i}\right]_{j ; s t} \longleftrightarrow(s, t) \text { pixel value for } x_{i} \text { at channel } j
+$$
+where $1 \leq i \leq N, 1 \leq j \leq 3,1 \leq s \leq m$, and $1 \leq j \leq n .$
+
+Then, the normalization for $x_{i}$ is defined by
+$$
+\left[\tilde{x}_{i}\right]_{j ; s t}=\frac{\left[x_{i}\right]_{j ; s t}-\left[\mu_{X}\right]_{j}}{\sqrt{\left[\sigma_{X}\right]_{j}}}
+$$
+where
+$$
+\left[x_{i}\right]_{j ; s t},\left[\tilde{x}_{i}\right]_{j ; s t},\left[\mu_{X}\right]_{j},\left[\sigma_{X}\right]_{j} \in \mathbb{R}
+$$
+Here
+$$
+\left[\mu_{X}\right]_{j}=\frac{1}{m \times n \times N} \sum_{1 \leq i \leq N} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left[x_{i}\right]_{j ; s t}
+$$
+and
+$$
+\left[\sigma_{X}\right]_{j}=\frac{1}{N \times m \times n} \sum_{1 \leq i \leq N} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left(\left[x_{i}\right]_{j ; s t}-\left[\mu_{X}\right]_{j}\right)^{2}
+$$
+In batch normalization, we confirmed with Lian by both numerical test and code checking that $\mathrm{BN}$ also use the above formula to compute the variance in $\mathrm{CNN}$ for each channel.
+
+Another way to compute the variance over each channel is to compute the standard deviation on each channel for every data, and then average them in the data direction.
+$$
+\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=\frac{1}{N} \sum_{1 \leq i \leq N}\left(\frac{1}{m \times n} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left(\left[x_{i}\right]_{j ; s t}-\left[\mu_{i}\right]_{j}\right)^{2}\right)^{\frac{1}{2}},
+$$
+where
+$$
+\left[\mu_{i}\right]_{j}=\frac{1}{m \times n} \sum_{1 \leq s \leq m, 1 \leq t \leq n}\left[x_{i}\right]_{j ; s t} .
+$$
+
+\subsubsection{Comparison of $\sqrt{\left[\sigma_{X}\right]_{j}}$ and $\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}$ on CIFAR10.}
+They share the same $\mu_{X}$ as
+$$
+\mu_{X}=\left(\begin{array}{lll}
+0.49140105 & 0.48215663 & 0.44653168
+\end{array}\right)
+$$
+But they had different standard deviation estimates:
+$$
+\begin{aligned}
+&\sqrt{\left[\sigma_{X}\right]_{j}}=(0.247032840 .243484990 .26158834) \\
+&\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=(0.202201930 .199316350 .20086373)
+\end{aligned}
+$$
+
+\subsection{Initialization for deep neural networks}
+\subsubsection{Xavier's Initialization}
+The goal of Xavier initialization [1] is to initialize the deep neural network to avoid gradient vanishing or blowup when the input is white noise.
+
+Let us denote the DNN models as:
+$$
+\begin{cases}f^{1}(x) & =W^{1} x+b^{1} \\ f^{\ell}(x) & =W^{\ell} \sigma\left(f^{\ell-1}(x)\right)+b^{\ell} \quad \ell=2: L, \\ f(x) & =f^{L}\end{cases}
+$$
+with $x \in \mathbb{R}^{n_{0}}$ and $f^{\ell} \in \mathbb{R}^{n_{\ell}}$. More precisely, we have
+$$
+W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}} .
+$$
+The basic assumptions that we make are:
+
+    \begin{itemize}
+      \item The initial weights $W_{i j}^{\ell}$ are i.i.d symmetric random variables with mean 0, namely the probability density function of $W_{i j}^{\ell}$ is even.
+
+      \item The initial bias $b^{\ell}=0$.
+
+    \end{itemize}
+Now we choose the variance of the initial weights to ensure that the features $f^{L}$ and gradients don't blow up or vanish. To this end we have the following lemma.
+
+Lemma 1. Under the previous assumptions $f_{i}^{\ell}$ is a symmetric random variable with $\mathbb{E}\left[f^{\ell}\right]=0 .$ Moreover, we have the following identity
+$$
+\mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]
+$$
+Now, if $\sigma=i d$, we can prove by induction from $\ell=1$ that
+$$
+\mathbb{V}\left[f_{i}^{L}\right]=\left(\Pi_{\ell=2}^{L} n_{\ell-1} \operatorname{Var}\left[W_{s t}^{\ell}\right]\right)\left(\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\right)
+$$
+We make this assumption that $\sigma=i d$, which is pretty reasonably since most activation functions in use at the time (such as the hyperbolic tangent) were close to the identity near 0 .
+
+Now, if we set
+$$
+\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell-1}}, \quad \forall \ell \geq 2
+$$
+we will obtain
+$$
+\mathbb{V}\left[f_{i}^{L}\right]=\mathbb{V}\left[f_{j}^{L-1}\right]=\cdots=\mathbb{V}\left[f_{k}^{1}\right]=\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]
+$$
+Thus, in pure DNN models, it is enough to just control $\sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right] .$
+
+A similar analysis of the propagation of the gradient $\left(\frac{\partial L(\theta)}{\partial f^{t}}\right)$ suggests that we set
+$$
+\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell}}
+$$
+Thus, the Xavier's initialization suggests to initialize $W_{i k}^{\ell}$ with variance as:
+
+    \begin{itemize}
+      \item To control $\mathbb{V}\left[f_{i}^{\ell}\right]:$
+    \end{itemize}
+$$
+\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell-1}}
+$$
+
+    \begin{itemize}
+      \item To control $\mathbb{V}\left[\frac{\partial L(\theta)}{\partial f_{i}^{l}}\right]:$
+    \end{itemize}
+$$
+\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{1}{n_{\ell}}
+$$
+
+    \begin{itemize}
+      \item Trade-off to control $\mathbb{V}\left[\frac{\partial L(\theta)}{\partial W_{i k}^{l}}\right]:$
+    \end{itemize}
+$$
+\operatorname{Var}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}+n_{\ell}}
+$$
+Here we note that, this analysis works for all symmetric type distribution around zero, but we often just choose uniform distribution $\mathcal{U}(-a, a)$ and normal distribution $\mathcal{N}\left(0, s^{2}\right) .$ Thus, the final version of Xavier's initialization takes the trade-off type as
+$$
+W_{i k}^{\ell} \sim \mathcal{U}\left(-\sqrt{\frac{6}{n_{\ell}+n_{\ell-1}}}, \sqrt{\frac{6}{n_{\ell}+n_{\ell-1}}}\right)
+$$
+or
+$$
+W_{i k}^{\ell} \sim \mathcal{N}\left(0, \frac{2}{n_{\ell}+n_{\ell-1}}\right) .
+$$
+
+\subsubsection{Kaiming's initialization}
+In [2], Kaiming He and others extended this analysis to get an exact result when the activation function is the ReLU.
+
+We first have the following lemma for symmetric distribution.
+
+Lemma 2. If $X_{i} \in \mathbb{R}$ for $i=1:$ n are i.i.d with symmetric probability density function $p(x)$, i.e. $p(x)$ is even. Then for any nonzero random vector $Y=\left(Y_{1}, Y_{2}, \cdots, Y_{n}\right) \in \mathbb{R}^{n}$ which is independent with $X_{i}$, the following random variable
+$$
+Z=\sum_{i=1}^{n} X_{i} Y_{i}
+$$
+is also symmetric.
+
+Then state the following result for ReLU function and random variable with symmetric distribution around 0 .
+
+Lemma 3. If $X$ is a random variable on $\mathbb{R}$ with symmetric probability density $p(x)$ around zero, i.e.,
+$$
+p(x)=p(-x)
+$$
+Then we have $\mathbb{E} X=0$ and
+$$
+\mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]
+$$
+Based on the previous Lemma 1, we know that $f_{k}^{\ell-1}$ is a symmetric distribution around 0 . The most important observation in Kaiming's paper [2] is that:
+$$
+\mathbb{V}\left[f_{i}^{\ell}\right]=n_{\ell-1} \mathbb{V}\left[W_{i j}^{\ell}\right] \mathbb{E}\left[\left[\sigma\left(f_{j}^{\ell-1}\right)\right]^{2}\right]=n_{\ell-1} \mathbb{V}\left[W_{i k}^{\ell}\right] \frac{1}{2} \mathbb{V}\left[f_{k}^{\ell-1}\right]
+$$
+if $\sigma=$ ReLU. Thus, Kaiming's initialization suggests to take:
+$$
+\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}}, \quad \forall \ell \geq 2
+$$
+For the first layer $\ell=1$, by definition
+$$
+f^{1}=W^{1} x+b^{1},
+$$
+there is no ReLU, thus it should be $\mathbb{V}\left[W_{i k}^{1}\right]=\frac{1}{d} .$ For simplicity, they still use $\mathbb{V}\left[W_{i k}^{1}\right]=$ $\frac{2}{d}$ in the paper [2]. Similarly, an analysis of the propagation of the gradient suggests that we set $\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell}}$. However, in paper [2] authors did not suggest to take the trade-off version, they just chose
+$$
+\mathbb{V}\left[W_{i k}^{\ell}\right]=\frac{2}{n_{\ell-1}}
+$$
+as default.
+
+Thus, the final version of Kaiming's initialization takes the forward type as
+$$
+W_{i k}^{\ell} \sim \mathcal{U}\left(-\sqrt{\frac{6}{n_{\ell-1}}}, \sqrt{\frac{6}{n_{\ell-1}}}\right),
+$$
+or
+$$
+W_{i k}^{\ell} \sim \mathcal{N}\left(0, \frac{2}{n_{\ell-1}}\right)
+$$
+
+\subsubsection{Initialization in CNN models and experiments}
+For CNN models, following the analysis above we have the next iterative scheme in CNNs
+$$
+f^{\ell, i}=K^{\ell, i} * \sigma\left(f^{\ell, i-1}\right),
+$$
+where $f^{\ell, i-1} \in \mathbb{R}^{c_{\ell} \times n_{\ell} \times m_{\ell}}, f^{\ell, i} \in \mathbb{R}^{h_{\ell} \times n_{\ell} \times m_{\ell}}$ and $K \in \mathbb{R}^{(2 k+1) \times(2 k+1) \times h_{\ell} \times c_{\ell}}$. Thus we have
+$$
+\left[f^{\ell, i}\right]_{h ; p, q}=\sum_{c=1}^{c_{l}} \sum_{s, t=-k}^{k} K_{h, c ; s, t}^{\ell, i} * \sigma\left(\left[f^{\ell, i-1}\right]_{c ; p+s, q+t}\right)
+$$
+Take variance on both sides, we will get
+$$
+\mathbb{V}\left[\left[f^{\ell, i}\right]_{h ; p, q}\right]=c_{\ell}(2 k+1)^{2} \mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right] \mathbb{E}\left[\left(\left[f^{\ell, i-1}\right]_{o ; p+s, q+t}\right)^{2}\right]
+$$
+thus we have the following initialization strategies: Xavier's initialization
+$$
+\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{2}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}}
+$$
+Kaiming's initialization
+$$
+\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{2}{c_{\ell}(2 k+1)^{2}}
+$$
+Here we can take this Kaiming's initialization as:
+
+    \begin{itemize}
+      \item Double the Xavier's choice, and get
+    \end{itemize}
+$$
+\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{4}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}} .
+$$
+
+    \begin{itemize}
+      \item Then pick $c_{\ell}$ or $h_{\ell}$ for final result
+    \end{itemize}
+$$
+\mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{4}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}}=\frac{2}{c_{\ell}(2 k+1)^{2}} .
+$$
+And they have the both uniform and normal distribution type.
+
+\includegraphics[max width=\textwidth]{2022_01_06_7122b544778bcd520335g-09}
+
+Fig. 1.1. The convergence of a 22-layer large model. The $x$-axis is the number of training epochs. The y-axis is the top-1 error of 3,000 random val samples, evaluated on the center crop. Use ReLU as the activation for both cases. Both Kaiming's initialization (red) and "Xavier's" (blue) [1] lead to convergence, but Kaiming's initialization starts reducing error earlier.
+
+\includegraphics[max width=\textwidth]{2022_01_06_7122b544778bcd520335g-09(1)}
+
+Fig. 1.2. The convergence of a 30-layer small model (see the main text). Use ReLU as the activation for both cases. Kaiming's initialization (red) is able to make it converge. But "Xavier's" (blue) [1] completely stalls - It is also verified that that its gradients are all diminishing. It does not converge even given more epochs. Given a 22-layer model, in cifar10 the convergence with Kaiming's initialization is faster than Xavier's, but both of them are able to converge and the validation accuracies with two different initialization are about the same(error is $33.82,33.90)$.
+
+With extremely deep model with up to 30 layers, Kaiming's initialization is able to make the model convergence. On the contrary, Xavier's method completely stalls the learning.
+
+\subsection{Batch Normalization in DNN and CNN}
+\subsubsection{Recall the original DNN model}
+Consider the classical (fully connected) artificial deep neural network (DNN) $f^{L}$,
+$$
+\begin{cases}f^{1} & =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} & =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}
+$$
+where $x \in \mathbb{R}^{n}$ is the input vector, $\sigma$ is a non-linear function (activation).
+
+\subsection{2 "'Real'" Batch Normalization and "'new' model}
+\section{Definition of $B N$ operation based on the batch}
+Following the idea in normalization, we consider that we have the all training data as
+$$
+(X, Y):=\left\{x_{i}, y_{i}\right\}_{i=1}^{N} .
+$$
+Since the normalization is applied to each activation independently, let us focus on a particular activation $\left[f^{\ell}\right]_{k}$ and omit $k$ as $f^{\ell}$ for clarity. We have $N$ values of this activation in the batch,
+$$
+X=\left\{x_{1}, \cdots, x_{N}\right\}
+$$
+Let the normalized values be $\hat{f}^{\ell}$, and their linear transformations be $\tilde{f}^{\ell} .$
+$$
+\begin{gathered}
+\mu_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]=\frac{1}{N} \sum_{i=1}^{N} f^{\ell}\left(x_{i}\right) \\
+\sigma_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(f^{\ell}\left(x_{i}\right)-\mu_{X}\right)^{2} \quad \text { batch mean } \\
+\hat{f}^{\ell}(x) \leftarrow \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}} \\
+\tilde{f}^{\ell}(x) \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell}
+\end{gathered}
+$$
+Here we note that all these operations in the previous equation are defined by element-wise. Then at last, we define the BN operation based on the batch set as
+$$
+\mathrm{BN}_{X}\left(f^{\ell}(x)\right)=\tilde{f}^{\ell}(x):=\gamma^{\ell} \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}}+\beta^{\ell}
+$$
+where $\tilde{f}^{\ell}(x), \mu_{X}^{\ell}$ and $\sigma_{X}^{\ell}$ are given above.
+
+\section{"New" model for BN}
+In summary, we have the new DNN model with BN as:
+$$
+\begin{cases}\tilde{f}^{1}\left(x_{i}\right) & =\left(\theta^{1}\left(x_{i}\right)\right) \\ \tilde{f}^{\ell} & =\theta^{\ell} \circ \sigma \circ \mathrm{BN}_{X}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
+$$
+For a more comprehensive notation, we can use the next notation
+$$
+\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{X}
+$$
+Here one thing is important that we need to mention is that because of the new scale $\gamma^{\ell}$ and shift $\beta^{\ell}$ added after the BN operation. We can remove the basis $b^{\ell}$ in $\theta^{\ell}$, thus to say the real model we will compute should be
+$$
+\begin{cases}\tilde{f}^{1}\left(x_{i}\right) & =W^{1} x_{i} \\ \tilde{f}^{\ell} & =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
+$$
+Combine the two definition, we note
+$$
+\tilde{\Theta}:=\{W, \gamma, \beta\}
+$$
+where $W=\left\{W^{1}, \cdots, W^{l}\right\}, \gamma:=\left\{\gamma^{2}, \cdots, \gamma^{L}\right\}$ and $\beta:=\left\{\beta^{2}, \cdots, \beta^{L}\right\}$
+
+Finally, we have the loss function as:
+$$
+\mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
+$$
+A key observation in $(1.57)$ and the new BN model $(1.55)$ is that
+$$
+\begin{aligned}
+\mu_{X}^{\ell} &=\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right] \\
+\sigma_{X}^{\ell} &=\mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right] \\
+\mathcal{L}(\tilde{\Theta}) &=\mathbb{E}_{(x, y) \sim(X, Y)}\left[\ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\right]
+\end{aligned}
+$$
+Here we need to mention that
+$$
+x \sim X
+$$
+means $x$ subject to the discrete distribution of all data $X$.
+
+\subsubsection{BN: some 'modified'' SGD on new batch normalized model}
+Following the key observation in (1.58), and recall the similar case in SGD, we do the the sampling trick in (1.57) and obtain the mini-batch SGD:
+$$
+x \sim X \approx x \sim \mathcal{B},
+$$
+here $\mathcal{B}$ is a mini-batch of batch $X$ with $\mathcal{B} \subset X .$
+
+However, for problem in (1.57), it is very difficult to find some subtle sampling method because of the composition of $\mu_{X}^{\ell}$ and $\left[\sigma_{X}^{\ell}\right]^{2}$. However, one simple way for sampling (1.57) can be chosen as taking (1.59) for all the expectation case in (1.57) and (1.58).
+
+This is to say, in training process ( $t$-th step for example), once we choose $B_{t} \subset X$ as the mini-batch, then the model becomes
+$$
+\begin{cases}\tilde{f}^{1}\left(x_{i}\right) & =W^{1} x_{i}, \\ \tilde{f}^{\ell} & =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
+$$
+where
+$$
+\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{\mathcal{B}_{t}},
+$$
+or we can say that $X$ is replaced by $\mathcal{B}_{t}$ in this case.
+
+Here $\mathrm{BN}_{\mathcal{B}_{t}}$ is defined by
+$$
+\begin{array}{cr}
+\mu_{\mathcal{B}_{t}}^{\ell} & \leftarrow \frac{1}{m} \sum_{i=1}^{m} f^{\ell}\left(x_{i}\right) \\
+\sigma_{\mathcal{B}_{t}}^{\ell} & \leftarrow \frac{1}{m} \sum_{i=1}^{m}\left(f^{\ell}\left(x_{i}\right)-\mu_{\mathcal{B}_{t}}\right)^{2} \quad \text { mini-batch mean } \\
+\hat{f}^{\ell}(x) & \leftarrow \frac{f^{\ell}(x)-\mu_{\mathcal{B}_{t}}^{\ell}}{\sqrt{\sigma_{\mathcal{B}_{t}}^{\ell}+\epsilon}} \\
+\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right):=\tilde{f}^{\ell}(x) & \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell} \\
+& \text { normalize }
+\end{array}
+$$
+Here BN operation introduce some new parameters as $\gamma$ and $\beta$. Thus to say, for training phase, if we choose mini-batch as $\mathcal{B}_{t}$ in $t$-th training step, we need to take gradient as
+$$
+\frac{1}{m} \nabla_{\tilde{\Theta}} \sum_{i \in \mathcal{B}_{t}} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
+$$
+which needs us the to take gradient for $\mu_{B}^{\ell}$ or $\left[\sigma_{B}^{\ell}\right]^{2}$ w.r.t $w^{i}$ for $i \leq \ell$.
+
+Questions: To derive the new gradient formula for BN step because of the fact that
+$$
+\mu_{\mathcal{B}_{t}}^{\ell}, \quad \text { and } \quad \sigma_{\mathcal{B}_{t}}^{\ell}
+$$
+contain the output of $\tilde{f}^{\ell-1}$.
+
+This is exact the batch normalization method described in [3].
+
+\subsubsection{Testing phase in Batch-Normalized DNN}
+One key problem is that, in the BN operator, we need to compute the mean and variance in a data set (batch or mini-batch). However, in the inference step, we just input one data into this DNN, how to compute the BN operator in this situation.
+
+Actually, the $\gamma$ and $\beta$ parameter is fixed after training, the only problem is to compute the mean $\mu$ and variance $\sigma^{2}$. All the mean $\mu_{\mathcal{B}_{t}}$ and variance $\sigma_{\mathcal{B}}^{2}$ during the training phase are just the approximation of the mean and variance of whole batch i.e. $\mu_{X}$ and $\sigma_{X}^{2}$ as shown in (1.58).
+
+One natural idea might be just use the BN operator w.r.t to the whole training data set, thus to say just compute $\mu_{X}$ and $\sigma_{X}^{2}$ by definition in (1.51).
+
+However, there are at least the next few problems:
+
+    \begin{itemize}
+      \item computation cost,
+
+      \item ignoring the statistical approximation (don't make use of the $\mu_{\mathcal{B}_{t}}$ and $\sigma_{\mathcal{B}_{t}}^{2}$ in training phase).
+
+    \end{itemize}
+Considering that we have the statistical approximation for $\mu_{X}$ and $\sigma_{X}^{2}$ during each SGD step, moving average might be a more straightforward way. Thus two say, we define the $\mu^{\ell}$ and $\left[\sigma^{\ell}\right]^{2}$ for the inference (test) phase as
+$$
+\mu^{\ell}=\frac{1}{T} \sum_{t=1}^{T} \mu_{\mathcal{B}_{t}}^{\ell}, \quad \sigma^{\ell}=\frac{1}{T} \frac{m}{m-1} \sum_{t=1}^{T} \sigma_{\mathcal{B}_{t}}^{\ell}
+$$
+Here we take Bessel's correction for unbiased variance. The above moving average step is found in the original paper of BN in [3].
+
+Another way to do this is to call the similar idea in momentum. At each time step we update the running averages for mean and variance using an exponential decay based on the momentum parameter:
+$$
+\begin{aligned}
+&\mu_{\mathcal{B}_{t}}^{\ell}=\alpha \mu_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \mu_{\mathcal{B}_{t}}^{\ell} \\
+&\sigma_{\mathcal{B}_{t}}^{\ell}=\alpha \sigma_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \sigma_{\mathcal{B}_{t}}^{\ell}
+\end{aligned}
+$$
+$\alpha$ is close to 1 , we can take it as $0.9$ generally. Then we all take bath mean and variance as $\mu_{X}^{\ell} \approx \mu_{\mathcal{B}_{T}}^{\ell}$ and $\sigma_{X}^{\ell} \approx \sigma_{\mathcal{B}_{T}}^{\ell} .$
+
+Many people argue that the variance here should also use Bessel's correction.
+
+\subsubsection{Batch Normalization for CNN}
+One key idea in $\mathrm{BN}$ is to do normalization with each scalar features (neurons) separately along a mini-batch. Thus to say, we need one to identify what is neuron in CNN. This is a historical problem, some people think neuron in CNN should be the pixel in each channel some thing that each channel is just one neuron. BN choose the later one. One (most ?) important reason for this choice is the fact of computation cost. For convolutional layers, BN additionally wants the normalization to obey the convolutional property - so that different elements of the same feature map, at different locations, are normalized in the same way. To compute $\mu_{\mathcal{B}_{t}}^{\ell}$, we take mean of the set of all values in a feature map across both the elements of a mini-batch and spatial locations - so for a mini-batch of size $m$ and feature maps of size $m_{\ell} \times n_{\ell}$ (image geometrical size), we use the effective mini-batch of size $m m_{\ell} n_{\ell}$. We learn a pair of parameters $\gamma_{k}$ and $\beta_{k}$ per feature map (k-th channel), rather than per activation
+
+For simplicity, then have the following BN scheme for CNN
+$$
+\begin{array}{cc}
+{\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}} & \text { mean on channel } j \\
+{\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left(\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}\right)^{2}} & \text { variance on channel } j \\
+{\left[\hat{f}^{\ell}(x)\right]_{j ; s t} \leftarrow \frac{\left[f^{\ell}(x)\right]_{j, s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}}{\sqrt{\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j}+\epsilon}}} & \text { normalize }
+\end{array}
+$$
+$$
+\left[\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right)\right]_{j ; s t}:=\left[\tilde{f}^{\ell}(x)\right]_{j ; s t} \leftarrow\left[\gamma^{\ell}\right]_{j}\left[\hat{f}^{\ell}(x)\right]_{j ; s t}+\left[\beta^{\ell}\right]_{j}
+$$
+scale and shift on channel
+
+\section{References}
+[1] X. Glorot and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In Proceedings of the thirteenth international conference on artificial intelligence and statistics, pages 249-256, 2010 .
+
+[2] K. He, X. Zhang, S. Ren, and J. Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In Proceedings of the IEEE international conference on computer vision, pages $1026-1034,2015 .$
+
+[3] S. Ioffe and C. Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. In International conference on machine learning, pages 448-456, 2015 .
+
+[4] Y. LeCun, L. Bottou, G. B. Orr, K.-R. Müller, et al. Neural networks: Tricks of the trade. Springer Lecture Notes in Computer Sciences, 1524(5-50): $6,1998 .$
+
+[5] S. Wiesler and H. Ney. A convergence analysis of $\log$-linear training. In $A d$ vances in Neural Information Processing Systems, pages 657-665, 2011.
+
+
+\end{document}

@@ -44,6 +44,30 @@ parts:
     - file: Module3/C08_DNN.ipynb
     - file: Module3/m3_hw.ipynb
     - file: Module3/Programming_Assignment_3.ipynb
+  - file: Module4/module4_
+    sections:
+    - file: Module4/m4_01/m4_01.ipynb
+    - file: Module4/m4_02/m4_02.ipynb
+    - file: Module4/m4_03/m4_03.ipynb
+    - file: Module4/m4_04/m4_04.ipynb
+    - file: Module4/m4_05.ipynb
+    - file: Module3/Programming_Assignment_4.ipynb
+  - file: Module5/module5_
+    sections:
+    - file: Module5/m5_01/m5_01.ipynb
+    - file: Module5/m5_02/m5_02.ipynb
+    - file: Module5/m5_03/m5_03.ipynb
+    - file: Module5/m5_04/m5_04.ipynb
+    - file: Module5/m5_05.ipynb
+    - file: Module5/Programming_Assignment_5.ipynb
+  - file: Module6/module6_
+    sections:
+    - file: Module6/m6_01.ipynb
+    - file: Module6/m6_02.ipynb
+    - file: Module6/MG_MgNet.ipynb
+    - file: Module6/Final_Project.ipynb
+
+
 
     
 

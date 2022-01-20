@@ -14,6 +14,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ## Course Instructor and Assistants
 # - Instructor: Qingguo Hong
 # - Email: huq11@psu.edu
+# - Grader: Haiyang Luo
+# - Email: hml5369@psu.edu
+# - Live section: T,Th: 11:30 -12:20 AM [https://psu.zoom.us/s/97938047724]
 # - Questions and additional office hours: email to huq11@psu.edu
 # - Consultant: Professor Stanley Smith
 
@@ -23,14 +26,14 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # - hands-on coding exercises for python programming for deep learning algorithms
 # ### Detailed course materials and forms:
 # - pre-recorded video lectures
-# - copy of slides
 # - typed lecture notes
 # - live discussions
 # - programming subroutines
 # - theoretical and practical exercises
-# ### For interested and qualified students
-# - research opportunities
-#  possible RA suppor
+# ### Interactive programming environment:
+# - Click the "Binder" icon under Rocket icon:
+# ![rocket](./rocket.png)
+# - !!! Attention: the interactive programming environment won't save your code
 
 # ## Course Description and Syllabus
 # Main topics include:

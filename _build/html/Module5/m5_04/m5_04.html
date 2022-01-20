@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finite Element Method and Multigrid &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Week 5 Programming Assignment" href="../Programming_Assignment_5.html" />
+    <link rel="prev" title="Building and Training ResNet with Pytorch" href="../m5_03/m5_03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_01/m3_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_02/m3_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module4/module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_01/m4_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_02/m4_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_03/m4_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_01/m5_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Finite Element Method and Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_01.html">
+     1D and 2D Finite Element and Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module5/m5_04/m5_04.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Finite Element Method and Multigrid
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-one-dimensional-problem">
+     A one dimensional problem
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectrum-properties-of-a">
+       Spectrum properties of
+       <span class="math notranslate nohighlight">
+        \(A *\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gradient-descent-method">
+       Gradient descent method
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convergence-and-smoothing-properties-of-gd">
+       Convergence and smoothing properties of GD
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-analysis-for-the-gradient-descent-method">
+   Fourier analysis for the gradient descent method
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="finite-element-method-and-multigrid">
+<h1>Finite Element Method and Multigrid<a class="headerlink" href="#finite-element-method-and-multigrid" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-one-dimensional-problem">
+<h2>A one dimensional problem<a class="headerlink" href="#a-one-dimensional-problem" title="Permalink to this headline">¶</a></h2>
+<p>8.1.1 Two-point boundary problems and finite element discretization</p>
+<p>Define the functional space
+$<span class="math notranslate nohighlight">\(V=\{v:[0,1] \rightarrow R, v \text { is continuous and } v(0)=v(1)=0\} .\)</span><span class="math notranslate nohighlight">\(
+Given any \)</span>f:[0,1] \rightarrow R<span class="math notranslate nohighlight">\(, consider
+\)</span><span class="math notranslate nohighlight">\(J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x .\)</span><span class="math notranslate nohighlight">\(
+Find \)</span>u \in V<span class="math notranslate nohighlight">\( such that \)</span><span class="math notranslate nohighlight">\(u=\underset{v \in V}{\arg \min } J(v)\)</span><span class="math notranslate nohighlight">\(
+Theorem 18. Problem (8.1) is equivalent to: Find \)</span>u \in V<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\(\left\{\begin{array}{l}
+-u^{\prime \prime}=f, 0&lt;x&lt;1, \\
+u(0)=u(1)=0 .
+\end{array}\right.\)</span><span class="math notranslate nohighlight">\( Proof. For any \)</span>v \in V, t \in R<span class="math notranslate nohighlight">\(, let
+\)</span>g(t)=J(u+t v)<span class="math notranslate nohighlight">\(. Since \)</span>u=<span class="math notranslate nohighlight">\( \)</span>\arg \min <em>{v \in V} J(v)<span class="math notranslate nohighlight">\( means
+\)</span>g(t) \geq g(0)<span class="math notranslate nohighlight">\(. Hence, for any \)</span>v \in V, 0<span class="math notranslate nohighlight">\( is the global minimum of
+the function \)</span>g(t)<span class="math notranslate nohighlight">\(. Therefore \)</span>g^{\prime}(0)=0<span class="math notranslate nohighlight">\( implies
+\)</span><span class="math notranslate nohighlight">\(\int_{0}^{1} u^{\prime} v^{\prime} d x=\int_{0}^{1} f v d x \quad \forall v \in V\)</span><span class="math notranslate nohighlight">\(
+By integration by parts, which is equivalent to
+\)</span><span class="math notranslate nohighlight">\(\int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V\)</span><span class="math notranslate nohighlight">\(
+It can be proved that the above identity holds if and only if
+\)</span>-u^{\prime \prime}=f<span class="math notranslate nohighlight">\( for all \)</span>x \in(0,1)<span class="math notranslate nohighlight">\(. Namely \)</span>u<span class="math notranslate nohighlight">\( satisfies
+(8.10). \)</span>\square<span class="math notranslate nohighlight">\( Let \)</span>V</em>{h}<span class="math notranslate nohighlight">\( be finite element space and
+\)</span>\left{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right}<span class="math notranslate nohighlight">\( be a nodal
+basis of the \)</span>V_{h}<span class="math notranslate nohighlight">\( (see Section 5.2). Let
+\)</span>\left{\psi_{1}, \psi_{2}, \cdots, \psi_{n}\right}<span class="math notranslate nohighlight">\( be a dual basis of
+\)</span>\left{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right}<span class="math notranslate nohighlight">\(, namely
+\)</span>\left(\varphi_{i}, \psi_{j}\right)=\delta_{i j}<span class="math notranslate nohighlight">\(.
+\)</span><span class="math notranslate nohighlight">\(J\left(v_{h}\right)=\frac{1}{2} \int_{0}^{1}\left|v_{h}^{\prime}\right|^{2} d x-\int_{0}^{1} f v_{h} d x .\)</span><span class="math notranslate nohighlight">\(
+Let \)</span><span class="math notranslate nohighlight">\(v_{h}=\sum_{i=1}^{n} v_{i} \varphi_{i}\)</span><span class="math notranslate nohighlight">\( then
+\)</span><span class="math notranslate nohighlight">\(J\left(v_{h}\right)=I(v)=\frac{1}{2} v^{T} A * v-b^{T} v\)</span><span class="math notranslate nohighlight">\( and
+\)</span><span class="math notranslate nohighlight">\(\nabla I(v)=A * v-b .\)</span><span class="math notranslate nohighlight">\( At the same time, let
+\)</span>u_{h}=\sum_{i=1}^{n} \mu_{i} \varphi_{i}<span class="math notranslate nohighlight">\(,
+\)</span><span class="math notranslate nohighlight">\(u_{h}=\underset{v_{h} \in V_{h}}{\arg \min } J\left(v_{h}\right) \Leftrightarrow \mu=\underset{v \in R^{n}}{\arg \min } I(v)\)</span><span class="math notranslate nohighlight">\(
+And \)</span>u_{h}<span class="math notranslate nohighlight">\( solves the problem: Find \)</span>u_{h} \in V_{h}<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\left.\frac{d}{d t} J\left(u_{h}+t v_{h}\right)\right|_{t=0}=a\left(u_{h}, v_{h}\right)-\left\langle f, v_{h}\right\rangle=0 \quad \forall v_{h} \in V_{h}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(a\left(u_{h}, v_{h}\right)=\int_{0}^{1} u_{h}^{\prime} v_{h}^{\prime} d x\)</span><span class="math notranslate nohighlight">\(
+which is equivalent to solving \)</span>\underline{A} \mu=b<span class="math notranslate nohighlight">\(, where
+\)</span>\underline{A}=\left(a_{i j}\right)<em>{i j}^{n}<span class="math notranslate nohighlight">\( and \)</span>a</em>{i j}=<span class="math notranslate nohighlight">\(
+\)</span>a\left(\varphi_{j}, \varphi_{i}\right)<span class="math notranslate nohighlight">\( and
+\)</span>b_{i}=\int_{0}^{1} f \varphi_{i} d x .<span class="math notranslate nohighlight">\( Namely
+\)</span><span class="math notranslate nohighlight">\(\frac{1}{h}\left(\begin{array}{ccccc}
+2 &amp; -1 &amp; &amp; &amp; \\
+-1 &amp; 2 &amp; -1 &amp; &amp; \\
+&amp; \ddots &amp; \ddots &amp; \ddots &amp; \\
+&amp; &amp; -1 &amp; 2 &amp; -1 \\
+&amp; &amp; &amp; -1 &amp; 2
+\end{array}\right)\left(\begin{array}{c}
+\mu_{1} \\
+\mu_{2} \\
+\vdots \\
+\mu_{n}
+\end{array}\right)=\left(\begin{array}{c}
+b_{1} \\
+b_{2} \\
+\vdots \\
+b_{n}
+\end{array}\right) .\)</span><span class="math notranslate nohighlight">\( Which can be rewritten as
+\)</span><span class="math notranslate nohighlight">\(\frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0 .\)</span><span class="math notranslate nohighlight">\(
+Using the convolution notation, (8.7) can be written as \)</span><span class="math notranslate nohighlight">\(A * \mu=b\)</span><span class="math notranslate nohighlight">\(
+where \)</span>A=\frac{1}{h}[-1,2,-1]$.</p>
+<div class="section" id="spectrum-properties-of-a">
+<h3>Spectrum properties of <span class="math notranslate nohighlight">\(A *\)</span><a class="headerlink" href="#spectrum-properties-of-a" title="Permalink to this headline">¶</a></h3>
+<p>We recall that <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> and and
+<span class="math notranslate nohighlight">\(\xi \in R^{N} \backslash\{0\}\)</span> is a corresponding eigenvector if
+$<span class="math notranslate nohighlight">\(A * \xi=\lambda \xi\)</span><span class="math notranslate nohighlight">\( Because of the special structure of \)</span>A<span class="math notranslate nohighlight">\(, all the
+\)</span>N<span class="math notranslate nohighlight">\( eigenvalues, \)</span>\lambda_{k}<span class="math notranslate nohighlight">\(, and the corresponding eigenvectors,
+\)</span>\xi^{k}=\left(\xi_{j}^{k}\right)<span class="math notranslate nohighlight">\(, of \)</span>A<span class="math notranslate nohighlight">\( can be obtained, for
+\)</span>1 \leq k \leq N<span class="math notranslate nohighlight">\(, as follows:
+\)</span><span class="math notranslate nohighlight">\(\lambda_{k}=\frac{4}{h} \sin ^{2} \frac{k \pi}{2(N+1)}, \quad \xi_{j}^{k}=\sin \frac{k j \pi}{N+1}(1 \leq j \leq N)\)</span><span class="math notranslate nohighlight">\(
+Indeed, the relation \)</span>A \xi^{k}=\lambda_{k} \xi^{k}$ can be verified by
+following elementary trigonometric identities:</p>
+<p><span class="math notranslate nohighlight">\(-\sin \frac{k(j-1) \pi}{N+1}+2 \sin \frac{k j \pi}{N+1}-\sin \frac{k(j+1) \pi}{N+1}=4 \sin ^{2} \frac{k \pi}{2(N+1)} \sin \frac{k j \pi}{N+1}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(1 \leq j \leq N\)</span>. Actually, it is not very difficult to derive
+these formula directly (see appendix A).</p>
+<p>To understand the behavior of these eigenvectors, let us take <span class="math notranslate nohighlight">\(N=6\)</span> and
+plot the linear interpolations of all these 6 eigenvectors. We
+immediately observe that each vector <span class="math notranslate nohighlight">\(\xi^{k}\)</span> corresponds to a given
+frequency, and larger <span class="math notranslate nohighlight">\(k\)</span> corresponds to higher frequency. As
+<span class="math notranslate nohighlight">\(\lambda_{k}\)</span> is increasing with respect to <span class="math notranslate nohighlight">\(k\)</span>, we can then say that a
+larger eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> corresponds to a higher frequency eigenvector.
+From a numerical point of view, we say a relatively low frequency vector
+is relatively smoother whereas a high frequency vector is nonsmooth.</p>
+<p><img alt="image" src="Module5/m5_04/2022_01_06_7eec630b8b060fb00b5bg-03" />{width=”\textwidth”}</p>
+<p>Fig. 8.1. The eigenvectors We note that the set of eigenvectors
+<span class="math notranslate nohighlight">\(\xi^{k}=\left(\xi_{j}^{k}\right)\)</span> forms an orthogonal basis of <span class="math notranslate nohighlight">\(R^{N}\)</span>.
+(This fact can be checked directly, or it also follows from the fact
+that the matrix <span class="math notranslate nohighlight">\(A\)</span> is symmetric and has <span class="math notranslate nohighlight">\(N\)</span> distinctive eigenvalues.)
+Therefore, any <span class="math notranslate nohighlight">\(\xi \in R^{N}\)</span> can be expanded in terms of these
+eigenvectors: $<span class="math notranslate nohighlight">\(\xi=\sum_{k=1}^{N} \alpha_{k} \xi^{k}\)</span><span class="math notranslate nohighlight">\( This type of
+expansion is often called discrete Fourier expansion. The smoothness of
+the vector \)</span>\xi<span class="math notranslate nohighlight">\( has a lot to do with the relative size of the
+coefficients \)</span>\alpha_{k}<span class="math notranslate nohighlight">\(. To see this numerically, let us again take
+\)</span>N=4<span class="math notranslate nohighlight">\( and consider the following two vectors
+\)</span><span class="math notranslate nohighlight">\(\xi=\sum_{k=1}^{4} 2^{1-k} \xi^{k}, \quad \sigma=\sum_{k=1}^{4} 2^{k-4} \xi^{k}\)</span>$
+<img alt="image" src="Module5/m5_04/2022_01_06_7eec630b8b060fb00b5bg-04" />{width=”\textwidth”}</p>
+<p>Fig. 8.2. Plots of <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\sigma . \xi\)</span>-solid line; <span class="math notranslate nohighlight">\(\sigma\)</span> dashed
+line</p>
+<p>The first vector <span class="math notranslate nohighlight">\(\xi\)</span> has larger coefficients in front of lower
+frequencies whereas the second vector <span class="math notranslate nohighlight">\(\sigma\)</span> has larger coefficients
+in front of higher frequencies. From Figure <span class="math notranslate nohighlight">\(8.2\)</span>, it is easy to see how
+the smoothness of a vector depends on the relative size of its Fourier
+coefficients. We conclude that, in general, a vector with relatively
+small Fourier coefficients in front of the higher frequencies is
+relatively smooth and conversely, a vector with relatively large Fourier
+coefficients in front of the higher frequencies is relatively rough or
+nonsmooth.</p>
+</div>
+<div class="section" id="gradient-descent-method">
+<h3>Gradient descent method<a class="headerlink" href="#gradient-descent-method" title="Permalink to this headline">¶</a></h3>
+<p>Noting that <span class="math notranslate nohighlight">\(\nabla I(v)=A * v-b\)</span> and applying the gradient descent
+method to solve problem (8.4), we obtain
+$<span class="math notranslate nohighlight">\(\mu^{(l)}=\mu^{(l-1)}-\eta\left(A * \mu^{(l-1)}-b\right), \quad l=1, \cdots, v .\)</span><span class="math notranslate nohighlight">\(
+After \)</span>v<span class="math notranslate nohighlight">\( iterations of gradient descent method, we denote the solution
+as \)</span>u_{h}^{\nu}$.</p>
+<p>Consider the finite element discretization of Poisson equation in 1D:
+One very simple iterative method for (8.6) is the following gradient
+descent method
+$<span class="math notranslate nohighlight">\(\mu^{(l)}=\mu^{(l-1)}+\eta\left(b-A * \mu^{(l-1)}\right),\)</span><span class="math notranslate nohighlight">\( or, for
+\)</span>j=1: N<span class="math notranslate nohighlight">\(,
+\)</span><span class="math notranslate nohighlight">\(\mu_{j}^{(l)}=\mu_{j}^{(l-1)}+\eta\left(\beta_{j}-\frac{-\mu_{j-1}^{(l-1)}+2 \mu_{j}^{(l-1)}-\mu_{j+1}^{(l-1)}}{h}\right),\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\eta&gt;0$ is a positive parameter named learning rate.</p>
+<p>It is not so difficult to properly choose <span class="math notranslate nohighlight">\(\eta\)</span> so that the above
+iterative scheme converges, namely for any initial guess <span class="math notranslate nohighlight">\(\mu^{0}\)</span>, the
+sequence <span class="math notranslate nohighlight">\(\left(\mu^{\prime} l-\right.\)</span> 1)) generated by the above
+iteration converges to the exact solution <span class="math notranslate nohighlight">\(\mu\)</span> of (8.6):</p>
+<p>Note that $<span class="math notranslate nohighlight">\(\mu=\mu+\eta(b-A * \mu)\)</span><span class="math notranslate nohighlight">\( we get
+\)</span><span class="math notranslate nohighlight">\(\mu-\mu^{(l)}=(I-\eta A *)\left(\mu-\mu^{(l-1)}\right)\)</span><span class="math notranslate nohighlight">\( Or
+\)</span><span class="math notranslate nohighlight">\(\mu-\mu^{(l)}=(I-\eta A *)^{I}\left(\mu-\mu^{0}\right), l=1,2,3, \cdots\)</span><span class="math notranslate nohighlight">\(
+As we known, \)</span><span class="math notranslate nohighlight">\((I-\eta A *)^{I} \longrightarrow o\)</span><span class="math notranslate nohighlight">\( if and only if
+\)</span>\rho(I-\eta A *)&lt;1<span class="math notranslate nohighlight">\(. Here \)</span>\rho(B)<span class="math notranslate nohighlight">\( is the spectral radius of matrix
+\)</span>B<span class="math notranslate nohighlight">\(. However, \)</span>\rho(I-\eta A *)&lt;1<span class="math notranslate nohighlight">\( if and only if
+\)</span><span class="math notranslate nohighlight">\(0&lt;\text { all the eigenvalue of } A *&lt;2 \eta^{-1} \text {. }\)</span><span class="math notranslate nohighlight">\( Thus, a
+necessary and sufficient condition for the convergence is the following
+\)</span><span class="math notranslate nohighlight">\(0&lt;\eta&lt;\frac{2}{\rho(A *)}\)</span><span class="math notranslate nohighlight">\( It is easy to see that (for example,
+\)</span>4 / h<span class="math notranslate nohighlight">\( is an upper bound of its row sums) \)</span><span class="math notranslate nohighlight">\(\frac{4}{h}&gt;\rho(A *)\)</span><span class="math notranslate nohighlight">\(
+Therefore it is reasonable to make the following choice:
+\)</span><span class="math notranslate nohighlight">\(\eta=\frac{h}{4}\)</span><span class="math notranslate nohighlight">\( and the resulting algorithm is
+\)</span><span class="math notranslate nohighlight">\(\mu^{(l)}=\mu^{(l-1)}+\frac{h}{4}\left(b-A * \mu^{(l-1)}\right)\)</span><span class="math notranslate nohighlight">\( In
+the rest of this section, unless otherwise noted, we shall choose \)</span>\eta$
+as above for simplicity.</p>
+<p>On Figure <span class="math notranslate nohighlight">\(8.3\)</span> the convergence history plot of the above gradient
+descent iterative method for typical application is shown. As we see,
+this iterative scheme converges very slowly.</p>
+<p><img alt="image" src="Module5/m5_04/2022_01_06_7eec630b8b060fb00b5bg-06" />{width=”\textwidth”}</p>
+<p>Fig. 8.3. A picture on the GD method convergence history</p>
+<p>Our main goal is to find a way to speed up such kind of rather slowly
+convergent iterative scheme. To do that, we need to study its convergent
+property in more microscopic level. First of all, let us now take a
+careful look at the convergence history picture and make the following
+observation:</p>
+<p>Observation 1. The scheme converges rather fast in the very beginning
+but then slows down after a few steps. Overall, the method converges
+very slowly.</p>
+<p>To further understand this phenomenon, let us plot the detailed pictures
+of the error functions in the first few iterations. After a careful look
+at these pictures, we have the following observation</p>
+<p>Observation 2. The scheme not only converges fast in the first few
+steps, but also smooth out the error function very quickly.</p>
+<p>In other words, the error function becomes a much smoother function
+after a few such simple iterations. This property of the itera-</p>
+<p><img alt="image" src="Module5/m5_04/2022_01_06_7eec630b8b060fb00b5bg-07" />{width=”\textwidth”}</p>
+<p>Fig. 8.4. The smoothing effect of the Richardson method</p>
+<p>tive scheme is naturally called a smoothing property and an iterative
+scheme having this smoothing property is called a smoother.</p>
+<p>The above two observations, especially the second one, concern the most
+important property of the simple gradient descent method that we can
+take advantage to get a much faster algorithm.</p>
+<p>Example 7. Let <span class="math notranslate nohighlight">\(f(x)=\pi^{2} \sin \pi x\)</span>. Consider
+$<span class="math notranslate nohighlight">\(\left\{\begin{array}{l}
+-u^{\prime \prime}=f, 0&lt;x&lt;1, \\
+u(0)=u(1)=0 .
+\end{array}\right.\)</span><span class="math notranslate nohighlight">\( The true solution \)</span>u=\sin \pi x<span class="math notranslate nohighlight">\(. Given the
+partition with the grid points
+\)</span>x_{i}=\frac{i}{n+1}, i=0,1, \cdots, n+1<span class="math notranslate nohighlight">\(, then by finite element
+discretization, we obtain \)</span><span class="math notranslate nohighlight">\(A * \mu=b, A=\frac{1}{h}[-1,2,-1]\)</span><span class="math notranslate nohighlight">\( Use
+gradient descent method to solve (8.11) with random initial guess
+\)</span>\mu^{0}<span class="math notranslate nohighlight">\(. Plot \)</span>\mu^{\ell}-\mu^{0}<span class="math notranslate nohighlight">\( and
+\)</span>\left|\mu^{\ell}-\mu^{0}\right|<span class="math notranslate nohighlight">\( for \)</span>\ell=1,2,3$.</p>
+<p>The gradient descent method can be written in terms of
+<span class="math notranslate nohighlight">\(S_{0}^{\ell}: \mathbb{R}^{N_{t}} \rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbb{R}^{N_{t}}\)</span>
+satisfying
+$<span class="math notranslate nohighlight">\(\mu^{(1)}=\left(S_{0}^{\ell} b\right)=\frac{h_{\ell}}{4} b,\)</span><span class="math notranslate nohighlight">\( for
+equation (8.7) with initial guess zero. If we apply this method twice,
+then
+\)</span><span class="math notranslate nohighlight">\(\mu^{(2)}=S_{1}^{\ell}(b)=S_{0}^{\ell} b+S_{0}^{\ell}\left(b-A_{\ell} *\left(S_{0}^{\ell} b\right)\right),\)</span><span class="math notranslate nohighlight">\(
+with element-wise form
+\)</span><span class="math notranslate nohighlight">\(\mu_{i}^{(2)}=\frac{h_{\ell}}{16}\left(b_{i-1}+6 b_{i}+b_{i+1}\right)\)</span><span class="math notranslate nohighlight">\(
+Then by the definition of convolution (6.17), we have
+\)</span><span class="math notranslate nohighlight">\(\mu^{(1)}=S_{0}^{\ell} * b \quad \mu^{(2)}=S_{1}^{\ell} * b .\)</span><span class="math notranslate nohighlight">\( with
+\)</span><span class="math notranslate nohighlight">\(S_{0}^{\ell}=\frac{h_{\ell}}{4},\)</span><span class="math notranslate nohighlight">\( and
+\)</span><span class="math notranslate nohighlight">\(S_{1}^{\ell}=\frac{h_{\ell}}{16}[1,6,1]\)</span><span class="math notranslate nohighlight">\( Hence we denote
+\)</span>S_{0}^{\ell}<span class="math notranslate nohighlight">\( or \)</span>S_{1}^{\ell}<span class="math notranslate nohighlight">\( as \)</span>S^{\ell}$.</p>
+<p>Now for any given <span class="math notranslate nohighlight">\(\mu^{(0)}=\tilde{\mu}^{(0)}\)</span>, $<span class="math notranslate nohighlight">\(\begin{aligned}
+&amp;j=1,2, \cdots, 2 v \\
+&amp;\mu^{(j)}=\mu^{(j-1)}+S_{0}^{\ell} *\left(b-A * \mu^{(j-1)}\right) \\
+&amp;\Leftrightarrow \\
+&amp;j=1,2, \cdots, v \\
+&amp;\tilde{\mu}^{(j)}=\tilde{\mu}^{(j-1)}+S_{1}^{\ell} *\left(b-A * \tilde{\mu}^{(j-1)}\right)
+\end{aligned}\)</span><span class="math notranslate nohighlight">\( we obtain \)</span>\mu^{(j)}=\tilde{\mu}^{(j)}<span class="math notranslate nohighlight">\( which means one
+step \)</span>S_{1}^{\ell}<span class="math notranslate nohighlight">\( is equivalent to two steps of \)</span>S_{0}^{\ell}$.</p>
+</div>
+<div class="section" id="convergence-and-smoothing-properties-of-gd">
+<h3>Convergence and smoothing properties of GD<a class="headerlink" href="#convergence-and-smoothing-properties-of-gd" title="Permalink to this headline">¶</a></h3>
+<p>Because of the extraordinary importance of this smoothing property, we
+shall now try to give some simple theoretical analysis. To do this, we
+make use of the eigenvalues and eigenvectors of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fourier-analysis-for-the-gradient-descent-method">
+<h1>Fourier analysis for the gradient descent method<a class="headerlink" href="#fourier-analysis-for-the-gradient-descent-method" title="Permalink to this headline">¶</a></h1>
+<p>Our earlier numerical experiments indicate that the gradient descent
+method has a smoothing property. Based on our understanding of the
+relation between the smoothness and the size of Fourier coefficients, we
+can imagine that this smoothing property can be analyzed using the
+discrete Fourier expansion.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mu\)</span> be the exact solution of (8.6) and <span class="math notranslate nohighlight">\(\mu^{(l)}\)</span> the result of
+<span class="math notranslate nohighlight">\(l-t h\)</span> iteration from the gradient descent method (8.9). Then
+$<span class="math notranslate nohighlight">\(\mu-\mu^{(l)}=(1-\eta A *)\left(\mu-\mu^{(l-1)}\right)=\ldots=(1-\eta A *)^{l}\left(\mu-\mu^{(0)}\right) .\)</span><span class="math notranslate nohighlight">\(
+Consider the Fourier expansion of the initial error:
+\)</span><span class="math notranslate nohighlight">\(\mu-\mu^{(0)}=\sum_{k=1}^{N} \alpha_{k} \xi^{k}\)</span><span class="math notranslate nohighlight">\( Then
+\)</span><span class="math notranslate nohighlight">\(\mu-\mu^{(l)}=\sum_{k=1}^{N} \alpha_{k}(I-\eta A *)^{l} \xi^{k} .\)</span><span class="math notranslate nohighlight">\(
+Note that \)</span>\eta=h / 4<span class="math notranslate nohighlight">\( and for any polynomial \)</span>p<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(p(A *) \xi^{k}=p\left(\lambda_{k}\right) \xi^{k}\)</span><span class="math notranslate nohighlight">\( we get
+\)</span><span class="math notranslate nohighlight">\(\mu-\mu^{(m)}=\sum_{k=1}^{N} \alpha_{k}\left(1-\eta \lambda_{k}\right)^{m} \xi^{k}=\sum_{k=1}^{N} \alpha_{k}^{(m)} \xi^{k}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\alpha_{k}^{(m)}=\left(1-\sin ^{2} \frac{k \pi}{2(N+1)}\right)^{m} \alpha_{k} .\)</span><span class="math notranslate nohighlight">\(
+Note that
+\)</span><span class="math notranslate nohighlight">\(1-\sin ^{2} \frac{k \pi}{2(N+1)}=\cos ^{2} \frac{k \pi}{2(N+1)}=\sin ^{2}\left(\frac{\pi}{2}-\frac{k \pi}{2(N+1)}\right)\)</span><span class="math notranslate nohighlight">\(
+implies
+\)</span><span class="math notranslate nohighlight">\(\alpha_{k}^{(m)}=\alpha_{k} \sin ^{2 m} \frac{N+1-k}{N+1} \frac{\pi}{2} \leq \alpha_{k}\left(\frac{N+1-k}{N+1} \frac{\pi}{2}\right)^{2 m}\)</span><span class="math notranslate nohighlight">\(
+which, for \)</span>k<span class="math notranslate nohighlight">\( close to \)</span>N<span class="math notranslate nohighlight">\(, for example \)</span>k=N<span class="math notranslate nohighlight">\(, approaches to 0 very
+rapidly when \)</span>m \rightarrow \infty<span class="math notranslate nohighlight">\(. This means that high frequency
+components get damped very quickly. However, for \)</span>k<span class="math notranslate nohighlight">\( far away from \)</span>N<span class="math notranslate nohighlight">\(,
+for example \)</span>k=1, \alpha_{k}^{(m)}<span class="math notranslate nohighlight">\( approaches to 0 very slowly when
+\)</span>m \rightarrow \infty$.</p>
+<p>This simple analysis clearly justifies the smoothing property that has
+been observed by numerical experiments.<br />
+<img alt="image" src="Module5/m5_04/2022_01_06_7eec630b8b060fb00b5bg-10" />{width=”\textwidth”}</p>
+<p>Fig. 8.5. <span class="math notranslate nohighlight">\(u^{0}, u^{1}, u^{2}, u^{3}, u^{4}\)</span> CHAPTER 8. FINITE ELEMENT
+METHOD AND MULTIGRID</p>
+<p>METHOD IN CONVOLUTION</p>
+<p>Jinchao <span class="math notranslate nohighlight">\(\mathrm{Xu}\)</span></p>
+<p>An intuitive discussion</p>
+<p>Both the gradient decsent and Gauss-Seidel methods are oftentimes called
+local relaxation methods. This name refers to the fact that what both of
+these algorithms do are just trying to correct the residual vector
+locally at one nodal point at a time (recall that
+<span class="math notranslate nohighlight">\(\mu_{j} \approx u\left(x_{j}\right)\)</span> ). This local relaxation procedure
+is then effective to the error components that are local in nature.
+Incidently, the nonsmooth or high frequency component which oscillates
+across one or few grid points have a strong local feature. Therefore, it
+is not surprising the both gradient descent and Gauss-Seidel iteration
+can damp out these nonsmooth components more easily. These methods are
+very inefficient for relatively smoother components in the error since a
+smoother function is more globally related in nature.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module5/m5_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../m5_03/m5_03.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Building and Training ResNet with Pytorch</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../Programming_Assignment_5.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Week 5 Programming Assignment</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
