@@ -22,7 +22,7 @@ parts:
     - file: Module1/m1_06.ipynb
     - file: Module1/m1_hw.ipynb
     - file: Module1/Programming_Assignment_1.ipynb
-    - file: Module1/quiz.ipynb
+    - file: Module1/quiz1.ipynb
   - file: Module2/module2_
     sections:
     - file: Module2/m2_01.ipynb

@@ -80,6 +80,8 @@ launch_buttons:
   # binderhub_url: https://binder.jupytr.cloud.psu.edu  # The URL for your BinderHub (e.g., https://mybinder.org)
   binderhub_url: "https://mybinder.org"
   # "https://mybinder.org/v2/gh/liuzhengqi1996/binder/0857756f6027721a1be25c69bd6b9061d94d5b7a?urlpath=lab%2Ftree%2Ftutorial.ipynb"
+  use_show_widgets_button: true 
+  use_thlabebelab_button: true 
 #   jupyterhub_url: ""
 #   thebe: true
 
@@ -89,3 +91,7 @@ only_build_toc_files: true
 
 # Exlude Try-it-yourself notebooks
 exclude_patterns: [110_02_01_limits_def_TIY.ipynb, old_stuff/*]  
+
+
+use_show_widgets_button: true 
+use_thlabebelab_button: true 
