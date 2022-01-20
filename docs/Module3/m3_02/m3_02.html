@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contents &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contents" href="../m3_03/m3_03.html" />
+    <link rel="prev" title="Contents" href="../m3_01/m3_01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_01/m3_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_02/m3_02.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomials-finite-element-and-neural-network">
+   Polynomials, Finite Element and Neural Network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximation-by-polynomials-and-weierstrass-theorem">
+     Approximation by polynomials and Weierstrass Theorem
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weierstrass-theorem-and-proof">
+       Weierstrass Theorem and Proof
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#some-issues-with-polynomial-approximations">
+       Some issues with polynomial approximations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#curse-of-dimensionality">
+   Curse of dimensionality
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-s-phenomenon">
+   Runge’s phenomenon
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<p>1 Polynomials, Finite Element and Neural Network Functions
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots\)</span>. 5</p>
+<p>1.1 Approximation by polynomials and Weierstrass Theorem
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots .5\)</span></p>
+<p>1.1.1 Weierstrass Theorem and Proof
+<span class="math notranslate nohighlight">\(\ldots \ldots . . . . . . . . . . . . . .\)</span></p>
+<p>1.1.2 Some issues with polynomial approximations
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots . . .7\)</span></p>
+<p><img alt="image" src="Module3/m3_02/2022_01_05_fba364634dde0bb701e1g-2" />{width=”\textwidth”}</p>
+</div>
+<div class="section" id="polynomials-finite-element-and-neural-network">
+<h1>Polynomials, Finite Element and Neural Network<a class="headerlink" href="#polynomials-finite-element-and-neural-network" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we discuss approximation properties of spaces of
+polynomials and finite elements consisting of piecewise polynomials.</p>
+<div class="section" id="approximation-by-polynomials-and-weierstrass-theorem">
+<h2>Approximation by polynomials and Weierstrass Theorem<a class="headerlink" href="#approximation-by-polynomials-and-weierstrass-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\alpha=\left(\alpha_{1}, \cdots, \alpha_{d}\right)\)</span> with
+<span class="math notranslate nohighlight">\(\alpha_{i}\)</span> being non-negative integers, we note
+<span class="math notranslate nohighlight">\(|\alpha|=\sum_{i=1}^{d} \alpha_{i}\)</span> and
+$<span class="math notranslate nohighlight">\(x^{\alpha}=x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}} .\)</span><span class="math notranslate nohighlight">\(
+We use \)</span>\mathbb{P}_{m}\left(\mathbb{R}^{d}\right)<span class="math notranslate nohighlight">\( to define the
+polynomials of \)</span>d<span class="math notranslate nohighlight">\(-variables of degree less than \)</span>m<span class="math notranslate nohighlight">\( which consists
+functions of the form
+\)</span><span class="math notranslate nohighlight">\(\sum_{|\alpha| \leq m} a_{\alpha} x^{\alpha}=\sum_{\alpha_{1}+\alpha_{2}+\ldots+\alpha_{d} \leq m} a_{\alpha_{1}, \ldots, \alpha_{d}} x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}}\)</span>$</p>
+<div class="section" id="weierstrass-theorem-and-proof">
+<h3>Weierstrass Theorem and Proof<a class="headerlink" href="#weierstrass-theorem-and-proof" title="Permalink to this headline">¶</a></h3>
+<p>Important property: polynomials can approximate any reasonable function!</p>
+<ul class="simple">
+<li><p>dense in <span class="math notranslate nohighlight">\(C(\Omega)\)</span> [Weierstrass theorem]</p></li>
+<li><p>dense in all Sobolev spaces:
+<span class="math notranslate nohighlight">\(L^{2}(\Omega), W^{m, p}(\Omega), \ldots\)</span></p></li>
+</ul>
+<p>Theorem 1. Let <span class="math notranslate nohighlight">\(\Omega \subset R^{n}\)</span> be a closed and bounded set. Given
+any continuous function <span class="math notranslate nohighlight">\(f(x)\)</span> on <span class="math notranslate nohighlight">\(\Omega\)</span>, there exists a sequence of
+polynomials <span class="math notranslate nohighlight">\(\left\{P_{n}(x)\right\}\)</span> such that
+$<span class="math notranslate nohighlight">\(\lim _{n \rightarrow \infty} \max _{x \in \Omega}\left|f(x)-P_{n}(x)\right|=0\)</span><span class="math notranslate nohighlight">\(
+Proof. Let us first give the proof for \)</span>d=1<span class="math notranslate nohighlight">\( and \)</span>\Omega=[0,1] .<span class="math notranslate nohighlight">\( Given
+\)</span>f:[0,1] \rightarrow R$ be a continuous function.</p>
+<p>Let $<span class="math notranslate nohighlight">\(\tilde{f}(x)=f(x)-l(x)\)</span><span class="math notranslate nohighlight">\( where \)</span>l(x)=f(0)+x(f(1)-f(0))<span class="math notranslate nohighlight">\(. Then
+\)</span>\tilde{f}(0)=\tilde{f}(1)=0<span class="math notranslate nohighlight">\(. Noting that \)</span>l(x)<span class="math notranslate nohighlight">\( is a linear function,
+hence without lose of generality, we can only consider the case
+\)</span>f:[0,1] \rightarrow R<span class="math notranslate nohighlight">\( with \)</span>f(0)=f(1)=0$</p>
+<p>Since <span class="math notranslate nohighlight">\(f\)</span> is continuous on the closed interval <span class="math notranslate nohighlight">\([0,1]\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is
+uniformly continuous on <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
+<p>First we extend <span class="math notranslate nohighlight">\(f\)</span> to be zero outside of <span class="math notranslate nohighlight">\([0,1]\)</span> and obtain
+<span class="math notranslate nohighlight">\(f: R \rightarrow R\)</span>, then it is obviously that <span class="math notranslate nohighlight">\(f\)</span> is still uniformly
+continuous.</p>
+<p>Next for <span class="math notranslate nohighlight">\(0 \leq x \leq 1\)</span>, we construct
+$<span class="math notranslate nohighlight">\(p_{n}(x)=\int_{-1}^{1} f(x+t) Q_{n}(t) d t=\int_{-x}^{1-x} f(x+t) Q_{n}(t) d t=\int_{0}^{1} f(t) Q_{n}(t-x) d t\)</span><span class="math notranslate nohighlight">\(
+where \)</span>Q_{n}(x)=c_{n}\left(1-x^{2}\right)^{n}<span class="math notranslate nohighlight">\( and
+\)</span><span class="math notranslate nohighlight">\(\int_{-1}^{1} Q_{n}(x) d x=1\)</span><span class="math notranslate nohighlight">\( Thus \)</span>\left{p_{n}(x)\right}$ is a
+sequence of polynomials.</p>
+<p>Since $<span class="math notranslate nohighlight">\(\begin{aligned}
+\int_{-1}^{1}\left(1-x^{2}\right)^{n} d x &amp;=2 \int_{0}^{1}\left(1-x^{2}\right)^{n} d x=2 \int_{0}^{1}(1-x)^{n}(1+x)^{n} d x \\
+&amp; \geq 2 \int_{0}^{1}(1-x)^{n} d x=\frac{2}{n+1}&gt;\frac{1}{n}
+\end{aligned}\)</span><span class="math notranslate nohighlight">\( Combing with \)</span>\int_{-1}^{1} Q_{n}(x) d x=1<span class="math notranslate nohighlight">\(, we obtain
+\)</span>c_{n}&lt;n<span class="math notranslate nohighlight">\( implying that for any \)</span>\delta&gt;0<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(0 \leq Q_{n}(x) \leq n\left(1-\delta^{2}\right)^{n} \quad(\delta \leq|x| \leq 1)\)</span><span class="math notranslate nohighlight">\(
+so that \)</span>Q_{n} \rightarrow 0<span class="math notranslate nohighlight">\( uniformly in \)</span>\delta \leq|x| \leq 1<span class="math notranslate nohighlight">\( as
+\)</span>n \rightarrow \infty$.</p>
+<p>Given any <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>, since <span class="math notranslate nohighlight">\(f\)</span> in uniformly continuous, there exists
+<span class="math notranslate nohighlight">\(\delta&gt;0\)</span> such that for any <span class="math notranslate nohighlight">\(|y-x|&lt;\delta\)</span>, we have
+$<span class="math notranslate nohighlight">\(|f(y)-f(x)|&lt;\frac{\epsilon}{2}\)</span><span class="math notranslate nohighlight">\( Finally, let \)</span>M=\max |f(x)|<span class="math notranslate nohighlight">\(, using
+\)</span>(1.8),(1.4)<span class="math notranslate nohighlight">\( and \)</span>(1.7)<span class="math notranslate nohighlight">\(, we have \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+\left|p_{n}(x)-f(x)\right| &amp;=\left|\int_{-1}^{1}(f(x+t)-f(t)) Q_{n}(t) d t\right| \leq \int_{-1}^{1}|f(x+t)-f(t)| Q_{n}(t) d t \\
+&amp; \leq 2 M \int_{-1}^{-\delta} Q_{n}(t) d t+\frac{\epsilon}{2} \int_{-\delta}^{\delta} Q_{n}(t) d t+2 M \int_{\delta}^{1} Q_{n}(t) d t \\
+&amp; \leq 4 M n\left(1-\delta^{2}\right)^{n}+\frac{\epsilon}{2}&lt;\epsilon
+\end{aligned}\)</span><span class="math notranslate nohighlight">\( for all large enough \)</span>n$, which proves the theorem.</p>
+<p>The above proof generalize the high dimensional case easily. We consider
+the case that $<span class="math notranslate nohighlight">\(\Omega=[0,1]^{d} .\)</span><span class="math notranslate nohighlight">\( By extension and using cut off
+function, W.L.O.G. that we assume that \)</span>f=0<span class="math notranslate nohighlight">\( on the boundary of \)</span>\Omega<span class="math notranslate nohighlight">\(
+and we then extending this function to be zero outside of \)</span>\Omega$.</p>
+<p>Let us consider the special polynomial functions
+$<span class="math notranslate nohighlight">\(Q_{n}(x)=c_{n} \prod_{k=1}^{d}\left(1-x_{k}^{2}\right)\)</span><span class="math notranslate nohighlight">\( Similar proof
+can then be applied. \)</span>\square$</p>
+</div>
+<div class="section" id="some-issues-with-polynomial-approximations">
+<h3>Some issues with polynomial approximations<a class="headerlink" href="#some-issues-with-polynomial-approximations" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="curse-of-dimensionality">
+<h1>Curse of dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this headline">¶</a></h1>
+<p>Number of coefficients for polynomials of degrees <span class="math notranslate nohighlight">\(n\)</span> in
+<span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> is $<span class="math notranslate nohighlight">\(N=\left(\begin{array}{c}
+d+n \\
+n
+\end{array}\right)=\frac{(n+d) !}{d ! n !}\)</span><span class="math notranslate nohighlight">\( For example \)</span>n=100$ :</p>
+<p><span class="math notranslate nohighlight">\(d=\)</span>           2                    4                     8</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(N=\)</span>   <span class="math notranslate nohighlight">\(5 \times 10^{3}\)</span>   <span class="math notranslate nohighlight">\(4.6 \times 10^{6}\)</span>   <span class="math notranslate nohighlight">\(3.5 \times 10^{11}\)</span></p>
+</div>
+<div class="section" id="runge-s-phenomenon">
+<h1>Runge’s phenomenon<a class="headerlink" href="#runge-s-phenomenon" title="Permalink to this headline">¶</a></h1>
+<p>Consider the case where one desires to interpolate through <span class="math notranslate nohighlight">\(n+1\)</span>
+equispaced points of a function <span class="math notranslate nohighlight">\(f(x)\)</span> using the n-degree polynomial
+<span class="math notranslate nohighlight">\(P_{n}(x)\)</span> that passes through those points. Naturally, one might expect
+from Weierstrass’ theorem that using more points would lead to a more
+accurate reconstruction of <span class="math notranslate nohighlight">\(f(x)\)</span>. However, this particular set of
+polynomial functions <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> is not guaranteed to have the property
+of uniform convergence; the theorem only states that a set of polynomial
+functions exists, without providing a general method of finding one.</p>
+<p>The <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> produced in this manner may in fact diverge away from
+<span class="math notranslate nohighlight">\(f(x)\)</span> as <span class="math notranslate nohighlight">\(\mathrm{n}\)</span> increases; this typically occurs in an
+oscillating pattern that magnifies near the ends of the interpolation
+points. This phenomenon is attributed to Runge.</p>
+<p>Problem: Consider the Runge function $<span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span><span class="math notranslate nohighlight">\( (a
+scaled version of the Witch of Agnesi). Runge found that if this
+function is interpolated at equidistant points \)</span>x_{i}<span class="math notranslate nohighlight">\( between \)</span>-1<span class="math notranslate nohighlight">\( and
+1 such that: \)</span><span class="math notranslate nohighlight">\(x_{i}=\frac{2 i}{n}-1, \quad i \in\{0,1, \ldots, n\}\)</span><span class="math notranslate nohighlight">\(
+with a polynomial \)</span>P_{n}(x)<span class="math notranslate nohighlight">\( of degree \)</span>\leq n<span class="math notranslate nohighlight">\(, the resulting
+interpolation oscillates toward the ends of the interval, i.e. close to
+\)</span>-1<span class="math notranslate nohighlight">\( and 1. It can even be proven that the interpolation error increases
+(without bound) when the degree of the polynomial is increased:
+\)</span><span class="math notranslate nohighlight">\(\lim _{n \rightarrow \infty}\left(\max _{-1 \leq x \leq 1}\left|f(x)-P_{n}(x)\right|\right)=+\infty\)</span>$
+This shows that high-degree polynomial interpolation at equidistant
+points can be troublesome</p>
+<p><img alt="image" src="Module3/m3_02/2022_01_05_fba364634dde0bb701e1g-6" />{width=”\textwidth”}</p>
+<p>Fig. 1.1. Runge’s phenomenon: Runge function <span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span>
+and its polynomial interpolation <span class="math notranslate nohighlight">\(P_{n}(x)\)</span>.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module3/m3_02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../m3_01/m3_01.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Contents</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../m3_03/m3_03.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Contents</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

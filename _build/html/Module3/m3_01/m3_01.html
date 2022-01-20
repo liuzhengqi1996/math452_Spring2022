@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contents &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contents" href="../m3_02/m3_02.html" />
+    <link rel="prev" title="Module 3: Deep neural networks" href="../module3_.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_02/m3_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_01/m3_01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonlinear-models">
+   Nonlinear Models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nonlinear-classifiable-sets">
+     Nonlinear classifiable sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Summer 2020</p>
+<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-2" />{width=”\textwidth”}</p>
+<div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<p><span class="math notranslate nohighlight">\(1 \quad\)</span> Nonlinear Models
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>1.1 Nonlinear classifiable sets
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p>References
+<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-4" />{width=”\textwidth”}</p>
+</div>
+<div class="section" id="nonlinear-models">
+<h1>Nonlinear Models<a class="headerlink" href="#nonlinear-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nonlinear-classifiable-sets">
+<h2>Nonlinear classifiable sets<a class="headerlink" href="#nonlinear-classifiable-sets" title="Permalink to this headline">¶</a></h2>
+<p>In the section, we will extend the linearly separable sets to nonlinear
+case. A natural extension is like what kernel method does in SVM for
+binary case, we will introduce the so-called feature mapping.</p>
+<p>Thus, we have the following natural extension for linearly separable by
+using feature mapping and original definition of linearly separable.</p>
+<p>Definition 1 (nonlinearly separable sets). These data sets
+<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are called
+nonlinearly separable, if there exist a feature space
+<span class="math notranslate nohighlight">\(\mathbb{R}^{\tilde{d}}\)</span> and a smooth (if it has derivatives of all
+orders) feature mapping
+$<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{d}\)</span><span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\(\tilde{A}_{i}:=\varphi\left(A_{i}\right)=\left\{\tilde{x} \mid \tilde{x}=\varphi(x), x \in A_{i}\right\}, \quad i=1,2, \ldots, k\)</span>$
+are linearly separable.</p>
+<p>Remark 1. 1. This definition is also consistent with the definition of
+linearly separable as we can just take <span class="math notranslate nohighlight">\(d=d\)</span> and <span class="math notranslate nohighlight">\(\varphi=\)</span> id if
+<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span> are already linearly separable.</p>
+<ol class="simple">
+<li><p>The kernel method in SVM is mainly based on this idea for binary
+case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span> where they use kernel functions to approximate
+this <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p></li>
+<li><p>For most commonly used deep learning models, they are all associated
+with a softmax mapping which means that we can interpret these deep
+learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span>.</p></li>
+</ol>
+<p>However, softmax is not so crucial for this definition actually as we
+have the next equivalent result. Theorem 1.
+<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are nonlinearly
+separable is equivalent that there there exist a smooth classification
+function $<span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span><span class="math notranslate nohighlight">\( such that for
+all \)</span>i=1: k<span class="math notranslate nohighlight">\( and \)</span>j \neq i<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}\)</span><span class="math notranslate nohighlight">\( Proof. On the one
+hand, it is easy to see that if
+\)</span>A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}<span class="math notranslate nohighlight">\( are nonlinearly
+separable then they we can just take \)</span><span class="math notranslate nohighlight">\(\psi(x)=p(\varphi(x) ; \theta)\)</span><span class="math notranslate nohighlight">\(
+where the \)</span>\boldsymbol{p}(y ; \theta)<span class="math notranslate nohighlight">\( is the softmax function for
+linearly separable sets \)</span>\varphi\left(A_{i}\right)<span class="math notranslate nohighlight">\( for \)</span>i=<span class="math notranslate nohighlight">\(
+\)</span>1,2, \cdots, k$.</p>
+<p>On the other hand, let assume that <span class="math notranslate nohighlight">\(\psi\)</span> is the smooth classification
+functions for <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d} .\)</span> We
+claim that, we can take <span class="math notranslate nohighlight">\(\varphi(x)=\psi(x)\)</span> and then
+$<span class="math notranslate nohighlight">\(\varphi\left(A_{1}\right), \varphi\left(A_{2}\right), \cdots, \varphi\left(A_{k}\right) \subset \mathbb{R}^{k} \quad(\tilde{d}=k)\)</span><span class="math notranslate nohighlight">\(
+will be linearly separable. Actually, if you take \)</span>\theta=(I, 0)<span class="math notranslate nohighlight">\( in
+softmax mapping \)</span>\boldsymbol{p}(x ; \theta)<span class="math notranslate nohighlight">\(, then the monotonicity of
+\)</span>e^{x}<span class="math notranslate nohighlight">\( show that for all \)</span>i=1: k<span class="math notranslate nohighlight">\( and \)</span>j \neq i<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\boldsymbol{p}_{i}(\varphi(x) ; \theta)=\frac{e^{\psi_{i}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}&gt;\frac{e^{\psi_{j}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}=\boldsymbol{p}_{j}(\varphi(x) ; \theta), \quad \forall x \in A_{i} .\)</span>$
+]</p>
+<p>Similarly to linearly separable sets, we have the next lemme for <span class="math notranslate nohighlight">\(k=2\)</span>.</p>
+<p>Lemma 1. A <span class="math notranslate nohighlight">\(_{1}\)</span> and <span class="math notranslate nohighlight">\(A_{2}\)</span> are nonlinearly separable is equivalent
+that there exists a function
+<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}\)</span> such that
+$<span class="math notranslate nohighlight">\(\varphi(x)&gt;0 \quad \forall x \in A_{1} \quad \text { and } \quad \varphi(x)&lt;0 \quad \forall x \in A_{2}\)</span><span class="math notranslate nohighlight">\(
+Proof. Based the equivalence of nonlinearly separable sets, there exists
+\)</span>\psi_{1}(x)<span class="math notranslate nohighlight">\( and \)</span>\psi_{2}(2)<span class="math notranslate nohighlight">\( such that for all \)</span>i=1: 2<span class="math notranslate nohighlight">\( and
+\)</span>j \neq i<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}\)</span><span class="math notranslate nohighlight">\( Then,
+we can just take \)</span><span class="math notranslate nohighlight">\(\varphi(x)=\psi_{1}(x)-\psi_{2}(x)\)</span><span class="math notranslate nohighlight">\( On the other
+hand, if there exist \)</span>\varphi(x)<span class="math notranslate nohighlight">\(, then we can construct \)</span>\psi_{1}(x)<span class="math notranslate nohighlight">\(
+and \)</span>\psi_{2}(2)<span class="math notranslate nohighlight">\( as
+\)</span><span class="math notranslate nohighlight">\(\psi_{1}(x)=\frac{1}{2} \varphi(x) \quad \text { and } \quad \psi_{2}(x)=-\frac{2}{2} \varphi(x)\)</span><span class="math notranslate nohighlight">\(
+Remark 2. Here we mention that, we only assume that for all \)</span>i=1: k<span class="math notranslate nohighlight">\( and
+\)</span>j \neq i<span class="math notranslate nohighlight">\( we have \)</span>\psi_{i}(x)&gt;\psi_{j}(x), \forall x \in A_{i}<span class="math notranslate nohighlight">\( for
+nonlinearly separable. We do not assume that \)</span>\psi_{i}(x) \geq 0<span class="math notranslate nohighlight">\( or
+\)</span>\sum_{i=1}^{k} \psi_{i}(x)=1<span class="math notranslate nohighlight">\(, which means that
+\)</span>\psi(x)=\left(\begin{array}{c}\psi_{1}(x) \ \psi_{2}(x) \ \vdots \ \psi_{k}(x)\end{array}\right)$
+is not a discrete probability distribution over all k classes.</p>
+<p>The previous theorem shows that softmax function is not so crucial in
+nonlinearly separable case. Combined with deep learning models, we have
+the following understanding about what deep learning models are
+approximating.</p>
+<ol class="simple">
+<li><p>If a classification model is followed with a softmax, then the it is
+approximating the feature mapping
+<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{\bar{d}}\)</span>.</p></li>
+<li><p>If the classification model dose not followed by softmax, then it is
+approximating <span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span>
+directly.</p></li>
+</ol>
+<p>Example 1. Consider <span class="math notranslate nohighlight">\(k=2\)</span> and
+<span class="math notranslate nohighlight">\(A_{1} \subset\left\{(x, y) \mid x^{2}+y^{2}&lt;1\right\}, \quad A_{2} \subset\left\{(x, y) \mid x^{2}+y^{2}&gt;1\right\}\)</span>,
+then we can have the following nonlinear feature mapping:</p>
+<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-7" />{width=”\textwidth”}</p>
+<p>Here we have the following comparison for linear and nonlinear models
+from the viewpoint of loss functions:</p>
+<p>Linear case (Logistic regression):
+$<span class="math notranslate nohighlight">\(L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(x_{j} ; \theta\right)\right)+\lambda R(\|\theta\|)\)</span><span class="math notranslate nohighlight">\(
+Nonlinear case:
+\)</span><span class="math notranslate nohighlight">\(L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(\varphi\left(x_{j} ; \theta_{1}\right) ; \theta_{2}\right)\right)+\lambda R(\|\theta\|)\)</span><span class="math notranslate nohighlight">\(
+Remark 3. We have the following remarks.
+\)</span><span class="math notranslate nohighlight">\(\text { 1. } \ell(q, p)=\sum_{i=1}^{k}-q_{i} \log p_{i} \leftrightarrow \text { cross-entropy }\)</span>$</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x ; \theta)=\operatorname{softmax}(W x+b)\)</span> where <span class="math notranslate nohighlight">\(\theta=(W, b)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta=\left(\theta_{1}, \theta_{2}\right)\)</span> for nonlinear case</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda R(\|\theta\|) \leftrightarrow\)</span> regularization term</p></li>
+</ol>
+<p>In general, we have the following popular nonlinear models for
+<span class="math notranslate nohighlight">\(\varphi(x ; \theta)\)</span></p>
+<ol class="simple">
+<li><p>Polynomials.</p></li>
+<li><p>Piecewise polynomials (finite element method).</p></li>
+<li><p>Kernel functions in SVM.</p></li>
+<li><p>Deep neural networks.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>[1] L. Chen, P. Sun, and J. Xu. Optimal anisotropic meshes for
+minimizing interpolation errors in <span class="math notranslate nohighlight">\(l^{p}\)</span>-norm. Mathematics of
+Computation, <span class="math notranslate nohighlight">\(76(257): 179-204,2007 .\)</span></p>
+<p>[2] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for
+image recognition. In Proceedings of the IEEE Conference on Computer
+Vision and Pattern Recognition, pages 770-778, 2016</p>
+<p>[3] K. He, X. Zhang, S. Ren, and J. Sun. Identity mappings in deep
+residual networks. In European Conference on Computer Vision, pages
+630-645. Springer, <span class="math notranslate nohighlight">\(2016 .\)</span></p>
+<p>[4] M. Leshno, V.Y. Lin, A. Pinkus, and S. Schocken. Multilayer
+feedforward networks with a nonpolynomial activation function can
+approximate any function. Neural networks, 6(6):861-867, 1993 .</p>
+<p>[5] A. Pinkus. Approximation theory of the mlp model in neural
+networks. Acta numerica, <span class="math notranslate nohighlight">\(8: 143-195,1999 .\)</span></p>
+<p>[6] L. R. Scott and S. Zhang. Finite element interpolation of
+nonsmooth functions satisfying boundary conditions. Mathematics of
+Computation, <span class="math notranslate nohighlight">\(54(190): 483-493\)</span>, <span class="math notranslate nohighlight">\(1990 .\)</span></p>
+<p>[7] J. Xu. Finite element methods. Lecture notes, 2020 .</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module3/m3_01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../module3_.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Module 3: Deep neural networks</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../m3_02/m3_02.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Contents</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

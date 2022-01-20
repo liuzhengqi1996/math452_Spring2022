@@ -43,6 +43,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -52,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Universal approximation properties" href="m3_05.html" />
+    <link rel="next" title="Contents" href="m3_01/m3_01.html" />
     <link rel="prev" title="Week 2 Programming Assignment" href="../Module2/Programming_Assignment_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -123,6 +125,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module0/ch0_3.html">
      Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/quiz0.html">
+     Preliminary Quiz
     </a>
    </li>
   </ul>
@@ -237,6 +244,26 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="m3_01/m3_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m3_02/m3_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="m3_05.html">
      Universal approximation properties
     </a>
@@ -346,6 +373,20 @@
 <h1>Module 3: Deep neural networks<a class="headerlink" href="#module-3-deep-neural-networks" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="m3_01/m3_01.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_01/m3_01.html#nonlinear-models">Nonlinear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_01/m3_01.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html#polynomials-finite-element-and-neural-network">Polynomials, Finite Element and Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html#curse-of-dimensionality">Curse of dimensionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html#runge-s-phenomenon">Runge’s phenomenon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#finite-element-spaces">Finite element spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#barycentric-coordinates">Barycentric coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#nodal-basis-functions-and-dual-basis">Nodal basis functions and dual basis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#a-proof-of-theorem-1-for-d-1">A proof of Theorem 1 for <span class="math notranslate nohighlight">\(d=1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_04/m3_04.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3_04/m3_04.html#fem-and-dnn">FEM and DNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_05.html">Universal approximation properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_06.html">Application to data classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_07.html">DNN for image classification</a></li>
@@ -399,10 +440,10 @@
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="m3_05.html" title="next page">
+        <a class="right-next" href="m3_01/m3_01.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Universal approximation properties</p>
+                <p class="prevnext-title">Contents</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preliminary Quiz &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 1: Linear machine learning models" href="../Module1/module1_.html" />
+    <link rel="prev" title="Introduction to Python and Pytorch" href="ch0_3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_01/m3_01.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_02/m3_02.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_03/m3_03.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_04/m3_04.html">
+     Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module0/quiz0.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module0/quiz0.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queation-1">
+   Queation 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2">
+   Question 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3">
+   Question 3
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="preliminary-quiz">
+<h1>Preliminary Quiz<a class="headerlink" href="#preliminary-quiz" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="queation-1">
+<h2>Queation 1<a class="headerlink" href="#queation-1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image" src="../_images/Quiz1_Question1.jpg" />
+Consider the feasible region given by the following inequalities. whose boundary lines are graphed above.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x+2y \geq 6 \\
+    x+y \geq 4 \\
+    x \geq 0 \\
+    y \geq 0 \\
+\end{split}\]</div>
+<p>Which ONE of the following labels best indicate the feasible region described above?</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;II&#39;</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">,</span><span class="s1">&#39;IV&#39;</span><span class="p">,</span><span class="s1">&#39;None&#39;</span><span class="p">],</span>
+<span class="c1">#    value=&#39;pineapple&#39;, # Defaults to &#39;pineapple&#39;</span>
+<span class="c1">#    layout={&#39;width&#39;: &#39;max-content&#39;}, # If the items&#39; names are long</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7a562c2fe7434dd6a993bcfdd658bdbe"}
+</script></div>
+</div>
+</div>
+<div class="section" id="question-2">
+<h2>Question 2<a class="headerlink" href="#question-2" title="Permalink to this headline">¶</a></h2>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = x_1^2+x_3^2+x_3^4, p =(\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}}) , g(t)=f(x+tp)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is a scalar variable. Find <span class="math notranslate nohighlight">\(g^{'}(0)\)</span> at <span class="math notranslate nohighlight">\(x=(1,1,1)\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;$\sqrt</span><span class="si">{3}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;$3\sqrt</span><span class="si">{3}</span><span class="s1">$&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number:&#39;</span><span class="p">,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "9f8d24b638b24dddbd9fff49cc7feba2"}
+</script></div>
+</div>
+</div>
+<div class="section" id="question-3">
+<h2>Question 3<a class="headerlink" href="#question-3" title="Permalink to this headline">¶</a></h2>
+<p>Determine the global maximum and global minimum of the function</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = x^3-3x^2+5
+\]</div>
+<p>on the interval <span class="math notranslate nohighlight">\([-2,3]\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">widgets</span><span class="o">.</span><span class="n">IntText</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Global Max:&#39;</span><span class="p">,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4f9f7306785742d28bfcb090f827c6a9"}
+</script></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">widgets</span><span class="o">.</span><span class="n">IntText</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Global Min:&#39;</span><span class="p">,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b2452c9348a446819882fd7f5b130420"}
+</script></div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"b597e7c8db844026967fae687245c8d2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4a6826832f8e4445bea2e8a13eae75e1": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "7a562c2fe7434dd6a993bcfdd658bdbe": {"model_name": "RadioButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "RadioButtonsModel", "_options_labels": ["I", "II", "III", "IV", "None"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "RadioButtonsView", "description": "", "description_tooltip": null, "disabled": false, "index": 0, "layout": "IPY_MODEL_b597e7c8db844026967fae687245c8d2", "style": "IPY_MODEL_4a6826832f8e4445bea2e8a13eae75e1"}}, "cb23f2fde9a44036ae5e372123b631a8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "17f036bb3e3b4ec2b10d01f2368e53ba": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9f8d24b638b24dddbd9fff49cc7feba2": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["3", "$\\sqrt{3}$", "1", "0", "$3\\sqrt{3}$"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "Number:", "description_tooltip": null, "disabled": false, "index": 0, "layout": "IPY_MODEL_cb23f2fde9a44036ae5e372123b631a8", "style": "IPY_MODEL_17f036bb3e3b4ec2b10d01f2368e53ba"}}, "93012c5364f74e988817d175cb73599c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f2464451141f40629ac8544e5fcdfb52": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "4f9f7306785742d28bfcb090f827c6a9": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Global Max:", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_93012c5364f74e988817d175cb73599c", "step": 1, "style": "IPY_MODEL_f2464451141f40629ac8544e5fcdfb52", "value": 0}}, "0aa6887a180c441285cc0c4c3e346e15": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "eeeb7907751d42f09b81825673bd4000": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b2452c9348a446819882fd7f5b130420": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Global Min:", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_0aa6887a180c441285cc0c4c3e346e15", "step": 1, "style": "IPY_MODEL_eeeb7907751d42f09b81825673bd4000", "value": 0}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch0_3.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction to Python and Pytorch</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../Module1/module1_.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Module 1: Linear machine learning models</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

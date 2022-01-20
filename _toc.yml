@@ -11,6 +11,7 @@ parts:
     - file: Module0/ch0_1.ipynb
     - file: Module0/ch0_2.ipynb
     - file: Module0/ch0_3.ipynb
+    - file: Module0/quiz0.ipynb
   - file: Module1/module1_
     sections:
     - file: Module1/m1_01.ipynb
@@ -21,6 +22,7 @@ parts:
     - file: Module1/m1_06.ipynb
     - file: Module1/m1_hw.ipynb
     - file: Module1/Programming_Assignment_1.ipynb
+    - file: Module1/quiz.ipynb
   - file: Module2/module2_
     sections:
     - file: Module2/m2_01.ipynb
@@ -32,10 +34,10 @@ parts:
     - file: Module2/Programming_Assignment_2.ipynb
   - file: Module3/module3_
     sections:
-    - file: Module3/m3_01.ipynb
-    - file: Module3/m3_02.ipynb
-    - file: Module3/m3_03.ipynb
-    - file: Module3/m3_04.ipynb
+    - file: Module3/m3_01/m3_01.ipynb
+    - file: Module3/m3_02/m3_02.ipynb
+    - file: Module3/m3_03/m3_03.ipynb
+    - file: Module3/m3_04/m3_04.ipynb
     - file: Module3/m3_05.ipynb
     - file: Module3/m3_06.ipynb
     - file: Module3/m3_07.ipynb
