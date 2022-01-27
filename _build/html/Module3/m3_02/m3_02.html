@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contents &#8212; Math 452 Site</title>
+    <title>Polynomials and Weierstrass theorem &#8212; Math 452 Site</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../m3_03/m3_03.html" />
-    <link rel="prev" title="Contents" href="../m3_01/m3_01.html" />
+    <link rel="next" title="Finite element method" href="../m3_03/m3_03.html" />
+    <link rel="prev" title="Nonlinear models" href="../m3_01/m3_01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -236,22 +236,22 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_01/m3_01.html">
-     Contents
+     Nonlinear models
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Contents
+     Polynomials and Weierstrass theorem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_03/m3_03.html">
-     Contents
+     Finite element method
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_04/m3_04.html">
-     Contents
+     Deep neural network functions
     </a>
    </li>
    <li class="toctree-l2">
@@ -433,9 +433,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Module3/m3_02/m3_02.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_02/m3_02.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -453,6 +453,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module3/m3_02/m3_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -465,14 +482,14 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Contents
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#polynomials-finite-element-and-neural-network">
-   Polynomials, Finite Element and Neural Network
+   Polynomials and Weierstrass theorem
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+     Download the lecture notes here: Notes
+    </a>
+   </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#approximation-by-polynomials-and-weierstrass-theorem">
      Approximation by polynomials and Weierstrass Theorem
@@ -513,32 +530,46 @@
         
               <div>
                 
-  <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p>1 Polynomials, Finite Element and Neural Network Functions
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots\)</span>. 5</p>
-<p>1.1 Approximation by polynomials and Weierstrass Theorem
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots .5\)</span></p>
-<p>1.1.1 Weierstrass Theorem and Proof
-<span class="math notranslate nohighlight">\(\ldots \ldots . . . . . . . . . . . . . .\)</span></p>
-<p>1.1.2 Some issues with polynomial approximations
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots . . .7\)</span></p>
-<p><img alt="image" src="Module3/m3_02/2022_01_05_fba364634dde0bb701e1g-2" />{width=”\textwidth”}</p>
+  <div class="section" id="polynomials-and-weierstrass-theorem">
+<h1>Polynomials and Weierstrass theorem<a class="headerlink" href="#polynomials-and-weierstrass-theorem" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_n3qabbq8&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_vigulo1y&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="polynomials-finite-element-and-neural-network">
-<h1>Polynomials, Finite Element and Neural Network<a class="headerlink" href="#polynomials-finite-element-and-neural-network" title="Permalink to this headline">¶</a></h1>
-<p>In this chapter, we discuss approximation properties of spaces of
-polynomials and finite elements consisting of piecewise polynomials.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_n3qabbq8&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_vigulo1y"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C02_-Weierstrass-Theorem.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="approximation-by-polynomials-and-weierstrass-theorem">
 <h2>Approximation by polynomials and Weierstrass Theorem<a class="headerlink" href="#approximation-by-polynomials-and-weierstrass-theorem" title="Permalink to this headline">¶</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\alpha=\left(\alpha_{1}, \cdots, \alpha_{d}\right)\)</span> with
 <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> being non-negative integers, we note
-<span class="math notranslate nohighlight">\(|\alpha|=\sum_{i=1}^{d} \alpha_{i}\)</span> and
-$<span class="math notranslate nohighlight">\(x^{\alpha}=x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}} .\)</span><span class="math notranslate nohighlight">\(
-We use \)</span>\mathbb{P}_{m}\left(\mathbb{R}^{d}\right)<span class="math notranslate nohighlight">\( to define the
-polynomials of \)</span>d<span class="math notranslate nohighlight">\(-variables of degree less than \)</span>m<span class="math notranslate nohighlight">\( which consists
-functions of the form
-\)</span><span class="math notranslate nohighlight">\(\sum_{|\alpha| \leq m} a_{\alpha} x^{\alpha}=\sum_{\alpha_{1}+\alpha_{2}+\ldots+\alpha_{d} \leq m} a_{\alpha_{1}, \ldots, \alpha_{d}} x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}}\)</span>$</p>
+<span class="math notranslate nohighlight">\(|\alpha|=\sum_{i=1}^{d} \alpha_{i}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    x^{\alpha}=x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}} 
+\]</div>
+<p>We use <span class="math notranslate nohighlight">\(\mathbb{P}_{m}\left(\mathbb{R}^{d}\right)\)</span> to define the
+polynomials of <span class="math notranslate nohighlight">\(d\)</span>-variables of degree less than <span class="math notranslate nohighlight">\(m\)</span> which consists
+functions of the form</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{|\alpha| \leq m} a_{\alpha} x^{\alpha}=\sum_{\alpha_{1}+\alpha_{2}+\ldots+\alpha_{d} \leq m} a_{\alpha_{1}, \ldots, \alpha_{d}} x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{d}^{\alpha_{d}}
+\]</div>
 <div class="section" id="weierstrass-theorem-and-proof">
 <h3>Weierstrass Theorem and Proof<a class="headerlink" href="#weierstrass-theorem-and-proof" title="Permalink to this headline">¶</a></h3>
 <p>Important property: polynomials can approximate any reasonable function!</p>
@@ -549,47 +580,84 @@ functions of the form
 </ul>
 <p>Theorem 1. Let <span class="math notranslate nohighlight">\(\Omega \subset R^{n}\)</span> be a closed and bounded set. Given
 any continuous function <span class="math notranslate nohighlight">\(f(x)\)</span> on <span class="math notranslate nohighlight">\(\Omega\)</span>, there exists a sequence of
-polynomials <span class="math notranslate nohighlight">\(\left\{P_{n}(x)\right\}\)</span> such that
-$<span class="math notranslate nohighlight">\(\lim _{n \rightarrow \infty} \max _{x \in \Omega}\left|f(x)-P_{n}(x)\right|=0\)</span><span class="math notranslate nohighlight">\(
-Proof. Let us first give the proof for \)</span>d=1<span class="math notranslate nohighlight">\( and \)</span>\Omega=[0,1] .<span class="math notranslate nohighlight">\( Given
-\)</span>f:[0,1] \rightarrow R$ be a continuous function.</p>
-<p>Let $<span class="math notranslate nohighlight">\(\tilde{f}(x)=f(x)-l(x)\)</span><span class="math notranslate nohighlight">\( where \)</span>l(x)=f(0)+x(f(1)-f(0))<span class="math notranslate nohighlight">\(. Then
-\)</span>\tilde{f}(0)=\tilde{f}(1)=0<span class="math notranslate nohighlight">\(. Noting that \)</span>l(x)<span class="math notranslate nohighlight">\( is a linear function,
+polynomials <span class="math notranslate nohighlight">\(\left\{P_{n}(x)\right\}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim _{n \rightarrow \infty} \max _{x \in \Omega}\left|f(x)-P_{n}(x)\right|=0
+\]</div>
+<p>Proof. Let us first give the proof for <span class="math notranslate nohighlight">\(d=1\)</span> and <span class="math notranslate nohighlight">\(\Omega=[0,1] .\)</span> Given <span class="math notranslate nohighlight">\(f:[0,1] \rightarrow R\)</span> be a continuous function.</p>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde{f}(x)=f(x)-l(x)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(l(x)=f(0)+x(f(1)-f(0))\)</span>. Then
+<span class="math notranslate nohighlight">\(\tilde{f}(0)=\tilde{f}(1)=0\)</span>. Noting that <span class="math notranslate nohighlight">\(l(x)\)</span> is a linear function,
 hence without lose of generality, we can only consider the case
-\)</span>f:[0,1] \rightarrow R<span class="math notranslate nohighlight">\( with \)</span>f(0)=f(1)=0$</p>
+<span class="math notranslate nohighlight">\(f:[0,1] \rightarrow R\)</span> with <span class="math notranslate nohighlight">\(f(0)=f(1)=0\)</span></p>
 <p>Since <span class="math notranslate nohighlight">\(f\)</span> is continuous on the closed interval <span class="math notranslate nohighlight">\([0,1]\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is
 uniformly continuous on <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
 <p>First we extend <span class="math notranslate nohighlight">\(f\)</span> to be zero outside of <span class="math notranslate nohighlight">\([0,1]\)</span> and obtain
 <span class="math notranslate nohighlight">\(f: R \rightarrow R\)</span>, then it is obviously that <span class="math notranslate nohighlight">\(f\)</span> is still uniformly
 continuous.</p>
-<p>Next for <span class="math notranslate nohighlight">\(0 \leq x \leq 1\)</span>, we construct
-$<span class="math notranslate nohighlight">\(p_{n}(x)=\int_{-1}^{1} f(x+t) Q_{n}(t) d t=\int_{-x}^{1-x} f(x+t) Q_{n}(t) d t=\int_{0}^{1} f(t) Q_{n}(t-x) d t\)</span><span class="math notranslate nohighlight">\(
-where \)</span>Q_{n}(x)=c_{n}\left(1-x^{2}\right)^{n}<span class="math notranslate nohighlight">\( and
-\)</span><span class="math notranslate nohighlight">\(\int_{-1}^{1} Q_{n}(x) d x=1\)</span><span class="math notranslate nohighlight">\( Thus \)</span>\left{p_{n}(x)\right}$ is a
-sequence of polynomials.</p>
-<p>Since $<span class="math notranslate nohighlight">\(\begin{aligned}
+<p>Next for <span class="math notranslate nohighlight">\(0 \leq x \leq 1\)</span>, we construct</p>
+<div class="math notranslate nohighlight">
+\[
+    p_{n}(x)=\int_{-1}^{1} f(x+t) Q_{n}(t) d t=\int_{-x}^{1-x} f(x+t) Q_{n}(t) d t=\int_{0}^{1} f(t) Q_{n}(t-x) d t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q_{n}(x)=c_{n}\left(1-x^{2}\right)^{n}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{-1}^{1} Q_{n}(x) d x=1
+\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(\left\{p_{n}(x)\right\}\)</span> is a sequence of polynomials.</p>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 \int_{-1}^{1}\left(1-x^{2}\right)^{n} d x &amp;=2 \int_{0}^{1}\left(1-x^{2}\right)^{n} d x=2 \int_{0}^{1}(1-x)^{n}(1+x)^{n} d x \\
 &amp; \geq 2 \int_{0}^{1}(1-x)^{n} d x=\frac{2}{n+1}&gt;\frac{1}{n}
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( Combing with \)</span>\int_{-1}^{1} Q_{n}(x) d x=1<span class="math notranslate nohighlight">\(, we obtain
-\)</span>c_{n}&lt;n<span class="math notranslate nohighlight">\( implying that for any \)</span>\delta&gt;0<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(0 \leq Q_{n}(x) \leq n\left(1-\delta^{2}\right)^{n} \quad(\delta \leq|x| \leq 1)\)</span><span class="math notranslate nohighlight">\(
-so that \)</span>Q_{n} \rightarrow 0<span class="math notranslate nohighlight">\( uniformly in \)</span>\delta \leq|x| \leq 1<span class="math notranslate nohighlight">\( as
-\)</span>n \rightarrow \infty$.</p>
+\end{aligned}
+\end{split}\]</div>
+<p>Combing with <span class="math notranslate nohighlight">\(\int_{-1}^{1} Q_{n}(x) d x=1\)</span>, we obtain
+<span class="math notranslate nohighlight">\(c_{n}&lt;n\)</span> implying that for any <span class="math notranslate nohighlight">\(\delta&gt;0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    0 \leq Q_{n}(x) \leq n\left(1-\delta^{2}\right)^{n} \quad(\delta \leq|x| \leq 1)
+\]</div>
+<p>so that <span class="math notranslate nohighlight">\(Q_{n} \rightarrow 0\)</span> uniformly in <span class="math notranslate nohighlight">\(\delta \leq|x| \leq 1\)</span> as
+<span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>.</p>
 <p>Given any <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>, since <span class="math notranslate nohighlight">\(f\)</span> in uniformly continuous, there exists
-<span class="math notranslate nohighlight">\(\delta&gt;0\)</span> such that for any <span class="math notranslate nohighlight">\(|y-x|&lt;\delta\)</span>, we have
-$<span class="math notranslate nohighlight">\(|f(y)-f(x)|&lt;\frac{\epsilon}{2}\)</span><span class="math notranslate nohighlight">\( Finally, let \)</span>M=\max |f(x)|<span class="math notranslate nohighlight">\(, using
-\)</span>(1.8),(1.4)<span class="math notranslate nohighlight">\( and \)</span>(1.7)<span class="math notranslate nohighlight">\(, we have \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+<span class="math notranslate nohighlight">\(\delta&gt;0\)</span> such that for any <span class="math notranslate nohighlight">\(|y-x|&lt;\delta\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    |f(y)-f(x)|&lt;\frac{\epsilon}{2}
+\]</div>
+<p>Finally, let <span class="math notranslate nohighlight">\(M=\max |f(x)|\)</span>, using
+<span class="math notranslate nohighlight">\((1.8),(1.4)\)</span> and <span class="math notranslate nohighlight">\((1.7)\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 \left|p_{n}(x)-f(x)\right| &amp;=\left|\int_{-1}^{1}(f(x+t)-f(t)) Q_{n}(t) d t\right| \leq \int_{-1}^{1}|f(x+t)-f(t)| Q_{n}(t) d t \\
 &amp; \leq 2 M \int_{-1}^{-\delta} Q_{n}(t) d t+\frac{\epsilon}{2} \int_{-\delta}^{\delta} Q_{n}(t) d t+2 M \int_{\delta}^{1} Q_{n}(t) d t \\
 &amp; \leq 4 M n\left(1-\delta^{2}\right)^{n}+\frac{\epsilon}{2}&lt;\epsilon
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( for all large enough \)</span>n$, which proves the theorem.</p>
+\end{aligned}
+\end{split}\]</div>
+<p>for all large enough <span class="math notranslate nohighlight">\(n\)</span>, which proves the theorem.</p>
 <p>The above proof generalize the high dimensional case easily. We consider
-the case that $<span class="math notranslate nohighlight">\(\Omega=[0,1]^{d} .\)</span><span class="math notranslate nohighlight">\( By extension and using cut off
-function, W.L.O.G. that we assume that \)</span>f=0<span class="math notranslate nohighlight">\( on the boundary of \)</span>\Omega<span class="math notranslate nohighlight">\(
-and we then extending this function to be zero outside of \)</span>\Omega$.</p>
-<p>Let us consider the special polynomial functions
-$<span class="math notranslate nohighlight">\(Q_{n}(x)=c_{n} \prod_{k=1}^{d}\left(1-x_{k}^{2}\right)\)</span><span class="math notranslate nohighlight">\( Similar proof
-can then be applied. \)</span>\square$</p>
+the case that</p>
+<div class="math notranslate nohighlight">
+\[
+    \Omega=[0,1]^{d} 
+\]</div>
+<p>By extension and using cut off function, W.L.O.G. that we assume that <span class="math notranslate nohighlight">\(f=0\)</span> on the boundary of <span class="math notranslate nohighlight">\(\Omega\)</span>
+and we then extending this function to be zero outside of <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<p>Let us consider the special polynomial functions</p>
+<div class="math notranslate nohighlight">
+\[
+    Q_{n}(x)=c_{n} \prod_{k=1}^{d}\left(1-x_{k}^{2}\right)
+\]</div>
+<p>Similar proof can then be applied. <span class="math notranslate nohighlight">\(\square\)</span></p>
 </div>
 <div class="section" id="some-issues-with-polynomial-approximations">
 <h3>Some issues with polynomial approximations<a class="headerlink" href="#some-issues-with-polynomial-approximations" title="Permalink to this headline">¶</a></h3>
@@ -599,10 +667,15 @@ can then be applied. \)</span>\square$</p>
 <div class="section" id="curse-of-dimensionality">
 <h1>Curse of dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this headline">¶</a></h1>
 <p>Number of coefficients for polynomials of degrees <span class="math notranslate nohighlight">\(n\)</span> in
-<span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> is $<span class="math notranslate nohighlight">\(N=\left(\begin{array}{c}
-d+n \\
-n
-\end{array}\right)=\frac{(n+d) !}{d ! n !}\)</span><span class="math notranslate nohighlight">\( For example \)</span>n=100$ :</p>
+<span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    N=\left(\begin{array}{c}
+    d+n \\
+    n
+    \end{array}\right)=\frac{(n+d) !}{d ! n !}
+\end{split}\]</div>
+<p>For example <span class="math notranslate nohighlight">\(n=100\)</span> :</p>
 <p><span class="math notranslate nohighlight">\(d=\)</span>           2                    4                     8</p>
 <hr class="docutils" />
 <p><span class="math notranslate nohighlight">\(N=\)</span>   <span class="math notranslate nohighlight">\(5 \times 10^{3}\)</span>   <span class="math notranslate nohighlight">\(4.6 \times 10^{6}\)</span>   <span class="math notranslate nohighlight">\(3.5 \times 10^{11}\)</span></p>
@@ -621,18 +694,29 @@ functions exists, without providing a general method of finding one.</p>
 <span class="math notranslate nohighlight">\(f(x)\)</span> as <span class="math notranslate nohighlight">\(\mathrm{n}\)</span> increases; this typically occurs in an
 oscillating pattern that magnifies near the ends of the interpolation
 points. This phenomenon is attributed to Runge.</p>
-<p>Problem: Consider the Runge function $<span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span><span class="math notranslate nohighlight">\( (a
-scaled version of the Witch of Agnesi). Runge found that if this
-function is interpolated at equidistant points \)</span>x_{i}<span class="math notranslate nohighlight">\( between \)</span>-1<span class="math notranslate nohighlight">\( and
-1 such that: \)</span><span class="math notranslate nohighlight">\(x_{i}=\frac{2 i}{n}-1, \quad i \in\{0,1, \ldots, n\}\)</span><span class="math notranslate nohighlight">\(
-with a polynomial \)</span>P_{n}(x)<span class="math notranslate nohighlight">\( of degree \)</span>\leq n<span class="math notranslate nohighlight">\(, the resulting
+<p>Problem: Consider the Runge function</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\frac{1}{1+25 x^{2}}
+\]</div>
+<p>(a scaled version of the Witch of Agnesi). Runge found that if this
+function is interpolated at equidistant points <span class="math notranslate nohighlight">\(x_{i}\)</span> between <span class="math notranslate nohighlight">\(-1\)</span> and
+1 such that:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{i}=\frac{2 i}{n}-1, \quad i \in\{0,1, \ldots, n\}
+\]</div>
+<p>with a polynomial <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> of degree <span class="math notranslate nohighlight">\(\leq n\)</span>, the resulting
 interpolation oscillates toward the ends of the interval, i.e. close to
-\)</span>-1<span class="math notranslate nohighlight">\( and 1. It can even be proven that the interpolation error increases
-(without bound) when the degree of the polynomial is increased:
-\)</span><span class="math notranslate nohighlight">\(\lim _{n \rightarrow \infty}\left(\max _{-1 \leq x \leq 1}\left|f(x)-P_{n}(x)\right|\right)=+\infty\)</span>$
-This shows that high-degree polynomial interpolation at equidistant
+<span class="math notranslate nohighlight">\(-1\)</span> and 1. It can even be proven that the interpolation error increases
+(without bound) when the degree of the polynomial is increased:</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim _{n \rightarrow \infty}\left(\max _{-1 \leq x \leq 1}\left|f(x)-P_{n}(x)\right|\right)=+\infty
+\]</div>
+<p>This shows that high-degree polynomial interpolation at equidistant
 points can be troublesome</p>
-<p><img alt="image" src="Module3/m3_02/2022_01_05_fba364634dde0bb701e1g-6" />{width=”\textwidth”}</p>
+<p><img alt="image" src="../../_images/2022_01_05_fba364634dde0bb701e1g-6.jpg" /></p>
 <p>Fig. 1.1. Runge’s phenomenon: Runge function <span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span>
 and its polynomial interpolation <span class="math notranslate nohighlight">\(P_{n}(x)\)</span>.</p>
 </div>
@@ -671,7 +755,7 @@ and its polynomial interpolation <span class="math notranslate nohighlight">\(P_
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Nonlinear models</p>
             </div>
         </a>
     </div>
@@ -679,7 +763,7 @@ and its polynomial interpolation <span class="math notranslate nohighlight">\(P_
         <a class="right-next" href="../m3_03/m3_03.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Finite element method</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
