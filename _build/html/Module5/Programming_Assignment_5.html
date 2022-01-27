@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -43,6 +43,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -73,6 +75,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -121,6 +127,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module0/ch0_3.html">
      Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/quiz0.html">
+     Preliminary Quiz
     </a>
    </li>
   </ul>
@@ -173,6 +184,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
      Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/quiz1.html">
+     Quiz 1
     </a>
    </li>
   </ul>
@@ -535,8 +551,13 @@
 </div>
 <div class="section" id="problem-2-3-pts-consider-the-possion-equation">
 <h2>Problem 2 (3 pts):  Consider the possion equation<a class="headerlink" href="#problem-2-3-pts-consider-the-possion-equation" title="Permalink to this headline">¶</a></h2>
+<<<<<<< HEAD
 <div class="amsmath math notranslate nohighlight" id="equation-ebf6b798-2a82-4f03-bb77-10033b05fa03">
 <span class="eqno">(20)<a class="headerlink" href="#equation-ebf6b798-2a82-4f03-bb77-10033b05fa03" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
+=======
+<div class="amsmath math notranslate nohighlight" id="equation-c0507a7e-6d64-4fb8-ad1e-7a98d14299c1">
+<span class="eqno">(20)<a class="headerlink" href="#equation-c0507a7e-6d64-4fb8-ad1e-7a98d14299c1" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 \left\{
 \begin{aligned}
 -u''&amp;= f, \,\, 0&lt;x&lt;1, \\
@@ -547,8 +568,13 @@
 <p>Assume <span class="math notranslate nohighlight">\(f(x)=1\)</span>, then the exact solution is <span class="math notranslate nohighlight">\(u(x)=\frac{1}{2}x(1-x)\)</span>. Given the partition with the grid points
 <span class="math notranslate nohighlight">\(x_i=\frac{i}{n+1}, i=0,1,\cdots,n+1\)</span>, then by finite element discretization,
 we obtain</p>
+<<<<<<< HEAD
 <div class="amsmath math notranslate nohighlight" id="equation-44b08b77-1865-4959-b054-08fd59d8d1e1">
 <span class="eqno">(21)<a class="headerlink" href="#equation-44b08b77-1865-4959-b054-08fd59d8d1e1" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+=======
+<div class="amsmath math notranslate nohighlight" id="equation-dbc5f2fa-90fb-407f-9356-68fe644e99a9">
+<span class="eqno">(21)<a class="headerlink" href="#equation-dbc5f2fa-90fb-407f-9356-68fe644e99a9" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 \end{equation}\]</div>
 <p>Use gradient descent method to solve the above problem with random initial guess <span class="math notranslate nohighlight">\(\mu^0\)</span>:</p>
@@ -612,7 +638,11 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 </div>
 </div>
 <div class="cell_output docutils container">
+<<<<<<< HEAD
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_27337/1562355361.py&quot;</span><span class="gt">, line </span><span class="mi">11</span>
+=======
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-2-53d339565e31&gt;&quot;</span><span class="gt">, line </span><span class="mi">11</span>
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
     <span class="n">J</span> <span class="o">=</span> <span class="mi">4</span>                                <span class="c1"># grid level</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -774,7 +804,7 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

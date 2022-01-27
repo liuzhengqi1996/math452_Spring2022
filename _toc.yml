@@ -11,6 +11,7 @@ parts:
     - file: Module0/ch0_1.ipynb
     - file: Module0/ch0_2.ipynb
     - file: Module0/ch0_3.ipynb
+    - file: Module0/quiz0.ipynb
   - file: Module1/module1_
     sections:
     - file: Module1/m1_01.ipynb
@@ -21,6 +22,7 @@ parts:
     - file: Module1/m1_06.ipynb
     - file: Module1/m1_hw.ipynb
     - file: Module1/Programming_Assignment_1.ipynb
+    - file: Module1/quiz1.ipynb
   - file: Module2/module2_
     sections:
     - file: Module2/m2_01.ipynb

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -43,6 +43,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -72,6 +74,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -120,6 +126,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module0/ch0_3.html">
      Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/quiz0.html">
+     Preliminary Quiz
     </a>
    </li>
   </ul>
@@ -172,6 +183,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
      Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/quiz1.html">
+     Quiz 1
     </a>
    </li>
   </ul>
@@ -562,8 +578,13 @@
 <div class="section" id="problem-1-20">
 <h2>Problem 1 [20%]:<a class="headerlink" href="#problem-1-20" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following linear system</p>
+<<<<<<< HEAD
 <div class="amsmath math notranslate nohighlight" id="equation-58f3f0b2-4e7f-45f8-bbe8-5a4273a1d176">
 <span class="eqno">(24)<a class="headerlink" href="#equation-58f3f0b2-4e7f-45f8-bbe8-5a4273a1d176" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+=======
+<div class="amsmath math notranslate nohighlight" id="equation-f74eca66-91d3-4359-9ead-5cc9908dfbbf">
+<span class="eqno">(24)<a class="headerlink" href="#equation-f74eca66-91d3-4359-9ead-5cc9908dfbbf" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 A\ast u =f,
 \end{equation}\]</div>
 <p>or equivalently <span class="math notranslate nohighlight">\(u=\arg\min \frac{1}{2} (A* v,v)_F-(f,v)_F\)</span>, where <span class="math notranslate nohighlight">\((f,v)_F =\sum\limits_{i,j=1}^{n}f_{i,j}v_{i,j}\)</span> is the Frobenius inner product.
@@ -592,8 +613,13 @@ the solution \)</span> u \in \mathbb{R}^{n\times n} <span class="math notranslat
 <p>Given initial guess <span class="math notranslate nohighlight">\(u^0\)</span>
 $$</p>
 </div>
+<<<<<<< HEAD
 <div class="amsmath math notranslate nohighlight" id="equation-a815f339-be45-4730-809a-1400b4506cf2">
 <span class="eqno">(25)<a class="headerlink" href="#equation-a815f339-be45-4730-809a-1400b4506cf2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+=======
+<div class="amsmath math notranslate nohighlight" id="equation-45b70dc6-bd53-46cc-b166-79b52ab9414e">
+<span class="eqno">(25)<a class="headerlink" href="#equation-45b70dc6-bd53-46cc-b166-79b52ab9414e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~\text{for    }  i,j = 1: n\\
 &amp;~~~~~~~~u_{i,j}^{m} = u_{i,j}^{m-1}-\eta(f_{i,j}-(A\ast u^{m-1})_{i,j})\\
@@ -603,8 +629,13 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}* #### For multigrid method, we have provided the framework code in F02_MultigridandMgNet.ipynb:\\    Given initial guess $u^0$
 \end{aligned}\end{align} \]</div>
+<<<<<<< HEAD
 <div class="amsmath math notranslate nohighlight" id="equation-ea7ff650-eda4-407c-8e6e-fe3f0e5e7599">
 <span class="eqno">(26)<a class="headerlink" href="#equation-ea7ff650-eda4-407c-8e6e-fe3f0e5e7599" title="Permalink to this equation">¶</a></span>\[\begin{align}
+=======
+<div class="amsmath math notranslate nohighlight" id="equation-b355b018-2aae-45d4-afed-0479f4ddf912">
+<span class="eqno">(26)<a class="headerlink" href="#equation-b355b018-2aae-45d4-afed-0479f4ddf912" title="Permalink to this equation">¶</a></span>\[\begin{align}
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~u^{m} = MG1(u^{m-1},f, J, \nu)\\
 &amp;\text{endfor}
@@ -646,37 +677,41 @@ $$</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<<<<<<< HEAD
 <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_27360</span><span class="o">/</span><span class="mf">176913001.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+=======
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">dbcaf3565e21</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+>>>>>>> da5688c99a2ace324aa8624839ca9e0f919d9ff3
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;plot_sample_code.png&#39;</span><span class="p">)</span>
 
-<span class="nn">/anaconda3/envs/myenv/lib/python3.9/site-packages/IPython/core/display.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, url, filename, format, embed, width, height, retina, unconfined, metadata)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1229</span>         <span class="bp">self</span><span class="o">.</span><span class="n">retina</span> <span class="o">=</span> <span class="n">retina</span>
-<span class="g g-Whitespace">   </span><span class="mi">1230</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unconfined</span> <span class="o">=</span> <span class="n">unconfined</span>
-<span class="ne">-&gt; </span><span class="mi">1231</span>         <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1232</span>                 <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1233</span> 
+<span class="nn">~/opt/anaconda3/lib/python3.8/site-packages/IPython/core/display.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, url, filename, format, embed, width, height, retina, unconfined, metadata)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>         <span class="bp">self</span><span class="o">.</span><span class="n">retina</span> <span class="o">=</span> <span class="n">retina</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unconfined</span> <span class="o">=</span> <span class="n">unconfined</span>
+<span class="ne">-&gt; </span><span class="mi">1224</span>         <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>                 <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> 
 
-<span class="nn">/anaconda3/envs/myenv/lib/python3.9/site-packages/IPython/core/display.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, url, filename, metadata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>             <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">    </span><span class="mi">636</span> 
-<span class="ne">--&gt; </span><span class="mi">637</span>         <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">638</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_data</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span> 
+<span class="nn">~/opt/anaconda3/lib/python3.8/site-packages/IPython/core/display.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, url, filename, metadata)</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span>             <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> 
+<span class="ne">--&gt; </span><span class="mi">630</span>         <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_data</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span> 
 
-<span class="nn">/anaconda3/envs/myenv/lib/python3.9/site-packages/IPython/core/display.py</span> in <span class="ni">reload</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1261</span>         <span class="sd">&quot;&quot;&quot;Reload the raw data from file or URL.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1262</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1263</span>             <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1264</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">retina</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1265</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_retina_shape</span><span class="p">()</span>
+<span class="nn">~/opt/anaconda3/lib/python3.8/site-packages/IPython/core/display.py</span> in <span class="ni">reload</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span>         <span class="sd">&quot;&quot;&quot;Reload the raw data from file or URL.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1256</span>             <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1257</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">retina</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_retina_shape</span><span class="p">()</span>
 
-<span class="nn">/anaconda3/envs/myenv/lib/python3.9/site-packages/IPython/core/display.py</span> in <span class="ni">reload</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>         <span class="sd">&quot;&quot;&quot;Reload the raw data from file or URL.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">661</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">662</span>             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_flags</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">663</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span>         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">~/opt/anaconda3/lib/python3.8/site-packages/IPython/core/display.py</span> in <span class="ni">reload</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>         <span class="sd">&quot;&quot;&quot;Reload the raw data from file or URL.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">655</span>             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_flags</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;plot_sample_code.png&#39;
 </pre></div>
@@ -770,7 +805,7 @@ $$</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
