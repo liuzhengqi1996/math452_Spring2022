@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contents &#8212; Math 452 Site</title>
+    <title>Nonlinear models &#8212; Math 452 Site</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -56,7 +56,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../m3_02/m3_02.html" />
+    <link rel="next" title="Polynomials and Weierstrass theorem" href="../m3_02/m3_02.html" />
     <link rel="prev" title="Module 3: Deep neural networks" href="../module3_.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -75,10 +75,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -252,22 +248,22 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Contents
+     Nonlinear models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_02/m3_02.html">
-     Contents
+     Polynomials and Weierstrass theorem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_03/m3_03.html">
-     Contents
+     Finite element method
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_04/m3_04.html">
-     Contents
+     Deep neural network functions
     </a>
    </li>
    <li class="toctree-l2">
@@ -449,9 +445,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Module3/m3_01/m3_01.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_01/m3_01.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -469,6 +465,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module3/m3_01/m3_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -479,26 +492,14 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Contents
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nonlinear-models">
-   Nonlinear Models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nonlinear-classifiable-sets">
-     Nonlinear classifiable sets
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonlinear-classifiable-sets">
+   Nonlinear classifiable sets
   </a>
  </li>
 </ul>
@@ -512,20 +513,30 @@
         
               <div>
                 
-  <p>Summer 2020</p>
-<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-2" />{width=”\textwidth”}</p>
-<div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p><span class="math notranslate nohighlight">\(1 \quad\)</span> Nonlinear Models
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>1.1 Nonlinear classifiable sets
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>References
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-4" />{width=”\textwidth”}</p>
+  <div class="section" id="nonlinear-models">
+<h1>Nonlinear models<a class="headerlink" href="#nonlinear-models" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_mpdchgne&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_fam1ya2z&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="nonlinear-models">
-<h1>Nonlinear Models<a class="headerlink" href="#nonlinear-models" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_mpdchgne&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_fam1ya2z"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C01_-Nonlinear-Models-1.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="nonlinear-classifiable-sets">
 <h2>Nonlinear classifiable sets<a class="headerlink" href="#nonlinear-classifiable-sets" title="Permalink to this headline">¶</a></h2>
 <p>In the section, we will extend the linearly separable sets to nonlinear
@@ -533,96 +544,140 @@ case. A natural extension is like what kernel method does in SVM for
 binary case, we will introduce the so-called feature mapping.</p>
 <p>Thus, we have the following natural extension for linearly separable by
 using feature mapping and original definition of linearly separable.</p>
-<p>Definition 1 (nonlinearly separable sets). These data sets
-<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are called
-nonlinearly separable, if there exist a feature space
-<span class="math notranslate nohighlight">\(\mathbb{R}^{\tilde{d}}\)</span> and a smooth (if it has derivatives of all
-orders) feature mapping
-$<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{d}\)</span><span class="math notranslate nohighlight">\( such that
-\)</span><span class="math notranslate nohighlight">\(\tilde{A}_{i}:=\varphi\left(A_{i}\right)=\left\{\tilde{x} \mid \tilde{x}=\varphi(x), x \in A_{i}\right\}, \quad i=1,2, \ldots, k\)</span>$
-are linearly separable.</p>
-<p>Remark 1. 1. This definition is also consistent with the definition of
-linearly separable as we can just take <span class="math notranslate nohighlight">\(d=d\)</span> and <span class="math notranslate nohighlight">\(\varphi=\)</span> id if
-<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span> are already linearly separable.</p>
+<p>Definition 1 (nonlinearly separable sets). These data sets</p>
+<div class="math notranslate nohighlight">
+\[
+    A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}
+\]</div>
+<p>are called nonlinearly separable, if there exist a feature space <span class="math notranslate nohighlight">\(\mathbb{R}^{\tilde{d}}\)</span></p>
+<p>and a smooth (if it has derivatives of all orders) feature mapping</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{d}
+\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde{A}_{i}:=\varphi\left(A_{i}\right)=\left\{\tilde{x} \mid \tilde{x}=\varphi(x), x \in A_{i}\right\},\quad i=1,2, \ldots, k
+\]</div>
+<p>are linearly separable.</p>
+<p>Remark 1.</p>
 <ol class="simple">
+<li><p>This definition is also consistent with the definition of
+linearly separable as we can just take  <span class="math notranslate nohighlight">\(\tilde{d}=d\)</span> and <span class="math notranslate nohighlight">\(\varphi= id\)</span> if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span></p></li>
+</ol>
+<p>are already linearly separable.</p>
+<ol>
 <li><p>The kernel method in SVM is mainly based on this idea for binary
-case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span> where they use kernel functions to approximate
-this <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p></li>
+case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span></p>
+<p>where they use kernel functions to approximate
+this <span class="math notranslate nohighlight">\(\varphi(x)\)</span></p>
+</li>
 <li><p>For most commonly used deep learning models, they are all associated
 with a softmax mapping which means that we can interpret these deep
-learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span>.</p></li>
+learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p></li>
 </ol>
 <p>However, softmax is not so crucial for this definition actually as we
-have the next equivalent result. Theorem 1.
-<span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are nonlinearly
-separable is equivalent that there there exist a smooth classification
-function $<span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span><span class="math notranslate nohighlight">\( such that for
-all \)</span>i=1: k<span class="math notranslate nohighlight">\( and \)</span>j \neq i<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}\)</span><span class="math notranslate nohighlight">\( Proof. On the one
-hand, it is easy to see that if
-\)</span>A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}<span class="math notranslate nohighlight">\( are nonlinearly
-separable then they we can just take \)</span><span class="math notranslate nohighlight">\(\psi(x)=p(\varphi(x) ; \theta)\)</span><span class="math notranslate nohighlight">\(
-where the \)</span>\boldsymbol{p}(y ; \theta)<span class="math notranslate nohighlight">\( is the softmax function for
-linearly separable sets \)</span>\varphi\left(A_{i}\right)<span class="math notranslate nohighlight">\( for \)</span>i=<span class="math notranslate nohighlight">\(
-\)</span>1,2, \cdots, k$.</p>
-<p>On the other hand, let assume that <span class="math notranslate nohighlight">\(\psi\)</span> is the smooth classification
-functions for <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d} .\)</span> We
-claim that, we can take <span class="math notranslate nohighlight">\(\varphi(x)=\psi(x)\)</span> and then
-$<span class="math notranslate nohighlight">\(\varphi\left(A_{1}\right), \varphi\left(A_{2}\right), \cdots, \varphi\left(A_{k}\right) \subset \mathbb{R}^{k} \quad(\tilde{d}=k)\)</span><span class="math notranslate nohighlight">\(
-will be linearly separable. Actually, if you take \)</span>\theta=(I, 0)<span class="math notranslate nohighlight">\( in
-softmax mapping \)</span>\boldsymbol{p}(x ; \theta)<span class="math notranslate nohighlight">\(, then the monotonicity of
-\)</span>e^{x}<span class="math notranslate nohighlight">\( show that for all \)</span>i=1: k<span class="math notranslate nohighlight">\( and \)</span>j \neq i<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\boldsymbol{p}_{i}(\varphi(x) ; \theta)=\frac{e^{\psi_{i}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}&gt;\frac{e^{\psi_{j}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}=\boldsymbol{p}_{j}(\varphi(x) ; \theta), \quad \forall x \in A_{i} .\)</span>$
-]</p>
-<p>Similarly to linearly separable sets, we have the next lemme for <span class="math notranslate nohighlight">\(k=2\)</span>.</p>
-<p>Lemma 1. A <span class="math notranslate nohighlight">\(_{1}\)</span> and <span class="math notranslate nohighlight">\(A_{2}\)</span> are nonlinearly separable is equivalent
-that there exists a function
-<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}\)</span> such that
-$<span class="math notranslate nohighlight">\(\varphi(x)&gt;0 \quad \forall x \in A_{1} \quad \text { and } \quad \varphi(x)&lt;0 \quad \forall x \in A_{2}\)</span><span class="math notranslate nohighlight">\(
-Proof. Based the equivalence of nonlinearly separable sets, there exists
-\)</span>\psi_{1}(x)<span class="math notranslate nohighlight">\( and \)</span>\psi_{2}(2)<span class="math notranslate nohighlight">\( such that for all \)</span>i=1: 2<span class="math notranslate nohighlight">\( and
-\)</span>j \neq i<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}\)</span><span class="math notranslate nohighlight">\( Then,
-we can just take \)</span><span class="math notranslate nohighlight">\(\varphi(x)=\psi_{1}(x)-\psi_{2}(x)\)</span><span class="math notranslate nohighlight">\( On the other
-hand, if there exist \)</span>\varphi(x)<span class="math notranslate nohighlight">\(, then we can construct \)</span>\psi_{1}(x)<span class="math notranslate nohighlight">\(
-and \)</span>\psi_{2}(2)<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\(\psi_{1}(x)=\frac{1}{2} \varphi(x) \quad \text { and } \quad \psi_{2}(x)=-\frac{2}{2} \varphi(x)\)</span><span class="math notranslate nohighlight">\(
-Remark 2. Here we mention that, we only assume that for all \)</span>i=1: k<span class="math notranslate nohighlight">\( and
-\)</span>j \neq i<span class="math notranslate nohighlight">\( we have \)</span>\psi_{i}(x)&gt;\psi_{j}(x), \forall x \in A_{i}<span class="math notranslate nohighlight">\( for
-nonlinearly separable. We do not assume that \)</span>\psi_{i}(x) \geq 0<span class="math notranslate nohighlight">\( or
-\)</span>\sum_{i=1}^{k} \psi_{i}(x)=1<span class="math notranslate nohighlight">\(, which means that
-\)</span>\psi(x)=\left(\begin{array}{c}\psi_{1}(x) \ \psi_{2}(x) \ \vdots \ \psi_{k}(x)\end{array}\right)$
-is not a discrete probability distribution over all k classes.</p>
+have the next equivalent result.</p>
+<p>Theorem 1.</p>
+<p><span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are nonlinearly separable is equivalent that there there exist a smooth classification
+function</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}
+\]</div>
+<p>such that for all <span class="math notranslate nohighlight">\(i=1: k\)</span></p>
+<p>and <span class="math notranslate nohighlight">\(j \neq i\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}
+\]</div>
+<p>Proof. On the one
+hand, it is easy to see that if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span></p>
+<p>are nonlinearly separable then they we can just take</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi(x)=p(\varphi(x) ; \theta)
+\]</div>
+<p>where the  <span class="math notranslate nohighlight">\(\boldsymbol{p}(y ; \theta)\)</span></p>
+<p>is the softmax function for linearly separable sets <span class="math notranslate nohighlight">\(\varphi\left(A_{i}\right)\)</span> for
+<span class="math notranslate nohighlight">\(i = 1,2, \cdots, k\)</span></p>
+<p>On the other hand, let assume that <span class="math notranslate nohighlight">\(\psi\)</span></p>
+<p>is the smooth classification functions for  <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d} \)</span></p>
+<p>We claim that, we can take <span class="math notranslate nohighlight">\(\varphi(x)=\psi(x)\)</span></p>
+<p>and then</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi\left(A_{1}\right), \varphi\left(A_{2}\right), \cdots, \varphi\left(A_{k}\right) \subset \mathbb{R}^{k} \quad(\tilde{d}=k)
+\]</div>
+<p>will be linearly separable. Actually, if you take <span class="math notranslate nohighlight">\(\theta=(I, 0)\)</span></p>
+<p>in softmax mapping <span class="math notranslate nohighlight">\(\boldsymbol{p}(x ; \theta)\)</span> , then the monotonicity of <span class="math notranslate nohighlight">\(e^{x}\)</span></p>
+<p>show that for all <span class="math notranslate nohighlight">\(i=1: k \)</span> and  <span class="math notranslate nohighlight">\(j \neq i \)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol{p}_{i}(\varphi(x) ; \theta)=\frac{e^{\psi_{i}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}&gt;\frac{e^{\psi_{j}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}=\boldsymbol{p}_{j}(\varphi(x) ; \theta), \quad \forall x \in A_{i} .
+\]</div>
+<p>Similarly to linearly separable sets, we have the next lemme for <span class="math notranslate nohighlight">\(k=2\)</span></p>
+<p>Lemma 1.
+<span class="math notranslate nohighlight">\(A _{1}\)</span> and <span class="math notranslate nohighlight">\(A_{2}\)</span> are nonlinearly separable is equivalent that there exists a function <span class="math notranslate nohighlight">\( \varphi: \mathbb{R}^{d} \mapsto \mathbb{R} \)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi(x)&gt;0 \quad \forall x \in A_{1} \quad \text { and } \quad \varphi(x)&lt;0 \quad \forall x \in A_{2}
+\]</div>
+<p>Proof. Based the equivalence of nonlinearly separable sets, there exists <span class="math notranslate nohighlight">\(\psi_{1}(x)\)</span> and <span class="math notranslate nohighlight">\(\psi_{2}(2)\)</span></p>
+<p>such that for all <span class="math notranslate nohighlight">\(i=1: 2\)</span> and <span class="math notranslate nohighlight">\(j \neq i \)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}
+\]</div>
+<p>Then, we can just take</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi(x)=\psi_{1}(x)-\psi_{2}(x)
+\]</div>
+<p>On the other hand, if there exist <span class="math notranslate nohighlight">\(\varphi(x)\)</span>, then we can construct <span class="math notranslate nohighlight">\(\psi_{1}(x)\)</span> and <span class="math notranslate nohighlight">\(\psi_{2}(2)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi_{1}(x)=\frac{1}{2} \varphi(x) \quad \text { and } \quad \psi_{2}(x)=-\frac{2}{2} \varphi(x)
+\]</div>
+<p>Remark 2. Here we mention that, we only assume that for all <span class="math notranslate nohighlight">\(i=1: k\)</span> and <span class="math notranslate nohighlight">\(j \neq i\)</span> we have <span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \forall x \in A_{i}\)</span> for nonlinearly separable. We do not assume that <span class="math notranslate nohighlight">\(\psi_{i}(x) \geq 0\)</span> or <span class="math notranslate nohighlight">\(\sum_{i=1}^{k} \psi_{i}(x)=1\)</span> , which means that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \psi(x)=\left(\begin{array}{c}\psi_{1}(x) \\ \psi_{2}(x) \\ \vdots \\ \psi_{k}(x)\end{array}\right)
+\end{split}\]</div>
+<p>is not a discrete probability distribution over all k classes.</p>
 <p>The previous theorem shows that softmax function is not so crucial in
 nonlinearly separable case. Combined with deep learning models, we have
 the following understanding about what deep learning models are
 approximating.</p>
 <ol class="simple">
 <li><p>If a classification model is followed with a softmax, then the it is
-approximating the feature mapping
-<span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{\bar{d}}\)</span>.</p></li>
+approximating the feature mapping <span class="math notranslate nohighlight">\(\varphi: \mathbb{R}^{d} \mapsto \mathbb{R}^{\bar{d}}\)</span></p></li>
 <li><p>If the classification model dose not followed by softmax, then it is
-approximating <span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span>
-directly.</p></li>
+approximating <span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span> directly.</p></li>
 </ol>
-<p>Example 1. Consider <span class="math notranslate nohighlight">\(k=2\)</span> and
-<span class="math notranslate nohighlight">\(A_{1} \subset\left\{(x, y) \mid x^{2}+y^{2}&lt;1\right\}, \quad A_{2} \subset\left\{(x, y) \mid x^{2}+y^{2}&gt;1\right\}\)</span>,
-then we can have the following nonlinear feature mapping:</p>
-<p><img alt="image" src="Module3/m3_01/2022_01_05_20c4aca6821d56656c19g-7" />{width=”\textwidth”}</p>
+<p>Example 1. Consider <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(A_{1} \subset\left\{(x, y) \mid x^{2}+y^{2}&lt;1\right\}, \quad A_{2} \subset\left\{(x, y) \mid x^{2}+y^{2}&gt;1\right\}\)</span>, then we can have the following nonlinear feature mapping:</p>
+<p><img alt="image" src="../../_images/img1.png" /></p>
 <p>Here we have the following comparison for linear and nonlinear models
 from the viewpoint of loss functions:</p>
-<p>Linear case (Logistic regression):
-$<span class="math notranslate nohighlight">\(L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(x_{j} ; \theta\right)\right)+\lambda R(\|\theta\|)\)</span><span class="math notranslate nohighlight">\(
-Nonlinear case:
-\)</span><span class="math notranslate nohighlight">\(L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(\varphi\left(x_{j} ; \theta_{1}\right) ; \theta_{2}\right)\right)+\lambda R(\|\theta\|)\)</span><span class="math notranslate nohighlight">\(
-Remark 3. We have the following remarks.
-\)</span><span class="math notranslate nohighlight">\(\text { 1. } \ell(q, p)=\sum_{i=1}^{k}-q_{i} \log p_{i} \leftrightarrow \text { cross-entropy }\)</span>$</p>
+<p>Linear case (Logistic regression):</p>
+<div class="math notranslate nohighlight">
+\[
+    L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(x_{j} ; \theta\right)\right)+\lambda R(\|\theta\|)
+\]</div>
+<p>Nonlinear case:</p>
+<div class="math notranslate nohighlight">
+\[
+    L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(\varphi\left(x_{j} ; \theta_{1}\right) ; \theta_{2}\right)\right)+\lambda R(\|\theta\|)
+\]</div>
+<p>Remark 3. We have the following remarks.</p>
 <ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\ell(q, p)=\sum_{i=1}^{k}-q_{i} \log p_{i} \leftrightarrow \text { cross-entropy }\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(x ; \theta)=\operatorname{softmax}(W x+b)\)</span> where <span class="math notranslate nohighlight">\(\theta=(W, b)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\theta=\left(\theta_{1}, \theta_{2}\right)\)</span> for nonlinear case</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda R(\|\theta\|) \leftrightarrow\)</span> regularization term</p></li>
 </ol>
-<p>In general, we have the following popular nonlinear models for
-<span class="math notranslate nohighlight">\(\varphi(x ; \theta)\)</span></p>
+<p>In general, we have the following popular nonlinear models for <span class="math notranslate nohighlight">\(\varphi(x ; \theta)\)</span></p>
 <ol class="simple">
 <li><p>Polynomials.</p></li>
 <li><p>Piecewise polynomials (finite element method).</p></li>
@@ -630,27 +685,6 @@ Remark 3. We have the following remarks.
 <li><p>Deep neural networks.</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p>[1] L. Chen, P. Sun, and J. Xu. Optimal anisotropic meshes for
-minimizing interpolation errors in <span class="math notranslate nohighlight">\(l^{p}\)</span>-norm. Mathematics of
-Computation, <span class="math notranslate nohighlight">\(76(257): 179-204,2007 .\)</span></p>
-<p>[2] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for
-image recognition. In Proceedings of the IEEE Conference on Computer
-Vision and Pattern Recognition, pages 770-778, 2016</p>
-<p>[3] K. He, X. Zhang, S. Ren, and J. Sun. Identity mappings in deep
-residual networks. In European Conference on Computer Vision, pages
-630-645. Springer, <span class="math notranslate nohighlight">\(2016 .\)</span></p>
-<p>[4] M. Leshno, V.Y. Lin, A. Pinkus, and S. Schocken. Multilayer
-feedforward networks with a nonpolynomial activation function can
-approximate any function. Neural networks, 6(6):861-867, 1993 .</p>
-<p>[5] A. Pinkus. Approximation theory of the mlp model in neural
-networks. Acta numerica, <span class="math notranslate nohighlight">\(8: 143-195,1999 .\)</span></p>
-<p>[6] L. R. Scott and S. Zhang. Finite element interpolation of
-nonsmooth functions satisfying boundary conditions. Mathematics of
-Computation, <span class="math notranslate nohighlight">\(54(190): 483-493\)</span>, <span class="math notranslate nohighlight">\(1990 .\)</span></p>
-<p>[7] J. Xu. Finite element methods. Lecture notes, 2020 .</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -695,7 +729,7 @@ Computation, <span class="math notranslate nohighlight">\(54(190): 483-493\)</sp
         <a class="right-next" href="../m3_02/m3_02.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Polynomials and Weierstrass theorem</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
@@ -705,7 +739,7 @@ Computation, <span class="math notranslate nohighlight">\(54(190): 483-493\)</sp
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

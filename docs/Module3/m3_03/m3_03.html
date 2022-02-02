@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contents &#8212; Math 452 Site</title>
+    <title>Finite element method &#8212; Math 452 Site</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -56,8 +56,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../m3_04/m3_04.html" />
-    <link rel="prev" title="Contents" href="../m3_02/m3_02.html" />
+    <link rel="next" title="Deep neural network functions" href="../m3_04/m3_04.html" />
+    <link rel="prev" title="Polynomials and Weierstrass theorem" href="../m3_02/m3_02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,10 +75,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -252,22 +248,22 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_01/m3_01.html">
-     Contents
+     Nonlinear models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_02/m3_02.html">
-     Contents
+     Polynomials and Weierstrass theorem
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Contents
+     Finite element method
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_04/m3_04.html">
-     Contents
+     Deep neural network functions
     </a>
    </li>
    <li class="toctree-l2">
@@ -449,9 +445,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Module3/m3_03/m3_03.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_03/m3_03.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -469,6 +465,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module3/m3_03/m3_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -481,8 +494,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Contents
+   Finite element method
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+     Download the lecture notes here: Notes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conforming-linear-finite-element-spaces">
+     Conforming linear finite element spaces
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simplexes-in">
+       Simplexes in
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#finite-element-spaces">
@@ -490,7 +522,7 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conforming-linear-finite-element-spaces">
+    <a class="reference internal nav-link" href="#id1">
      Conforming linear finite element spaces
     </a>
     <ul class="nav section-nav flex-column">
@@ -559,17 +591,38 @@
         
               <div>
                 
-  <p>Summer 2020</p>
-<p><img alt="image" src="Module3/m3_03/2022_01_05_15c63bf4a948497c30d9g-02" />{width=”\textwidth”}</p>
-<div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p><img alt="image" src="Module3/m3_03/2022_01_05_15c63bf4a948497c30d9g-03" />{width=”\textwidth”}</p>
-<p>1.1 Conforming linear finite element spaces
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>1.1.1 Simplexes in
-<span class="math notranslate nohighlight">\(\mathbb{R}^{d} \ldots \ldots . . . . . . . . . . . . . . . . . . . . . . . .\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.1 .2\)</span> Shape-regular and quai-uniform triangulations
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots . .6\)</span></p>
+  <div class="section" id="finite-element-method">
+<h1>Finite element method<a class="headerlink" href="#finite-element-method" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_mpdchgne&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_4q3v8u79&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_mpdchgne&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4q3v8u79"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C03_-Finite-Element-Methods.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="conforming-linear-finite-element-spaces">
+<h2>Conforming linear finite element spaces<a class="headerlink" href="#conforming-linear-finite-element-spaces" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
+<div class="section" id="simplexes-in">
+<h3>Simplexes in<a class="headerlink" href="#simplexes-in" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\mathbb{R}^{d} \ldots \ldots . . . . . . . . . . . . . . . . . . . . . . . .\)</span></p>
+<p><span class="math notranslate nohighlight">\(1.1  Shape-regular and quai-uniform triangulations
+\)</span>\ldots \ldots \ldots . .6$</p>
 <p>1.1.3 Finite element space ……………………………</p>
 <p><span class="math notranslate nohighlight">\(1.2\)</span> Nodal value interpolant
 <span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots, \ldots \ldots\)</span></p>
@@ -577,10 +630,12 @@
 <span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
 <p><img alt="image" src="Module3/m3_03/2022_01_05_15c63bf4a948497c30d9g-04" />{width=”\textwidth”}</p>
 </div>
+</div>
+</div>
 <div class="section" id="finite-element-spaces">
 <h1>Finite element spaces<a class="headerlink" href="#finite-element-spaces" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="conforming-linear-finite-element-spaces">
-<h2>Conforming linear finite element spaces<a class="headerlink" href="#conforming-linear-finite-element-spaces" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Conforming linear finite element spaces<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>A conforming linear finite element function in a domain
 <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is a continuous function that is
 piecewise linear function with a grid or mesh consisting of a union of
@@ -917,7 +972,7 @@ regular mesh \)</span>\mathcal{T}_{N} .$</p>
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Polynomials and Weierstrass theorem</p>
             </div>
         </a>
     </div>
@@ -925,7 +980,7 @@ regular mesh \)</span>\mathcal{T}_{N} .$</p>
         <a class="right-next" href="../m3_04/m3_04.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Deep neural network functions</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
@@ -935,7 +990,7 @@ regular mesh \)</span>\mathcal{T}_{N} .$</p>
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
