@@ -83,7 +83,7 @@ launch_buttons:
   use_show_widgets_button: true 
   use_thlabebelab_button: true 
 #   jupyterhub_url: ""
-#   thebe: true
+  thebe: true
 
 
 # Only build TOC files

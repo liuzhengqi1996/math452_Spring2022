@@ -43,15 +43,13 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -478,6 +476,9 @@
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -547,8 +548,8 @@
 </div>
 <div class="section" id="problem-2-3-pts-consider-the-possion-equation">
 <h2>Problem 2 (3 pts):  Consider the possion equation<a class="headerlink" href="#problem-2-3-pts-consider-the-possion-equation" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-d7db6e42-fec4-480d-805f-b93425cc221e">
-<span class="eqno">(20)<a class="headerlink" href="#equation-d7db6e42-fec4-480d-805f-b93425cc221e" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
+<div class="amsmath math notranslate nohighlight" id="equation-700483e7-bb00-4617-aac7-d9d4ccaaa877">
+<span class="eqno">(28)<a class="headerlink" href="#equation-700483e7-bb00-4617-aac7-d9d4ccaaa877" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
 \left\{
 \begin{aligned}
 -u''&amp;= f, \,\, 0&lt;x&lt;1, \\
@@ -559,8 +560,8 @@
 <p>Assume <span class="math notranslate nohighlight">\(f(x)=1\)</span>, then the exact solution is <span class="math notranslate nohighlight">\(u(x)=\frac{1}{2}x(1-x)\)</span>. Given the partition with the grid points
 <span class="math notranslate nohighlight">\(x_i=\frac{i}{n+1}, i=0,1,\cdots,n+1\)</span>, then by finite element discretization,
 we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05743319-eb87-4e2b-ab45-74eae66800e5">
-<span class="eqno">(21)<a class="headerlink" href="#equation-05743319-eb87-4e2b-ab45-74eae66800e5" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-ab8bf2b9-4c24-4f85-a622-2c18dd45e2c8">
+<span class="eqno">(29)<a class="headerlink" href="#equation-ab8bf2b9-4c24-4f85-a622-2c18dd45e2c8" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 \end{equation}\]</div>
 <p>Use gradient descent method to solve the above problem with random initial guess <span class="math notranslate nohighlight">\(\mu^0\)</span>:</p>
@@ -624,7 +625,7 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_16657/1562355361.py&quot;</span><span class="gt">, line </span><span class="mi">11</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_27096/1562355361.py&quot;</span><span class="gt">, line </span><span class="mi">11</span>
     <span class="n">J</span> <span class="o">=</span> <span class="mi">4</span>                                <span class="c1"># grid level</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -738,8 +739,8 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",

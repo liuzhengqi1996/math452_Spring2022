@@ -43,13 +43,11 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -485,10 +483,6 @@
 <li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html#curse-of-dimensionality">Curse of dimensionality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_02/m3_02.html#runge-s-phenomenon">Runge’s phenomenon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html">Finite element method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#finite-element-spaces">Finite element spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#barycentric-coordinates">Barycentric coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#nodal-basis-functions-and-dual-basis">Nodal basis functions and dual basis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="m3_03/m3_03.html#a-proof-of-theorem-1-for-d-1">A proof of Theorem 1 for <span class="math notranslate nohighlight">\(d=1\)</span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_04/m3_04.html">Deep neural network functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_04/m3_04.html#fem-and-dnn">FEM and DNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_05.html">Universal approximation properties</a></li>
@@ -509,8 +503,8 @@
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
