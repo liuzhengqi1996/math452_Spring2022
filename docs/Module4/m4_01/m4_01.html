@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contents &#8212; Math 452 Site</title>
+    <title>Convolutional neural networks &#8212; Math 452 Site</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -43,6 +43,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -54,7 +56,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../m4_02/m4_02.html" />
+    <link rel="next" title="Convolutional operations on images" href="../m4_02/m4_02.html" />
     <link rel="prev" title="Module 4: Convolutional neural networks" href="../module4_.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -313,17 +315,17 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Contents
+     Convolutional neural networks
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m4_02/m4_02.html">
-     Contents
+     Convolutional operations on images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m4_03/m4_03.html">
-     Contents
+     Some classic CNN
     </a>
    </li>
    <li class="toctree-l2">
@@ -448,9 +450,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Module4/m4_01/m4_01.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Module4/m4_01/m4_01.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -468,6 +470,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module4/m4_01/m4_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -478,42 +500,30 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Contents
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variational-problems">
+   Variational problems
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convolutional-neural-networks">
-   Convolutional Neural Networks
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variational-problems">
-     Variational problems
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-element-methods">
+   Finite element methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-finite-element">
+     Linear finite element
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introduction">
-     Introduction
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilinear-element">
+     Bilinear element
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finite-element-methods">
-     Finite element methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-finite-element">
-       Linear finite element
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bilinear-element">
-       Bilinear element
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -528,26 +538,27 @@
         
               <div>
                 
-  <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p>1 Convolutional Neural Networks
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.1\)</span> Variational problems
-<span class="math notranslate nohighlight">\(\ldots . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.2\)</span> Introduction
-<span class="math notranslate nohighlight">\(\ldots . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.3\)</span> Finite element methods
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>1.3.1 Linear finite element
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots .\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.3 .2 \quad\)</span> Bilinear element
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>References
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p><img alt="image" src="Module4/m4_01/2022_01_06_c2f144dbff0f0a17cc7dg-2" />{width=”\textwidth”}</p>
+  <div class="section" id="convolutional-neural-networks">
+<h1>Convolutional neural networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r7d9vubj&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_1pwagnn7&quot;</span>  <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="convolutional-neural-networks">
-<h1>Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_r7d9vubj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1pwagnn7"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
 <div class="section" id="variational-problems">
 <h2>Variational problems<a class="headerlink" href="#variational-problems" title="Permalink to this headline">¶</a></h2>
 <p>Lemma 1. Assume that <span class="math notranslate nohighlight">\(u\)</span> is continuous in <span class="math notranslate nohighlight">\((0,1)\)</span>, then the following
@@ -555,45 +566,80 @@ statements are equivalent</p>
 <p>(1) <span class="math notranslate nohighlight">\(u(x)=0\)</span>.</p>
 <p>(2) <span class="math notranslate nohighlight">\(\int_{0}^{1} u(x) v(x) d x=0\)</span> for any smooth (compactly supported)
 function <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
-<p>Define function <span class="math notranslate nohighlight">\(v:[0,1] \rightarrow R\)</span> and define space
-$<span class="math notranslate nohighlight">\(V=\{v: v \text { is continuous and } v(0)=v(1)=0\}\)</span><span class="math notranslate nohighlight">\( Given any
-\)</span>f:[0,1] \rightarrow R<span class="math notranslate nohighlight">\(, consider
-\)</span><span class="math notranslate nohighlight">\(J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x\)</span><span class="math notranslate nohighlight">\(
-Find \)</span>u \in V<span class="math notranslate nohighlight">\( such that \)</span><span class="math notranslate nohighlight">\(u=\underset{v \in V}{\arg \min } J(v)\)</span><span class="math notranslate nohighlight">\( which
+<p>Define function <span class="math notranslate nohighlight">\(v:[0,1] \rightarrow R\)</span> and define space</p>
+<div class="math notranslate nohighlight">
+\[
+    V=\{v: v \text { is continuous and } v(0)=v(1)=0\}
+\]</div>
+<p>Given any
+<span class="math notranslate nohighlight">\(f:[0,1] \rightarrow R\)</span>, consider</p>
+<div class="math notranslate nohighlight">
+\[
+    J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x
+\]</div>
+<p>Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that $<span class="math notranslate nohighlight">\(u=\underset{v \in V}{\arg \min } J(v)\)</span><span class="math notranslate nohighlight">\( which
 is equivalent to: Find \)</span>u \in V<span class="math notranslate nohighlight">\( such that \)</span><span class="math notranslate nohighlight">\(\left\{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
 \end{array}\right.\)</span><span class="math notranslate nohighlight">\( Proof. For any \)</span>v \in V, t \in R<span class="math notranslate nohighlight">\(, let
 \)</span>g(t)=J(u+t v)<span class="math notranslate nohighlight">\(. Since \)</span>u=\arg \min _{v \in V} J(v)<span class="math notranslate nohighlight">\( means
 \)</span>g(t) \geq g(0) .<span class="math notranslate nohighlight">\( Hence, for any \)</span>v \in V, 0<span class="math notranslate nohighlight">\( is the global minimum of
-the function \)</span>g(t)<span class="math notranslate nohighlight">\(. Therefore \)</span>g^{\prime}(0)=0<span class="math notranslate nohighlight">\( implies
-\)</span><span class="math notranslate nohighlight">\(\int_{0}^{1} u^{\prime} v^{\prime} d x=\int_{0}^{1} f v d x \quad \forall v \in V\)</span><span class="math notranslate nohighlight">\(
-By integration by parts, which is equivalent to
-\)</span><span class="math notranslate nohighlight">\(\int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V \text {. }\)</span><span class="math notranslate nohighlight">\(
-By variational principal Lemma 1, we obtain \)</span><span class="math notranslate nohighlight">\(\left\{\begin{array}{l}
+the function \)</span>g(t)<span class="math notranslate nohighlight">\(. Therefore \)</span>g^{\prime}(0)=0$ implies</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{0}^{1} u^{\prime} v^{\prime} d x=\int_{0}^{1} f v d x \quad \forall v \in V
+\]</div>
+<p>By integration by parts, which is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V \text {. }
+\]</div>
+<p>By variational principal Lemma 1, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \left\{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
-\end{array}\right.\)</span><span class="math notranslate nohighlight">\( \)</span>\square$</p>
+\end{array}\right.
+\end{split}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
 basis of the <span class="math notranslate nohighlight">\(V_{h} .\)</span> Let
 <span class="math notranslate nohighlight">\(\left\{\psi_{1}, \psi_{2}, \cdots, \psi_{n}\right\}\)</span> be a dual basis of
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span>, namely
-<span class="math notranslate nohighlight">\(\left(\varphi_{i}, \psi_{j}\right)=\delta_{i j} .\)</span>
-$<span class="math notranslate nohighlight">\(J\left(v_{h}\right)=\frac{1}{2} \int_{0}^{1}\left|v_{h}^{\prime}\right|^{2} d x-\int_{0}^{1} f v_{h} d x .\)</span><span class="math notranslate nohighlight">\(
-Let \)</span><span class="math notranslate nohighlight">\(u_{h}=\sum_{i=1}^{n} v_{i} \varphi\)</span><span class="math notranslate nohighlight">\( then
-\)</span><span class="math notranslate nohighlight">\(u_{h}=\underset{v h \in V_{h}}{\arg \min } J\left(v_{h}\right)\)</span><span class="math notranslate nohighlight">\( is
-equivalent to: Find \)</span>u_{h} \in V_{h}<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(a\left(u_{h}, v_{h}\right)=\left\langle f, v_{h}\right\rangle \quad \forall v_{h} \in V_{h} .\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(a\left(u_{h}, v_{h}\right)=\int_{0}^{1} u_{h}^{\prime} v_{h}^{\prime} d x\)</span><span class="math notranslate nohighlight">\(
-Which is equivalent to: Find \)</span>u_{h} \in V_{h}<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(a\left(u_{h}, v_{h}\right)=\left\langle f, v_{h}\right\rangle \quad \forall v_{h} \in V_{h},\)</span><span class="math notranslate nohighlight">\(
-which is equivalent to solving \)</span>\underline{A} \mu=b<span class="math notranslate nohighlight">\(, where
-\)</span>\underline{A}=\left(a_{i j}\right)<em>{i j}^{n}<span class="math notranslate nohighlight">\( and
-\)</span>a</em>{i j}=a\left(\varphi_{j}, \varphi_{i}\right)<span class="math notranslate nohighlight">\( and
-\)</span>b_{i}=\int_{0}^{1} f \varphi_{i} d x .<span class="math notranslate nohighlight">\( Namely
-\)</span><span class="math notranslate nohighlight">\(\frac{1}{h}\left(\begin{array}{ccccc}
+<span class="math notranslate nohighlight">\(\left(\varphi_{i}, \psi_{j}\right)=\delta_{i j} .\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    J\left(v_{h}\right)=\frac{1}{2} \int_{0}^{1}\left|v_{h}^{\prime}\right|^{2} d x-\int_{0}^{1} f v_{h} d x .\]</div>
+<p>Let $<span class="math notranslate nohighlight">\(u_{h}=\sum_{i=1}^{n} v_{i} \varphi
+\)</span>$</p>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+    u_{h}=\underset{v h \in V_{h}}{\arg \min } J\left(v_{h}\right)
+\]</div>
+<p>is equivalent to: Find <span class="math notranslate nohighlight">\(u_{h} \in V_{h}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    a\left(u_{h}, v_{h}\right)=\left\langle f, v_{h}\right\rangle \quad \forall v_{h} \in V_{h} 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    a\left(u_{h}, v_{h}\right)=\int_{0}^{1} u_{h}^{\prime} v_{h}^{\prime} d x
+\]</div>
+<p>Which is equivalent to: Find <span class="math notranslate nohighlight">\(u_{h} \in V_{h}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    a\left(u_{h}, v_{h}\right)=\left\langle f, v_{h}\right\rangle \quad \forall v_{h} \in V_{h}
+\]</div>
+<p>which is equivalent to solving <span class="math notranslate nohighlight">\(\underline{A} \mu=b\)</span>, where
+<span class="math notranslate nohighlight">\(\underline{A}=\left(a_{i j}\right)_{i j}^{n}\)</span> and
+<span class="math notranslate nohighlight">\(a_{i j}=a\left(\varphi_{j}, \varphi_{i}\right)\)</span> and
+<span class="math notranslate nohighlight">\(b_{i}=\int_{0}^{1} f \varphi_{i} d x .\)</span> Namely</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \frac{1}{h}\left(\begin{array}{ccccc}
 2 &amp; -1 &amp; &amp; &amp; \\
 -1 &amp; 2 &amp; -1 &amp; &amp; \\
 &amp; \ddots &amp; \ddots &amp; \ddots &amp; \\
@@ -609,27 +655,39 @@ b_{1} \\
 b_{2} \\
 \vdots \\
 b_{n}
-\end{array}\right) .\)</span><span class="math notranslate nohighlight">\( Which can be rewritten as
-\)</span><span class="math notranslate nohighlight">\(\frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0\)</span><span class="math notranslate nohighlight">\(
-Using the convolution notation, (1.9) can be written as \)</span><span class="math notranslate nohighlight">\(A * \mu=b\)</span><span class="math notranslate nohighlight">\(
+\end{array}\right) 
+\end{split}\]</div>
+<p>Which can be rewritten as</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0
+\]</div>
+<p>Using the convolution notation, (1.9) can be written as $<span class="math notranslate nohighlight">\(A * \mu=b\)</span><span class="math notranslate nohighlight">\(
 where \)</span>A=\frac{1}{h}[-1,2,-1]$</p>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Let us first briefly describe finite difference methods and finite
 element methods for the numerical solution of the following boundary
-value problem
-$<span class="math notranslate nohighlight">\(-\Delta u=f, \text { in } \Omega, \quad u=0 \text { on } \partial \Omega, \quad Q=(0,1)^{2} .\)</span><span class="math notranslate nohighlight">\(
-For the \)</span>x<span class="math notranslate nohighlight">\( direction and the \)</span>y<span class="math notranslate nohighlight">\( direction, we consider the partition:
-\)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+value problem</p>
+<div class="math notranslate nohighlight">
+\[
+    -\Delta u=f, \text { in } \Omega, \quad u=0 \text { on } \partial \Omega, \quad Q=(0,1)^{2} 
+\]</div>
+<p>For the <span class="math notranslate nohighlight">\(x\)</span> direction and the <span class="math notranslate nohighlight">\(y\)</span> direction, we consider the partition:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 &amp;0=x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n+1}=1, \quad x_{i}=\frac{j}{n+1}, \quad(i=0, \cdots, n+1) \\
 &amp;0=y_{0}&lt;y_{1}&lt;\cdots&lt;y_{n+1}=1, \quad y_{j}=\frac{j}{n+1}, \quad(j=0, \cdots, n+1)
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( Such a uniform partition in the \)</span>x<span class="math notranslate nohighlight">\( and \)</span>y<span class="math notranslate nohighlight">\( directions
+\end{aligned}
+\end{split}\]</div>
+<p>Such a uniform partition in the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions
 leads us to a special example in two dimensions, a uniform square mesh
-\)</span>\mathbb{R}<em>{h}^{2}={(i h, j h) ; i, j \in \mathbb{Z}}<span class="math notranslate nohighlight">\( (Figure 1.2).
-Let \)</span>\Omega</em>{h}=\Omega \cap \mathbb{R}<em>{h}^{2}<span class="math notranslate nohighlight">\(, the set of interior
+<span class="math notranslate nohighlight">\(\mathbb{R}_{h}^{2}=\{(i h, j h) ; i, j \in \mathbb{Z}\}\)</span> (Figure 1.2).
+Let <span class="math notranslate nohighlight">\(\Omega_{h}=\Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set of interior
 mesh points and
-\)</span>\partial \Omega</em>{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}$, the set
+<span class="math notranslate nohighlight">\(\partial \Omega_{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set
 of boundary mesh points.<br />
 <img alt="image" src="Module4/m4_01/2022_01_06_c2f144dbff0f0a17cc7dg-5" />{width=”\textwidth”}</p>
 <p>Fig. 1.1. Two-dimensional uniform grid for finite element and finite
@@ -639,21 +697,34 @@ difference</p>
 <h2>Finite element methods<a class="headerlink" href="#finite-element-methods" title="Permalink to this headline">¶</a></h2>
 <p>We consider two finite elements: continuous linear element and bilinear
 element. These two finite element methods find <span class="math notranslate nohighlight">\(u_{h} \in V_{h}\)</span> such
-that
-$<span class="math notranslate nohighlight">\(\left(\nabla u_{h}, \nabla v_{h}\right)=\left(f, v_{h}\right), \forall v_{h} \in V_{h} .\)</span><span class="math notranslate nohighlight">\(
-The above formulation can be written as
-\)</span><span class="math notranslate nohighlight">\(\underline{A u}=\underline{f}\)</span><span class="math notranslate nohighlight">\( with
-\)</span>\underline{A}<em>{(j-1) n+i,(l-1) n+k}=\left(\nabla \phi</em>{k l}, \nabla \phi_{i j}\right), f_{(j-1) n+i,(l-1) n+k}=\left(f, \phi_{i j}\right) .$</p>
-<p>Basis functions <span class="math notranslate nohighlight">\(\phi_{i j}\)</span> satisfy
-$<span class="math notranslate nohighlight">\(\phi_{i j}\left(x_{k}, y_{l}\right)=\delta_{(i, j),(k, l)}\)</span>$</p>
+that</p>
+<div class="math notranslate nohighlight">
+\[
+    \left(\nabla u_{h}, \nabla v_{h}\right)=\left(f, v_{h}\right), \forall v_{h} \in V_{h} 
+\]</div>
+<p>The above formulation can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \underline{A u}=\underline{f}
+\]</div>
+<p>with
+<span class="math notranslate nohighlight">\(\underline{A}_{(j-1) n+i,(l-1) n+k}=\left(\nabla \phi_{k l}, \nabla \phi_{i j}\right), f_{(j-1) n+i,(l-1) n+k}=\left(f, \phi_{i j}\right) .\)</span></p>
+<p>Basis functions <span class="math notranslate nohighlight">\(\phi_{i j}\)</span> satisfy</p>
+<div class="math notranslate nohighlight">
+\[
+    \phi_{i j}\left(x_{k}, y_{l}\right)=\delta_{(i, j),(k, l)}
+\]</div>
 <div class="section" id="linear-finite-element">
 <h3>Linear finite element<a class="headerlink" href="#linear-finite-element" title="Permalink to this headline">¶</a></h3>
 <p>Continuous linear finite element discretization of (1.11) on the left
 triangulation in Fig 1.2. The discrete space for linear finite element
-is
-$<span class="math notranslate nohighlight">\(\mathcal{V}_{h}=\left\{v_{h}:\left.v_{h}\right|_{K} \in P_{1}(K) \text { and } v_{h} \text { is globally continuous }\right\}\)</span><span class="math notranslate nohighlight">\(
-Denote
-\)</span>E_{i, j}=\left[x_{i}, x_{i+1}\right] \times\left[y_{i}, y_{i+1}\right]=K_{i, j}^{U} \cup K_{i, j}^{D} .$
+is</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{V}_{h}=\left\{v_{h}:\left.v_{h}\right|_{K} \in P_{1}(K) \text { and } v_{h} \text { is globally continuous }\right\}
+\]</div>
+<p>Denote
+<span class="math notranslate nohighlight">\(E_{i, j}=\left[x_{i}, x_{i+1}\right] \times\left[y_{i}, y_{i+1}\right]=K_{i, j}^{U} \cup K_{i, j}^{D} .\)</span>
 For linear element case,</p>
 <p><img alt="image" src="Module4/m4_01/2022_01_06_c2f144dbff0f0a17cc7dg-6" />{width=”\textwidth”}</p>
 <p>It is easy to verify that the formulation for the linear element method
@@ -661,49 +732,70 @@ is</p>
 <p>(1.16)
 <span class="math notranslate nohighlight">\(4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0\)</span>
 if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\}\)</span>,</p>
-<p>where
-$<span class="math notranslate nohighlight">\(f_{i, j}=\int_{\Omega} f(x, y) \phi_{i, j}(x, y) \mathrm{d} x \mathrm{~d} y \approx h^{2} f\left(x_{i}, y_{j}\right)\)</span>$
-Proposition 1. The mapping A* has following properties</p>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    f_{i, j}=\int_{\Omega} f(x, y) \phi_{i, j}(x, y) \mathrm{d} x \mathrm{~d} y \approx h^{2} f\left(x_{i}, y_{j}\right)
+\]</div>
+<p>Proposition 1. The mapping A* has following properties</p>
 <ol class="simple">
 <li><p>A is symmetric, namely</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[(A * u, v)_{l^{2}}=(u, A * v)_{l^{2}} .\]</div>
+\[
+    (A * u, v)_{l^{2}}=(u, A * v)_{l^{2}} .
+\]</div>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\((A * v, v)_{F}&gt;0\)</span>, if <span class="math notranslate nohighlight">\(v \neq 0\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(A * u=f\)</span> if and only if</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[u \in \underset{v \in \mathcal{V}_{h}}{\arg \min } J(v)=\frac{1}{2}(A * v, v)-(f, v)\]</div>
+\[
+    u \in \underset{v \in \mathcal{V}_{h}}{\arg \min } J(v)=\frac{1}{2}(A * v, v)-(f, v)
+\]</div>
 <ol class="simple">
 <li><p>The eigenvalues <span class="math notranslate nohighlight">\(\lambda_{k l}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(u^{k l}\)</span> of A are
 given by</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{gathered}
+\[\begin{split}
+    \begin{gathered}
 \lambda_{k l}=4\left(\sin ^{2} \frac{k \pi}{2(n+1)}+\sin ^{2} \frac{l \pi}{2(n+1)}\right), \\
 u_{i j}^{k l}=\sin \frac{k i \pi}{n+1} \sin \frac{l j \pi}{n+1}, 1 \leq i \leq n, 1 \leq j \leq n,
-\end{gathered}$$ and $\rho(A)&lt;8 .$ Furthermore,
-$$\lambda_{n, n}=8 \cos ^{2} \frac{\pi}{2(n+1)} \approx 8\left(1-\left(\frac{\pi}{2(n+1)}\right)^{2}\right) \approx 8-\frac{2 \pi^{2}}{(n+1)^{2}}\end{split}\]</div>
+\end{gathered}
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\rho(A)&lt;8 .\)</span> Furthermore,</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda_{n, n}=8 \cos ^{2} \frac{\pi}{2(n+1)} \approx 8\left(1-\left(\frac{\pi}{2(n+1)}\right)^{2}\right) \approx 8-\frac{2 \pi^{2}}{(n+1)^{2}}
+\]</div>
 </div>
 <div class="section" id="bilinear-element">
 <h3>Bilinear element<a class="headerlink" href="#bilinear-element" title="Permalink to this headline">¶</a></h3>
 <p>Continuous bilinear finite element discretization of (1.11) on the right
-mesh in Fig. 1.2. The discrete space for linear finite element is
-$<span class="math notranslate nohighlight">\(\mathcal{V}_{h}=\left\{v_{h}:\left.v_{h}\right|_{K} \in\{1, x, y, x y\} \text { and } v_{h} \text { is globally continuous }\right\}\)</span><span class="math notranslate nohighlight">\(
-For bilinear element case, we have \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+mesh in Fig. 1.2. The discrete space for linear finite element is</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{V}_{h}=\left\{v_{h}:\left.v_{h}\right|_{K} \in\{1, x, y, x y\} \text { and } v_{h} \text { is globally continuous }\right\}
+\]</div>
+<p>For bilinear element case, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 \left(\nabla \mathbf{u}_{h}, \nabla \mathbf{v}_{h}\right)=&amp; \sum_{i, j=1}^{n} \int_{E_{i, j}} \nabla \mathbf{u}_{h}, \nabla \mathbf{v}_{h} d x d y \\
 =&amp; \sum_{i, j=1}^{n} \int_{E_{i, j}}\left(\frac{\left(u_{i+1, j}-u_{i, j}\right)\left(y_{j+1}-y\right)}{h^{2}}+\frac{\left(u_{i, j+1}-u_{i+1, j+1}\right)\left(y-y_{j}\right)}{h^{2}}\right) \\
 &amp;\left(\frac{\left(v_{i+1, j}-v_{i, j}\right)\left(y_{j+1}-y\right)}{h^{2}}+\frac{\left(v_{i, j+1}-v_{i+1, j+1}\right)\left(y-y_{j}\right)}{h^{2}}\right) \\
 &amp;+\left(\frac{\left(u_{i, j+1}-u_{i, j}\right)\left(x_{i+1}-x\right)}{h^{2}}+\frac{\left(u_{i+1, j}-u_{i+1, j+1}\right)\left(x-x_{i}\right)}{h^{2}}\right) \\
 =&amp;\left(\frac{\left(v_{i, j+1}-v_{i, j}\right)\left(x_{i+1}-x\right)}{h^{2}}+\frac{\left(v_{i+1, j}-v_{i+1, j+1}\right)\left(x-x_{i}\right)}{h^{2}}\right) d x d y
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( where
-\)</span>A=\left(\begin{array}{ccc}-1 &amp; -1 &amp; -1 \ -1 &amp; 8 &amp; -1 \ -1 &amp; -1 &amp; -1\end{array}\right)<span class="math notranslate nohighlight">\(
-and \)</span>A * u<span class="math notranslate nohighlight">\( is given by \)</span>(1.20)$</p>
+\end{aligned}
+\end{split}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(A=\left(\begin{array}{ccc}-1 &amp; -1 &amp; -1 \\ -1 &amp; 8 &amp; -1 \\ -1 &amp; -1 &amp; -1\end{array}\right)\)</span>
+and <span class="math notranslate nohighlight">\(A * u\)</span> is given by <span class="math notranslate nohighlight">\((1.20)\)</span></p>
 <p>And we have</p>
 <p>(1.20)
 <span class="math notranslate nohighlight">\(8 u_{i j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}+u_{i+1, j+1}+u_{i-1, j-1}+u_{i-1, j+1}+u_{i+1, j-1}\right)=f_{i, j}\)</span>,
-and <span class="math notranslate nohighlight">\(u_{i, j}=0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\} .\)</span> References</p>
+and <span class="math notranslate nohighlight">\(u_{i, j}=0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\} .\)</span></p>
 </div>
 </div>
 </div>
@@ -750,7 +842,7 @@ and <span class="math notranslate nohighlight">\(u_{i, j}=0\)</span> if <span cl
         <a class="right-next" href="../m4_02/m4_02.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Convolutional operations on images</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

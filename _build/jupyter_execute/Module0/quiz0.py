@@ -111,6 +111,202 @@ widgets.IntText(
 )
 
 
+# ```{dropdown} Show answer
+# Answer: 
+# 
+# 
+#     Global maximum is 5; global minimum is -15.
+# 
+# ```
+
+# ## Question 4
+# Find the global minimizer and the global minimum value of the function 
+# 
+# $$
+#     f(x,y)=(x-2)^2+y^2+2(y-4)^2+2x^2+2xy+4y-16x+1.
+# $$
+# 
+# That is, determine the point $(x_0,y_0)$  which yields the global minimum value,  
+
+# In[7]:
+
+
+widgets.IntText(
+    value=0,
+    description='x_0 is :',
+    disabled=False
+)
+
+
+# In[8]:
+
+
+widgets.IntText(
+    value=0,
+    description='y_0 is :',
+    disabled=False
+)
+
+
+# In[9]:
+
+
+widgets.IntText(
+    value=0,
+    description='f_{min} is:',
+    disabled=False
+)
+
+
+# ```{dropdown} Show answer
+# Answer: 
+# 
+# 
+# ```
+
+# ## Problem 5
+# Which of the following matrices has an inverse?
+# 
+# - A: 
+# 
+# $$
+#     \begin{bmatrix}
+# 3&4 \\
+# 6&8 \\
+# \end{bmatrix}
+# $$
+# 
+# - B: 
+# 
+# $$
+#     \begin{bmatrix}
+# 0&-4 \\
+# 0&10 \\
+# \end{bmatrix}
+# $$
+# 
+# - C: 
+# 
+# $$
+#     \begin{bmatrix}
+# 4&-10 \\
+# 2&5 \\
+# \end{bmatrix}
+# $$
+# 
+# - D: 
+# 
+# $$
+#     \begin{bmatrix}
+# 1&4 \\
+# 0&3 \\
+# \end{bmatrix}
+# $$
+# 
+# - E: 
+# 
+# $$
+#     \begin{bmatrix}
+# 0&0 \\
+# 5&7 \\
+# \end{bmatrix}
+# $$
+# 
+
+# In[10]:
+
+
+def on_change5(change):
+    if change['type'] == 'change' and change['name'] == 'value':
+        if change['new'] == 'D':
+            print( "Your answer: %s     is correct"% change['new'] )
+        else:
+            print( "Your answer: %s     is wrong"% change['new'] )
+
+w5 = widgets.RadioButtons(
+    options=['A', 'B', 'C','D','E'],
+#    value='pineapple', # Defaults to 'pineapple'
+#    layout={'width': 'max-content'}, # If the items' names are long
+    description='',
+    disabled=False
+)
+w5.observe(on_change5)
+w5
+
+
+# ```{dropdown} Show answer
+# Answer: 
+# D
+# ```
+
+# ## Question 6
+# Let 
+# 
+# $$
+#     A=\left(
+# \begin{matrix}
+# 1&-1&0\\
+# -1&2&-1\\
+# 0&-1&1
+# \end{matrix}
+# \right)
+# $$
+# 
+# Compute the eigenvalues of $A$
+# 
+# 
+
+# In[11]:
+
+
+def on_change6(change):
+    if change['type'] == 'change' and change['name'] == 'value':
+        if change['new'] == '1,0,3':
+            print( "Your answer: %s     is correct"% change['new'] )
+        else:
+            print( "Your answer: %s     is wrong"% change['new'] )
+
+w6 = widgets.RadioButtons(
+    options=['1,0,3', '1,-1,0', '1,-1','1,2,1','-1,2,-1'],
+#    value='pineapple', # Defaults to 'pineapple'
+#    layout={'width': 'max-content'}, # If the items' names are long
+    description='',
+    disabled=False
+)
+w6.observe(on_change6)
+w6
+
+
+# ```{dropdown} Show answer
+# Answer: 
+# 
+# 1,0,3
+# ```
+
+# ## Question 7
+# Let 
+# 
+# $$
+#     a=\left(
+# \begin{matrix}
+# 1\\
+# 1\\
+# 1\\
+# 1
+# \end{matrix}
+# \right)\in R^4
+# $$
+# 
+# and $A=aa^T$
+# 
+# Find the eigenvalues and corresponding eigenvectors of $A$
+# 
+# Write out solution, take a picture or scan it into a file (we prefer a pdf file) and upload from your computer.
+
+# ```{dropdown} Show answer
+# 
+# ```
+
 # In[ ]:
 
 

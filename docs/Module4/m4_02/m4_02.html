@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contents &#8212; Math 452 Site</title>
+    <title>Convolutional operations on images &#8212; Math 452 Site</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -43,6 +43,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -54,8 +56,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../m4_03/m4_03.html" />
-    <link rel="prev" title="Contents" href="../m4_01/m4_01.html" />
+    <link rel="next" title="Some classic CNN" href="../m4_03/m4_03.html" />
+    <link rel="prev" title="Convolutional neural networks" href="../m4_01/m4_01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -313,17 +315,17 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../m4_01/m4_01.html">
-     Contents
+     Convolutional neural networks
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Contents
+     Convolutional operations on images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../m4_03/m4_03.html">
-     Contents
+     Some classic CNN
     </a>
    </li>
    <li class="toctree-l2">
@@ -448,9 +450,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Module4/m4_02/m4_02.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Module4/m4_02/m4_02.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -468,6 +470,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module4/m4_02/m4_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -480,12 +502,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Contents
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convolutional-neural-networks">
-   Convolutional Neural Networks
+   Convolutional operations on images
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -603,11 +620,6 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -619,44 +631,27 @@
         
               <div>
                 
-  <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p>1 Convolutional Neural Networks
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.1\)</span> Convolutional operations
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p>1.1.1 Images as matrix
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . . . . .\)</span></p>
-<p>1.1.2 Convolution operation with one channel
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots .\)</span></p>
-<p>1.1.3 Convolution with stride (one channel)
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots .\)</span></p>
-<p>1.1.4 Convolutional operations with multi-channel
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots .6\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.1 .5\)</span> Pooling operation in CNNs
-<span class="math notranslate nohighlight">\(\ldots \ldots . \ldots . . . . . . . . . . . . . . . . .\)</span></p>
-<p><span class="math notranslate nohighlight">\(1.2\)</span> Examples of convolution filters and performance
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots, \ldots\)</span></p>
-<p>1.2.1 Calculation with convolutions ………………………… 8</p>
-<p><span class="math notranslate nohighlight">\(1.2 .2 \quad\)</span> Image convolution examples
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots . \ldots . . . . . . . . . .\)</span></p>
-<p>1.2.3 Line detection by 1D Laplacian
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots . \ldots . . . . . . . . .\)</span></p>
-<p>1.2.4 Edge detection by 2D Laplacian operator
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots .12\)</span></p>
-<p>1.2.5 The Laplacian of Gaussian
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots . . . . . . . . . . . .\)</span></p>
-<p>1.2.6 Other examples with ReLU activation
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots .15\)</span></p>
-<p>1.2.7 Some other examples
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots . . . . . . . . . . . . . . . . . . .\)</span></p>
-<p><img alt="image" src="Module4/m4_02/2022_01_06_b5ce182ed1bd5f482e5bg-01" />{width=”\textwidth”}</p>
-<p>References
-<span class="math notranslate nohighlight">\(\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\)</span></p>
-<p><img alt="image" src="Module4/m4_02/2022_01_06_b5ce182ed1bd5f482e5bg-02" />{width=”\textwidth”}</p>
+  <div class="section" id="convolutional-operations-on-images">
+<h1>Convolutional operations on images<a class="headerlink" href="#convolutional-operations-on-images" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_t7f2jp92&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_tz1o7ejy&quot;</span>  <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="convolutional-neural-networks">
-<h1>Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_t7f2jp92&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_tz1o7ejy"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
 <div class="section" id="convolutional-operations">
 <h2>Convolutional operations<a class="headerlink" href="#convolutional-operations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="images-as-matrix">
@@ -1156,33 +1151,6 @@ used and also saw an example of how each operator modifies an image. I
 hope this helped!</p>
 </div>
 </div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p>[1] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei.
-Imagenet: A largescale hierarchical image database. In 2009 IEEE
-conference on computer vision and pattern recognition, pages 248-255.
-Ieee, 2009.</p>
-<p>[2] J. He, Y. Chen, and J. Xu. Constrained linear data-feature mapping
-for image classification. arXiv preprint arXiv: <span class="math notranslate nohighlight">\(1911.10428,2019 .\)</span></p>
-<p>[3] <span class="math notranslate nohighlight">\(\mathrm{K}\)</span>. He, X. Zhang, S. Ren, and J. Sun. Deep residual
-learning for image recognition. In Proceedings of the IEEE Conference on
-Computer Vision and Pattern Recognition, pages 770-778, 2016 .</p>
-<p>[4] K. He, X. Zhang, S. Ren, and J. Sun. Identity mappings in deep
-residual networks. In European Conference on Computer Vision, pages
-630-645. Springer, <span class="math notranslate nohighlight">\(2016 .\)</span></p>
-<p>[5] A. Krizhevsky and G. Hinton. Learning multiple layers of features
-from tiny images. Technical report, Citeseer, <span class="math notranslate nohighlight">\(2009 .\)</span></p>
-<p>[6] A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet
-classification with deep convolutional neural networks. In Advances in
-neural information processing systems, pages <span class="math notranslate nohighlight">\(1097-1105,2012\)</span>.</p>
-<p>[7] Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-based
-learning applied to document recognition. Proceedings of the IEEE,
-<span class="math notranslate nohighlight">\(86(11): 2278-2324,1998 .\)</span></p>
-<p>[8] K. Simonyan and A. Zisserman. Very deep convolutional networks for
-largescale image recognition. arXiv preprint arXiv: <span class="math notranslate nohighlight">\(1409.1556,2014 .\)</span></p>
-<p>[9] J. Xu and L. Zikatanov. Algebraic multigrid methods. Acta
-Numerica, 26:591<span class="math notranslate nohighlight">\(721,2017 .\)</span></p>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1218,7 +1186,7 @@ Numerica, 26:591<span class="math notranslate nohighlight">\(721,2017 .\)</span>
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Convolutional neural networks</p>
             </div>
         </a>
     </div>
@@ -1226,7 +1194,7 @@ Numerica, 26:591<span class="math notranslate nohighlight">\(721,2017 .\)</span>
         <a class="right-next" href="../m4_03/m4_03.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Some classic CNN</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
