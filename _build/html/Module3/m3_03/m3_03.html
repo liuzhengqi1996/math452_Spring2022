@@ -43,6 +43,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -265,7 +267,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../m3_05.html">
+    <a class="reference internal" href="../m3_05/m3_05.html">
      Universal approximation properties
     </a>
    </li>
@@ -277,6 +279,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_07.html">
      DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_08/m3_08.html">
+     Monte Carlo Methods
     </a>
    </li>
    <li class="toctree-l2">
@@ -518,6 +525,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nodal-basis-functions-and-dual-basis">
      Nodal basis functions and dual basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nodal-value-interpolant">
+     Nodal value interpolant
     </a>
    </li>
   </ul>
@@ -790,6 +802,153 @@ also Fig <a class="reference internal" href="#nodal-basis"><span class="std std-
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Plot of a typical element from Vh;0 .</span><a class="headerlink" href="#plot" title="Permalink to this image">¶</a></p>
 </div>
 </div>
+<div class="section" id="nodal-value-interpolant">
+<h3>Nodal value interpolant<a class="headerlink" href="#nodal-value-interpolant" title="Permalink to this headline">¶</a></h3>
+<p>For any continuous function <span class="math notranslate nohighlight">\(u\)</span>, we define its linear finite element
+interpolation, <span class="math notranslate nohighlight">\((I_h u)(x)\in V_{h,0}\)</span>, as follows:</p>
+<div class="math notranslate nohighlight" id="equation-u-interp">
+<span class="eqno">(27)<a class="headerlink" href="#equation-u-interp" title="Permalink to this equation">¶</a></span>\[
+    (I_h u)(x)= \sum_{i=1}^{n_h}u(x_i)\varphi_i(x)
+\]</div>
+<p>Usually, we also
+denote <span class="math notranslate nohighlight">\((I_h u)(x)\)</span> as <span class="math notranslate nohighlight">\(u_I(x)\)</span>. Using interpolation, we can obtain the
+following approximation property of linear finite element space.</p>
+<div class="proof theorem admonition" id="interp00">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Assume that <span class="math notranslate nohighlight">\(\mathcal T_h\)</span> is quasi-uniform and <span class="math notranslate nohighlight">\(V_h\)</span> is
+the linear finite element space associated with <span class="math notranslate nohighlight">\(\mathcal T_h\)</span>, then</p>
+<div class="math notranslate nohighlight" id="equation-error0">
+<span class="eqno">(28)<a class="headerlink" href="#equation-error0" title="Permalink to this equation">¶</a></span>\[
+    \inf_{v_h\in V_h} \|v-v_h\|+h |v-v_h|_{1}\leq h^2 |v|_2
+        \forall v\in H^2(\Omega).
+\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Proof
+Let us first prove Theorem <a class="reference internal" href="#interp00">Theorem 2</a> for <span class="math notranslate nohighlight">\(d=1, 2, 3\)</span>.
+Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> and
+<span class="math notranslate nohighlight">\(a_i=(a^1_{i}, \ldots, a^d_{i})\)</span>. Introducing the auxiliary functions</p>
+<div class="math notranslate nohighlight">
+\[
+    g_i(t)=v(a_i(t)),\mbox{  with  }  a_i(t)=a_i+t(x-a_i)
+\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[
+    g_i'(t)=(\nabla v)(a_i(t))\cdot (x-a_i)
+=\sum_{l=1}^d(\partial_lv)(a_i(t))(x^l-a_i^l)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-gpp">
+<span class="eqno">(29)<a class="headerlink" href="#equation-gpp" title="Permalink to this equation">¶</a></span>\[
+    g_i''(t)=\sum_{k,l=1}^d\partial^2_{kl}v)(a_i(t))(x^k-a_i^k)(x^l-a_i^l)
+\]</div>
+<p>Note Taylor expansion</p>
+<div class="math notranslate nohighlight">
+\[
+    g_i(0)=g_i(1)-g_i'(1)+\int_0^1tg''_i(t)dt
+\]</div>
+<p>namely</p>
+<div class="math notranslate nohighlight" id="equation-taylor-vi">
+<span class="eqno">(30)<a class="headerlink" href="#equation-taylor-vi" title="Permalink to this equation">¶</a></span>\[
+    v(a_i)=v(x)-(\nabla v)(x)\cdot (x-a_i)+\int_0^1tg''_i(t)dt
+\]</div>
+<p>and note that</p>
+<div class="math notranslate nohighlight">
+\[
+    (I_hv)(x)=\sum_{i=1}^{d+1}v(a_i)\lambda_i(x), \quad \sum_{i=1}^{d+1}\lambda_i(x)=1
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{i=1}^{d+1}(x-a_i)\lambda_i(x)=0
+\]</div>
+<p>It follows that</p>
+<div class="math notranslate nohighlight" id="equation-ihvv">
+<span class="eqno">(31)<a class="headerlink" href="#equation-ihvv" title="Permalink to this equation">¶</a></span>\[
+    (I_hv-v)(x)=\sum_{i=1}^{d+1}\lambda_i(x)\int_0^1tg''_i(t)dt
+\]</div>
+<p>Using <a class="reference internal" href="#equation-gpp">(29)</a> and the trivial fact that <span class="math notranslate nohighlight">\(|x^l-a_i^l|\le h\)</span>, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    \begin{aligned}
+    \|g''_i(t)\|_{L^2(\tau)}\le h^2
+    \sum_{k,l=1}^d\|(\partial^2_{kl}v)(a_i(t))\|_{L^2(\tau_i^t)}
+    \le h^2t^{-d/2}\sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)},\end{aligned}
+\]</div>
+<p>where we have used the following change of variable</p>
+<div class="math notranslate nohighlight">
+\[
+    y=a_i+t(x-a_i): \tau\mapsto \tau_i^t\subset\tau \mbox{ with } dy=t^ddx
+\]</div>
+<p>Now taking the <span class="math notranslate nohighlight">\(L^2(\tau)\)</span> norm on both hand of sides of <a class="reference internal" href="#equation-ihvv">(31)</a> , we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \|I_hv-v\|_{L^2(\tau)}
+    &amp;\le&amp; h^2\sum_{i=1}^{d+1}\max_{x\in\tau}|\lambda_i(x)|
+    \int_0^1t\|g''_i(t)\|_{L^2(\tau)}\;dt\\
+    &amp;\le&amp; (d+1)\int_0^1t^{-d/2}dt\;h^2\;
+    \sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)}\\
+    &amp;\le&amp;\frac{2(d+1)}{4-d}h^2
+    \sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)}\\
+    &amp;\le&amp;\frac{4d(d+1)}{4-d}h^2|v|_{H^2(\tau)}.\end{aligned}
+\end{split}\]</div>
+<p>Now we prove the <span class="math notranslate nohighlight">\(H^1\)</span> error estimate. Notice that</p>
+<div class="math notranslate nohighlight">
+\[
+    [\partial_{j}( I_{h} v - v)](x) = \sum_{i} (\partial_{j} \lambda_{i} )(x) \int_{0}^{1} t g''_{i}(t) dt + \sum_{i} \lambda_{i}(x) \partial_{j} \int_{0}^{1} t g''_{i}(t) dt
+\]</div>
+<p>By <a class="reference internal" href="#equation-taylor-vi">(30)</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_0^1tg''_i(t)dt = v(a_i) - v(x) + (\nabla v)(x)\cdot (x-a_i)
+\]</div>
+<p>therefore,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \partial_{j} \int_0^1tg''_i(t)dt \\
+    &amp; = &amp; - \partial_{j} v + (\nabla \partial_{j} v )(x) (x - a_{i}) + \nabla v \cdot e_{j} \\
+    &amp; = &amp; (\nabla \partial_{j} v )(x) (x - a_{i}).\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e_{j}\)</span> is the <span class="math notranslate nohighlight">\(j\)</span>-th standard basis</p>
+<p>Noting that <span class="math notranslate nohighlight">\(\sum_{i} \lambda_{i}( \nabla \partial_{j} v )(x) (x - a_{i}) = 0\)</span>,
+we have</p>
+<div class="math notranslate nohighlight">
+\[
+    [\partial_{j}( I_{h} v - v)](x) = \sum_{i} (\partial_{j} \lambda_{i} )(x) \int_{0}^{1} t g''_{i}(t) dt
+\]</div>
+<p>Then the estimate for <span class="math notranslate nohighlight">\(|\nabla(I_hv-v)|_{L^2(\tau)}\)</span> follows by a
+similar argument and the following obvious estimate</p>
+<div class="math notranslate nohighlight">
+\[
+    |(\nabla\lambda_i)(x)|\leq\frac{1}{h}
+\]</div>
+<p>On the proof of Theorem <a class="reference internal" href="#interp0">Theorem 3</a> for <span class="math notranslate nohighlight">\(d\ge 4\)</span>, the above proof does
+not apply for <span class="math notranslate nohighlight">\(d \ge 4\)</span>. This is because when <span class="math notranslate nohighlight">\(d \ge 4\)</span>, the embedding
+relation between <span class="math notranslate nohighlight">\(H^{2}(\Omega) \hookrightarrow C(\bar{\Omega})\)</span> is no longer
+true. Only continuous functions can have interpolations. In this case,
+one approach is to use the so-called Scott-Zhang interpolation</p>
+</div>
+<p>As a result of Theorem <a class="reference internal" href="#interp00">Theorem 2</a> , we have</p>
+<div class="figure align-default" id="approximatio">
+<a class="reference internal image-reference" href="../../_images/img8.png"><img alt="../../_images/img8.png" src="../../_images/img8.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Approximation of finite element space.</span><a class="headerlink" href="#approximatio" title="Permalink to this image">¶</a></p>
+</div>
+<div class="proof theorem admonition" id="interp0">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(V_N\)</span> be linear finite element space on a quasi-uniform
+triangulation consisting of <span class="math notranslate nohighlight">\(N\)</span> element. Then</p>
+<div class="math notranslate nohighlight">
+\[
+    \inf_{v_h\in V_N} \|v-v_h\|+N^{-{1\over d}} |v-v_h|_{1}\leq N^{-{2\over d}} |v|_2
+    \forall   v\in H^2(\Omega)
+\]</div>
+</div>
+</div></div>
 </div>
 </div>
 

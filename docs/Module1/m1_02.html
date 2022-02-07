@@ -49,9 +49,9 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -267,7 +267,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Module3/m3_05.html">
+    <a class="reference internal" href="../Module3/m3_05/m3_05.html">
      Universal approximation properties
     </a>
    </li>
@@ -279,6 +279,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../Module3/m3_07.html">
      DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_08/m3_08.html">
+     Monte Carlo Methods
     </a>
    </li>
    <li class="toctree-l2">
@@ -478,6 +483,9 @@
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -801,8 +809,8 @@ separability from now on.</p>
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",

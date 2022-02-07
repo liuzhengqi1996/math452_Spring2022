@@ -51,7 +51,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Convergence of SGD
 # 
-# ```{prf:theorem} Theorem
+# ```{prf:theorem} 
 # Assume that each $f_i(x)$ is $\lambda$-strongly convex and
 # $\|\nabla f_i(x)\| \le M$ for some $M >0$. If we take
 # $\eta_t = \frac{a}{\lambda (t+1)}$ with sufficiently large $a$ such that

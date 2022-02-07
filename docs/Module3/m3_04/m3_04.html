@@ -49,14 +49,14 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Universal approximation properties" href="../m3_05.html" />
+    <link rel="next" title="Universal approximation properties" href="../m3_05/m3_05.html" />
     <link rel="prev" title="Finite element method" href="../m3_03/m3_03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -267,7 +267,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../m3_05.html">
+    <a class="reference internal" href="../m3_05/m3_05.html">
      Universal approximation properties
     </a>
    </li>
@@ -279,6 +279,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../m3_07.html">
      DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_08/m3_08.html">
+     Monte Carlo Methods
     </a>
    </li>
    <li class="toctree-l2">
@@ -478,6 +483,9 @@
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -512,11 +520,6 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#motivation-from-finite-element-to-neural-network">
      Motivation: from finite element to neural network
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-we-need-deep-neural-networks-via-composition">
-     Why we need deep neural networks via composition
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -613,42 +616,66 @@ element method.</p>
 interval <span class="math notranslate nohighlight">\(\bar{\Omega}=\)</span> <span class="math notranslate nohighlight">\([0,1]\)</span> in <span class="math notranslate nohighlight">\(1 \mathrm{D}\)</span>. We then consider a
 set of equidistant girds <span class="math notranslate nohighlight">\(\Omega_{\ell}\)</span> of level <span class="math notranslate nohighlight">\(\ell\)</span> on the unit
 interval <span class="math notranslate nohighlight">\(\bar{\Omega}=[0,1]\)</span> and mesh length <span class="math notranslate nohighlight">\(h_{\ell}=2^{-\ell}\)</span>. The
-grid points <span class="math notranslate nohighlight">\(x_{\ell, i}\)</span> are given by
-$<span class="math notranslate nohighlight">\(x_{\ell, i}:=i h_{\ell}, \quad 0 \leq i \leq 2^{\ell} .\)</span><span class="math notranslate nohighlight">\( For
-\)</span>\ell=1<span class="math notranslate nohighlight">\(, we denote the special hat function:
-\)</span><span class="math notranslate nohighlight">\(\varphi(x)= \begin{cases}2 x &amp; x \in\left[0, \frac{1}{2}\right] \\ 2(1-x) &amp; x \in\left[\frac{1}{2}, 1\right] \\ 0, &amp; \text { others }\end{cases}\)</span>$
-The next diagram shows this basis function:</p>
-<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" />{width=”\textwidth”}</p>
+grid points <span class="math notranslate nohighlight">\(x_{\ell, i}\)</span> are given by</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{\ell, i}:=i h_{\ell}, \quad 0 \leq i \leq 2^{\ell} 
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(\ell=1\)</span>, we denote the special hat function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \varphi(x)= \begin{cases}2 x &amp; x \in\left[0, \frac{1}{2}\right] \\ 2(1-x) &amp; x \in\left[\frac{1}{2}, 1\right] \\ 0, &amp; \text { others }\end{cases}
+\end{split}\]</div>
+<p>The next diagram shows this basis function:</p>
+<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" /></p>
 <p>Fig. 1.1. Diagram of <span class="math notranslate nohighlight">\(\varphi(x)\)</span> Then, for any nodal basis function
 <span class="math notranslate nohighlight">\(\varphi_{\ell, i}\)</span> as below:</p>
-<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" />{width=”\textwidth”}</p>
+<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" /></p>
 <p>Fig. 1.2. Diagram of <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span></p>
-<p>in a fine grid <span class="math notranslate nohighlight">\(\mathcal{T}_{\ell}\)</span> can be written as
-$<span class="math notranslate nohighlight">\(\varphi_{\ell, i}=\varphi\left(\frac{x-x_{\ell, i-1}}{2 h_{\ell}}\right)=\varphi\left(w_{\ell} x+b_{\ell, i}\right)\)</span><span class="math notranslate nohighlight">\(
-That is to say, any \)</span>\varphi_{\ell, i}(x)<span class="math notranslate nohighlight">\( can be obtained from
-\)</span>\varphi(x)<span class="math notranslate nohighlight">\( ba scaling (dilation) and translation with
-\)</span><span class="math notranslate nohighlight">\(w_{\ell}=2^{\ell-1}, \quad b_{\ell, i}=\frac{-(i-1)}{2}\)</span><span class="math notranslate nohighlight">\( in
-\)</span>\varphi_{\ell, i}=\varphi\left(w_{\ell} x+b_{\ell, i}\right)$.</p>
-<p>Let recall the finite element interpolation as
-$<span class="math notranslate nohighlight">\(u(x) \approx u_{\ell}(x):=\sum_{0 \leq i \leq 2^{\ell}} u\left(x_{\ell, i}\right) \varphi_{\ell, i}(x)\)</span><span class="math notranslate nohighlight">\(
-for any smooth function \)</span>u(x)<span class="math notranslate nohighlight">\( on \)</span>(0,1)<span class="math notranslate nohighlight">\(. The above interpolation will
-converge as \)</span>\ell \rightarrow \infty<span class="math notranslate nohighlight">\(, which show that
-\)</span><span class="math notranslate nohighlight">\(\operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right)\right\} \quad \text { is dense in } \quad H^{1}(0,1)\)</span>$
-Thus, we may have the next concise relation:</p>
-<p>FE space
-<span class="math notranslate nohighlight">\(=\operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right) \mid 0 \leq i \leq 2^{\ell}, \ell=1,2, \cdots\right\} \subset \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\} .\)</span></p>
+<p>in a fine grid <span class="math notranslate nohighlight">\(\mathcal{T}_{\ell}\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{\ell, i}=\varphi\left(\frac{x-x_{\ell, i-1}}{2 h_{\ell}}\right)=\varphi\left(w_{\ell} x+b_{\ell, i}\right)
+\]</div>
+<p>That is to say, any <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span> can be obtained from
+<span class="math notranslate nohighlight">\(\varphi(x)\)</span> ba scaling (dilation) and translation with</p>
+<div class="math notranslate nohighlight">
+\[
+    w_{\ell}=2^{\ell-1}, \quad b_{\ell, i}=\frac{-(i-1)}{2}
+\]</div>
+<p>in <span class="math notranslate nohighlight">\(\varphi_{\ell, i}=\varphi\left(w_{\ell} x+b_{\ell, i}\right)\)</span>.</p>
+<p>Let recall the finite element interpolation as</p>
+<div class="math notranslate nohighlight">
+\[
+    u(x) \approx u_{\ell}(x):=\sum_{0 \leq i \leq 2^{\ell}} u\left(x_{\ell, i}\right) \varphi_{\ell, i}(x)
+\]</div>
+<p>for any smooth function <span class="math notranslate nohighlight">\(u(x)\)</span> on <span class="math notranslate nohighlight">\((0,1)\)</span>. The above interpolation will
+converge as <span class="math notranslate nohighlight">\(\ell \rightarrow \infty\)</span>, which show that</p>
+<div class="math notranslate nohighlight">
+\[
+    \operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right)\right\} \quad \text { is dense in } \quad H^{1}(0,1)
+\]</div>
+<p>Thus, we may have the next concise relation:</p>
+<p>FE space <span class="math notranslate nohighlight">\(=\operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right) \mid 0 \leq i \leq 2^{\ell}, \ell=1,2, \cdots\right\} \subset \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\} .\)</span></p>
 <p>In other words, the finite element space can be understood as the linear
 combination of <span class="math notranslate nohighlight">\(\varphi(w x+b)\)</span> with certain special choice of <span class="math notranslate nohighlight">\(w\)</span> and
 <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>Here, we need to point that this
 <span class="math notranslate nohighlight">\(\operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\}\)</span> is
 exact the deep neural networks with one hidden layer (shallow neural
-networks) with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>. More precisely,
-$<span class="math notranslate nohighlight">\(f \in \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\}\)</span><span class="math notranslate nohighlight">\(
-means there exist positive integer \)</span>N<span class="math notranslate nohighlight">\( and \)</span>w_{j}, b_{j} \in \mathbb{R}<span class="math notranslate nohighlight">\(
-such that \)</span><span class="math notranslate nohighlight">\(f=\sum_{j=1}^{N} a_{j} \varphi\left(w_{j} x+b_{j}\right)\)</span><span class="math notranslate nohighlight">\(
-The above function is also called one hidden neural network function
-with \)</span>N$ neurons.</p>
+networks) with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>. More precisely,</p>
+<div class="math notranslate nohighlight">
+\[
+    f \in \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\}
+\]</div>
+<p>means there exist positive integer <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(w_{j}, b_{j} \in \mathbb{R}\)</span>
+such that</p>
+<div class="math notranslate nohighlight">
+\[
+    f=\sum_{j=1}^{N} a_{j} \varphi\left(w_{j} x+b_{j}\right)
+\]</div>
+<p>The above function is also called one hidden neural network function
+with <span class="math notranslate nohighlight">\(N\)</span> neurons.</p>
 <p>Remark <span class="math notranslate nohighlight">\(1 . \quad\)</span> 1. By making <span class="math notranslate nohighlight">\(w_{\ell}\)</span> and <span class="math notranslate nohighlight">\(b_{\ell, i}\)</span> arbitrary,
 we get a much larger class of function which is exact a special neural
 network with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p>
@@ -657,110 +684,180 @@ network with activation function <span class="math notranslate nohighlight">\(\v
 </ol>
 <p>a) <span class="math notranslate nohighlight">\(\varphi\)</span> can be different, such as
 <span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\max \{0, x\}\)</span>.</p>
-<p>b) There is a natural extension for hight dimension <span class="math notranslate nohighlight">\(d\)</span> as
-$<span class="math notranslate nohighlight">\(\{\varphi(w \cdot x+b)\}\)</span><span class="math notranslate nohighlight">\( where
-\)</span>w \in \mathbb{R}^{d}, b \in \mathbb{R}<span class="math notranslate nohighlight">\( and
-\)</span>w \cdot x=\sum_{i=1}^{d} w_{i} x_{i}$. This is called “deep” neural
+<p>b) There is a natural extension for hight dimension <span class="math notranslate nohighlight">\(d\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+    \{\varphi(w \cdot x+b)\}
+\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(w \in \mathbb{R}^{d}, b \in \mathbb{R}\)</span> and
+<span class="math notranslate nohighlight">\(w \cdot x=\sum_{i=1}^{d} w_{i} x_{i}\)</span>. This is called “deep” neural
 network with one hidden layer.</p>
-</div>
-<div class="section" id="why-we-need-deep-neural-networks-via-composition">
-<h2>Why we need deep neural networks via composition<a class="headerlink" href="#why-we-need-deep-neural-networks-via-composition" title="Permalink to this headline">¶</a></h2>
+<p>##Why we need deep neural networks via composition</p>
 <div class="section" id="fem-ans-dnn-1-in-1d">
 <h3>FEM ans DNN <span class="math notranslate nohighlight">\(_{1}\)</span> in 1D<a class="headerlink" href="#fem-ans-dnn-1-in-1d" title="Permalink to this headline">¶</a></h3>
 <p>Thanks to the connection between <span class="math notranslate nohighlight">\(\varphi(x)\)</span> and
-<span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\{0, x\}\)</span>
-$<span class="math notranslate nohighlight">\(\varphi(x)=2 \operatorname{ReLU}(x)-4 \operatorname{ReLu}\left(x-\frac{1}{2}\right)+2 \operatorname{ReLU}(x-1)\)</span><span class="math notranslate nohighlight">\(
-It suffices to show that each basis function \)</span>\varphi_{\ell, i}<span class="math notranslate nohighlight">\( can be
+<span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\{0, x\}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi(x)=2 \operatorname{ReLU}(x)-4 \operatorname{ReLu}\left(x-\frac{1}{2}\right)+2 \operatorname{ReLU}(x-1)
+\]</div>
+<p>It suffices to show that each basis function <span class="math notranslate nohighlight">\(\varphi_{\ell, i}\)</span> can be
 represented by a ReLU DNN. We first note that the basis function
-\)</span>\varphi_{i}<span class="math notranslate nohighlight">\( has the support in \)</span>\left[x_{i-1}, x_{i+1}\right]<span class="math notranslate nohighlight">\( can be
-easily written as
-\)</span><span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)=\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i-1}\right)-\left(\frac{2}{h_{\ell}}\right) \operatorname{ReLU}\left(x-x_{\ell, i}\right)+\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i+1}\right)\)</span><span class="math notranslate nohighlight">\(
-More generally, if function \)</span>\varphi_{i}<span class="math notranslate nohighlight">\( is not on the uniform grid but
-has support in \)</span>\left[x_{i-1}, x_{i+1}\right]<span class="math notranslate nohighlight">\( can be easily written as
-\)</span><span class="math notranslate nohighlight">\(\varphi_{i}(x)=\frac{1}{h_{i-1}} \operatorname{ReLU}\left(x-x_{i-1}\right)-\left(\frac{1}{h_{i-1}}+\frac{1}{h_{i}}\right) \operatorname{ReLU}\left(x-x_{i}\right)+\frac{1}{h_{i}} \operatorname{ReLU}\left(x-x_{i+1}\right)\)</span><span class="math notranslate nohighlight">\(
-where \)</span>h_{i}=x_{i+1}-x_{i}$.</p>
+<span class="math notranslate nohighlight">\(\varphi_{i}\)</span> has the support in <span class="math notranslate nohighlight">\(\left[x_{i-1}, x_{i+1}\right]\)</span> can be
+easily written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{\ell, i}(x)=\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i-1}\right)-\left(\frac{2}{h_{\ell}}\right) \operatorname{ReLU}\left(x-x_{\ell, i}\right)+\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i+1}\right)
+\]</div>
+<p>More generally, if function <span class="math notranslate nohighlight">\(\varphi_{i}\)</span> is not on the uniform grid but
+has support in <span class="math notranslate nohighlight">\(\left[x_{i-1}, x_{i+1}\right]\)</span> can be easily written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{i}(x)=\frac{1}{h_{i-1}} \operatorname{ReLU}\left(x-x_{i-1}\right)-\left(\frac{1}{h_{i-1}}+\frac{1}{h_{i}}\right) \operatorname{ReLU}\left(x-x_{i}\right)+\frac{1}{h_{i}} \operatorname{ReLU}\left(x-x_{i+1}\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_{i}=x_{i+1}-x_{i}\)</span>.</p>
 <p>Thus is to say, we have the next theorem.</p>
-<p>Theorem 1. For <span class="math notranslate nohighlight">\(d=1\)</span>, and <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is a bounded
+<div class="proof theorem admonition" id="thm1">
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>For <span class="math notranslate nohighlight">\(d=1\)</span>, and <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is a bounded
 interval, then DNN <span class="math notranslate nohighlight">\(_{1}\)</span> can be used to cover all linear finite element
 function in on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
 </div>
+</div></div>
 <div class="section" id="linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2">
 <h3>Linear finite element cannot be recovered by DNN <span class="math notranslate nohighlight">\(_{1}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span><a class="headerlink" href="#linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2" title="Permalink to this headline">¶</a></h3>
-<p>In view of Theorem 1 and the fact that
+<p>In view of <a class="reference internal" href="../m3_05/m3_05.html#thm1">Theorem 7</a> and the fact that
 <span class="math notranslate nohighlight">\(\mathrm{DNN}_{\mathrm{J}} \subseteq \mathrm{DNN}_{\mathrm{J}+1}\)</span>, it is
 natural to ask that how many layers are needed at least to recover all
 linear finite element functions in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span>. In
-this section, we will show that
-$<span class="math notranslate nohighlight">\(J_{d} \geq 2, \quad \text { if } \quad d \geq 2\)</span><span class="math notranslate nohighlight">\( where \)</span>J_{d}<span class="math notranslate nohighlight">\( is the
-minimal \)</span>J<span class="math notranslate nohighlight">\( such that all linear finite element functions in
-\)</span>\mathbb{R}^{d}<span class="math notranslate nohighlight">\( can be recovered by DNN \)</span>_{J}$</p>
+this section, we will show that</p>
+<div class="math notranslate nohighlight">
+\[
+    J_{d} \geq 2, \quad \text { if } \quad d \geq 2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J_{d}\)</span> is the minimal <span class="math notranslate nohighlight">\(J\)</span> such that all linear finite element functions in
+<span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> can be recovered by DNN <span class="math notranslate nohighlight">\(_{J}\)</span></p>
 <p>In particular, we will show the following theorem.</p>
-<p>Theorem 2. If <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is either a bounded domain
+<div class="proof theorem admonition" id="thm2">
+<p class="admonition-title"><span class="caption-number">Theorem 5 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is either a bounded domain
 or <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}, \mathrm{DNN}_{1}\)</span> can not be used to recover
 all linear finite element functions on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
 <p>Proof. We prove it by contradiction. Let us assume that for any
 continuous piecewise linear function <span class="math notranslate nohighlight">\(f: \Omega \rightarrow \mathbb{R}\)</span>,
 we can find finite <span class="math notranslate nohighlight">\(N \in \mathbb{N}, w_{i} \in \mathbb{R}^{1, d}\)</span> as
-row vector and <span class="math notranslate nohighlight">\(\alpha_{i}, b_{i}, \beta \in \mathbb{R}\)</span> such that
-$<span class="math notranslate nohighlight">\(f=\sum_{i=1}^{N} \alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)+\beta\)</span><span class="math notranslate nohighlight">\(
-with
-\)</span>f_{i}=\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right), \alpha_{i} \neq 0<span class="math notranslate nohighlight">\(
-and \)</span>w_{i} \neq 0 .<span class="math notranslate nohighlight">\( Consider the finite element functions, if this one
+row vector and <span class="math notranslate nohighlight">\(\alpha_{i}, b_{i}, \beta \in \mathbb{R}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    f=\sum_{i=1}^{N} \alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)+\beta
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(f_{i}=\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right), \alpha_{i} \neq 0\)</span>
+and <span class="math notranslate nohighlight">\(w_{i} \neq 0 .\)</span> Consider the finite element functions, if this one
 hidden layer ReLU DNN can recover any basis function of FEM, then it can
-recover the finite element space. Thus let us assume \)</span>f<span class="math notranslate nohighlight">\( is a locally
-supported basis function for FEM. Furthermore, if \)</span>\Omega<span class="math notranslate nohighlight">\( is a bounded
-domain, we assume that \)</span><span class="math notranslate nohighlight">\(d(\operatorname{supp}(f), \partial \Omega)&gt;0\)</span><span class="math notranslate nohighlight">\(
-with \)</span><span class="math notranslate nohighlight">\(d(A, B)=\inf _{x \in A, y \in B}\|x-y\|,\)</span>$ as the distance of two
+recover the finite element space. Thus let us assume <span class="math notranslate nohighlight">\(f\)</span> is a locally
+supported basis function for FEM. Furthermore, if <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded
+domain, we assume that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-15">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq1-15" title="Permalink to this equation">¶</a></span>\[
+    d(\operatorname{supp}(f), \partial \Omega)&gt;0
+\]</div>
+<p>with $<span class="math notranslate nohighlight">\(d(A, B)=\inf _{x \in A, y \in B}\|x-y\|,\)</span>$ as the distance of two
 closed sets.</p>
 <p>A more important observation is that
 <span class="math notranslate nohighlight">\(\nabla f: \Omega \rightarrow \mathbb{R}^{d}\)</span> is a piecewise constant
 vector function. The key point is to consider the discontinuous points
 for <span class="math notranslate nohighlight">\(g:=\nabla f=\)</span> <span class="math notranslate nohighlight">\(\sum_{i=1}^{N} \nabla f_{i} .\)</span></p>
 <p>For more general case, we can define the set of discontinuous points of
-a function by
-$<span class="math notranslate nohighlight">\(D_{g}:=\{x \in \Omega \mid x \text { is a discontinuous point of } g\}\)</span><span class="math notranslate nohighlight">\(
-Because of the property that
-\)</span><span class="math notranslate nohighlight">\(D_{f+g} \supseteq D_{f} \cup D_{g} \backslash\left(D_{f} \cap D_{g}\right),\)</span><span class="math notranslate nohighlight">\(
-we have
-\)</span><span class="math notranslate nohighlight">\(D_{\sum_{i=1}^{N} g_{i}} \supseteq \bigcup_{i=1}^{N} D_{g_{i}} \backslash \bigcup_{i \neq j}\left(D_{g_{i}} \cap D_{g_{j}}\right)\)</span><span class="math notranslate nohighlight">\(
-Note that
-\)</span><span class="math notranslate nohighlight">\(g_{i}=\nabla f_{i}(x)=\nabla\left(\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right)=\left(\alpha_{i} H\left(w_{i} x+b_{i}\right)\right) w_{i} \in \mathbb{R}^{d},\)</span><span class="math notranslate nohighlight">\(
-for \)</span>i=1: N<span class="math notranslate nohighlight">\( with \)</span>H<span class="math notranslate nohighlight">\( be the Heaviside function defined as:
-\)</span><span class="math notranslate nohighlight">\(H(x)= \begin{cases}0 &amp; \text { if } x \leq 0 \\ 1 &amp; \text { if } x&gt;0\end{cases}\)</span><span class="math notranslate nohighlight">\(
-This means that \)</span><span class="math notranslate nohighlight">\(D_{g_{i}}=\left\{x \mid w_{i} x+b_{i}=0\right\}\)</span><span class="math notranslate nohighlight">\( is a
-\)</span>d-1<span class="math notranslate nohighlight">\( dimensional affine space in \)</span>\mathbb{R}^{d}$</p>
-<p>Without loss of generality, we can assume that
-$<span class="math notranslate nohighlight">\(D_{g_{i}} \neq D_{g_{j}}\)</span><span class="math notranslate nohighlight">\( When the other case occurs, i.e.
-\)</span>D_{g_{6}}=D_{g_{2}}=\cdots=D_{g_{\ell_{2}}}<span class="math notranslate nohighlight">\(, by the definition of
-\)</span>g_{i}<span class="math notranslate nohighlight">\( in (1.18) and \)</span>D_{g_{i}}<span class="math notranslate nohighlight">\( in (1.19), this happens if and only if
-there is a row vector \)</span>(w, b)<span class="math notranslate nohighlight">\( such that
-\)</span><span class="math notranslate nohighlight">\(c_{\ell_{i}}(w b)=\left(w_{\ell_{i}} b_{\ell_{i}}\right)\)</span><span class="math notranslate nohighlight">\( with some
-\)</span>c_{\ell_{i}} \neq 0<span class="math notranslate nohighlight">\( for \)</span>i=1: k<span class="math notranslate nohighlight">\(. We combine those \)</span>g_{\ell_{i}}<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+a function by</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{g}:=\{x \in \Omega \mid x \text { is a discontinuous point of } g\}
+\]</div>
+<p>Because of the property that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{f+g} \supseteq D_{f} \cup D_{g} \backslash\left(D_{f} \cap D_{g}\right)
+\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{\sum_{i=1}^{N} g_{i}} \supseteq \bigcup_{i=1}^{N} D_{g_{i}} \backslash \bigcup_{i \neq j}\left(D_{g_{i}} \cap D_{g_{j}}\right)
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-18">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq1-18" title="Permalink to this equation">¶</a></span>\[
+    g_{i}=\nabla f_{i}(x)=\nabla\left(\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right)=\left(\alpha_{i} H\left(w_{i} x+b_{i}\right)\right) w_{i} \in \mathbb{R}^{d}
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(i=1: N\)</span> with <span class="math notranslate nohighlight">\(H\)</span> be the Heaviside function defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    H(x)= \begin{cases}0 &amp; \text { if } x \leq 0 \\ 1 &amp; \text { if } x&gt;0\end{cases}
+\end{split}\]</div>
+<p>This means that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-19">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq1-19" title="Permalink to this equation">¶</a></span>\[
+    D_{g_{i}}=\left\{x \mid w_{i} x+b_{i}=0\right\}
+\]</div>
+<p>is a <span class="math notranslate nohighlight">\(d-1\)</span> dimensional affine space in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span></p>
+<p>Without loss of generality, we can assume that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{g_{i}} \neq D_{g_{j}}
+\]</div>
+<p>When the other case occurs, i.e. <span class="math notranslate nohighlight">\(D_{g_{6}}=D_{g_{2}}=\cdots=D_{g_{\ell_{2}}}\)</span>, by the definition of
+<span class="math notranslate nohighlight">\(g_{i}\)</span> in <a class="reference internal" href="#equation-eq1-18">(33)</a> and <span class="math notranslate nohighlight">\(D_{g_{i}}\)</span> in <code class="xref eq docutils literal notranslate"><span class="pre">eq</span></code>_19`, this happens if and only if
+there is a row vector <span class="math notranslate nohighlight">\((w, b)\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-21">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq1-21" title="Permalink to this equation">¶</a></span>\[
+    c_{\ell_{i}}(w b)=\left(w_{\ell_{i}} b_{\ell_{i}}\right)
+\]</div>
+<p>with some <span class="math notranslate nohighlight">\(c_{\ell_{i}} \neq 0\)</span> for <span class="math notranslate nohighlight">\(i=1: k\)</span>. We combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 \tilde{g}_{\ell} &amp;=\sum_{i=1}^{k} g_{\ell_{i}}=\sum_{i=1}^{k} \alpha_{\ell_{i}} H\left(w_{\ell_{i}} x+b_{\ell_{i}}\right) w_{\ell_{i}}, \\
 &amp;=\sum_{i=1}^{k}\left(c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}(w x+b)\right)\right) w, \\
 &amp;=\left\{\begin{array}{lll}
 \left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}\right)\right) w &amp; \text { if } &amp; w x+b&gt;0, \\
 \left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(-c_{\ell_{i}}\right)\right) w &amp; \text { if } &amp; w x+b \leq 0 .
 \end{array}\right.
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( Thus, if
-\)</span><span class="math notranslate nohighlight">\(\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}\right)\right)=\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(-c_{\ell_{i}}\right)\right)\)</span><span class="math notranslate nohighlight">\(
-\)</span>\tilde{g}<em>{\ell}<span class="math notranslate nohighlight">\( is a constant vector function, that is to say
-\)</span>D</em>{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}<em>{\ell}}=\emptyset .<span class="math notranslate nohighlight">\(
-Otherwise, \)</span>\tilde{g}</em>{\ell}<span class="math notranslate nohighlight">\( is a piecewise constant vector function
-with the property that
-\)</span><span class="math notranslate nohighlight">\(D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=D_{g_{\ell_{i}}}=\{x \mid w x+b=0\} .\)</span><span class="math notranslate nohighlight">\(
-This means that we can use condition (1.21) as an equivalence relation
-and split \)</span>\left{g_{i}\right}<em>{i=1}^{N}<span class="math notranslate nohighlight">\( into some groups, and we can
-combine those \)</span>g</em>{\ell_{i}}<span class="math notranslate nohighlight">\( in each group as what we do above. After
-that, we have
-\)</span><span class="math notranslate nohighlight">\(\sum_{i=1}^{N} g_{i}=\sum_{\ell=1}^{\bar{N}} \tilde{g}_{\ell}\)</span><span class="math notranslate nohighlight">\( with
-\)</span>D_{\tilde{g}<em>{s}} \neq D</em>{\bar{g}<em>{t}}<span class="math notranslate nohighlight">\(. Finally, we can have that
-\)</span>D</em>{\tilde{g}<em>{s}} \cap D</em>{\bar{g}_{t}}<span class="math notranslate nohighlight">\( is an empty set or a \)</span>d-2<span class="math notranslate nohighlight">\(
-dimensional affine space in \)</span>\mathbb{R}^{d} .<span class="math notranslate nohighlight">\( Since \)</span>N \leq N<span class="math notranslate nohighlight">\( is a
-finite number,
-\)</span><span class="math notranslate nohighlight">\(D:=\bigcup_{i=1}^{N} D_{\tilde{g}_{\ell}} \backslash \bigcup_{s \neq t}\left(D_{\tilde{g}_{s}} \cap D_{\tilde{g}_{t}}\right)\)</span>$
-is an unbounded set.</p>
+\end{aligned}
+\end{split}\]</div>
+<p>Thus, if</p>
+<div class="math notranslate nohighlight">
+\[
+    \left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}\right)\right)=\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(-c_{\ell_{i}}\right)\right)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\tilde{g}_{\ell}\)</span> is a constant vector function, that is to say
+<span class="math notranslate nohighlight">\(D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=\emptyset .\)</span>
+Otherwise, <span class="math notranslate nohighlight">\(\tilde{g}_{\ell}\)</span> is a piecewise constant vector function
+with the property that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=D_{g_{\ell_{i}}}=\{x \mid w x+b=0\} 
+\]</div>
+<p>This means that we can use condition <a class="reference internal" href="#equation-eq1-21">(35)</a> as an equivalence relation
+and split <span class="math notranslate nohighlight">\(\left\{g_{i}\right\}_{i=1}^{N}\)</span> into some groups, and we can
+combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> in each group as what we do above. After
+that, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{i=1}^{N} g_{i}=\sum_{\ell=1}^{\bar{N}} \tilde{g}_{\ell}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(D_{\tilde{g}_{s}} \neq D_{\bar{g}_{t}}\)</span>. Finally, we can have that
+<span class="math notranslate nohighlight">\(D_{\tilde{g}_{s}} \cap D_{\bar{g}_{t}}\)</span> is an empty set or a <span class="math notranslate nohighlight">\(d-2\)</span>
+dimensional affine space in <span class="math notranslate nohighlight">\(\mathbb{R}^{d} .\)</span> Since <span class="math notranslate nohighlight">\(N \leq N\)</span> is a
+finite number,</p>
+<div class="math notranslate nohighlight">
+\[
+    D:=\bigcup_{i=1}^{N} D_{\tilde{g}_{\ell}} \backslash \bigcup_{s \neq t}\left(D_{\tilde{g}_{s}} \cap D_{\tilde{g}_{t}}\right)
+\]</div>
+<p>is an unbounded set.</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}\)</span>,</p></li>
 </ul>
@@ -771,23 +868,29 @@ is an unbounded set.</p>
 <li><p>If <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded domain,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\begin{split}d(D, \partial \Omega)= \begin{cases}s&gt;0 &amp; \text { if } D_{\tilde{g}_{i}} \cap \Omega=\emptyset, \forall i \\ 0 &amp; \text { otherwise. }\end{cases}\end{split}\]</div>
+\[\begin{split}
+    d(D, \partial \Omega)= \begin{cases}s&gt;0 &amp; \text { if } D_{\tilde{g}_{i}} \cap \Omega=\emptyset, \forall i \\ 0 &amp; \text { otherwise. }\end{cases}
+\end{split}\]</div>
 <p>Note again that all <span class="math notranslate nohighlight">\(D_{\tilde{g}_{i}}\)</span> ’s are <span class="math notranslate nohighlight">\(d-1\)</span> dimensional affine
 spaces, while <span class="math notranslate nohighlight">\(D_{\tilde{g}_{i}} \cap D_{\tilde{g}_{j}}\)</span> is either an
 empty set or a d-2 dimensional affine space. If
 <span class="math notranslate nohighlight">\(d(D, \partial \Omega)&gt;0\)</span>, this implies that <span class="math notranslate nohighlight">\(\nabla f\)</span> is continuous in
 <span class="math notranslate nohighlight">\(\Omega\)</span>, which contradicts the assumption that <span class="math notranslate nohighlight">\(f\)</span> is a basis function
 in FEM. If <span class="math notranslate nohighlight">\(d(D, \partial \Omega)=0\)</span>, this contradicts the previous
-assumption in (1.15).</p>
+assumption in <a class="reference internal" href="#equation-eq1-15">(32)</a>.</p>
 <p>Hence DNN <span class="math notranslate nohighlight">\(_{1}\)</span> cannot recover any piecewise linear function in
 <span class="math notranslate nohighlight">\(\Omega\)</span> for <span class="math notranslate nohighlight">\(d \geq 2 .\)</span></p>
+</div>
 <p>Following the proof above, we have the following theorem</p>
-<p>Theorem 3.
-<span class="math notranslate nohighlight">\(\left\{\operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right\}_{i=1}^{m}\)</span>
+<div class="proof theorem admonition" id="theorem-2">
+<p class="admonition-title"><span class="caption-number">Theorem 6 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\left\{\operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right\}_{i=1}^{m}\)</span>
 are linearly independent if <span class="math notranslate nohighlight">\(\left(w_{i}, b_{i}\right)\)</span> and
 <span class="math notranslate nohighlight">\(\left(w_{j}, b_{j}\right)\)</span> are linearly independent in
 <span class="math notranslate nohighlight">\(\mathbb{R}^{1 \times(d+1)}\)</span> for any <span class="math notranslate nohighlight">\(i \neq j .\)</span></p>
 </div>
+</div></div>
 </div>
 <div class="section" id="definition-of-neural-network-space">
 <h2>Definition of neural network space<a class="headerlink" href="#definition-of-neural-network-space" title="Permalink to this headline">¶</a></h2>
@@ -795,50 +898,68 @@ are linearly independent if <span class="math notranslate nohighlight">\(\left(w
 <li><p>Primary variables <span class="math notranslate nohighlight">\(n_{0}=d\)</span></p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[\begin{split}x^{0}=x=\left(\begin{array}{c}
+\[\begin{split}
+    x^{0}=x=\left(\begin{array}{c}
 x_{1} \\
 x_{2} \\
 \vdots \\
 x_{n}
-\end{array}\right)\end{split}\]</div>
+\end{array}\right)
+\end{split}\]</div>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{1}\)</span> hyperplanes</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[\begin{split}W^{1} x+b^{1}=\left(\begin{array}{c}
+\[\begin{split}
+    W^{1} x+b^{1}=\left(\begin{array}{c}
 w_{1}^{1} x+b_{1}^{1} \\
 w_{2}^{1} x+b_{2}^{1} \\
 \vdots \\
 w_{n}^{1} x+b_{n}^{1}
-\end{array}\right)\end{split}\]</div>
+\end{array}\right)
+\end{split}\]</div>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{1}\)</span>-neurons:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[\begin{split}x^{1}=\sigma\left(W^{1} x+b^{1}\right)=\left(\begin{array}{c}
+\[\begin{split}
+    x^{1}=\sigma\left(W^{1} x+b^{1}\right)=\left(\begin{array}{c}
 \sigma\left(w_{1}^{1} x+b_{1}^{1}\right) \\
 \sigma\left(w_{2}^{1} x+b_{2}^{1}\right) \\
 \vdots \\
 \sigma\left(w_{n}^{1} x+b_{n}^{1}\right)
-\end{array}\right)\end{split}\]</div>
+\end{array}\right)
+\end{split}\]</div>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{2}\)</span>-hyperplanes</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}W^{2} x^{1}+b^{2}=\left(\begin{array}{c}
+\[\begin{split}
+    W^{2} x^{1}+b^{2}=\left(\begin{array}{c}
 w_{1}^{2} x^{1}+b_{2}^{2} \\
 w_{2}^{2} x^{1}+b_{2}^{2} \\
 \vdots \\
 w_{n}^{2} x^{1}+b_{n}^{2}
-\end{array}\right)$$ Shallow neural network functions:\end{split}\\${ }_{n} \mathrm{~N}\left(n_{1}, n_{2}\right)={ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}\right)=\left\{W^{2} x^{1}+b^{2}, x^{1}=\sigma\left(W^{1} x+b^{1}\right)\right.$
+\end{array}\right)
+\end{split}\]</div>
+<p>Shallow neural network functions:</p>
+<p><span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}\left(n_{1}, n_{2}\right)={ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}\right)=\left\{W^{2} x^{1}+b^{2}, x^{1}=\sigma\left(W^{1} x+b^{1}\right)\right.\)</span>
 with
-$\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1,2, n_{0}=d\right\}$\\${ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, \ldots, n_{L}\right)=\left\{W^{L} x^{L-1}+b^{L}, x^{\ell}=\sigma\left(W^{\ell} x^{\ell-1}+b^{\ell}\right)\right.$
+<span class="math notranslate nohighlight">\(\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1,2, n_{0}=d\right\}\)</span></p>
+<p><span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, \ldots, n_{L}\right)=\left\{W^{L} x^{L-1}+b^{L}, x^{\ell}=\sigma\left(W^{\ell} x^{\ell-1}+b^{\ell}\right)\right.\)</span>
 with
-$\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1: L, n_{0}=d, x^{0}=x\right\}$\\First, let us first define the so-called 1-hidden layer (shallow) neural
-network.\\The 1 -hidden layer (shallow) neural network is defined as:
-$${ }_{n} \mathrm{~N}={ }_{n} \mathrm{~N}(\sigma)={ }_{n} \mathrm{~N}^{1}(\sigma)=\bigcup_{n_{1} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, 1\right)\end{aligned}\end{align} \]</div>
-<p>The 2-hidden layer (shallow) neural network is defined as:
-$<span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}^{2}(\sigma)=\bigcup_{n_{1}, n_{2} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, 1\right)\)</span>$</p>
+<span class="math notranslate nohighlight">\(\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1: L, n_{0}=d, x^{0}=x\right\}\)</span></p>
+<p>First, let us first define the so-called 1-hidden layer (shallow) neural
+network.</p>
+<p>The 1 -hidden layer (shallow) neural network is defined as:
+$<span class="math notranslate nohighlight">\(
+    { }_{n} \mathrm{~N}={ }_{n} \mathrm{~N}(\sigma)={ }_{n} \mathrm{~N}^{1}(\sigma)=\bigcup_{n_{1} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, 1\right)
+\)</span>$</p>
+<p>The 2-hidden layer (shallow) neural network is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+    { }_{n} \mathrm{~N}^{2}(\sigma)=\bigcup_{n_{1}, n_{2} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, 1\right)
+\]</div>
 </div>
 </div>
 
@@ -846,8 +967,8 @@ $<span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}^{2}(\sigma)=\b
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -881,7 +1002,7 @@ $<span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}^{2}(\sigma)=\b
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../m3_05.html" title="next page">
+        <a class="right-next" href="../m3_05/m3_05.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
                 <p class="prevnext-title">Universal approximation properties</p>

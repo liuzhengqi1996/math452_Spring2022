@@ -43,6 +43,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -55,7 +57,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Homework 3" href="m3_hw.html" />
-    <link rel="prev" title="DNN for image classification" href="m3_07.html" />
+    <link rel="prev" title="Monte Carlo Methods" href="m3_08/m3_08.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -265,7 +267,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="m3_05.html">
+    <a class="reference internal" href="m3_05/m3_05.html">
      Universal approximation properties
     </a>
    </li>
@@ -277,6 +279,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="m3_07.html">
      DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m3_08/m3_08.html">
+     Monte Carlo Methods
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -630,7 +637,7 @@ The number of students in Math497 is: 42
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_27013</span><span class="o">/</span><span class="mf">4050462307.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_87648</span><span class="o">/</span><span class="mf">4050462307.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">Course</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#  If our module changed, we would have to reload it with the following commands</span>
@@ -651,8 +658,8 @@ The number of students in Math497 is: 42
 <li><p><span class="math notranslate nohighlight">\(l\)</span>-hidden layers: denote <span class="math notranslate nohighlight">\(x^{0}=x\)</span>
 $$</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ab145713-dbb8-4e01-9245-4ea2a2285e91">
-<span class="eqno">(27)<a class="headerlink" href="#equation-ab145713-dbb8-4e01-9245-4ea2a2285e91" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-3ebd734a-f639-4e61-93c4-4d77bdcd8e62">
+<span class="eqno">(37)<a class="headerlink" href="#equation-3ebd734a-f639-4e61-93c4-4d77bdcd8e62" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 &amp;x^{1} = \sigma (x^0{W^0}^{T}+b^0), &amp;&amp;\text{first hidden layer}\\
 &amp;x^{2} = \sigma (x^1{W^1}^{T}+b^1), &amp;&amp;\text{second hidden layer}\\
 &amp;\vdots &amp;&amp;\\
@@ -853,11 +860,11 @@ Epoch: 2, the training accuracy: 0.9261, the test accuracy: 0.9284
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="m3_07.html" title="previous page">
+        <a class="left-prev" href="m3_08/m3_08.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">DNN for image classification</p>
+                <p class="prevnext-title">Monte Carlo Methods</p>
             </div>
         </a>
     </div>

@@ -293,6 +293,175 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 
+# #### Nodal value interpolant
+# 
+# For any continuous function $u$, we define its linear finite element
+# interpolation, $(I_h u)(x)\in V_{h,0}$, as follows: 
+# 
+# $$
+#     (I_h u)(x)= \sum_{i=1}^{n_h}u(x_i)\varphi_i(x)
+# $$ (u-interp)
+# 
+# Usually, we also
+# denote $(I_h u)(x)$ as $u_I(x)$. Using interpolation, we can obtain the
+# following approximation property of linear finite element space.
+# 
+# ```{prf:theorem}
+# :label: interp00
+# Assume that $\mathcal T_h$ is quasi-uniform and $V_h$ is
+# the linear finite element space associated with $\mathcal T_h$, then
+# 
+# $$
+#     \inf_{v_h\in V_h} \|v-v_h\|+h |v-v_h|_{1}\leq h^2 |v|_2
+#         \forall v\in H^2(\Omega).
+# $$ (error0)
+# ```
+# ```{prf:proof} Proof
+# Let us first prove Theorem {prf:ref}`interp00` for $d=1, 2, 3$. 
+# Let $x=(x^1,\ldots, x^d)$ and
+# $a_i=(a^1_{i}, \ldots, a^d_{i})$. Introducing the auxiliary functions
+# 
+# $$
+#     g_i(t)=v(a_i(t)),\mbox{  with  }  a_i(t)=a_i+t(x-a_i)
+# $$
+# 
+# we have
+# 
+# $$
+#     g_i'(t)=(\nabla v)(a_i(t))\cdot (x-a_i)
+# =\sum_{l=1}^d(\partial_lv)(a_i(t))(x^l-a_i^l)
+# $$ 
+# 
+# and 
+# 
+# $$
+#     g_i''(t)=\sum_{k,l=1}^d\partial^2_{kl}v)(a_i(t))(x^k-a_i^k)(x^l-a_i^l)
+# $$ (gpp)
+# 
+# Note Taylor expansion 
+# 
+# $$
+#     g_i(0)=g_i(1)-g_i'(1)+\int_0^1tg''_i(t)dt
+# $$
+# 
+# 
+# namely 
+# 
+# $$
+#     v(a_i)=v(x)-(\nabla v)(x)\cdot (x-a_i)+\int_0^1tg''_i(t)dt
+# $$ (Taylor_vi)
+# 
+# and note that
+# 
+# $$
+#     (I_hv)(x)=\sum_{i=1}^{d+1}v(a_i)\lambda_i(x), \quad \sum_{i=1}^{d+1}\lambda_i(x)=1
+# $$
+# 
+# and 
+# 
+# $$
+#     \sum_{i=1}^{d+1}(x-a_i)\lambda_i(x)=0
+# $$
+# 
+# It follows that
+# 
+# $$
+#     (I_hv-v)(x)=\sum_{i=1}^{d+1}\lambda_i(x)\int_0^1tg''_i(t)dt
+# $$ (Ihvv)
+# 
+# Using {eq}`gpp` and the trivial fact that $|x^l-a_i^l|\le h$, we obtain 
+# 
+# $$
+#     \begin{aligned}
+#     \|g''_i(t)\|_{L^2(\tau)}\le h^2
+#     \sum_{k,l=1}^d\|(\partial^2_{kl}v)(a_i(t))\|_{L^2(\tau_i^t)}
+#     \le h^2t^{-d/2}\sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)},\end{aligned}
+# $$
+# 
+# where we have used the following change of variable
+# 
+# $$
+#     y=a_i+t(x-a_i): \tau\mapsto \tau_i^t\subset\tau \mbox{ with } dy=t^ddx
+# $$
+# 
+# Now taking the $L^2(\tau)$ norm on both hand of sides of {eq}`Ihvv` , we get
+# 
+# $$
+#     \begin{aligned}
+#     \|I_hv-v\|_{L^2(\tau)}
+#     &\le& h^2\sum_{i=1}^{d+1}\max_{x\in\tau}|\lambda_i(x)|
+#     \int_0^1t\|g''_i(t)\|_{L^2(\tau)}\;dt\\
+#     &\le& (d+1)\int_0^1t^{-d/2}dt\;h^2\;
+#     \sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)}\\
+#     &\le&\frac{2(d+1)}{4-d}h^2
+#     \sum_{k,l=1}^d\|\partial^2_{kl}v\|_{L^2(\tau)}\\
+#     &\le&\frac{4d(d+1)}{4-d}h^2|v|_{H^2(\tau)}.\end{aligned}
+# $$
+# 
+# Now we prove the $H^1$ error estimate. Notice that
+# 
+# $$
+#     [\partial_{j}( I_{h} v - v)](x) = \sum_{i} (\partial_{j} \lambda_{i} )(x) \int_{0}^{1} t g''_{i}(t) dt + \sum_{i} \lambda_{i}(x) \partial_{j} \int_{0}^{1} t g''_{i}(t) dt
+# $$
+# 
+# By {eq}`Taylor_vi`,
+# 
+# $$
+#     \int_0^1tg''_i(t)dt = v(a_i) - v(x) + (\nabla v)(x)\cdot (x-a_i)
+# $$
+# 
+# therefore, 
+# 
+# $$
+#     \begin{aligned}
+#     \partial_{j} \int_0^1tg''_i(t)dt \\
+#     & = & - \partial_{j} v + (\nabla \partial_{j} v )(x) (x - a_{i}) + \nabla v \cdot e_{j} \\
+#     & = & (\nabla \partial_{j} v )(x) (x - a_{i}).\end{aligned}
+# $$
+# 
+# where $e_{j}$ is the $j$-th standard basis 
+# 
+# Noting that $\sum_{i} \lambda_{i}( \nabla \partial_{j} v )(x) (x - a_{i}) = 0$,
+# we have
+# 
+# $$
+#     [\partial_{j}( I_{h} v - v)](x) = \sum_{i} (\partial_{j} \lambda_{i} )(x) \int_{0}^{1} t g''_{i}(t) dt
+# $$
+# 
+# Then the estimate for $|\nabla(I_hv-v)|_{L^2(\tau)}$ follows by a
+# similar argument and the following obvious estimate
+# 
+# $$
+#     |(\nabla\lambda_i)(x)|\leq\frac{1}{h}
+# $$
+# 
+# On the proof of Theorem {prf:ref}`interp0` for $d\ge 4$, the above proof does
+# not apply for $d \ge 4$. This is because when $d \ge 4$, the embedding
+# relation between $H^{2}(\Omega) \hookrightarrow C(\bar{\Omega})$ is no longer
+# true. Only continuous functions can have interpolations. In this case,
+# one approach is to use the so-called Scott-Zhang interpolation
+# ```
+# 
+# As a result of Theorem {prf:ref}`interp00` , we have
+# 
+# ```{figure} ./images/img8.png
+# :height: 500px
+# :name: Approximatio
+# Approximation of finite element space.
+# ```
+# 
+# 
+# ```{prf:theorem}
+# :label: interp0
+# Let $V_N$ be linear finite element space on a quasi-uniform
+# triangulation consisting of $N$ element. Then 
+# 
+# $$
+#     \inf_{v_h\in V_N} \|v-v_h\|+N^{-{1\over d}} |v-v_h|_{1}\leq N^{-{2\over d}} |v|_2
+#     \forall   v\in H^2(\Omega)
+# $$
+# 
+
 # In[ ]:
 
 
