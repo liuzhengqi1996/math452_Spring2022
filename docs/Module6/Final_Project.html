@@ -582,8 +582,8 @@
 <div class="section" id="problem-1-20">
 <h2>Problem 1 [20%]:<a class="headerlink" href="#problem-1-20" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following linear system</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47e7971a-a343-434b-92f8-b8c76ffeaf96">
-<span class="eqno">(42)<a class="headerlink" href="#equation-47e7971a-a343-434b-92f8-b8c76ffeaf96" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-eb0aa81b-3213-4d02-afc6-78c410c7915a">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eb0aa81b-3213-4d02-afc6-78c410c7915a" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast u =f,
 \end{equation}\]</div>
 <p>or equivalently <span class="math notranslate nohighlight">\(u=\arg\min \frac{1}{2} (A* v,v)_F-(f,v)_F\)</span>, where <span class="math notranslate nohighlight">\((f,v)_F =\sum\limits_{i,j=1}^{n}f_{i,j}v_{i,j}\)</span> is the Frobenius inner product.
@@ -612,8 +612,8 @@ the solution \)</span> u \in \mathbb{R}^{n\times n} <span class="math notranslat
 <p>Given initial guess <span class="math notranslate nohighlight">\(u^0\)</span>
 $$</p>
 </div>
-<div class="amsmath math notranslate nohighlight" id="equation-a4950b95-4633-45bd-bffc-25f8b1d11767">
-<span class="eqno">(43)<a class="headerlink" href="#equation-a4950b95-4633-45bd-bffc-25f8b1d11767" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cccb3eaf-4671-4c15-b78f-6c0ae71d3b46">
+<span class="eqno">(45)<a class="headerlink" href="#equation-cccb3eaf-4671-4c15-b78f-6c0ae71d3b46" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~\text{for    }  i,j = 1: n\\
 &amp;~~~~~~~~u_{i,j}^{m} = u_{i,j}^{m-1}-\eta(f_{i,j}-(A\ast u^{m-1})_{i,j})\\
@@ -623,8 +623,8 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}* #### For multigrid method, we have provided the framework code in F02_MultigridandMgNet.ipynb:\\    Given initial guess $u^0$
 \end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-67666e0f-5f02-4e99-8d6b-652adf13a1e3">
-<span class="eqno">(44)<a class="headerlink" href="#equation-67666e0f-5f02-4e99-8d6b-652adf13a1e3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d73e72b4-8d4c-4770-bfcb-3c4bf0fc05b1">
+<span class="eqno">(46)<a class="headerlink" href="#equation-d73e72b4-8d4c-4770-bfcb-3c4bf0fc05b1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~u^{m} = MG1(u^{m-1},f, J, \nu)\\
 &amp;\text{endfor}
@@ -666,7 +666,7 @@ $$</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90795</span><span class="o">/</span><span class="mf">176913001.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3813</span><span class="o">/</span><span class="mf">176913001.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;plot_sample_code.png&#39;</span><span class="p">)</span>
 

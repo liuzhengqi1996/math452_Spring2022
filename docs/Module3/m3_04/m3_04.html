@@ -763,7 +763,7 @@ recover the finite element space. Thus let us assume <span class="math notransla
 supported basis function for FEM. Furthermore, if <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded
 domain, we assume that</p>
 <div class="math notranslate nohighlight" id="equation-eq1-15">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eq1-15" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq1-15" title="Permalink to this equation">¶</a></span>\[
     d(\operatorname{supp}(f), \partial \Omega)&gt;0
 \]</div>
 <p>with $<span class="math notranslate nohighlight">\(d(A, B)=\inf _{x \in A, y \in B}\|x-y\|,\)</span>$ as the distance of two
@@ -790,7 +790,7 @@ a function by</p>
 \]</div>
 <p>Note that</p>
 <div class="math notranslate nohighlight" id="equation-eq1-18">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq1-18" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq1-18" title="Permalink to this equation">¶</a></span>\[
     g_{i}=\nabla f_{i}(x)=\nabla\left(\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right)=\left(\alpha_{i} H\left(w_{i} x+b_{i}\right)\right) w_{i} \in \mathbb{R}^{d}
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(i=1: N\)</span> with <span class="math notranslate nohighlight">\(H\)</span> be the Heaviside function defined as:</p>
@@ -800,7 +800,7 @@ a function by</p>
 \end{split}\]</div>
 <p>This means that</p>
 <div class="math notranslate nohighlight" id="equation-eq1-19">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq1-19" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq1-19" title="Permalink to this equation">¶</a></span>\[
     D_{g_{i}}=\left\{x \mid w_{i} x+b_{i}=0\right\}
 \]</div>
 <p>is a <span class="math notranslate nohighlight">\(d-1\)</span> dimensional affine space in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span></p>
@@ -810,10 +810,10 @@ a function by</p>
     D_{g_{i}} \neq D_{g_{j}}
 \]</div>
 <p>When the other case occurs, i.e. <span class="math notranslate nohighlight">\(D_{g_{6}}=D_{g_{2}}=\cdots=D_{g_{\ell_{2}}}\)</span>, by the definition of
-<span class="math notranslate nohighlight">\(g_{i}\)</span> in <a class="reference internal" href="#equation-eq1-18">(33)</a> and <span class="math notranslate nohighlight">\(D_{g_{i}}\)</span> in <code class="xref eq docutils literal notranslate"><span class="pre">eq</span></code>_19`, this happens if and only if
+<span class="math notranslate nohighlight">\(g_{i}\)</span> in <a class="reference internal" href="#equation-eq1-18">(35)</a> and <span class="math notranslate nohighlight">\(D_{g_{i}}\)</span> in <code class="xref eq docutils literal notranslate"><span class="pre">eq</span></code>_19`, this happens if and only if
 there is a row vector <span class="math notranslate nohighlight">\((w, b)\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq1-21">
-<span class="eqno">(35)<a class="headerlink" href="#equation-eq1-21" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq1-21" title="Permalink to this equation">¶</a></span>\[
     c_{\ell_{i}}(w b)=\left(w_{\ell_{i}} b_{\ell_{i}}\right)
 \]</div>
 <p>with some <span class="math notranslate nohighlight">\(c_{\ell_{i}} \neq 0\)</span> for <span class="math notranslate nohighlight">\(i=1: k\)</span>. We combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> as</p>
@@ -841,7 +841,7 @@ with the property that</p>
 \[
     D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=D_{g_{\ell_{i}}}=\{x \mid w x+b=0\} 
 \]</div>
-<p>This means that we can use condition <a class="reference internal" href="#equation-eq1-21">(35)</a> as an equivalence relation
+<p>This means that we can use condition <a class="reference internal" href="#equation-eq1-21">(37)</a> as an equivalence relation
 and split <span class="math notranslate nohighlight">\(\left\{g_{i}\right\}_{i=1}^{N}\)</span> into some groups, and we can
 combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> in each group as what we do above. After
 that, we have</p>
@@ -877,7 +877,7 @@ empty set or a d-2 dimensional affine space. If
 <span class="math notranslate nohighlight">\(d(D, \partial \Omega)&gt;0\)</span>, this implies that <span class="math notranslate nohighlight">\(\nabla f\)</span> is continuous in
 <span class="math notranslate nohighlight">\(\Omega\)</span>, which contradicts the assumption that <span class="math notranslate nohighlight">\(f\)</span> is a basis function
 in FEM. If <span class="math notranslate nohighlight">\(d(D, \partial \Omega)=0\)</span>, this contradicts the previous
-assumption in <a class="reference internal" href="#equation-eq1-15">(32)</a>.</p>
+assumption in <a class="reference internal" href="#equation-eq1-15">(34)</a>.</p>
 <p>Hence DNN <span class="math notranslate nohighlight">\(_{1}\)</span> cannot recover any piecewise linear function in
 <span class="math notranslate nohighlight">\(\Omega\)</span> for <span class="math notranslate nohighlight">\(d \geq 2 .\)</span></p>
 </div>
