@@ -42,7 +42,7 @@ import ipywidgets as widgets
 # Answer: A implies B; C implies B
 # ```
 
-# # Question 3 
+# ## Question 3 
 # Let 
 # 
 # $$
@@ -85,7 +85,7 @@ import ipywidgets as widgets
 #  $f(x,y)=e^{(x-2)^2+y^2+2x^2+2xy+2(y-4)^2+4y-16x} $
 
 # ```{dropdown} Show answer
-# Minimizer (3,1). Minimum 1.
+# Minimizer (3,1), Minimum 1.
 # 
 # ```
 
@@ -197,7 +197,8 @@ print(my_sort(list_of_nums))
 
 
 # ```{dropdown} Show answer
-# The number of swap operations is 6 \\
+# The number of swap operations is 6 
+# 
 # [8, 5, 4, 2, 1]
 # ```
 

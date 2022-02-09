@@ -74,8 +74,8 @@ import ipywidgets as widgets
 
 # ```{dropdown} Show answer
 # Answer: 
-# $x_0 = 3$
-# $y_0 = 1$
+# $x_0 = 3$,  $y_0 = 1$
+# 
 # $f_{min} = 1$
 # 
 # ```
