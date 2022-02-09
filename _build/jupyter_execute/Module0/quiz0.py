@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Preliminary Quiz
+# For Penn State student, access quiz [here](https://psu.instructure.com/courses/2177217/quizzes/4421199)
 
 # In[1]:
 
@@ -203,6 +204,46 @@ import ipywidgets as widgets
 # 
 # 
 # 
+# ```
+
+# ## Question 8
+# How would you code $ax^2$ in python?
+# 
+
+# ```{dropdown} Show answer
+# $3*x**2$
+# ```
+# 
+
+# ## Question 9
+# When writing in python, what will be the output after the following statements?
+# 
+
+# In[2]:
+
+
+
+m = 92
+n = 35
+print(m > n)
+
+
+# ```{dropdown} Show answer
+# True
+# ```
+
+# ## Question 10
+# NumPy is a library for the Python programming language which provides support for large, multi-dimensional arrays
+# and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.
+# For example, 
+# 
+# > x = np.array([1, 2, 3])  
+# 
+# will set x to a vector array with components (1, 2, 3).
+# To utilize the above array function as listed, what do you need to do prior to using it?
+
+# ```{dropdown} Show answer
+# > import numpy as np
 # ```
 
 # In[ ]:

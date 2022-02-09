@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Quiz 1
+# For Penn State student, access quiz [here](https://psu.instructure.com/courses/2177217/quizzes/4421196)
 
 # In[1]:
 
@@ -126,6 +127,78 @@ import ipywidgets as widgets
 
 # ```{dropdown} Show answer
 #  A = torch.tensor([[1,2,3],[4,5,6],[7,8,9]])
+# ```
+
+# ## Question 7
+# How to define a function $f(x,y)=x^2+y$
+
+# ```{dropdown} Show answer
+#     def f(x,y):
+#         return x**2+y
+# ```
+
+# ## Question 8
+# What is the output of the following code:
+# 
+# 
+
+# In[2]:
+
+
+salary = 8000
+
+def printSalary(salary):
+    if salary < 10000:
+        salary = 10000
+    else:
+        print("Salary:", salary)
+  
+printSalary(salary)
+print("Salary:", salary)
+
+
+# ```{dropdown} Show answer
+#   Salary: 8000
+# ```
+
+# ## Question 9
+# What are the outputs of the following code?
+
+# In[3]:
+
+
+str = "pynative"
+print (str[1:3])
+
+
+# ```{dropdown} Show answer
+# yn
+# ```
+
+# ## Question 10
+# What are the outputs of the following code?
+
+# In[4]:
+
+
+def my_sort(nums):
+    count=0
+    for i in range(len(nums)-1):
+        for j in range(i+1,len(nums)):
+            if nums[j] > nums[i]:
+                count = count+1
+                num_temp = nums[j]
+                nums[j] = nums[i]
+                nums[i] = num_temp
+    print('The number of swap operation is',count)
+    return nums
+list_of_nums = [5, 1, 2, 8, 4]
+print(my_sort(list_of_nums))
+
+
+# ```{dropdown} Show answer
+# The number of swap operations is 6 \\
+# [8, 5, 4, 2, 1]
 # ```
 
 # In[ ]:
