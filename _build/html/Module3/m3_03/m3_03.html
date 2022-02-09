@@ -43,8 +43,6 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -611,7 +609,7 @@ where <span class="math notranslate nohighlight">\(\stackrel{\circ}{\tau _i}\)</
 </div>
 <p>Given <span class="math notranslate nohighlight">\(\Omega=(0,1)\)</span>, we consider the mesh:</p>
 <div class="math notranslate nohighlight" id="equation-partitionyx">
-<span class="eqno">(21)<a class="headerlink" href="#equation-partitionyx" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(19)<a class="headerlink" href="#equation-partitionyx" title="Permalink to this equation">¶</a></span>\[
     0=x_0&lt;x_1&lt;\cdots&lt;x_{n+1}=1, \quad x_i=\frac{i}{n+1},\quad (i=0,\cdots,n+1)
 \]</div>
 <p>which is the 1D uniform grid shown in figure <a class="reference internal" href="#dgrid"><span class="std std-numref">Fig. 6</span></a></p>
@@ -629,28 +627,28 @@ where <span class="math notranslate nohighlight">\(\stackrel{\circ}{\tau _i}\)</
 <p>A set of triangulations <span class="math notranslate nohighlight">\(\mathscr T\)</span> is called shape regular if there
 exists a constant <span class="math notranslate nohighlight">\(c_0\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-shape">
-<span class="eqno">(22)<a class="headerlink" href="#equation-shape" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(20)<a class="headerlink" href="#equation-shape" title="Permalink to this equation">¶</a></span>\[
     \max _{\tau \in \mathcal T_h} \frac{h_{\tau}^d}{|\tau|}\leq c_0, \quad \forall \, \mathcal T_h\in \mathscr T
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(|\tau|\)</span> is the measure of <span class="math notranslate nohighlight">\(\tau\)</span> in <span class="math notranslate nohighlight">\( R^d\)</span>.
 This assumption can also be represented as</p>
 <div class="math notranslate nohighlight" id="equation-a3-1">
-<span class="eqno">(23)<a class="headerlink" href="#equation-a3-1" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(21)<a class="headerlink" href="#equation-a3-1" title="Permalink to this equation">¶</a></span>\[
     \max_{\tau\in\mathcal T_h}\frac{h_\tau}{\rho_\tau}\le\sigma_1,\quad \forall \, \mathcal T_h\in
     \mathscr T
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho_\tau\)</span> denotes the radius of the ball inscribed
 in <span class="math notranslate nohighlight">\(\tau\)</span>. In two dimensions, it is equivalent to the minimal angle of
 each triange is bounded below uniformly in the shape regular class.</p>
-<p>In addition to <a class="reference internal" href="#equation-shape">(22)</a>, if</p>
+<p>In addition to <a class="reference internal" href="#equation-shape">(20)</a>, if</p>
 <div class="math notranslate nohighlight" id="equation-a3-2">
-<span class="eqno">(24)<a class="headerlink" href="#equation-a3-2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(22)<a class="headerlink" href="#equation-a3-2" title="Permalink to this equation">¶</a></span>\[
   \frac{\max _{\tau \in \mathcal T_h}|\tau|}{\min _{\tau \in \mathcal T_h}|\tau|} \leq \rho,\quad \forall \, \mathcal T_h\in \mathscr T
 \]</div>
 <p><span class="math notranslate nohighlight">\(\mathscr T\)</span> is called quasi-uniform. For quasi-uniform grids,
 <span class="math notranslate nohighlight">\(h=\max _{\tau \in \mathcal T_h} h_{\tau}\)</span>, the mesh size of
 <span class="math notranslate nohighlight">\(\mathcal T_h\)</span>, is used to measure the approximation rate.</p>
-<p>The assumption <a class="reference internal" href="#equation-a3-2">(24)</a> is a local assumption, as is meant by above definition, for
+<p>The assumption <a class="reference internal" href="#equation-a3-2">(22)</a> is a local assumption, as is meant by above definition, for
 <span class="math notranslate nohighlight">\(d=2\)</span> for example, it assures that each triangle will not degenerate
 into a segment in the limiting case. On the other hand, the assumption
 is a global assumption, which says that the smallest mesh size is not
@@ -689,7 +687,7 @@ barycentric coordinates. Given a <span class="math notranslate nohighlight">\( x
 \tau\)</span>, let <span class="math notranslate nohighlight">\(\tau _i( x)\)</span> be the simplex with vertices <span class="math notranslate nohighlight">\( x_i\)</span> replaced by
 <span class="math notranslate nohighlight">\( x\)</span>. Then it can be easily shown that</p>
 <div class="math notranslate nohighlight" id="equation-eq-lambdasolution">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-lambdasolution" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-lambdasolution" title="Permalink to this equation">¶</a></span>\[
     \lambda _i( x) = |\tau _i( x)|/|\tau|,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(|\cdot|\)</span> is the Lebesgure measure in <span class="math notranslate nohighlight">\( R^d\)</span>, namely area in two dimensions and
@@ -717,7 +715,7 @@ with respect to a grid or mesh consisting of a union of simplices.</p>
 <p>Given a shape regular triangulation <span class="math notranslate nohighlight">\(\mathcal T_h\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span>, we
 define the continuous linear finite element space as</p>
 <div class="math notranslate nohighlight" id="equation-linfe">
-<span class="eqno">(26)<a class="headerlink" href="#equation-linfe" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(24)<a class="headerlink" href="#equation-linfe" title="Permalink to this equation">¶</a></span>\[
     V_h:=\{v\,|\, v\in C(\overline \Omega), \,\hbox{ and }\, v|_{\tau}\in
 P_1(\tau), \forall \tau \in \mathcal T_h\}
 \]</div>
@@ -748,7 +746,7 @@ of <span class="math notranslate nohighlight">\(x_i\)</span>. See Figure <a clas
 <p>Let <span class="math notranslate nohighlight">\((\varphi_i^*)_{i=1}^{n_h}\)</span> be the dual basis of
 <span class="math notranslate nohighlight">\((\varphi_i)_{i=1}^{n_h}\)</span>, namely</p>
 <div class="math notranslate nohighlight" id="equation-eq1">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eq1" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq1" title="Permalink to this equation">¶</a></span>\[
     (\varphi_i^*, \varphi_j) =\delta_{i, j}, \quad i, j=1,\ldots, n_h
 \]</div>
 <p>We notice that all the nodal basis functions <span class="math notranslate nohighlight">\(\{\varphi_i\}\)</span> are locally
@@ -775,7 +773,7 @@ mesh</p>
 \[
     \mathcal T_h=\{0=x_0&lt;x_1&lt;\ldots&lt;x_{n_h}&lt;x_{n_h+1}=1\}
 \]</div>
-<p>by the definition given in <a class="reference internal" href="#equation-linfe">(26)</a> and the definition
+<p>by the definition given in <a class="reference internal" href="#equation-linfe">(24)</a> and the definition
 <span class="math notranslate nohighlight">\(V_{h,0}=V_{h}\cap H_0^1(\Omega)\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
@@ -790,7 +788,7 @@ Figure <a class="reference internal" href="#plot"><span class="std std-numref">F
 basis functions spanning <span class="math notranslate nohighlight">\(V_{h,0}\)</span> (for <span class="math notranslate nohighlight">\(i=1,2,\cdots,n_h\)</span>) are (see
 also Fig <a class="reference internal" href="#nodal-basis"><span class="std std-numref">Fig. 10</span></a></p>
 <div class="math notranslate nohighlight" id="equation-1dbasis-function">
-<span class="eqno">(28)<a class="headerlink" href="#equation-1dbasis-function" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(26)<a class="headerlink" href="#equation-1dbasis-function" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \varphi_i(x)=\left\{\begin{array}{cl}
     \displaystyle \frac{x-x_{i-1}}{h}, &amp; x\in[x_{i-1},x_i];\\
     \displaystyle \frac{x_{i+1}-x}{h}, &amp; x\in[x_{i},x_{i+1}];\\
@@ -807,7 +805,7 @@ also Fig <a class="reference internal" href="#nodal-basis"><span class="std std-
 <p>For any continuous function <span class="math notranslate nohighlight">\(u\)</span>, we define its linear finite element
 interpolation, <span class="math notranslate nohighlight">\((I_h u)(x)\in V_{h,0}\)</span>, as follows:</p>
 <div class="math notranslate nohighlight" id="equation-u-interp">
-<span class="eqno">(29)<a class="headerlink" href="#equation-u-interp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(27)<a class="headerlink" href="#equation-u-interp" title="Permalink to this equation">¶</a></span>\[
     (I_h u)(x)= \sum_{i=1}^{n_h}u(x_i)\varphi_i(x)
 \]</div>
 <p>Usually, we also
@@ -819,7 +817,7 @@ following approximation property of linear finite element space.</p>
 <p>Assume that <span class="math notranslate nohighlight">\(\mathcal T_h\)</span> is quasi-uniform and <span class="math notranslate nohighlight">\(V_h\)</span> is
 the linear finite element space associated with <span class="math notranslate nohighlight">\(\mathcal T_h\)</span>, then</p>
 <div class="math notranslate nohighlight" id="equation-error0">
-<span class="eqno">(30)<a class="headerlink" href="#equation-error0" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(28)<a class="headerlink" href="#equation-error0" title="Permalink to this equation">¶</a></span>\[
     \inf_{v_h\in V_h} \|v-v_h\|+h |v-v_h|_{1}\leq h^2 |v|_2
         \forall v\in H^2(\Omega).
 \]</div>
@@ -841,7 +839,7 @@ Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> an
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight" id="equation-gpp">
-<span class="eqno">(31)<a class="headerlink" href="#equation-gpp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(29)<a class="headerlink" href="#equation-gpp" title="Permalink to this equation">¶</a></span>\[
     g_i''(t)=\sum_{k,l=1}^d\partial^2_{kl}v)(a_i(t))(x^k-a_i^k)(x^l-a_i^l)
 \]</div>
 <p>Note Taylor expansion</p>
@@ -851,7 +849,7 @@ Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> an
 \]</div>
 <p>namely</p>
 <div class="math notranslate nohighlight" id="equation-taylor-vi">
-<span class="eqno">(32)<a class="headerlink" href="#equation-taylor-vi" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(30)<a class="headerlink" href="#equation-taylor-vi" title="Permalink to this equation">¶</a></span>\[
     v(a_i)=v(x)-(\nabla v)(x)\cdot (x-a_i)+\int_0^1tg''_i(t)dt
 \]</div>
 <p>and note that</p>
@@ -866,10 +864,10 @@ Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> an
 \]</div>
 <p>It follows that</p>
 <div class="math notranslate nohighlight" id="equation-ihvv">
-<span class="eqno">(33)<a class="headerlink" href="#equation-ihvv" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(31)<a class="headerlink" href="#equation-ihvv" title="Permalink to this equation">¶</a></span>\[
     (I_hv-v)(x)=\sum_{i=1}^{d+1}\lambda_i(x)\int_0^1tg''_i(t)dt
 \]</div>
-<p>Using <a class="reference internal" href="#equation-gpp">(31)</a> and the trivial fact that <span class="math notranslate nohighlight">\(|x^l-a_i^l|\le h\)</span>, we obtain</p>
+<p>Using <a class="reference internal" href="#equation-gpp">(29)</a> and the trivial fact that <span class="math notranslate nohighlight">\(|x^l-a_i^l|\le h\)</span>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[
     \begin{aligned}
@@ -882,7 +880,7 @@ Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> an
 \[
     y=a_i+t(x-a_i): \tau\mapsto \tau_i^t\subset\tau \mbox{ with } dy=t^ddx
 \]</div>
-<p>Now taking the <span class="math notranslate nohighlight">\(L^2(\tau)\)</span> norm on both hand of sides of <a class="reference internal" href="#equation-ihvv">(33)</a> , we get</p>
+<p>Now taking the <span class="math notranslate nohighlight">\(L^2(\tau)\)</span> norm on both hand of sides of <a class="reference internal" href="#equation-ihvv">(31)</a> , we get</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{aligned}
@@ -900,7 +898,7 @@ Let <span class="math notranslate nohighlight">\(x=(x^1,\ldots, x^d)\)</span> an
 \[
     [\partial_{j}( I_{h} v - v)](x) = \sum_{i} (\partial_{j} \lambda_{i} )(x) \int_{0}^{1} t g''_{i}(t) dt + \sum_{i} \lambda_{i}(x) \partial_{j} \int_{0}^{1} t g''_{i}(t) dt
 \]</div>
-<p>By <a class="reference internal" href="#equation-taylor-vi">(32)</a>,</p>
+<p>By <a class="reference internal" href="#equation-taylor-vi">(30)</a>,</p>
 <div class="math notranslate nohighlight">
 \[
     \int_0^1tg''_i(t)dt = v(a_i) - v(x) + (\nabla v)(x)\cdot (x-a_i)

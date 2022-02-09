@@ -24,32 +24,6 @@ import ipywidgets as widgets
 # Which ONE of the following labels best indicate the feasible region described above?
 # 
 
-# In[2]:
-
-
-def on_change(change):
-    if change['type'] == 'change' and change['name'] == 'value':
-        if change['new'] == 'I':
-            print( "Your answer: %s     is correct"% change['new'] )
-        else:
-            print( "Your answer: %s     is wrong"% change['new'] )
-
-w0 = widgets.RadioButtons(
-    options=['I', 'II', 'III','IV','None'],
-#    value='pineapple', # Defaults to 'pineapple'
-#    layout={'width': 'max-content'}, # If the items' names are long
-    description='',
-    disabled=False
-)
-w0.observe(on_change)
-
-
-# In[3]:
-
-
-w0
-
-
 # ```{dropdown} Show answer
 # Answer: III
 # ```
@@ -62,17 +36,6 @@ w0
 # $$
 # 
 # where $t$ is a scalar variable. Find $g^{'}(0)$ at $x=(1,1,1)$
-
-# In[4]:
-
-
-widgets.Dropdown(
-    options=['3', '$\sqrt{3}$','1','0','$3\sqrt{3}$'],
-    value='3',
-    description='Number:',
-    disabled=False,
-)
-
 
 # ```{dropdown} Show answer
 # Answer: 
@@ -91,26 +54,6 @@ widgets.Dropdown(
 # $$
 #  on the interval $[-2,3]$
 
-# In[5]:
-
-
-widgets.IntText(
-    value=0,
-    description='Global Max:',
-    disabled=False
-)
-
-
-# In[6]:
-
-
-widgets.IntText(
-    value=0,
-    description='Global Min:',
-    disabled=False
-)
-
-
 # ```{dropdown} Show answer
 # Answer: 
 # 
@@ -128,46 +71,18 @@ widgets.IntText(
 # 
 # That is, determine the point $(x_0,y_0)$  which yields the global minimum value,  
 
-# In[7]:
-
-
-widgets.IntText(
-    value=0,
-    description='x_0 is :',
-    disabled=False
-)
-
-
-# In[8]:
-
-
-widgets.IntText(
-    value=0,
-    description='y_0 is :',
-    disabled=False
-)
-
-
-# In[9]:
-
-
-widgets.IntText(
-    value=0,
-    description='f_{min} is:',
-    disabled=False
-)
-
-
 # ```{dropdown} Show answer
 # Answer: 
-# 
+# $x_0 = 3$
+# $y_0 = 1$
+# $f_{min} = 1$
 # 
 # ```
 
 # ## Problem 5
 # Which of the following matrices has an inverse?
 # 
-# - A: 
+# 
 # 
 # $$
 #     \begin{bmatrix}
@@ -176,7 +91,7 @@ widgets.IntText(
 # \end{bmatrix}
 # $$
 # 
-# - B: 
+#  
 # 
 # $$
 #     \begin{bmatrix}
@@ -185,7 +100,7 @@ widgets.IntText(
 # \end{bmatrix}
 # $$
 # 
-# - C: 
+#  
 # 
 # $$
 #     \begin{bmatrix}
@@ -194,7 +109,7 @@ widgets.IntText(
 # \end{bmatrix}
 # $$
 # 
-# - D: 
+#  
 # 
 # $$
 #     \begin{bmatrix}
@@ -203,7 +118,7 @@ widgets.IntText(
 # \end{bmatrix}
 # $$
 # 
-# - E: 
+#  
 # 
 # $$
 #     \begin{bmatrix}
@@ -213,30 +128,16 @@ widgets.IntText(
 # $$
 # 
 
-# In[10]:
-
-
-def on_change5(change):
-    if change['type'] == 'change' and change['name'] == 'value':
-        if change['new'] == 'D':
-            print( "Your answer: %s     is correct"% change['new'] )
-        else:
-            print( "Your answer: %s     is wrong"% change['new'] )
-
-w5 = widgets.RadioButtons(
-    options=['A', 'B', 'C','D','E'],
-#    value='pineapple', # Defaults to 'pineapple'
-#    layout={'width': 'max-content'}, # If the items' names are long
-    description='',
-    disabled=False
-)
-w5.observe(on_change5)
-w5
-
-
 # ```{dropdown} Show answer
 # Answer: 
-# D
+# 
+# $$
+#     \begin{bmatrix}
+# 1&4 \\
+# 0&3 \\
+# \end{bmatrix}
+# $$
+# 
 # ```
 
 # ## Question 6
@@ -256,27 +157,6 @@ w5
 # 
 # 
 
-# In[11]:
-
-
-def on_change6(change):
-    if change['type'] == 'change' and change['name'] == 'value':
-        if change['new'] == '1,0,3':
-            print( "Your answer: %s     is correct"% change['new'] )
-        else:
-            print( "Your answer: %s     is wrong"% change['new'] )
-
-w6 = widgets.RadioButtons(
-    options=['1,0,3', '1,-1,0', '1,-1','1,2,1','-1,2,-1'],
-#    value='pineapple', # Defaults to 'pineapple'
-#    layout={'width': 'max-content'}, # If the items' names are long
-    description='',
-    disabled=False
-)
-w6.observe(on_change6)
-w6
-
-
 # ```{dropdown} Show answer
 # Answer: 
 # 
@@ -287,23 +167,41 @@ w6
 # Let 
 # 
 # $$
-#     a=\left(
-# \begin{matrix}
+#     a=
+# \begin{bmatrix}
 # 1\\
 # 1\\
 # 1\\
 # 1
-# \end{matrix}
-# \right)\in R^4
+# \end{bmatrix}
+# \in R^4
 # $$
 # 
 # and $A=aa^T$
 # 
 # Find the eigenvalues and corresponding eigenvectors of $A$
 # 
-# Write out solution, take a picture or scan it into a file (we prefer a pdf file) and upload from your computer.
+# Write out solution.
 
 # ```{dropdown} Show answer
+# $$
+#     \lambda =4 , x = \begin{bmatrix}
+# 1\\
+# 1\\
+# 1\\
+# 1
+# \end{bmatrix}
+# $$ 
+# 
+# $$
+#     \lambda = 0,
+#     x = \begin{bmatrix}1\\-1\\0\\0 \end{bmatrix}
+#     \begin{bmatrix}1\\0\\-1\\0\end{bmatrix}
+#     \begin{bmatrix}1\\0\\0\\-1\end{bmatrix}
+# $$
+# 
+# 
+# 
 # 
 # ```
 
