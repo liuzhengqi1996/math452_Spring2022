@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -73,6 +73,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -230,6 +234,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
      Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/quiz2.html">
+     Quiz 2
     </a>
    </li>
   </ul>
@@ -498,29 +507,22 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Universal approximation properties
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
-     Download the lecture notes here: Notes
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#approximation-properties-of-neural-network-function-class">
    Approximation Properties of Neural Network Function Class
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qualitative-convergence-results">
      Qualitative convergence results
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#properties-of-polynomials-using-fourier-transform">
      Properties of polynomials using Fourier transform
     </a>
@@ -562,11 +564,10 @@
 <div class="section" id="download-the-lecture-notes-here-notes">
 <h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C05_-Universal-approximation-properties.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
 </div>
-</div>
 <div class="section" id="approximation-properties-of-neural-network-function-class">
-<h1>Approximation Properties of Neural Network Function Class<a class="headerlink" href="#approximation-properties-of-neural-network-function-class" title="Permalink to this headline">¶</a></h1>
+<h2>Approximation Properties of Neural Network Function Class<a class="headerlink" href="#approximation-properties-of-neural-network-function-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="qualitative-convergence-results">
-<h2>Qualitative convergence results<a class="headerlink" href="#qualitative-convergence-results" title="Permalink to this headline">¶</a></h2>
+<h3>Qualitative convergence results<a class="headerlink" href="#qualitative-convergence-results" title="Permalink to this headline">¶</a></h3>
 <div class="proof theorem admonition" id="thm1">
 <p class="admonition-title"><span class="caption-number">Theorem 7 </span> ((Universal Approximation Property of Shallow Neural Networks))</p>
 <div class="theorem-content section" id="proof-content">
@@ -656,7 +657,7 @@ of degree at most <span class="math notranslate nohighlight">\(k_{0}-1\)</span>,
 </div>
 </div>
 <div class="section" id="properties-of-polynomials-using-fourier-transform">
-<h2>Properties of polynomials using Fourier transform<a class="headerlink" href="#properties-of-polynomials-using-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<h3>Properties of polynomials using Fourier transform<a class="headerlink" href="#properties-of-polynomials-using-fourier-transform" title="Permalink to this headline">¶</a></h3>
 <p>We make use of the theory of tempered distributions and
 we begin by collecting some results of independent interest, which will
 also be important later. We begin by noting that an activation function
@@ -724,6 +725,7 @@ vanishing.</p>
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -777,7 +779,7 @@ vanishing.</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

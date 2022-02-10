@@ -228,7 +228,7 @@ for epoch in range(num_epochs):
     print('Epoch: {}, the training accuracy: {}, the test accuracy: {}' .format(epoch+1,training_accuracy,test_accuracy))               
 
 
-# # Reading material
+# ## Reading material
 # 
 # 1. Details of torch.nn https://pytorch.org/docs/stable/nn.html
 # 

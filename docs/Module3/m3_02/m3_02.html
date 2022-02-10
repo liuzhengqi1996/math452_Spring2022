@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -73,6 +73,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -230,6 +234,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
      Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/quiz2.html">
+     Quiz 2
     </a>
    </li>
   </ul>
@@ -498,44 +507,32 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Polynomials and Weierstrass theorem
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
-     Download the lecture notes here: Notes
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#approximation-by-polynomials-and-weierstrass-theorem">
+   Approximation by polynomials and Weierstrass Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weierstrass-theorem-and-proof">
+     Weierstrass Theorem and Proof
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#approximation-by-polynomials-and-weierstrass-theorem">
-     Approximation by polynomials and Weierstrass Theorem
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#curse-of-dimensionality">
+     Curse of dimensionality
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#weierstrass-theorem-and-proof">
-       Weierstrass Theorem and Proof
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#some-issues-with-polynomial-approximations">
-       Some issues with polynomial approximations
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runge-s-phenomenon">
+     Runge’s phenomenon
+    </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#curse-of-dimensionality">
-   Curse of dimensionality
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#runge-s-phenomenon">
-   Runge’s phenomenon
-  </a>
  </li>
 </ul>
 
@@ -677,13 +674,8 @@ and we then extending this function to be zero outside of <span class="math notr
 \]</div>
 <p>Similar proof can then be applied. <span class="math notranslate nohighlight">\(\square\)</span></p>
 </div>
-<div class="section" id="some-issues-with-polynomial-approximations">
-<h3>Some issues with polynomial approximations<a class="headerlink" href="#some-issues-with-polynomial-approximations" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-</div>
 <div class="section" id="curse-of-dimensionality">
-<h1>Curse of dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this headline">¶</a></h1>
+<h3>Curse of dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this headline">¶</a></h3>
 <p>Number of coefficients for polynomials of degrees <span class="math notranslate nohighlight">\(n\)</span> in
 <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -699,7 +691,7 @@ and we then extending this function to be zero outside of <span class="math notr
 <p><span class="math notranslate nohighlight">\(N=\)</span>   <span class="math notranslate nohighlight">\(5 \times 10^{3}\)</span>   <span class="math notranslate nohighlight">\(4.6 \times 10^{6}\)</span>   <span class="math notranslate nohighlight">\(3.5 \times 10^{11}\)</span></p>
 </div>
 <div class="section" id="runge-s-phenomenon">
-<h1>Runge’s phenomenon<a class="headerlink" href="#runge-s-phenomenon" title="Permalink to this headline">¶</a></h1>
+<h3>Runge’s phenomenon<a class="headerlink" href="#runge-s-phenomenon" title="Permalink to this headline">¶</a></h3>
 <p>Consider the case where one desires to interpolate through <span class="math notranslate nohighlight">\(n+1\)</span>
 equispaced points of a function <span class="math notranslate nohighlight">\(f(x)\)</span> using the n-degree polynomial
 <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> that passes through those points. Naturally, one might expect
@@ -735,8 +727,10 @@ interpolation oscillates toward the ends of the interval, i.e. close to
 <p>This shows that high-degree polynomial interpolation at equidistant
 points can be troublesome</p>
 <p><img alt="image" src="../../_images/2022_01_05_fba364634dde0bb701e1g-6.jpg" /></p>
-<p>Fig. 1.1. Runge’s phenomenon: Runge function <span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span>
+<p>Fig. Runge’s phenomenon: Runge function <span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+25 x^{2}}\)</span>
 and its polynomial interpolation <span class="math notranslate nohighlight">\(P_{n}(x)\)</span>.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -791,7 +785,7 @@ and its polynomial interpolation <span class="math notranslate nohighlight">\(P_
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

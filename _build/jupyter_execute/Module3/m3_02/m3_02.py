@@ -139,9 +139,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Similar proof can then be applied. $\square$
 # 
-# ### Some issues with polynomial approximations
 # 
-# # Curse of dimensionality
+# 
+# ### Curse of dimensionality
 # 
 # Number of coefficients for polynomials of degrees $n$ in
 # $\mathbb{R}^{d}$ is 
@@ -159,7 +159,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #   ------ ------------------- --------------------- ----------------------
 #    $N=$   $5 \times 10^{3}$   $4.6 \times 10^{6}$   $3.5 \times 10^{11}$
 # 
-# # Runge's phenomenon
+# ### Runge's phenomenon
 # 
 # Consider the case where one desires to interpolate through $n+1$
 # equispaced points of a function $f(x)$ using the n-degree polynomial
@@ -203,7 +203,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ![image](images/2022_01_05_fba364634dde0bb701e1g-6.jpg)
 # 
-# Fig. 1.1. Runge's phenomenon: Runge function $f(x)=\frac{1}{1+25 x^{2}}$
+# Fig. Runge's phenomenon: Runge function $f(x)=\frac{1}{1+25 x^{2}}$
 # and its polynomial interpolation $P_{n}(x)$.
 # 
 

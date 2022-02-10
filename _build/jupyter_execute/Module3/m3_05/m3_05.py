@@ -13,10 +13,10 @@ IFrame(src= "https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/
 
 # ## Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2022/01/C05_-Universal-approximation-properties.pdf)
 
-# # Approximation Properties of Neural Network Function Class
+# ## Approximation Properties of Neural Network Function Class
 # 
 # 
-# ## Qualitative convergence results
+# ### Qualitative convergence results
 # 
 # ```{prf:theorem} (Universal Approximation Property of Shallow Neural Networks)
 # :label: thm1
@@ -114,7 +114,7 @@ IFrame(src= "https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/
 # of degree at most $k_{0}-1$, which leads to contradiction.
 # ```
 # 
-# ## Properties of polynomials using Fourier transform
+# ### Properties of polynomials using Fourier transform
 # 
 # 
 # We make use of the theory of tempered distributions and

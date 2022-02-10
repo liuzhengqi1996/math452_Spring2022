@@ -30,8 +30,13 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # For example:
 # 
 # $$
-#     \lambda(\omega)=\frac{1}{|G|}$$ if $G$ is bounded. The expectation is
-# defined: $$\mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
+#     \lambda(\omega)=\frac{1}{|G|}
+# $$
+# 
+# if $G$ is bounded. The expectation is defined: 
+# 
+# $$
+#     \mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
 # $$
 # 
 # and for any
@@ -140,13 +145,15 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 #     \overline{\mathbb{P}}\left[\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}>\frac{k}{n}\|g\|_{L^{\infty}}^{2}\right]<\frac{1}{k}
 # $$
+# 
 # ```
 # 
 # ```{prf:proof}
 # 
-# $$
+# $
 #     \overline{\mathbb{P}}\left[\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}>\epsilon\right] \leq \epsilon^{-1} \overline{\mathbb{E}}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} \leq \frac{1}{n \epsilon}\|g\|_{L^{\infty}}^{2}
-# $$
+# $
+# 
 # ```
 # 
 # This corollary implies that the set of $\omega_{i}$ where the estimate

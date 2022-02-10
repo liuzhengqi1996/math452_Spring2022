@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -73,6 +73,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -230,6 +234,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
      Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/quiz2.html">
+     Quiz 2
     </a>
    </li>
   </ul>
@@ -590,8 +599,12 @@
 <p>For example:</p>
 <div class="math notranslate nohighlight">
 \[
-    \lambda(\omega)=\frac{1}{|G|}$$ if $G$ is bounded. The expectation is
-defined: $$\mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
+    \lambda(\omega)=\frac{1}{|G|}
+\]</div>
+<p>if <span class="math notranslate nohighlight">\(G\)</span> is bounded. The expectation is defined:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
 \]</div>
 <p>and for any
 <span class="math notranslate nohighlight">\(h=h\left(\omega_{1}, \omega_{2}, \ldots, \omega_{n}\right): G \times G \cdots G \mapsto \mathbb{R}\)</span></p>
@@ -690,9 +703,9 @@ defined: $$\mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
 </div>
 </div></div>
 <div class="proof admonition" id="proof">
-<p>Proof. $<span class="math notranslate nohighlight">\(
+<p>Proof. <span class="math notranslate nohighlight">\(
     \overline{\mathbb{P}}\left[\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}&gt;\epsilon\right] \leq \epsilon^{-1} \overline{\mathbb{E}}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} \leq \frac{1}{n \epsilon}\|g\|_{L^{\infty}}^{2}
-\)</span>$</p>
+\)</span></p>
 </div>
 <p>This corollary implies that the set of <span class="math notranslate nohighlight">\(\omega_{i}\)</span> where the estimate
 <span class="math notranslate nohighlight">\(n^{-1} \sum_{i=1}^{n} g\left(\omega_{i}\right)\)</span> is far from the desired
@@ -997,7 +1010,7 @@ periodic.</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

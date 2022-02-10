@@ -19,9 +19,6 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 
 # ## Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2022/01/C04_-Deep-neural-network-functions.pdf)
 
-# # FEM and DNN
-# 
-# 
 # ## Motivation: from finite element to neural network
 # 
 # 

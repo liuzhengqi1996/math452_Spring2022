@@ -32,6 +32,7 @@ parts:
     - file: Module2/m2_05.ipynb
     - file: Module2/m2_hw.ipynb
     - file: Module2/Programming_Assignment_2.ipynb
+    - file: Module2/quiz2.ipynb
   - file: Module3/module3_
     sections:
     - file: Module3/m3_01/m3_01.ipynb
