@@ -53,7 +53,8 @@ parts:
     - file: Module4/m4_03/m4_03.ipynb
     - file: Module4/m4_04/m4_04.ipynb
     - file: Module4/m4_05.ipynb
-    - file: Module3/Programming_Assignment_4.ipynb
+    - file: Module4/m4_hw.ipynb
+    - file: Module4/Programming_Assignment_4.ipynb
   - file: Module5/module5_
     sections:
     - file: Module5/m5_01/m5_01.ipynb
