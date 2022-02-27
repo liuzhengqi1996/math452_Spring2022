@@ -508,6 +508,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variational-problems">
    Variational problems
   </a>
@@ -566,6 +571,9 @@
 ></iframe>
 </div></div>
 </div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/02/D01FEMtoConvolution_Video_Notes-1.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="variational-problems">
 <h2>Variational problems<a class="headerlink" href="#variational-problems" title="Permalink to this headline">¶</a></h2>
 <p>Lemma 1. Assume that <span class="math notranslate nohighlight">\(u\)</span> is continuous in <span class="math notranslate nohighlight">\((0,1)\)</span>, then the following
@@ -584,14 +592,24 @@ function <span class="math notranslate nohighlight">\(v\)</span> in <span class=
 \[
     J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x
 \]</div>
-<p>Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that $<span class="math notranslate nohighlight">\(u=\underset{v \in V}{\arg \min } J(v)\)</span><span class="math notranslate nohighlight">\( which
-is equivalent to: Find \)</span>u \in V<span class="math notranslate nohighlight">\( such that \)</span><span class="math notranslate nohighlight">\(\left\{\begin{array}{l}
+<p>Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    u=\underset{v \in V}{\arg \min } J(v)
+\]</div>
+<p>which
+is equivalent to: Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \left\{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
-\end{array}\right.\)</span><span class="math notranslate nohighlight">\( Proof. For any \)</span>v \in V, t \in R<span class="math notranslate nohighlight">\(, let
-\)</span>g(t)=J(u+t v)<span class="math notranslate nohighlight">\(. Since \)</span>u=\arg \min _{v \in V} J(v)<span class="math notranslate nohighlight">\( means
-\)</span>g(t) \geq g(0) .<span class="math notranslate nohighlight">\( Hence, for any \)</span>v \in V, 0<span class="math notranslate nohighlight">\( is the global minimum of
-the function \)</span>g(t)<span class="math notranslate nohighlight">\(. Therefore \)</span>g^{\prime}(0)=0$ implies</p>
+\end{array}\right.
+\end{split}\]</div>
+<p>Proof. For any <span class="math notranslate nohighlight">\(v \in V, t \in R\)</span>, let
+<span class="math notranslate nohighlight">\(g(t)=J(u+t v)\)</span>. Since <span class="math notranslate nohighlight">\(u=\arg \min _{v \in V} J(v)\)</span> means
+<span class="math notranslate nohighlight">\(g(t) \geq g(0) .\)</span> Hence, for any <span class="math notranslate nohighlight">\(v \in V, 0\)</span> is the global minimum of
+the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefore <span class="math notranslate nohighlight">\(g^{\prime}(0)=0\)</span> implies</p>
 <div class="math notranslate nohighlight">
 \[
     \int_{0}^{1} u^{\prime} v^{\prime} d x=\int_{0}^{1} f v d x \quad \forall v \in V
@@ -607,7 +625,7 @@ the function \)</span>g(t)<span class="math notranslate nohighlight">\(. Therefo
     \left\{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
-\end{array}\right.
+    \end{array}\right.
 \end{split}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
@@ -695,9 +713,9 @@ leads us to a special example in two dimensions, a uniform square mesh
 Let <span class="math notranslate nohighlight">\(\Omega_{h}=\Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set of interior
 mesh points and
 <span class="math notranslate nohighlight">\(\partial \Omega_{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set
-of boundary mesh points.<br />
-<img alt="image" src="Module4/m4_01/2022_01_06_c2f144dbff0f0a17cc7dg-5" />{width=”\textwidth”}</p>
-<p>Fig. 1.1. Two-dimensional uniform grid for finite element and finite
+of boundary mesh points.\</p>
+<p><img alt="image" src="../../_images/img12.png" />
+Fig. 1.1. Two-dimensional uniform grid for finite element and finite
 difference</p>
 </div>
 <div class="section" id="finite-element-methods">
@@ -733,7 +751,8 @@ is</p>
 <p>Denote
 <span class="math notranslate nohighlight">\(E_{i, j}=\left[x_{i}, x_{i+1}\right] \times\left[y_{i}, y_{i+1}\right]=K_{i, j}^{U} \cup K_{i, j}^{D} .\)</span>
 For linear element case,</p>
-<p><img alt="image" src="Module4/m4_01/2022_01_06_c2f144dbff0f0a17cc7dg-6" />{width=”\textwidth”}</p>
+<p><img alt="image" src="../../_images/img21.png" />
+<img alt="image" src="../../_images/img31.png" /></p>
 <p>It is easy to verify that the formulation for the linear element method
 is</p>
 <p>(1.16)

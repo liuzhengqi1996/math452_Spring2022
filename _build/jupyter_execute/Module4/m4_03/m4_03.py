@@ -11,6 +11,8 @@ from IPython.display import IFrame
 IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_4ypfrwx9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_a9sbj527" ,width='800', height='500')
 
 
+# ## Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2022/02/D03ClassicCNNs_Video_Notes.pdf)
+
 # Some classic CNN models
 # -----------------------
 # 
@@ -18,8 +20,13 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # above to give a brief description of some classic convolutional neural
 # network (CNN) models. Firstly, CNNS are actually a class of special DNN
 # models. Let us recall the DNN structure as:
-# $$\begin{cases}f^{0}(x) & =x \\ f^{\ell}(x) & =\sigma\left(\theta^{\ell}\left(f^{\ell-1}\right)\right) \quad \ell=1: L \\ f(x) & =W^{L} f^{L}+b^{L}\end{cases}$$
+# 
+# $$
+#     \begin{cases}f^{0}(x) & =x \\ f^{\ell}(x) & =\sigma\left(\theta^{\ell}\left(f^{\ell-1}\right)\right) \quad \ell=1: L \\ f(x) & =W^{L} f^{L}+b^{L}\end{cases}
+# $$
+# 
 # where
+# 
 # $$\left(\theta^{\ell}\left(f^{\ell-1}\right)=W^{\ell} f^{\ell-1}(x)+b^{\ell} .\right.$$
 # So the key features of CNNs is
 # 
@@ -28,16 +35,42 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 2.  Use multi-resolution of images as shown in the next diagram.
 # 
-# ![image](2022_01_06_73aade67e8906ae5893fg-3){width="\textwidth"}
+# ![image](images/img1.png)
 # 
 # Then we will introduce some classical architectures in convolution
 # neural networks.
 # 
 # ### LeNet-5, AlexNet and VGG
 # 
-# The LeNet-5 $[6]$, AlexNet $[5]$ and VGG $[7]$ can be written as:
+# The LeNet-5, AlexNet and VGG  can be written as:
 # 
-# ![image](2022_01_06_73aade67e8906ae5893fg-4){width="\textwidth"}
+# ```{prf:algorithm} $h$ = Classic CNN$(f;J,v_1,\cdots,v_J)$
+# 
+# **Initialization** $f^{1,0} = f_{in}(f)$.
+# 
+# **For** $l = i:J$ do
+# 
+# **For** $i = 1:v_l$ do
+# 
+# Basic Block:
+#     
+# $$
+#     f^{l,i} = \sigma(\theta^{l,i} * f^{l,i-1} )
+# $$
+# 
+# **EndFor**
+# 
+# Pooling(Restriction):
+# 
+# $$
+#     f^{l+1,0} = R_{l}^{l+1} * f^{l,v_l}
+# $$
+# 
+# **EndFor**
+# 
+# Final average pooling layer: $h = R_{ave}(f^{L,v_l})$
+# 
+# ```
 # 
 # Here $R_{\ell}^{\ell+1} *_{2}$ represents for the pooling operation to
 # sub-sampling these tensors into coarse spatial level (lower resolution).
@@ -46,11 +79,13 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # -   average pooling: fixed kernels such as
 # 
-# $$R_{\ell}^{\ell+1}=\frac{1}{9}\left(\begin{array}{lll}
+# $$
+#     R_{\ell}^{\ell+1}=\frac{1}{9}\left(\begin{array}{lll}
 # 1 & 1 & 1 \\
 # 1 & 1 & 1 \\
 # 1 & 1 & 1
-# \end{array}\right)$$
+# \end{array}\right)
+# $$
 # 
 # -   Max pooling $R_{\max }$ as discussed before.
 # 
@@ -64,27 +99,39 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### ResNet
 # 
-# The original ResNet developed in \[2\] is one of the most popular CNN
+# The original ResNet  is one of the most popular CNN
 # architectures in image classification problems.
 # 
-# ![image](2022_01_06_73aade67e8906ae5893fg-4(1)){width="\textwidth"}
+# ```{prf:algorithm} $h = ResNet(f;J,v_1,\cdots,v_J)$
+# **Initialization** $r^{1,0} = f_{in}(f)$
 # 
-# 4: Basic Block:
+# **For** $l = 1 : J$ do
 # 
-# (1.6)
-# $r^{\ell, i}=\sigma\left(r^{\ell, i-1}+A^{\ell, i} * \sigma \circ B^{\ell, i} * r^{\ell, i-1}\right)$.
+# **For** $i=1:v_l$ do
+#     
+# Basic Block:
+#         
+# $$
+#     r^{\ell, i}=\sigma\left(r^{\ell, i-1}+A^{\ell, i} * \sigma \circ B^{\ell, i} * r^{\ell, i-1}\right)
+# $$
+#         
+# **EndFor**
 # 
-# 5: end for
+# Pooling(Restriction):
 # 
-# 6: Pooling(Restriction):
+# $$
+#     r^{\ell+1,0}=\sigma\left(R_{\ell}^{\ell+1} *_{2} r^{\ell, v_{\ell}}+A^{\ell+1,0} \circ \sigma \circ B^{\ell+1,0} *_{2} r^{\ell, v_{\ell}}\right) .
+# $$
 # 
-# (1.7)
-# $r^{\ell+1,0}=\sigma\left(R_{\ell}^{\ell+1} *_{2} r^{\ell, v_{\ell}}+A^{\ell+1,0} \circ \sigma \circ B^{\ell+1,0} *_{2} r^{\ell, v_{\ell}}\right) .$
+# **EndFor**
 # 
-# 7: end for
+# Final average pooling layer: $h=R_{ave }\left(r^{L, v_{t}}\right)$.
 # 
-# 8: Final average pooling layer:
-# $h=R_{\text {ave }}\left(r^{L, v_{t}}\right)$.
+#         
+# ```
+# 
+# 
+# 
 # 
 # Here $f_{\text {in }}(\cdot)$ may depend on different data set and
 # problems such as $f_{\text {in }}(f)=\sigma \circ \theta^{0} * f$ for
@@ -107,9 +154,30 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 3 pre-act ResNet
 # ----------------
 # 
-# The pre-act ResNet \[3\] shares a similar structure with ResNet.
+# The pre-act ResNet shares a similar structure with ResNet.
 # 
-# ![image](2022_01_06_73aade67e8906ae5893fg-5){width="\textwidth"}
+# ```{prf:algorithm} $h = pre-act ResNet(f;J,v_1,\cdots,v_J)$
+# 
+# **Initialization** $r^{1,0} = f_{in}f$
+# 
+# **For** $l = 1:J$ do
+# 
+# **For** $i = 1:v_l$ do
+# 
+# Basic Block:
+# 
+# $$
+#     r^{l,i} = r^{l,i-1} + A^{l,i} * \sigma \circ B^{l.i} * \sigma(r^{l,i-1})
+# $$
+# 
+# **EndFor**
+# 
+# Pooling(Restriction):
+# 
+# $$
+#     r^{l+1,0} = R_{l}^{l+1} * r^{l,v_l} + A^{l+1,0} \circ \sigma \circ B^{l+1,0} * \sigma(r^{l,v_l}) 
+# $$
+# ```
 # 
 # Here pre-act ResNet share almost the same setup with ResNet.
 # 
@@ -120,14 +188,32 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # Without loss of generality, we extract the key feedforward steps on the
 # same grid in different CNN models as follows.
 # 
-# ![image](2022_01_06_73aade67e8906ae5893fg-6){width="\textwidth"}
 # 
-# Fig. 1.1. Comparison of CNN Structures
+# ![image](images/img3.png)
+# 
+# Fig. Comparison of CNN Structures
 # 
 # Classic CNN
-# $$f^{\ell, i}=\xi^{i} \circ \sigma\left(f^{\ell, i-1}\right) \quad \text { or } \quad f^{\ell, i}=\sigma \circ \xi^{i}\left(f^{\ell, i-1}\right)$$
-# ResNet
-# $$r^{\ell, i}=\sigma\left(r^{\ell, i-1}+\xi^{\ell, i} \circ \sigma \circ \eta^{\ell, i}\left(r^{\ell, i-1}\right)\right)$$
-# pre-act ResNet
-# $$r^{\ell, i}=r^{\ell, i-1}+\xi^{\ell, i} \circ \sigma \circ \eta^{\ell, i} \circ \sigma\left(r^{\ell, i-1}\right)$$
 # 
+# $$
+#     f^{\ell, i}=\xi^{i} \circ \sigma\left(f^{\ell, i-1}\right) \quad \text { or } \quad f^{\ell, i}=\sigma \circ \xi^{i}\left(f^{\ell, i-1}\right)
+# $$
+# 
+# ResNet
+# 
+# $$
+#     r^{\ell, i}=\sigma\left(r^{\ell, i-1}+\xi^{\ell, i} \circ \sigma \circ \eta^{\ell, i}\left(r^{\ell, i-1}\right)\right)
+# $$
+# 
+# pre-act ResNet
+# 
+# $$
+#     r^{\ell, i}=r^{\ell, i-1}+\xi^{\ell, i} \circ \sigma \circ \eta^{\ell, i} \circ \sigma\left(r^{\ell, i-1}\right)
+# $$
+# 
+
+# In[ ]:
+
+
+
+

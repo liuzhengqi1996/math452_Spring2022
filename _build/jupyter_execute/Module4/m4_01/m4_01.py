@@ -11,6 +11,8 @@ from IPython.display import IFrame
 IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_r7d9vubj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1pwagnn7"  ,width='800', height='500')
 
 
+# ## Download the lecture notes here: [Notes](https://sites.psu.edu/math452/files/2022/02/D01FEMtoConvolution_Video_Notes-1.pdf)
+
 # ## Variational problems
 # 
 # 
@@ -35,11 +37,24 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x
 # $$
 # 
-# Find $u \in V$ such that $$u=\underset{v \in V}{\arg \min } J(v)$$ which
-# is equivalent to: Find $u \in V$ such that $$\left\{\begin{array}{l}
+# Find $u \in V$ such that 
+# 
+# $$
+#     u=\underset{v \in V}{\arg \min } J(v)
+# $$
+# 
+# which
+# is equivalent to: Find $u \in V$ such that 
+# 
+# 
+# $$
+#     \left\{\begin{array}{l}
 # -u^{\prime \prime}=f, 0<x<1, \\
 # u(0)=u(1)=0 .
-# \end{array}\right.$$ Proof. For any $v \in V, t \in R$, let
+# \end{array}\right.
+# $$
+# 
+# Proof. For any $v \in V, t \in R$, let
 # $g(t)=J(u+t v)$. Since $u=\arg \min _{v \in V} J(v)$ means
 # $g(t) \geq g(0) .$ Hence, for any $v \in V, 0$ is the global minimum of
 # the function $g(t)$. Therefore $g^{\prime}(0)=0$ implies
@@ -60,7 +75,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \left\{\begin{array}{l}
 # -u^{\prime \prime}=f, 0<x<1, \\
 # u(0)=u(1)=0 .
-# \end{array}\right.
+#     \end{array}\right.
 # $$
 # 
 # 
@@ -163,8 +178,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # mesh points and
 # $\partial \Omega_{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}$, the set
 # of boundary mesh points.\
-# ![image](2022_01_06_c2f144dbff0f0a17cc7dg-5){width="\textwidth"}
 # 
+# ![image](images/img1.png)
 # Fig. 1.1. Two-dimensional uniform grid for finite element and finite
 # difference
 # 
@@ -207,7 +222,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $E_{i, j}=\left[x_{i}, x_{i+1}\right] \times\left[y_{i}, y_{i+1}\right]=K_{i, j}^{U} \cup K_{i, j}^{D} .$
 # For linear element case,
 # 
-# ![image](2022_01_06_c2f144dbff0f0a17cc7dg-6){width="\textwidth"}
+# ![image](images/img2.png)
+# ![image](images/img3.png)
 # 
 # It is easy to verify that the formulation for the linear element method
 # is
