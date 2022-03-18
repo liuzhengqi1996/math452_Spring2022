@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Building and Training ResNet with Pytorch" href="../m5_03/m5_03.html" />
-    <link rel="prev" title="Contents" href="../m5_01/m5_01.html" />
+    <link rel="prev" title="Data normalization and weights initialization" href="../m5_01/m5_01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -369,7 +369,7 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../m5_01/m5_01.html">
-     Contents
+     Data normalization and weights initialization
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -517,48 +517,27 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Batch normalization
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recall-the-original-dnn-model">
-     Recall the original DNN model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#real-batch-normalization-and-new-model">
-     2 “’Real’” Batch Normalization and “’new’ model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-of-b-n-operation-based-on-the-batch">
-   Definition of
-   <span class="math notranslate nohighlight">
-    \(B N\)
-   </span>
-   operation based on the batch
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recall-the-original-dnn-model">
+   Recall the original DNN model
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#new-model-for-bn">
-   “New” model for BN
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-batch-normalization-and-new-model">
+   “’Real’” Batch Normalization and “’new’ model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bn-some-modified-sgd-on-new-batch-normalized-model">
      BN: some ’modified” SGD on new batch normalized model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#testing-phase-in-batch-normalized-dnn">
      Testing phase in Batch-Normalized DNN
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#batch-normalization-for-cnn">
      Batch Normalization for CNN
     </a>
@@ -606,56 +585,82 @@ where \)</span>x \in \mathbb{R}^{n}<span class="math notranslate nohighlight">\(
 non-linear function (activation).</p>
 </div>
 <div class="section" id="real-batch-normalization-and-new-model">
-<h2>2 “’Real’” Batch Normalization and “’new’ model<a class="headerlink" href="#real-batch-normalization-and-new-model" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<div class="section" id="definition-of-b-n-operation-based-on-the-batch">
-<h1>Definition of <span class="math notranslate nohighlight">\(B N\)</span> operation based on the batch<a class="headerlink" href="#definition-of-b-n-operation-based-on-the-batch" title="Permalink to this headline">¶</a></h1>
-<p>Following the idea in normalization, we consider that we have the all
-training data as $<span class="math notranslate nohighlight">\((X, Y):=\left\{x_{i}, y_{i}\right\}_{i=1}^{N} .\)</span><span class="math notranslate nohighlight">\(
-Since the normalization is applied to each activation independently, let
-us focus on a particular activation \)</span>\left[f^{\ell}\right]<em>{k}<span class="math notranslate nohighlight">\( and omit
-\)</span>k<span class="math notranslate nohighlight">\( as \)</span>f^{\ell}<span class="math notranslate nohighlight">\( for clarity. We have \)</span>N<span class="math notranslate nohighlight">\( values of this activation in
-the batch, \)</span><span class="math notranslate nohighlight">\(X=\left\{x_{1}, \cdots, x_{N}\right\}\)</span><span class="math notranslate nohighlight">\( Let the normalized
-values be \)</span>\hat{f}^{\ell}<span class="math notranslate nohighlight">\(, and their linear transformations be
-\)</span>\tilde{f}^{\ell} .<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(\begin{gathered}
+<h2>“’Real’” Batch Normalization and “’new’ model<a class="headerlink" href="#real-batch-normalization-and-new-model" title="Permalink to this headline">¶</a></h2>
+<p>Definition of <span class="math notranslate nohighlight">\(B N\)</span> operation based on the batch</p>
+<p>Following the idea in normalization, we consider that we have the all training data as</p>
+<div class="math notranslate nohighlight">
+\[
+    (X, Y):=\left\{x_{i}, y_{i}\right\}_{i=1}^{N} 
+\]</div>
+<p>Since the normalization is applied to each activation independently, let
+us focus on a particular activation <span class="math notranslate nohighlight">\(\left[f^{\ell}\right]_{k}\)</span> and omit
+<span class="math notranslate nohighlight">\(k\)</span> as <span class="math notranslate nohighlight">\(f^{\ell}\)</span> for clarity. We have <span class="math notranslate nohighlight">\(N\)</span> values of this activation in
+the batch,</p>
+<div class="math notranslate nohighlight">
+\[
+    X=\left\{x_{1}, \cdots, x_{N}\right\}
+\]</div>
+<p>Let the normalized values be <span class="math notranslate nohighlight">\(\hat{f}^{\ell}\)</span>, and their linear transformations be
+<span class="math notranslate nohighlight">\(\tilde{f}^{\ell} .\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{gathered}
 \mu_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]=\frac{1}{N} \sum_{i=1}^{N} f^{\ell}\left(x_{i}\right) \\
 \sigma_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(f^{\ell}\left(x_{i}\right)-\mu_{X}\right)^{2} \quad \text { batch mean } \\
 \hat{f}^{\ell}(x) \leftarrow \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}} \\
 \tilde{f}^{\ell}(x) \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell}
-\end{gathered}\)</span><span class="math notranslate nohighlight">\( Here we note that all these operations in the previous
-equation are defined by element-wise. Then at last, we define the BN
-operation based on the batch set as
-\)</span><span class="math notranslate nohighlight">\(\mathrm{BN}_{X}\left(f^{\ell}(x)\right)=\tilde{f}^{\ell}(x):=\gamma^{\ell} \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}}+\beta^{\ell}\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\tilde{f}^{\ell}(x), \mu</em>{X}^{\ell}<span class="math notranslate nohighlight">\( and \)</span>\sigma_{X}^{\ell}$ are
+\end{gathered}
+\end{split}\]</div>
+<p>Here we note that all these operations in the previous equation are defined by element-wise. Then at last, we define the BN operation based on the batch set as</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathrm{BN}_{X}\left(f^{\ell}(x)\right)=\tilde{f}^{\ell}(x):=\gamma^{\ell} \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}}+\beta^{\ell}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{f}^{\ell}(x), \mu_{X}^{\ell}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{X}^{\ell}\)</span> are
 given above.</p>
-</div>
-<div class="section" id="new-model-for-bn">
-<h1>“New” model for BN<a class="headerlink" href="#new-model-for-bn" title="Permalink to this headline">¶</a></h1>
-<p>In summary, we have the new DNN model with BN as:
-$<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =\left(\theta^{1}\left(x_{i}\right)\right) \\ \tilde{f}^{\ell} &amp; =\theta^{\ell} \circ \sigma \circ \mathrm{BN}_{X}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
-For a more comprehensive notation, we can use the next notation
-\)</span><span class="math notranslate nohighlight">\(\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{X}\)</span><span class="math notranslate nohighlight">\( Here one thing is
-important that we need to mention is that because of the new scale
-\)</span>\gamma^{\ell}<span class="math notranslate nohighlight">\( and shift \)</span>\beta^{\ell}<span class="math notranslate nohighlight">\( added after the BN operation.
-We can remove the basis \)</span>b^{\ell}<span class="math notranslate nohighlight">\( in \)</span>\theta^{\ell}<span class="math notranslate nohighlight">\(, thus to say the
-real model we will compute should be
-\)</span><span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i} \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
-Combine the two definition, we note
-\)</span><span class="math notranslate nohighlight">\(\tilde{\Theta}:=\{W, \gamma, \beta\}\)</span><span class="math notranslate nohighlight">\( where
-\)</span>W=\left{W^{1}, \cdots, W^{l}\right}, \gamma:=\left{\gamma^{2}, \cdots, \gamma^{L}\right}<span class="math notranslate nohighlight">\(
-and \)</span>\beta:=\left{\beta^{2}, \cdots, \beta^{L}\right}$</p>
-<p>Finally, we have the loss function as:
-$<span class="math notranslate nohighlight">\(\mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\)</span><span class="math notranslate nohighlight">\(
-A key observation in \)</span>(1.57)<span class="math notranslate nohighlight">\( and the new BN model \)</span>(1.55)<span class="math notranslate nohighlight">\( is that
-\)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+<p>“New” model for BN
+In summary, we have the new DNN model with BN as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =\left(\theta^{1}\left(x_{i}\right)\right) \\ \tilde{f}^{\ell} &amp; =\theta^{\ell} \circ \sigma \circ \mathrm{BN}_{X}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
+\end{split}\]</div>
+<p>For a more comprehensive notation, we can use the next notation</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{X}
+\]</div>
+<p>Here one thing is important that we need to mention is that because of the new scale
+<span class="math notranslate nohighlight">\(\gamma^{\ell}\)</span> and shift <span class="math notranslate nohighlight">\(\beta^{\ell}\)</span> added after the BN operation.
+We can remove the basis <span class="math notranslate nohighlight">\(b^{\ell}\)</span> in <span class="math notranslate nohighlight">\(\theta^{\ell}\)</span>, thus to say the
+real model we will compute should be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i} \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
+\end{split}\]</div>
+<p>Combine the two definition, we note</p>
+<div class="math notranslate nohighlight">
+\[
+    \tilde{\Theta}:=\{W, \gamma, \beta\}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(W=\left\{W^{1}, \cdots, W^{l}\right\}, \gamma:=\left\{\gamma^{2}, \cdots, \gamma^{L}\right\}\)</span>
+and <span class="math notranslate nohighlight">\(\beta:=\left\{\beta^{2}, \cdots, \beta^{L}\right\}\)</span></p>
+<p>Finally, we have the loss function as:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
+\]</div>
+<p>A key observation in <span class="math notranslate nohighlight">\((1.57)\)</span> and the new BN model <span class="math notranslate nohighlight">\((1.55)\)</span> is that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 \mu_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right] \\
 \sigma_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right] \\
 \mathcal{L}(\tilde{\Theta}) &amp;=\mathbb{E}_{(x, y) \sim(X, Y)}\left[\ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\right]
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( Here we need to mention that \)</span><span class="math notranslate nohighlight">\(x \sim X\)</span><span class="math notranslate nohighlight">\( means \)</span>x<span class="math notranslate nohighlight">\(
-subject to the discrete distribution of all data \)</span>X$.</p>
+\end{aligned}
+\end{split}\]</div>
+<p>Here we need to mention that <span class="math notranslate nohighlight">\(x \sim X\)</span> means <span class="math notranslate nohighlight">\(x\)</span> subject to the discrete distribution of all data <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <div class="section" id="bn-some-modified-sgd-on-new-batch-normalized-model">
-<h2>BN: some ’modified” SGD on new batch normalized model<a class="headerlink" href="#bn-some-modified-sgd-on-new-batch-normalized-model" title="Permalink to this headline">¶</a></h2>
+<h3>BN: some ’modified” SGD on new batch normalized model<a class="headerlink" href="#bn-some-modified-sgd-on-new-batch-normalized-model" title="Permalink to this headline">¶</a></h3>
 <p>Following the key observation in (1.58), and recall the similar case in
 SGD, we do the the sampling trick in (1.57) and obtain the mini-batch
 SGD: $<span class="math notranslate nohighlight">\(x \sim X \approx x \sim \mathcal{B},\)</span><span class="math notranslate nohighlight">\( here \)</span>\mathcal{B}<span class="math notranslate nohighlight">\( is a
@@ -667,31 +672,43 @@ sampling (1.57) can be chosen as taking (1.59) for all the expectation
 case in (1.57) and (1.58).</p>
 <p>This is to say, in training process ( <span class="math notranslate nohighlight">\(t\)</span>-th step for example), once we
 choose <span class="math notranslate nohighlight">\(B_{t} \subset X\)</span> as the mini-batch, then the model becomes
-$<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i}, \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(\sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{\mathcal{B}_{t}},\)</span><span class="math notranslate nohighlight">\( or
-we can say that \)</span>X<span class="math notranslate nohighlight">\( is replaced by \)</span>\mathcal{B}_{t}$ in this case.</p>
-<p>Here <span class="math notranslate nohighlight">\(\mathrm{BN}_{\mathcal{B}_{t}}\)</span> is defined by $<span class="math notranslate nohighlight">\(\begin{array}{cr}
+$<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i}, \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span>$
+where</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma_{\mathrm{BN}}:=\sigma \circ \mathrm{BN}_{\mathcal{B}_{t}}
+\]</div>
+<p>or we can say that <span class="math notranslate nohighlight">\(X\)</span> is replaced by <span class="math notranslate nohighlight">\(\mathcal{B}_{t}\)</span> in this case.</p>
+<p>Here <span class="math notranslate nohighlight">\(\mathrm{BN}_{\mathcal{B}_{t}}\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{array}{cr}
 \mu_{\mathcal{B}_{t}}^{\ell} &amp; \leftarrow \frac{1}{m} \sum_{i=1}^{m} f^{\ell}\left(x_{i}\right) \\
 \sigma_{\mathcal{B}_{t}}^{\ell} &amp; \leftarrow \frac{1}{m} \sum_{i=1}^{m}\left(f^{\ell}\left(x_{i}\right)-\mu_{\mathcal{B}_{t}}\right)^{2} \quad \text { mini-batch mean } \\
 \hat{f}^{\ell}(x) &amp; \leftarrow \frac{f^{\ell}(x)-\mu_{\mathcal{B}_{t}}^{\ell}}{\sqrt{\sigma_{\mathcal{B}_{t}}^{\ell}+\epsilon}} \\
 \mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right):=\tilde{f}^{\ell}(x) &amp; \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell} \\
 &amp; \text { normalize }
-\end{array}\)</span><span class="math notranslate nohighlight">\( Here BN operation introduce some new parameters as
-\)</span>\gamma<span class="math notranslate nohighlight">\( and \)</span>\beta<span class="math notranslate nohighlight">\(. Thus to say, for training phase, if we choose
-mini-batch as \)</span>\mathcal{B}<em>{t}<span class="math notranslate nohighlight">\( in \)</span>t<span class="math notranslate nohighlight">\(-th training step, we need to take
-gradient as
-\)</span><span class="math notranslate nohighlight">\(\frac{1}{m} \nabla_{\tilde{\Theta}} \sum_{i \in \mathcal{B}_{t}} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\)</span><span class="math notranslate nohighlight">\(
-which needs us the to take gradient for \)</span>\mu</em>{B}^{\ell}<span class="math notranslate nohighlight">\( or
-\)</span>\left[\sigma_{B}^{\ell}\right]^{2}<span class="math notranslate nohighlight">\( w.r.t \)</span>w^{i}<span class="math notranslate nohighlight">\( for \)</span>i \leq \ell$.</p>
+\end{array}
+\end{split}\]</div>
+<p>Here BN operation introduce some new parameters as <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>. Thus to say, for training phase, if we choose
+mini-batch as <span class="math notranslate nohighlight">\(\mathcal{B}_{t}\)</span> in <span class="math notranslate nohighlight">\(t\)</span>-th training step, we need to take
+gradient as</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{1}{m} \nabla_{\tilde{\Theta}} \sum_{i \in \mathcal{B}_{t}} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
+\]</div>
+<p>which needs us the to take gradient for <span class="math notranslate nohighlight">\(\mu_{B}^{\ell}\)</span> or
+<span class="math notranslate nohighlight">\(\left[\sigma_{B}^{\ell}\right]^{2}\)</span> w.r.t <span class="math notranslate nohighlight">\(w^{i}\)</span> for <span class="math notranslate nohighlight">\(i \leq \ell\)</span>.</p>
 <p>Questions: To derive the new gradient formula for BN step because of the
-fact that
-$<span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}^{\ell}, \quad \text { and } \quad \sigma_{\mathcal{B}_{t}}^{\ell}\)</span><span class="math notranslate nohighlight">\(
-contain the output of \)</span>\tilde{f}^{\ell-1}$.</p>
-<p>This is exact the batch normalization method described in [3].</p>
+fact that</p>
+<div class="math notranslate nohighlight">
+\[
+    \mu_{\mathcal{B}_{t}}^{\ell}, \quad \text { and } \quad \sigma_{\mathcal{B}_{t}}^{\ell}
+\]</div>
+<p>contain the output of <span class="math notranslate nohighlight">\(\tilde{f}^{\ell-1}\)</span>.</p>
 </div>
 <div class="section" id="testing-phase-in-batch-normalized-dnn">
-<h2>Testing phase in Batch-Normalized DNN<a class="headerlink" href="#testing-phase-in-batch-normalized-dnn" title="Permalink to this headline">¶</a></h2>
+<h3>Testing phase in Batch-Normalized DNN<a class="headerlink" href="#testing-phase-in-batch-normalized-dnn" title="Permalink to this headline">¶</a></h3>
 <p>One key problem is that, in the BN operator, we need to compute the mean
 and variance in a data set (batch or mini-batch). However, in the
 inference step, we just input one data into this DNN, how to compute the
@@ -715,24 +732,31 @@ training phase).</p></li>
 <p>Considering that we have the statistical approximation for <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
 <span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> during each SGD step, moving average might be a more
 straightforward way. Thus two say, we define the <span class="math notranslate nohighlight">\(\mu^{\ell}\)</span> and
-<span class="math notranslate nohighlight">\(\left[\sigma^{\ell}\right]^{2}\)</span> for the inference (test) phase as
-$<span class="math notranslate nohighlight">\(\mu^{\ell}=\frac{1}{T} \sum_{t=1}^{T} \mu_{\mathcal{B}_{t}}^{\ell}, \quad \sigma^{\ell}=\frac{1}{T} \frac{m}{m-1} \sum_{t=1}^{T} \sigma_{\mathcal{B}_{t}}^{\ell}\)</span>$
-Here we take Bessel’s correction for unbiased variance. The above moving
-average step is found in the original paper of BN in [3].</p>
-<p>Another way to do this is to call the similar idea in momentum. At each
+<span class="math notranslate nohighlight">\(\left[\sigma^{\ell}\right]^{2}\)</span> for the inference (test) phase as</p>
+<div class="math notranslate nohighlight">
+\[
+    \mu^{\ell}=\frac{1}{T} \sum_{t=1}^{T} \mu_{\mathcal{B}_{t}}^{\ell}, \quad \sigma^{\ell}=\frac{1}{T} \frac{m}{m-1} \sum_{t=1}^{T} \sigma_{\mathcal{B}_{t}}^{\ell}
+\]</div>
+<p>Here we take Bessel’s correction for unbiased variance.
+Another way to do this is to call the similar idea in momentum. At each
 time step we update the running averages for mean and variance using an
-exponential decay based on the momentum parameter: $<span class="math notranslate nohighlight">\(\begin{aligned}
+exponential decay based on the momentum parameter:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 &amp;\mu_{\mathcal{B}_{t}}^{\ell}=\alpha \mu_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \mu_{\mathcal{B}_{t}}^{\ell} \\
 &amp;\sigma_{\mathcal{B}_{t}}^{\ell}=\alpha \sigma_{\mathcal{B}_{t-1}}^{\ell}+(1-\alpha) \sigma_{\mathcal{B}_{t}}^{\ell}
-\end{aligned}\)</span><span class="math notranslate nohighlight">\( \)</span>\alpha<span class="math notranslate nohighlight">\( is close to 1 , we can take it as \)</span>0.9<span class="math notranslate nohighlight">\(
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\alpha\)</span> is close to 1 , we can take it as <span class="math notranslate nohighlight">\(0.9\)</span>
 generally. Then we all take bath mean and variance as
-\)</span>\mu_{X}^{\ell} \approx \mu_{\mathcal{B}<em>{T}}^{\ell}<span class="math notranslate nohighlight">\( and
-\)</span>\sigma</em>{X}^{\ell} \approx \sigma_{\mathcal{B}_{T}}^{\ell} .$</p>
+<span class="math notranslate nohighlight">\(\mu_{X}^{\ell} \approx \mu_{\mathcal{B}_{T}}^{\ell}\)</span> and
+<span class="math notranslate nohighlight">\(\sigma_{X}^{\ell} \approx \sigma_{\mathcal{B}_{T}}^{\ell} .\)</span></p>
 <p>Many people argue that the variance here should also use Bessel’s
 correction.</p>
 </div>
 <div class="section" id="batch-normalization-for-cnn">
-<h2>Batch Normalization for CNN<a class="headerlink" href="#batch-normalization-for-cnn" title="Permalink to this headline">¶</a></h2>
+<h3>Batch Normalization for CNN<a class="headerlink" href="#batch-normalization-for-cnn" title="Permalink to this headline">¶</a></h3>
 <p>One key idea in <span class="math notranslate nohighlight">\(\mathrm{BN}\)</span> is to do normalization with each scalar
 features (neurons) separately along a mini-batch. Thus to say, we need
 one to identify what is neuron in CNN. This is a historical problem,
@@ -749,14 +773,21 @@ of size <span class="math notranslate nohighlight">\(m_{\ell} \times n_{\ell}\)<
 effective mini-batch of size <span class="math notranslate nohighlight">\(m m_{\ell} n_{\ell}\)</span>. We learn a pair of
 parameters <span class="math notranslate nohighlight">\(\gamma_{k}\)</span> and <span class="math notranslate nohighlight">\(\beta_{k}\)</span> per feature map (k-th channel),
 rather than per activation</p>
-<p>For simplicity, then have the following BN scheme for CNN
-$<span class="math notranslate nohighlight">\(\begin{array}{cc}
+<p>For simplicity, then have the following BN scheme for CNN</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{array}{cc}
 {\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}} &amp; \text { mean on channel } j \\
 {\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j} \leftarrow \frac{1}{m \times m_{\ell} \times n_{\ell}} \sum_{i=1}^{m} \sum_{1 \leq s \leq m_{\ell}, 1 \leq t \leq n_{\ell}}\left(\left[f^{\ell}\left(x_{i}\right)\right]_{j ; s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}\right)^{2}} &amp; \text { variance on channel } j \\
 {\left[\hat{f}^{\ell}(x)\right]_{j ; s t} \leftarrow \frac{\left[f^{\ell}(x)\right]_{j, s t}-\left[\mu_{\mathcal{B}_{t}}^{\ell}\right]_{j}}{\sqrt{\left[\sigma_{\mathcal{B}_{t}}^{\ell}\right]_{j}+\epsilon}}} &amp; \text { normalize }
-\end{array}\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\left[\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right)\right]_{j ; s t}:=\left[\tilde{f}^{\ell}(x)\right]_{j ; s t} \leftarrow\left[\gamma^{\ell}\right]_{j}\left[\hat{f}^{\ell}(x)\right]_{j ; s t}+\left[\beta^{\ell}\right]_{j}\)</span>$
-scale and shift on channel</p>
+\end{array}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \left[\mathrm{BN}_{\mathcal{B}_{t}}\left(\tilde{f}^{\ell}\right)\right]_{j ; s t}:=\left[\tilde{f}^{\ell}(x)\right]_{j ; s t} \leftarrow\left[\gamma^{\ell}\right]_{j}\left[\hat{f}^{\ell}(x)\right]_{j ; s t}+\left[\beta^{\ell}\right]_{j}
+\]</div>
+<p>scale and shift on channel</p>
+</div>
 </div>
 </div>
 
@@ -794,7 +825,7 @@ scale and shift on channel</p>
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Contents</p>
+                <p class="prevnext-title">Data normalization and weights initialization</p>
             </div>
         </a>
     </div>
