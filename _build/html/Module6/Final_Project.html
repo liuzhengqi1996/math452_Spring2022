@@ -599,8 +599,8 @@
 <div class="section" id="problem-1-20">
 <h2>Problem 1 [20%]:<a class="headerlink" href="#problem-1-20" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following linear system</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1edbbe22-db84-4591-b78e-79ff1642fdaf">
-<span class="eqno">(42)<a class="headerlink" href="#equation-1edbbe22-db84-4591-b78e-79ff1642fdaf" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-4d8bf43c-da70-4849-b8fa-505eb4275135">
+<span class="eqno">(42)<a class="headerlink" href="#equation-4d8bf43c-da70-4849-b8fa-505eb4275135" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast u =f,
 \end{equation}\]</div>
 <p>or equivalently <span class="math notranslate nohighlight">\(u=\arg\min \frac{1}{2} (A* v,v)_F-(f,v)_F\)</span>, where <span class="math notranslate nohighlight">\((f,v)_F =\sum\limits_{i,j=1}^{n}f_{i,j}v_{i,j}\)</span> is the Frobenius inner product.
@@ -629,8 +629,8 @@ the solution \)</span> u \in \mathbb{R}^{n\times n} <span class="math notranslat
 <p>Given initial guess <span class="math notranslate nohighlight">\(u^0\)</span>
 $$</p>
 </div>
-<div class="amsmath math notranslate nohighlight" id="equation-902b65f9-9f47-4ba4-93e6-b081d1ba7bf3">
-<span class="eqno">(43)<a class="headerlink" href="#equation-902b65f9-9f47-4ba4-93e6-b081d1ba7bf3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-146d226c-6c36-46b6-8e93-3f8931565d24">
+<span class="eqno">(43)<a class="headerlink" href="#equation-146d226c-6c36-46b6-8e93-3f8931565d24" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~\text{for    }  i,j = 1: n\\
 &amp;~~~~~~~~u_{i,j}^{m} = u_{i,j}^{m-1}-\eta(f_{i,j}-(A\ast u^{m-1})_{i,j})\\
@@ -640,8 +640,8 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}* #### For multigrid method, we have provided the framework code in F02_MultigridandMgNet.ipynb:\\    Given initial guess $u^0$
 \end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-e31643a2-6944-4961-823d-a0ba14a01eeb">
-<span class="eqno">(44)<a class="headerlink" href="#equation-e31643a2-6944-4961-823d-a0ba14a01eeb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9fb0a00d-9686-4235-ba5a-6a5aa9ed384a">
+<span class="eqno">(44)<a class="headerlink" href="#equation-9fb0a00d-9686-4235-ba5a-6a5aa9ed384a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\text{for    }  m =  1,2,...,M\\
 &amp;~~~~u^{m} = MG1(u^{m-1},f, J, \nu)\\
 &amp;\text{endfor}
