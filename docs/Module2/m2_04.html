@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MNIST: training and generalization accuracy" href="m2_05.html" />
-    <link rel="prev" title="Convex functions and convergence of gradient descen" href="m2_03.html" />
+    <link rel="prev" title="Convex functions and convergence of gradient descen" href="m2_03/m2_03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -212,7 +212,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="m2_03.html">
+    <a class="reference internal" href="m2_03/m2_03.html">
      Convex functions and convergence of gradient descen
     </a>
    </li>
@@ -619,7 +619,7 @@ learning.</p>
 </div>
 <p>One version of stochastic gradient descent (SGD) algorithm is:</p>
 <div class="proof algorithm admonition" id="SGD">
-<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (SGD)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (SGD)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>
 <p><strong>For</strong>: t = 0,1,2,<span class="math notranslate nohighlight">\(\dots\)</span></p>
@@ -633,7 +633,7 @@ probability <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span></p
 </div><div class="section" id="convergence-of-sgd">
 <h3>Convergence of SGD<a class="headerlink" href="#convergence-of-sgd" title="Permalink to this headline">¶</a></h3>
 <div class="proof theorem admonition" id="theorem-1">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>Assume that each <span class="math notranslate nohighlight">\(f_i(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex and
 <span class="math notranslate nohighlight">\(\|\nabla f_i(x)\| \le M\)</span> for some <span class="math notranslate nohighlight">\(M &gt;0\)</span>. If we take
@@ -705,7 +705,7 @@ probability <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span></p
 <p>Firstly, we will introduce a natural extended version of the SGD
 discussed above with introducing mini-batch.</p>
 <div class="proof algorithm admonition" id="sgd_mini">
-<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (SGD with mini-batch)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (SGD with mini-batch)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>
 <p><strong>For</strong>: t = 0,1,2,<span class="math notranslate nohighlight">\(\dots\)</span></p>
@@ -725,7 +725,7 @@ and <span class="math notranslate nohighlight">\(\# B_t = m\)</span>.</p>
 </div><p>Now we introduce the SGD algorithm with mini-batch without replacement
 which is the most commonly used version of SGD in machine learning.</p>
 <div class="proof algorithm admonition" id="algorithm-3">
-<p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (Shuffle SGD with mini-batch)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6 </span> (Shuffle SGD with mini-batch)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Input</strong>: learning rate <span class="math notranslate nohighlight">\(\eta_k\)</span>, mini-batch size <span class="math notranslate nohighlight">\(m\)</span>, parameter
 initialization <span class="math notranslate nohighlight">\(x_{0}\)</span> and denote <span class="math notranslate nohighlight">\(M = \lceil \frac{N}{m} \rceil\)</span>.</p>
@@ -804,7 +804,7 @@ have the following corresponding relation</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="m2_03.html" title="previous page">
+        <a class="left-prev" href="m2_03/m2_03.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>

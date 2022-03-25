@@ -27,7 +27,7 @@ parts:
     sections:
     - file: Module2/m2_01.ipynb
     - file: Module2/m2_02.ipynb
-    - file: Module2/m2_03.ipynb
+    - file: Module2/m2_03/m2_03.ipynb
     - file: Module2/m2_04.ipynb
     - file: Module2/m2_05.ipynb
     - file: Module2/m2_hw.ipynb
