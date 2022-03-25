@@ -173,17 +173,17 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Properties (basic properties of convex function)
 # 
-# 1. If $f(x), g(x)$ are both convex, then $\alpha f(x)+\beta g(x)$ is
+# 1- If $f(x), g(x)$ are both convex, then $\alpha f(x)+\beta g(x)$ is
 #     also convex, if $\alpha, \beta \geq 0$
 #     
-# 2. Linear function is both convex and concave. Here, $f(x)$ is concave if and only if $-f(x)$
+# 2- Linear function is both convex and concave. Here, $f(x)$ is concave if and only if $-f(x)$
 #     is convex
 # 
-# 3.  If $f(x)$ is a convex convex function on $\mathbb{R}^{n}$, then
+# 3-  If $f(x)$ is a convex convex function on $\mathbb{R}^{n}$, then
 #     $g(y)=f(A y+b)$ is a convex function on $\mathbb{R}^{m}$. Here
 #     $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^{m}$.
 # 
-# 4.  If $g(x)$ is a convex function on $\mathbb{R}^{n}$, and the function
+# 4-  If $g(x)$ is a convex function on $\mathbb{R}^{n}$, and the function
 #     $f(u)$ is convex function on $\mathbb{R}$ and non-decreasing, then
 #     the composite function $f \circ g(x)=f(g(x))$ is convex.
 # 
@@ -239,7 +239,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ```{admonition} Assumption
 # We make the following assumptions 
 # 
-# 1. $f(x)$ is $\lambda$-strongly convex for some $\lambda>0$. Recall the definition,
+# 1- $f(x)$ is $\lambda$-strongly convex for some $\lambda>0$. Recall the definition,
 # we have
 # 
 # $$
@@ -266,7 +266,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \nabla f(x) \cdot\left(x-x^{*}\right) \geq \frac{\lambda}{2}\left\|x-x^{*}\right\|^{2}
 # $$
 # 
-# 2.  $\nabla f$ is Lipschitz for some $L>0$, i.e.,
+# 2-  $\nabla f$ is Lipschitz for some $L>0$, i.e.,
 # 
 # $$
 #     \|\nabla f(x)-\nabla f(y)\| \leq L\|x-y\|, \forall x, y 

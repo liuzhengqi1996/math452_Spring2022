@@ -607,21 +607,18 @@ using feature mapping and original definition of linearly separable.</p>
 </div>
 </div><div class="admonition-remark admonition">
 <p class="admonition-title">Remark</p>
-<ol class="simple">
-<li><p>This definition is also consistent with the definition of
-linearly separable as we can just take  <span class="math notranslate nohighlight">\(\tilde{d}=d\)</span> and <span class="math notranslate nohighlight">\(\varphi= id\)</span> if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span></p></li>
-</ol>
+<p>1- This definition is also consistent with the definition of
+linearly separable as we can just take  <span class="math notranslate nohighlight">\(\tilde{d}=d\)</span> and <span class="math notranslate nohighlight">\(\varphi= id\)</span> if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span></p>
 <p>are already linearly separable.</p>
-<ol>
-<li><p>The kernel method in SVM is mainly based on this idea for binary
+<p>2-  The kernel method in SVM is mainly based on this idea for binary
 case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span></p>
-<p>where they use kernel functions to approximate
-this <span class="math notranslate nohighlight">\(\varphi(x)\)</span></p>
-</li>
-<li><p>For most commonly used deep learning models, they are all associated
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>where they use kernel functions to approximate
+this $\varphi(x)$
+</pre></div>
+</div>
+<p>3-  For most commonly used deep learning models, they are all associated
 with a softmax mapping which means that we can interpret these deep
-learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p></li>
-</ol>
+learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p>
 </div>
 <p>However, softmax is not so crucial for this definition actually as we
 have the next equivalent result.</p>

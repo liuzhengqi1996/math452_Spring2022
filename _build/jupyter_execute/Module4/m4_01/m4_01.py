@@ -264,23 +264,24 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     f_{i, j}=\int_{\Omega} f(x, y) \phi_{i, j}(x, y) \mathrm{d} x \mathrm{~d} y \approx h^{2} f\left(x_{i}, y_{j}\right)
 # $$
 # 
-# Proposition 1. The mapping A\* has following properties
+# ```{admonition} Proposition
+# The mapping A\* has following properties
 # 
-# 1.  A is symmetric, namely
+# 1-  A is symmetric, namely
 # 
 # $$
 #     (A * u, v)_{l^{2}}=(u, A * v)_{l^{2}} .
 # $$
 # 
-# 3.  $(A * v, v)_{F}>0$, if $v \neq 0$.
+# 2-  $(A * v, v)_{F}>0$, if $v \neq 0$.
 # 
-# 4.  $A * u=f$ if and only if
+# 3-  $A * u=f$ if and only if
 # 
 # $$
 #     u \in \underset{v \in \mathcal{V}_{h}}{\arg \min } J(v)=\frac{1}{2}(A * v, v)-(f, v)
 # $$
 # 
-# 5.  The eigenvalues $\lambda_{k l}$ and eigenvectors $u^{k l}$ of A are
+# 4-  The eigenvalues $\lambda_{k l}$ and eigenvectors $u^{k l}$ of A are
 #     given by
 # 
 # $$

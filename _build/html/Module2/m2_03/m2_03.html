@@ -742,18 +742,16 @@ model</p>
 related to <span class="math notranslate nohighlight">\(\left.\lambda\right)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>We also have these following interesting properties of convex function.</p>
 <p>Properties (basic properties of convex function)</p>
-<ol class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(f(x), g(x)\)</span> are both convex, then <span class="math notranslate nohighlight">\(\alpha f(x)+\beta g(x)\)</span> is
-also convex, if <span class="math notranslate nohighlight">\(\alpha, \beta \geq 0\)</span></p></li>
-<li><p>Linear function is both convex and concave. Here, <span class="math notranslate nohighlight">\(f(x)\)</span> is concave if and only if <span class="math notranslate nohighlight">\(-f(x)\)</span>
-is convex</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is a convex convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, then
+<p>1- If <span class="math notranslate nohighlight">\(f(x), g(x)\)</span> are both convex, then <span class="math notranslate nohighlight">\(\alpha f(x)+\beta g(x)\)</span> is
+also convex, if <span class="math notranslate nohighlight">\(\alpha, \beta \geq 0\)</span></p>
+<p>2- Linear function is both convex and concave. Here, <span class="math notranslate nohighlight">\(f(x)\)</span> is concave if and only if <span class="math notranslate nohighlight">\(-f(x)\)</span>
+is convex</p>
+<p>3-  If <span class="math notranslate nohighlight">\(f(x)\)</span> is a convex convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, then
 <span class="math notranslate nohighlight">\(g(y)=f(A y+b)\)</span> is a convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>. Here
-<span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(b \in \mathbb{R}^{m}\)</span>.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(g(x)\)</span> is a convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, and the function
+<span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(b \in \mathbb{R}^{m}\)</span>.</p>
+<p>4-  If <span class="math notranslate nohighlight">\(g(x)\)</span> is a convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, and the function
 <span class="math notranslate nohighlight">\(f(u)\)</span> is convex function on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and non-decreasing, then
-the composite function <span class="math notranslate nohighlight">\(f \circ g(x)=f(g(x))\)</span> is convex.</p></li>
-</ol>
+the composite function <span class="math notranslate nohighlight">\(f \circ g(x)=f(g(x))\)</span> is convex.</p>
 </div>
 <div class="section" id="on-the-convergence-of-gd">
 <h3>On the Convergence of GD<a class="headerlink" href="#on-the-convergence-of-gd" title="Permalink to this headline">¶</a></h3>
@@ -800,10 +798,8 @@ descent method:</p>
 </div><div class="admonition-assumption admonition">
 <p class="admonition-title">Assumption</p>
 <p>We make the following assumptions</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex for some <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Recall the definition,
-we have</p></li>
-</ol>
+<p>1- <span class="math notranslate nohighlight">\(f(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex for some <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Recall the definition,
+we have</p>
 <div class="math notranslate nohighlight">
 \[
     f(x) \geq f(y)+\nabla f(y) \cdot(x-y)+\frac{\lambda}{2}\|x-y\|^{2}
@@ -828,9 +824,7 @@ we have</p></li>
 \[
     \nabla f(x) \cdot\left(x-x^{*}\right) \geq \frac{\lambda}{2}\left\|x-x^{*}\right\|^{2}
 \]</div>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(\nabla f\)</span> is Lipschitz for some <span class="math notranslate nohighlight">\(L&gt;0\)</span>, i.e.,</p></li>
-</ol>
+<p>2-  <span class="math notranslate nohighlight">\(\nabla f\)</span> is Lipschitz for some <span class="math notranslate nohighlight">\(L&gt;0\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
     \|\nabla f(x)-\nabla f(y)\| \leq L\|x-y\|, \forall x, y 

@@ -48,18 +48,18 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ```
 # 
 # ```{admonition} Remark
-# 1. This definition is also consistent with the definition of
+# 1- This definition is also consistent with the definition of
 # linearly separable as we can just take  $\tilde{d}=d$ and $\varphi= id$ if $A_{1}, A_{2}, \cdots, A_{k}$
 # 
 # are already linearly separable.
 # 
-# 2.  The kernel method in SVM is mainly based on this idea for binary
+# 2-  The kernel method in SVM is mainly based on this idea for binary
 #     case $(\mathrm{k}=2)$ 
 #     
 #     where they use kernel functions to approximate
 #     this $\varphi(x)$
 # 
-# 3.  For most commonly used deep learning models, they are all associated
+# 3-  For most commonly used deep learning models, they are all associated
 #     with a softmax mapping which means that we can interpret these deep
 #     learning models as the approximation for feature mapping $\varphi$
 # ```

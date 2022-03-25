@@ -810,26 +810,22 @@ is</p>
 \[
     f_{i, j}=\int_{\Omega} f(x, y) \phi_{i, j}(x, y) \mathrm{d} x \mathrm{~d} y \approx h^{2} f\left(x_{i}, y_{j}\right)
 \]</div>
-<p>Proposition 1. The mapping A* has following properties</p>
-<ol class="simple">
-<li><p>A is symmetric, namely</p></li>
-</ol>
+<div class="admonition-proposition admonition">
+<p class="admonition-title">Proposition</p>
+<p>The mapping A* has following properties</p>
+<p>1-  A is symmetric, namely</p>
 <div class="math notranslate nohighlight">
 \[
     (A * u, v)_{l^{2}}=(u, A * v)_{l^{2}} .
 \]</div>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\((A * v, v)_{F}&gt;0\)</span>, if <span class="math notranslate nohighlight">\(v \neq 0\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A * u=f\)</span> if and only if</p></li>
-</ol>
+<p>2-  <span class="math notranslate nohighlight">\((A * v, v)_{F}&gt;0\)</span>, if <span class="math notranslate nohighlight">\(v \neq 0\)</span>.</p>
+<p>3-  <span class="math notranslate nohighlight">\(A * u=f\)</span> if and only if</p>
 <div class="math notranslate nohighlight">
 \[
     u \in \underset{v \in \mathcal{V}_{h}}{\arg \min } J(v)=\frac{1}{2}(A * v, v)-(f, v)
 \]</div>
-<ol class="simple">
-<li><p>The eigenvalues <span class="math notranslate nohighlight">\(\lambda_{k l}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(u^{k l}\)</span> of A are
-given by</p></li>
-</ol>
+<p>4-  The eigenvalues <span class="math notranslate nohighlight">\(\lambda_{k l}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(u^{k l}\)</span> of A are
+given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{gathered}
@@ -842,6 +838,7 @@ u_{i j}^{k l}=\sin \frac{k i \pi}{n+1} \sin \frac{l j \pi}{n+1}, 1 \leq i \leq n
 \[
     \lambda_{n, n}=8 \cos ^{2} \frac{\pi}{2(n+1)} \approx 8\left(1-\left(\frac{\pi}{2(n+1)}\right)^{2}\right) \approx 8-\frac{2 \pi^{2}}{(n+1)^{2}}
 \]</div>
+</div>
 </div>
 <div class="section" id="bilinear-element">
 <h3>Bilinear element<a class="headerlink" href="#bilinear-element" title="Permalink to this headline">¶</a></h3>
