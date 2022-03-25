@@ -284,9 +284,6 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Kaiming’s initialization
 # 
-# In \[2\], Kaiming He and others extended this analysis to get an exact
-# result when the activation function is the ReLU.
-# 
 # We first have the following lemma for symmetric distribution.
 # 
 # Lemma 2. If $X_{i} \in \mathbb{R}$ for $i=1:$ n are i.i.d with symmetric

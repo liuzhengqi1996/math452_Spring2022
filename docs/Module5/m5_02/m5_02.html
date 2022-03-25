@@ -602,9 +602,12 @@
 <div class="section" id="recall-the-original-dnn-model">
 <h2>Recall the original DNN model<a class="headerlink" href="#recall-the-original-dnn-model" title="Permalink to this headline">¶</a></h2>
 <p>Consider the classical (fully connected) artificial deep neural network
-(DNN) <span class="math notranslate nohighlight">\(f^{L}\)</span>,
-$<span class="math notranslate nohighlight">\(\begin{cases}f^{1} &amp; =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} &amp; =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}\)</span><span class="math notranslate nohighlight">\(
-where \)</span>x \in \mathbb{R}^{n}<span class="math notranslate nohighlight">\( is the input vector, \)</span>\sigma$ is a
+(DNN) <span class="math notranslate nohighlight">\(f^{L}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{cases}f^{1} &amp; =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} &amp; =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{n}\)</span> is the input vector, <span class="math notranslate nohighlight">\(\sigma\)</span> is a
 non-linear function (activation).</p>
 </div>
 <div class="section" id="real-batch-normalization-and-new-model">

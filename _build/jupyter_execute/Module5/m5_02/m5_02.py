@@ -17,7 +17,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Consider the classical (fully connected) artificial deep neural network
 # (DNN) $f^{L}$,
-# $$\begin{cases}f^{1} & =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} & =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}$$
+# 
+# $$
+#     \begin{cases}f^{1} & =\theta^{1}(x):=W^{1} x+b^{1}, \\ f^{\ell} & =\theta^{\ell} \circ \sigma\left(f^{\ell-1}\right):=W^{\ell} \sigma\left(f^{\ell-1}\right)+b^{\ell}, \ell=2, \ldots, L .\end{cases}
+# $$
+# 
 # where $x \in \mathbb{R}^{n}$ is the input vector, $\sigma$ is a
 # non-linear function (activation).
 # 
