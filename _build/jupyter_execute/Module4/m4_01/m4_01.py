@@ -41,7 +41,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     u=\underset{v \in V}{\arg \min } J(v)
-# $$
+# $$ (eq1_2)
 # 
 # which
 # is equivalent to: Find $u \in V$ such that 
@@ -150,9 +150,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     \frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0
-# $$
+# $$ (eq1_9)
 # 
-# Using the convolution notation, (1.9) can be written as $$A * \mu=b$$
+# Using the convolution notation, {eq}`eq1_9` can be written as $$A * \mu=b$$
 # where $A=\frac{1}{h}[-1,2,-1]$
 # 
 # 
@@ -165,7 +165,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     -\Delta u=f, \text { in } \Omega, \quad u=0 \text { on } \partial \Omega, \quad Q=(0,1)^{2} 
-# $$
+# $$ (eq1_11)
 # 
 # For the $x$ direction and the $y$ direction, we consider the partition:
 # 
@@ -215,7 +215,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Linear finite element
 # 
-# Continuous linear finite element discretization of (1.11) on the left
+# Continuous linear finite element discretization of {eq}`eq1_11` on the left
 # triangulation in Fig 1.2. The discrete space for linear finite element
 # is
 # 
@@ -228,14 +228,28 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # For linear element case,
 # 
 # ![image](images/img2.png)
-# ![image](images/img3.png)
+# 
+# 
+# where 
+# 
+# $$
+#     A = \begin{pmatrix}
+# 0 & -1 & 0\\
+# -1 & 4 & -1\\
+# 0 & -1 & 0
+# \end{pmatrix}
+# $$
+# 
+# and $A * u $ is given by {eq}`eq1_16`
 # 
 # It is easy to verify that the formulation for the linear element method
 # is
 # 
-# (1.16)
-# $4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0$
-# if $i$ or $j \in\{0, n+1\}$,
+# 
+# $$
+#     4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0$
+# if $i$ or $j \in\{0, n+1\}
+# $$ (eq1_16)
 # 
 # where
 # 
@@ -277,7 +291,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Bilinear element
 # 
-# Continuous bilinear finite element discretization of (1.11) on the right
+# Continuous bilinear finite element discretization of {eq}`eq1_11` on the right
 # mesh in Fig. 1.2. The discrete space for linear finite element is
 # 
 # $$

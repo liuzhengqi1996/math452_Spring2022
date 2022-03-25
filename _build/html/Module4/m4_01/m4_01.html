@@ -618,8 +618,8 @@ function <span class="math notranslate nohighlight">\(v\)</span> in <span class=
     J(v)=\frac{1}{2} \int_{0}^{1}\left|v^{\prime}\right|^{2} d x-\int_{0}^{1} f v d x
 \]</div>
 <p>Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq1-2">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq1-2" title="Permalink to this equation">¶</a></span>\[
     u=\underset{v \in V}{\arg \min } J(v)
 \]</div>
 <p>which
@@ -712,11 +712,11 @@ b_{n}
 \end{array}\right) 
 \end{split}\]</div>
 <p>Which can be rewritten as</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq1-9">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq1-9" title="Permalink to this equation">¶</a></span>\[
     \frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0
 \]</div>
-<p>Using the convolution notation, (1.9) can be written as $<span class="math notranslate nohighlight">\(A * \mu=b\)</span><span class="math notranslate nohighlight">\(
+<p>Using the convolution notation, <a class="reference internal" href="#equation-eq1-9">(39)</a> can be written as $<span class="math notranslate nohighlight">\(A * \mu=b\)</span><span class="math notranslate nohighlight">\(
 where \)</span>A=\frac{1}{h}[-1,2,-1]$</p>
 </div>
 <div class="section" id="introduction">
@@ -724,8 +724,8 @@ where \)</span>A=\frac{1}{h}[-1,2,-1]$</p>
 <p>Let us first briefly describe finite difference methods and finite
 element methods for the numerical solution of the following boundary
 value problem</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq1-11">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq1-11" title="Permalink to this equation">¶</a></span>\[
     -\Delta u=f, \text { in } \Omega, \quad u=0 \text { on } \partial \Omega, \quad Q=(0,1)^{2} 
 \]</div>
 <p>For the <span class="math notranslate nohighlight">\(x\)</span> direction and the <span class="math notranslate nohighlight">\(y\)</span> direction, we consider the partition:</p>
@@ -770,7 +770,7 @@ that</p>
 \]</div>
 <div class="section" id="linear-finite-element">
 <h3>Linear finite element<a class="headerlink" href="#linear-finite-element" title="Permalink to this headline">¶</a></h3>
-<p>Continuous linear finite element discretization of (1.11) on the left
+<p>Continuous linear finite element discretization of <a class="reference internal" href="#equation-eq1-11">(40)</a> on the left
 triangulation in Fig 1.2. The discrete space for linear finite element
 is</p>
 <div class="math notranslate nohighlight">
@@ -780,13 +780,24 @@ is</p>
 <p>Denote
 <span class="math notranslate nohighlight">\(E_{i, j}=\left[x_{i}, x_{i+1}\right] \times\left[y_{i}, y_{i+1}\right]=K_{i, j}^{U} \cup K_{i, j}^{D} .\)</span>
 For linear element case,</p>
-<p><img alt="image" src="../../_images/img21.png" />
-<img alt="image" src="../../_images/img31.png" /></p>
+<p><img alt="image" src="../../_images/img21.png" /></p>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    A = \begin{pmatrix}
+0 &amp; -1 &amp; 0\\
+-1 &amp; 4 &amp; -1\\
+0 &amp; -1 &amp; 0
+\end{pmatrix}
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(A * u \)</span> is given by <a class="reference internal" href="#equation-eq1-16">(41)</a></p>
 <p>It is easy to verify that the formulation for the linear element method
 is</p>
-<p>(1.16)
-<span class="math notranslate nohighlight">\(4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0\)</span>
-if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\}\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-eq1-16">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq1-16" title="Permalink to this equation">¶</a></span>\[
+    4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0$
+if $i$ or $j \in\{0, n+1\}
+\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -827,7 +838,7 @@ u_{i j}^{k l}=\sin \frac{k i \pi}{n+1} \sin \frac{l j \pi}{n+1}, 1 \leq i \leq n
 </div>
 <div class="section" id="bilinear-element">
 <h3>Bilinear element<a class="headerlink" href="#bilinear-element" title="Permalink to this headline">¶</a></h3>
-<p>Continuous bilinear finite element discretization of (1.11) on the right
+<p>Continuous bilinear finite element discretization of <a class="reference internal" href="#equation-eq1-11">(40)</a> on the right
 mesh in Fig. 1.2. The discrete space for linear finite element is</p>
 <div class="math notranslate nohighlight">
 \[

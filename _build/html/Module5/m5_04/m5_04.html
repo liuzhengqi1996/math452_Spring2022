@@ -612,7 +612,7 @@
 \]</div>
 <p>Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq8-1">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eq8-1" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq8-1" title="Permalink to this equation">¶</a></span>\[
     u=\underset{v \in V}{\arg \min } J(v)
 \]</div>
 <p>Proof. For any <span class="math notranslate nohighlight">\(v \in V, t \in R\)</span>, let
@@ -630,7 +630,7 @@ the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefo
 \]</div>
 <p>It can be proved that the above identity holds if and only if
 <span class="math notranslate nohighlight">\(-u^{\prime \prime}=f\)</span> for all <span class="math notranslate nohighlight">\(x \in(0,1)\)</span>. Namely <span class="math notranslate nohighlight">\(u\)</span> satisfies
-<a class="reference internal" href="#equation-eq8-10">(48)</a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<a class="reference internal" href="#equation-eq8-10">(52)</a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
 basis of the <span class="math notranslate nohighlight">\(V_{h}\)</span>. Let
@@ -659,7 +659,7 @@ basis of the <span class="math notranslate nohighlight">\(V_{h}\)</span>. Let
 <p>At the same time, let
 <span class="math notranslate nohighlight">\(u_{h}=\sum_{i=1}^{n} \mu_{i} \varphi_{i}\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-eq8-4">
-<span class="eqno">(45)<a class="headerlink" href="#equation-eq8-4" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq8-4" title="Permalink to this equation">¶</a></span>\[
     u_{h}=\underset{v_{h} \in V_{h}}{\arg \min } J\left(v_{h}\right) \Leftrightarrow \mu=\underset{v \in R^{n}}{\arg \min } I(v)
 \]</div>
 <p>And <span class="math notranslate nohighlight">\(u_{h}\)</span> solves the problem: Find <span class="math notranslate nohighlight">\(u_{h} \in V_{h}\)</span></p>
@@ -677,7 +677,7 @@ basis of the <span class="math notranslate nohighlight">\(V_{h}\)</span>. Let
 <span class="math notranslate nohighlight">\(a\left(\varphi_{j}, \varphi_{i}\right)\)</span> and
 <span class="math notranslate nohighlight">\(b_{i}=\int_{0}^{1} f \varphi_{i} d x .\)</span> Namely</p>
 <div class="math notranslate nohighlight" id="equation-eq8-6">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq8-6" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq8-6" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \frac{1}{h}\left(\begin{array}{ccccc}
 2 &amp; -1 &amp; &amp; &amp; \\
 -1 &amp; 2 &amp; -1 &amp; &amp; \\
@@ -698,10 +698,10 @@ b_{n}
 \end{split}\]</div>
 <p>Which can be rewritten as</p>
 <div class="math notranslate nohighlight" id="equation-eq8-7">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq8-7" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq8-7" title="Permalink to this equation">¶</a></span>\[
     \frac{-\mu_{i-1}+2 \mu_{i}-\mu_{i+1}}{h}=b_{i}, \quad 1 \leq i \leq n, \quad \mu_{0}=\mu_{n+1}=0 
 \]</div>
-<p>Using the convolution notation, <a class="reference internal" href="#equation-eq8-7">(47)</a> can be written as</p>
+<p>Using the convolution notation, <a class="reference internal" href="#equation-eq8-7">(51)</a> can be written as</p>
 <div class="math notranslate nohighlight">
 \[
     A * \mu=b
@@ -772,7 +772,7 @@ nonsmooth.</p>
 <div class="section" id="gradient-descent-method">
 <h3>Gradient descent method<a class="headerlink" href="#gradient-descent-method" title="Permalink to this headline">¶</a></h3>
 <p>Noting that <span class="math notranslate nohighlight">\(\nabla I(v)=A * v-b\)</span> and applying the gradient descent
-method to solve problem <a class="reference internal" href="#equation-eq8-4">(45)</a>, we obtain</p>
+method to solve problem <a class="reference internal" href="#equation-eq8-4">(49)</a>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[
     \mu^{(l)}=\mu^{(l-1)}-\eta\left(A * \mu^{(l-1)}-b\right), \quad l=1, \cdots, v 
@@ -780,7 +780,7 @@ method to solve problem <a class="reference internal" href="#equation-eq8-4">(45
 <p>After <span class="math notranslate nohighlight">\(v\)</span> iterations of gradient descent method, we denote the solution
 as <span class="math notranslate nohighlight">\(u_{h}^{\nu}\)</span>.</p>
 <p>Consider the finite element discretization of Poisson equation in 1D:
-One very simple iterative method for <a class="reference internal" href="#equation-eq8-6">(46)</a> is the following gradient
+One very simple iterative method for <a class="reference internal" href="#equation-eq8-6">(50)</a> is the following gradient
 descent method</p>
 <div class="math notranslate nohighlight">
 \[
@@ -795,7 +795,7 @@ descent method</p>
 <p>It is not so difficult to properly choose <span class="math notranslate nohighlight">\(\eta\)</span> so that the above
 iterative scheme converges, namely for any initial guess <span class="math notranslate nohighlight">\(\mu^{0}\)</span>, the
 sequence <span class="math notranslate nohighlight">\(\left(\mu^{\prime} l-\right.\)</span> 1)) generated by the above
-iteration converges to the exact solution <span class="math notranslate nohighlight">\(\mu\)</span> of <a class="reference internal" href="#equation-eq8-6">(46)</a>:</p>
+iteration converges to the exact solution <span class="math notranslate nohighlight">\(\mu\)</span> of <a class="reference internal" href="#equation-eq8-6">(50)</a>:</p>
 <p>Note that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -875,7 +875,7 @@ important property of the simple gradient descent method that we can
 take advantage to get a much faster algorithm.</p>
 <p>Example . Let <span class="math notranslate nohighlight">\(f(x)=\pi^{2} \sin \pi x\)</span>. Consider</p>
 <div class="math notranslate nohighlight" id="equation-eq8-10">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eq8-10" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq8-10" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
@@ -885,10 +885,10 @@ u(0)=u(1)=0 .
 <span class="math notranslate nohighlight">\(x_{i}=\frac{i}{n+1}, i=0,1, \cdots, n+1\)</span>, then by finite element
 discretization, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq8-11">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
     A * \mu=b, A=\frac{1}{h}[-1,2,-1]
 \]</div>
-<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(49)</a> with random initial guess
+<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(53)</a> with random initial guess
 <span class="math notranslate nohighlight">\(\mu^{0}\)</span>. Plot <span class="math notranslate nohighlight">\(\mu^{\ell}-\mu^{0}\)</span> and
 <span class="math notranslate nohighlight">\(\left\|\mu^{\ell}-\mu^{0}\right\|\)</span> for <span class="math notranslate nohighlight">\(\ell=1,2,3\)</span>.</p>
 <p>The gradient descent method can be written in terms of
@@ -898,7 +898,7 @@ satisfying</p>
 \[
     \mu^{(1)}=\left(S_{0}^{\ell} b\right)=\frac{h_{\ell}}{4} b
 \]</div>
-<p>for equation <a class="reference internal" href="#equation-eq8-7">(47)</a> with initial guess zero. If we apply this method twice,
+<p>for equation <a class="reference internal" href="#equation-eq8-7">(51)</a> with initial guess zero. If we apply this method twice,
 then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -950,7 +950,7 @@ method has a smoothing property. Based on our understanding of the
 relation between the smoothness and the size of Fourier coefficients, we
 can imagine that this smoothing property can be analyzed using the
 discrete Fourier expansion.</p>
-<p>Let <span class="math notranslate nohighlight">\(\mu\)</span> be the exact solution of <a class="reference internal" href="#equation-eq8-6">(46)</a> and <span class="math notranslate nohighlight">\(\mu^{(l)}\)</span> the result of
+<p>Let <span class="math notranslate nohighlight">\(\mu\)</span> be the exact solution of <a class="reference internal" href="#equation-eq8-6">(50)</a> and <span class="math notranslate nohighlight">\(\mu^{(l)}\)</span> the result of
 <span class="math notranslate nohighlight">\(l-t h\)</span> iteration from the gradient descent method <code class="xref eq docutils literal notranslate"><span class="pre">eq8_9</span></code>. Then</p>
 <div class="math notranslate nohighlight">
 \[
