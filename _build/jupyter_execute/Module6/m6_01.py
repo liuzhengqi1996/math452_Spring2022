@@ -87,7 +87,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \qquad f^{1}=\theta * f, \quad \mu^{1}=\mu^{0} 
 # $$
 # 
-# Smoothing and restriction from fine to coarse level (nested)\
+# Smoothing and restriction from fine to coarse level (nested)
 # 
 # **For** $\ell=1: J$ do 
 # 
@@ -104,7 +104,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # Form restricted residual and set initial guess:
 # 
 # $$
-#     \quad \mu^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *_{2}\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}$
+#     \quad \mu^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *_{2}\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}
 # $$
 # 
 # **EndFor**
