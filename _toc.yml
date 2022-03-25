@@ -55,6 +55,7 @@ parts:
     - file: Module4/m4_05.ipynb
     - file: Module4/m4_hw.ipynb
     - file: Module4/Programming_Assignment_4.ipynb
+    - file: Module4/quiz4.ipynb
   - file: Module5/module5_
     sections:
     - file: Module5/m5_01/m5_01.ipynb
@@ -63,6 +64,7 @@ parts:
     - file: Module5/m5_04/m5_04.ipynb
     - file: Module5/m5_05.ipynb
     - file: Module5/Programming_Assignment_5.ipynb
+    - file: Module5/quiz5.ipynb
   - file: Module6/module6_
     sections:
     - file: Module6/m6_01.ipynb
