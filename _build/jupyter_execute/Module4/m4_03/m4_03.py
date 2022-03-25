@@ -45,6 +45,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # The LeNet-5, AlexNet and VGG  can be written as:
 # 
 # ```{prf:algorithm} $h$ = Classic CNN$(f;J,v_1,\cdots,v_J)$
+# :label: al43_1
 # 
 # **Initialization** $f^{1,0} = f_{in}(f)$.
 # 
@@ -103,6 +104,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # architectures in image classification problems.
 # 
 # ```{prf:algorithm} $h = ResNet(f;J,v_1,\cdots,v_J)$
+# :label: al43_2
 # **Initialization** $r^{1,0} = f_{in}(f)$
 # 
 # **For** $l = 1 : J$ do

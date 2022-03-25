@@ -24,7 +24,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ![image](../figures/diag_GD.png)
 # 
-# #### A general approach: line search method
+# ### A general approach: line search method
 # 
 # Given any initial guess $x_1$, the line search method uses the following
 # algorithm
@@ -127,10 +127,10 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # resulting algorithm is the so-called gradient descent method.
 # 
 # ```{prf:algorithm} Algrihthm
-# :label: my-algorithm
+# :label: my_algorithm1
 # Given the initial guess $x_0$, learning rate $\eta_t>0$
 # 
-# **For** t=1,2,$\cdots$,\
+# **For** t=1,2,$\cdots$,
 # 
 # $$
 #     x_{t+1} =  x_{t} - \eta_{t} \nabla f({x}_{t}),
@@ -262,7 +262,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # the gradient descent method:
 # 
 # ```{prf:algorithm} Algorithm
-# :label: my-algorithm
+# :label: my_algorithm2
 # 
 # **For**: $t = 1, 2, \cdots$ 
 #  
@@ -278,7 +278,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # method under the Assumption.
 # 
 # ```{admonition} Theorem
-# For Gradient Descent Algorithm {prf:ref}`my-algorithm` , if
+# For Gradient Descent Algorithm {prf:ref}`my_algorithm2` , if
 # $f(x)$ satisfies Assumption, then
 # 
 # $$

@@ -181,7 +181,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \end{cases}.$
 # 
 # ## Continuous linear finite element spaces
-# ---------------------------------------
+# 
 # 
 # A conforming linear finite element function in a domain $\Omega\subset
 # \mathbb R^d$ is a continuous function that is piecewise linear function
@@ -210,7 +210,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\mathcal T_h$ and for $V_{h,0}$, $n_h$ is the number of interior
 # vertices.
 # 
-# #### Nodal basis functions and dual basis
+# ### Nodal basis functions and dual basis
 # 
 # For linear finite element spaces, we have the so called *a standard
 # nodal basis functions* $\{\varphi
@@ -293,7 +293,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 
-# #### Nodal value interpolant
+# ### Nodal value interpolant
 # 
 # For any continuous function $u$, we define its linear finite element
 # interpolation, $(I_h u)(x)\in V_{h,0}$, as follows: 

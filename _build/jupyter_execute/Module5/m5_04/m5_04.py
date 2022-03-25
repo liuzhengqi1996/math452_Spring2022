@@ -36,7 +36,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     u=\underset{v \in V}{\arg \min } J(v)
 # $$ (eq8_1)
 # 
-# ```{admonition}
+# ```{prf:theorem} 
+# :label: thm54_1
 # Problem {eq}`eq8_1` is equivalent to: Find $u \in V$ such that
 # 
 # $$
@@ -318,7 +319,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     \mu^{(l)}=\mu^{(l-1)}+\frac{h}{4}\left(b-A * \mu^{(l-1)}\right)
-# $$
+# $$ (eq8_9)
 # 
 # In the rest of this section, unless otherwise noted, we shall choose $\eta$
 # as above for simplicity.

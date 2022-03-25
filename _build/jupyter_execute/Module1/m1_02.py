@@ -44,21 +44,21 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ```{figure} ../figures/LinearS1.png
 # :height: 150px
-# :name: twoclassification
+# :name: linears1
 # One linearly separable set
 # ```
 # 
 # ```{figure} ../figures/NLinearS1.png 
 # :height: 150px
-# :name: twoclassification
-# Two non-linearly separable sets
+# :name: nlinearS1
+# Non-linearly separable set
 # ```
 # 
 # 
 # 
 # ```{admonition} Lemma
 # :class: tip
-# :name: lem2class
+# :name: lem2class_2
 # The two sets $A_1$,
 # $A_2\subset \mathbb{R}^d$ are linearly separable if there exists
 # 
@@ -165,7 +165,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ```{figure} ../figures/3-class.png
 # :height: 150px
-# :name: twoclassification 
+# :name: 3_class
 # Linearly separable sets in 2-d space (k = 3)
 # ```
 # We next introduce two more definitions of linearly separable sets that
@@ -180,7 +180,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ```{figure} ../figures/MulLClassfication.PNG
 # :height: 150px
-# :name: twoclassification 
+# :name: multiclassification 
 # All-vs-One linearly separable sets (k =
 # 3)
 # ```

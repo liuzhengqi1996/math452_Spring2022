@@ -166,7 +166,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # Thus is to say, we have the next theorem.
 # 
 # ```{prf:theorem}
-# :label: thm1
+# :label: thm34_1
 # For $d=1$, and $\Omega \subset \mathbb{R}^{d}$ is a bounded
 # interval, then DNN $_{1}$ can be used to cover all linear finite element
 # function in on $\Omega$.
@@ -174,7 +174,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Linear finite element cannot be recovered by DNN $_{1}$ for $d \geq 2$
 # 
-# In view of {prf:ref}`thm1` and the fact that
+# In view of {prf:ref}`thm34_1` and the fact that
 # $\mathrm{DNN}_{\mathrm{J}} \subseteq \mathrm{DNN}_{\mathrm{J}+1}$, it is
 # natural to ask that how many layers are needed at least to recover all
 # linear finite element functions in $\mathbb{R}^{d}$ for $d \geq 2$. In
@@ -190,7 +190,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # In particular, we will show the following theorem.
 # 
 # ```{prf:theorem}
-# :label: thm2
+# :label: thm34_2
 # If $\Omega \subset \mathbb{R}^{d}$ is either a bounded domain
 # or $\Omega=\mathbb{R}^{d}, \mathrm{DNN}_{1}$ can not be used to recover
 # all linear finite element functions on $\Omega$.

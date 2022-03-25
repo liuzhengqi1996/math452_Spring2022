@@ -712,8 +712,9 @@ p_i (x; \mathbf \theta) = \max_{1\le j \le k} p_j(x; \mathbf \theta), \quad\fora
 <p>to find an element in
 <span class="math notranslate nohighlight">\(\mathbf{\Theta}\)</span>. more precisely, let us introduce the next lemmas
 (properties) of <span class="math notranslate nohighlight">\(P(\mathbf \theta)\)</span>.</p>
-<div class="admonition-lemma admonition" id="lemmh12">
-<p class="admonition-title">Lemma</p>
+<div class="proof lemma admonition" id="lemmH12">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<div class="lemma-content section" id="proof-content">
 <p>Assume that the sets
 <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly separable. Then we have</p>
 <div class="math notranslate nohighlight">
@@ -721,9 +722,8 @@ p_i (x; \mathbf \theta) = \max_{1\le j \le k} p_j(x; \mathbf \theta), \quad\fora
     \left\{\mathbf \theta:~P(\mathbf\theta)&gt;\frac{1}{2}\right\}\subset \mathbf{\Theta}.
 \]</div>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p><em>Proof.</em> It suffices to show that if <span class="math notranslate nohighlight">\(\mathbf\theta \not\in \mathbf\Theta\)</span>, we
+</div><div class="proof admonition" id="proof">
+<p>Proof. It suffices to show that if <span class="math notranslate nohighlight">\(\mathbf\theta \not\in \mathbf\Theta\)</span>, we
 must have <span class="math notranslate nohighlight">\(P(\mathbf\theta)\leq\frac{1}{2}\)</span>. For any <span class="math notranslate nohighlight">\(\mathbf\theta \not\in
     \mathbf\Theta\)</span>, there must exist an <span class="math notranslate nohighlight">\(i_0\)</span> ,an <span class="math notranslate nohighlight">\(x_0\in A_{i_0}\)</span> and a
 <span class="math notranslate nohighlight">\(j_0\neq i_0\)</span> such that</p>
@@ -743,8 +743,9 @@ So</p>
     P(\mathbf\theta) &lt;  p_{i_0}(x_0; \mathbf\theta) \leq \frac{1}{2}.
 \]</div>
 </div>
-<div class="admonition-lemma admonition">
-<p class="admonition-title">Lemma</p>
+<div class="proof lemma admonition" id="lemma13_2">
+<p class="admonition-title"><span class="caption-number">Lemma 2 </span></p>
+<div class="lemma-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly separable and
 <span class="math notranslate nohighlight">\(\mathbf\theta \in \mathbf\Theta\)</span>, we have</p>
 <div class="math notranslate nohighlight">
@@ -752,9 +753,8 @@ So</p>
     \lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1\Leftrightarrow x\in A_i.
 \]</div>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p><em>Proof.</em> We first note that if <span class="math notranslate nohighlight">\(x\in A_i\)</span></p>
+</div><div class="proof admonition" id="proof">
+<p>Proof. We first note that if <span class="math notranslate nohighlight">\(x\in A_i\)</span></p>
 <div class="math notranslate nohighlight">
 \[
     p_i(x,\mathbf \theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \to 1, \quad \text{as} \quad \alpha \to \infty.\]</div>
@@ -769,8 +769,9 @@ equivalent to the proposition that if
 <span class="math notranslate nohighlight">\(\lim_{\alpha\rightarrow \infty}p_i(x; \alpha\mathbf \theta)= 1\)</span>, then
 <span class="math notranslate nohighlight">\(x\in A_i\)</span>.</p>
 </div>
-<div class="admonition-lemma admonition" id="thm1">
-<p class="admonition-title">Lemma</p>
+<div class="proof lemma admonition" id="thm1">
+<p class="admonition-title"><span class="caption-number">Lemma 3 </span></p>
+<div class="lemma-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(A_1,A_2,\cdots,A_k\)</span> are linearly
 separable,</p>
 <div class="math notranslate nohighlight">
@@ -778,9 +779,8 @@ separable,</p>
     \mathbf\Theta = \left\{\mathbf\theta: \lim_{\alpha\rightarrow +\infty}P(\alpha\mathbf\theta) = 1\right\}.
 \]</div>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p><em>Proof.</em> We first note that if <span class="math notranslate nohighlight">\(\mathbf\theta \in\mathbf\Theta\)</span>, we have
+</div><div class="proof admonition" id="proof">
+<p>Proof. We first note that if <span class="math notranslate nohighlight">\(\mathbf\theta \in\mathbf\Theta\)</span>, we have
 <span class="math notranslate nohighlight">\(\displaystyle\lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1\)</span>
 for all <span class="math notranslate nohighlight">\(x\in A_i\)</span>. So</p>
 <div class="math notranslate nohighlight">
@@ -790,11 +790,11 @@ for all <span class="math notranslate nohighlight">\(x\in A_i\)</span>. So</p>
 <p>On the other hand, if
 <span class="math notranslate nohighlight">\(\lim\limits_{\alpha\rightarrow +\infty} P(\alpha\mathbf\theta) = 1\)</span>, there
 must exist one <span class="math notranslate nohighlight">\(\alpha_0&gt;0\)</span> such that
-<span class="math notranslate nohighlight">\(P(\alpha_0\mathbf\theta) &gt;\frac{1}{2}\)</span>. From <a class="reference internal" href="#lemmh12"><span class="std std-ref">Lemma</span></a>, we have <span class="math notranslate nohighlight">\(\alpha_0\mathbf\theta\in\mathbf\Theta\)</span>, which
+<span class="math notranslate nohighlight">\(P(\alpha_0\mathbf\theta) &gt;\frac{1}{2}\)</span>. From <a class="reference internal" href="#lemmH12">Lemma 1</a>, we have <span class="math notranslate nohighlight">\(\alpha_0\mathbf\theta\in\mathbf\Theta\)</span>, which
 means <span class="math notranslate nohighlight">\(\mathbf\theta\in\mathbf\Theta\)</span>.</p>
 </div>
 <p>These properties above imply that if we can obtain a classifiable weight
-through maximizing <span class="math notranslate nohighlight">\(P(\mathbf\theta)\)</span>, while <a class="reference internal" href="#thm1"><span class="std std-ref">Lemma</span></a> tells us that
+through maximizing <span class="math notranslate nohighlight">\(P(\mathbf\theta)\)</span>, while <a class="reference internal" href="#thm1">Lemma 3</a> tells us that
 <span class="math notranslate nohighlight">\(P(\mathbf\theta)\)</span> will not have a global minimum actually.</p>
 <p>more specifically, we just need to find some <span class="math notranslate nohighlight">\(\mathbf \theta \in \Theta\)</span>
 such that</p>
@@ -834,17 +834,17 @@ regularized likelihood function <span class="math notranslate nohighlight">\(P_\
 \]</div>
 <p>The next lemma show that the maximal set of modified objective is not
 empty.</p>
-<div class="admonition-lemma admonition">
-<p class="admonition-title">Lemma</p>
+<div class="proof lemma admonition" id="lemma13_4">
+<p class="admonition-title"><span class="caption-number">Lemma 4 </span></p>
+<div class="lemma-content section" id="proof-content">
 <p>Suppose that <span class="math notranslate nohighlight">\(A_1,A_2, \cdots, A_k\)</span> are linearly separable, then</p>
 <ol class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, <span class="math notranslate nohighlight">\(\mathbf\Theta_0 = \emptyset\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf\Theta_{\lambda}\)</span> must be nonempty for all <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>.</p></li>
 </ol>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p><em>Proof.</em> <span class="xref myst">Lemma</span>
+</div><div class="proof admonition" id="proof">
+<p>Proof. <a class="reference internal" href="#thm1">Lemma 3</a>
 shows the first proposition. For the second proposition, we notice that</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(P_\lambda(\mathbf 0) = \frac{1}{k^N}\)</span>.</p></li>
@@ -871,7 +871,7 @@ the boundedness and closeness of
 </div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
-<p><em>Proof.</em> By <a class="reference internal" href="#lemmh12"><span class="std std-ref">Lemma</span></a>  we can take <span class="math notranslate nohighlight">\(\mathbf\theta_0\in \mathbf\Theta\)</span> such that
+<p><em>Proof.</em> By <a class="reference internal" href="#lemmH12">Lemma 1</a>  we can take <span class="math notranslate nohighlight">\(\mathbf\theta_0\in \mathbf\Theta\)</span> such that
 <span class="math notranslate nohighlight">\(P(\mathbf\theta_0)&gt; \frac{3}{4}\)</span>. Then, for any
 <span class="math notranslate nohighlight">\(\lambda &lt; \frac{\log \frac{3}{2}}{R(\|\mathbf\theta_0\|)}\)</span>,
 <span class="math notranslate nohighlight">\(\mathbf\theta_{\lambda}\in \mathbf\Theta_{\lambda}\)</span>, we have</p>

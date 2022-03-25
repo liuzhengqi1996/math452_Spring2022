@@ -615,7 +615,19 @@
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq8-1" title="Permalink to this equation">¶</a></span>\[
     u=\underset{v \in V}{\arg \min } J(v)
 \]</div>
-<p>Proof. For any <span class="math notranslate nohighlight">\(v \in V, t \in R\)</span>, let
+<div class="proof theorem admonition" id="thm54_1">
+<p class="admonition-title"><span class="caption-number">Theorem 11 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Problem <a class="reference internal" href="#equation-eq8-1">(49)</a> is equivalent to: Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \{\begin{array}{l}
+-u^{\prime \prime}=f, 0&lt;x&lt;1, \\
+u(0)=u(1)=0 .
+\end{array}
+\end{split}\]</div>
+</div>
+</div><p>Proof. For any <span class="math notranslate nohighlight">\(v \in V, t \in R\)</span>, let
 <span class="math notranslate nohighlight">\(g(t)=J(u+t v)\)</span>. Since <span class="math notranslate nohighlight">\(u=\)</span> <span class="math notranslate nohighlight">\(\arg \min _{v \in V} J(v)\)</span> means
 <span class="math notranslate nohighlight">\(g(t) \geq g(0)\)</span>. Hence, for any <span class="math notranslate nohighlight">\(v \in V, 0\)</span> is the global minimum of
 the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefore <span class="math notranslate nohighlight">\(g^{\prime}(0)=0\)</span> implies</p>
@@ -630,7 +642,7 @@ the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefo
 \]</div>
 <p>It can be proved that the above identity holds if and only if
 <span class="math notranslate nohighlight">\(-u^{\prime \prime}=f\)</span> for all <span class="math notranslate nohighlight">\(x \in(0,1)\)</span>. Namely <span class="math notranslate nohighlight">\(u\)</span> satisfies
-<a class="reference internal" href="#equation-eq8-10">(53)</a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<a class="reference internal" href="#equation-eq8-10">(54)</a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
 basis of the <span class="math notranslate nohighlight">\(V_{h}\)</span>. Let
@@ -843,8 +855,8 @@ iteration converges to the exact solution <span class="math notranslate nohighli
     \eta=\frac{h}{4}
 \]</div>
 <p>and the resulting algorithm is</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq8-9">
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq8-9" title="Permalink to this equation">¶</a></span>\[
     \mu^{(l)}=\mu^{(l-1)}+\frac{h}{4}\left(b-A * \mu^{(l-1)}\right)
 \]</div>
 <p>In the rest of this section, unless otherwise noted, we shall choose <span class="math notranslate nohighlight">\(\eta\)</span>
@@ -881,7 +893,7 @@ important property of the simple gradient descent method that we can
 take advantage to get a much faster algorithm.</p>
 <p>Example . Let <span class="math notranslate nohighlight">\(f(x)=\pi^{2} \sin \pi x\)</span>. Consider</p>
 <div class="math notranslate nohighlight" id="equation-eq8-10">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq8-10" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq8-10" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
@@ -891,10 +903,10 @@ u(0)=u(1)=0 .
 <span class="math notranslate nohighlight">\(x_{i}=\frac{i}{n+1}, i=0,1, \cdots, n+1\)</span>, then by finite element
 discretization, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq8-11">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
     A * \mu=b, A=\frac{1}{h}[-1,2,-1]
 \]</div>
-<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(54)</a> with random initial guess
+<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(55)</a> with random initial guess
 <span class="math notranslate nohighlight">\(\mu^{0}\)</span>. Plot <span class="math notranslate nohighlight">\(\mu^{\ell}-\mu^{0}\)</span> and
 <span class="math notranslate nohighlight">\(\left\|\mu^{\ell}-\mu^{0}\right\|\)</span> for <span class="math notranslate nohighlight">\(\ell=1,2,3\)</span>.</p>
 <p>The gradient descent method can be written in terms of
@@ -957,7 +969,7 @@ relation between the smoothness and the size of Fourier coefficients, we
 can imagine that this smoothing property can be analyzed using the
 discrete Fourier expansion.</p>
 <p>Let <span class="math notranslate nohighlight">\(\mu\)</span> be the exact solution of <a class="reference internal" href="#equation-eq8-6">(51)</a> and <span class="math notranslate nohighlight">\(\mu^{(l)}\)</span> the result of
-<span class="math notranslate nohighlight">\(l-t h\)</span> iteration from the gradient descent method <code class="xref eq docutils literal notranslate"><span class="pre">eq8_9</span></code>. Then</p>
+<span class="math notranslate nohighlight">\(l-t h\)</span> iteration from the gradient descent method <a class="reference internal" href="#equation-eq8-9">(53)</a>. Then</p>
 <div class="math notranslate nohighlight">
 \[
     \mu-\mu^{(l)}=(1-\eta A *)\left(\mu-\mu^{(l-1)}\right)=\ldots=(1-\eta A *)^{l}\left(\mu-\mu^{(0)}\right) 

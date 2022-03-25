@@ -16,7 +16,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ## 1. A basic machine learning problem: image classification
 # Can a machine (function) tell the difference ?
 # ```{image} /figures/cat-dog-1.png
-# :name: label
+# :name: label1_1
 # :height: 150px
 # ```
 #  Mathematically, gray-scale image can be just taken as matrix in $R^{n_0\times n_0}$.
@@ -25,7 +25,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ```
 #  The next figure shows different result from: human vision and computer representation: 
 #  ```{image} /figures/ImagePixels.png
-# :name: label
+# :name: label1_2
 # :height: 150px
 # ```
 #  An image is just a big grid of numbers between [0,255]
@@ -33,7 +33,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 #  Futhermore, color image can be taken as 3D tensor (matrix with 3 channel(RGB) ) in $R^{n_0\times n_0 \times 3}$.
 #  ```{image} /figures/corlor-1.png
-# :name: label
+# :name: label1_3
 # :height: 150px
 # ```
 # 
@@ -238,7 +238,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # - Image size : d = 224 * 224 * 3
 # - Classes: k = 1，000
 # ```{figure} ../figures/imagenet1_1.png
-# :name: mnist
+# :name: imagenet
 # ```
 # ```{figure} ../figures/imagenet1_2.png
 # :name: mt

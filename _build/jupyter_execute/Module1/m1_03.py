@@ -153,8 +153,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\mathbf{\Theta}$. more precisely, let us introduce the next lemmas
 # (properties) of $P(\mathbf \theta)$.
 # 
-# ```{admonition} Lemma
-# :name: lemmH12
+# ```{prf:lemma} 
+# :label: lemmH12
 # Assume that the sets
 # $A_1,A_2,\cdots,A_k$ are linearly separable. Then we have
 # 
@@ -163,8 +163,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # ```
 # 
-# ```{admonition} Proof
-# *Proof.* It suffices to show that if $\mathbf\theta \not\in \mathbf\Theta$, we
+# ```{prf:proof} 
+# It suffices to show that if $\mathbf\theta \not\in \mathbf\Theta$, we
 # must have $P(\mathbf\theta)\leq\frac{1}{2}$. For any $\mathbf\theta \not\in
 #     \mathbf\Theta$, there must exist an $i_0$ ,an $x_0\in A_{i_0}$ and a
 # $j_0\neq i_0$ such that
@@ -187,7 +187,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$ 
 # ```
 # 
-# ```{admonition} Lemma
+# ```{prf:lemma}
+# :label: lemma13_2
 # If $A_1,A_2,\cdots,A_k$ are linearly separable and
 # $\mathbf\theta \in \mathbf\Theta$, we have
 # 
@@ -196,8 +197,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # ```
 # 
-# ```{admonition} Proof
-# *Proof.* We first note that if $x\in A_i$
+# ```{prf:proof} 
+# We first note that if $x\in A_i$
 # 
 # $$
 #     p_i(x,\mathbf \theta) = \frac{1}{1+\sum\limits_{j\neq i}e^{\alpha[(w_j x+ b_j)-(w_i x+b_i)]}} \to 1, \quad \text{as} \quad \alpha \to \infty.
@@ -217,8 +218,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $x\in A_i$. 
 # ```
 # 
-# ```{admonition} Lemma
-# :name: thm1
+# ```{prf:lemma} 
+# :label: thm1
 # If $A_1,A_2,\cdots,A_k$ are linearly
 # separable,
 # 
@@ -227,8 +228,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # ```
 # 
-# ```{admonition} Proof
-# *Proof.* We first note that if $\mathbf\theta \in\mathbf\Theta$, we have 
+# ```{prf:proof}
+# We first note that if $\mathbf\theta \in\mathbf\Theta$, we have 
 # $\displaystyle\lim_{\alpha\rightarrow +\infty}p_i(x; \alpha\mathbf\theta) = 1$
 # for all $x\in A_i$. So
 # 
@@ -239,12 +240,12 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # On the other hand, if
 # $\lim\limits_{\alpha\rightarrow +\infty} P(\alpha\mathbf\theta) = 1$, there
 # must exist one $\alpha_0>0$ such that
-# $P(\alpha_0\mathbf\theta) >\frac{1}{2}$. From [Lemma](lemmH12), we have $\alpha_0\mathbf\theta\in\mathbf\Theta$, which
+# $P(\alpha_0\mathbf\theta) >\frac{1}{2}$. From {prf:ref}`lemmH12`, we have $\alpha_0\mathbf\theta\in\mathbf\Theta$, which
 # means $\mathbf\theta\in\mathbf\Theta$. 
 # ```
 # 
 # These properties above imply that if we can obtain a classifiable weight
-# through maximizing $P(\mathbf\theta)$, while [Lemma](thm1) tells us that
+# through maximizing $P(\mathbf\theta)$, while {prf:ref}`thm1` tells us that
 # $P(\mathbf\theta)$ will not have a global minimum actually.
 # 
 # more specifically, we just need to find some $\mathbf \theta \in \Theta$
@@ -291,7 +292,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # The next lemma show that the maximal set of modified objective is not
 # empty.
 # 
-# ```{admonition} Lemma
+# ```{prf:lemma}
+# :label: lemma13_4
 # Suppose that $A_1,A_2, \cdots, A_k$ are linearly separable, then
 # 
 # 1.  if $\lambda = 0$, $\mathbf\Theta_0 = \emptyset$,
@@ -299,8 +301,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 2.  $\mathbf\Theta_{\lambda}$ must be nonempty for all $\lambda>0$.
 # ```
 # 
-# ```{admonition} Proof
-# *Proof.* [Lemma](thm2)
+# ```{prf:proof} 
+# {prf:ref}`thm1`
 # shows the first proposition. For the second proposition, we notice that
 # 
 # 1.  $P_\lambda(\mathbf 0) = \frac{1}{k^N}$.
@@ -331,7 +333,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ```
 # 
 # ```{admonition} Proof
-# *Proof.* By [Lemma](lemmH12)  we can take $\mathbf\theta_0\in \mathbf\Theta$ such that
+# *Proof.* By {prf:ref}`lemmH12`  we can take $\mathbf\theta_0\in \mathbf\Theta$ such that
 # $P(\mathbf\theta_0)> \frac{3}{4}$. Then, for any
 # $\lambda < \frac{\log \frac{3}{2}}{R(\|\mathbf\theta_0\|)}$,
 # $\mathbf\theta_{\lambda}\in \mathbf\Theta_{\lambda}$, we have

@@ -38,7 +38,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\sum_{i=1}^{k}p_i=\sum_{i=1}^{k}q_i=1$ by $
 # D_{\rm KL}(q,p)= \sum_{i=1}^k q_i\log \frac{q_i}{p_i}.$
 # 
-# ```{admonition} Lemma
+# ```{prf:lemma}
+# :label: label14_1
 # $D_{\rm KL}(q,p)$ works like a "distance\" without the symmetry:
 # 
 # 1.  $D_{\rm KL}(q,p)\ge0$;
@@ -46,8 +47,8 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 2.  $D_{\rm KL}(q,p)=0$ if and only if $p=q$;
 # ```
 # 
-# ```{admonition} Proof
-# *Proof.* We first note that the elementary inequality
+# ```{prf:proof} 
+# We first note that the elementary inequality
 # $\log x \le x - 1, \quad\mathrm{for\ any\ }x\ge0,$ and the equality
 # holds if and only if $x=1$.
 # $-D_{\rm KL}(q,p) = - \sum_{i=1}^c q_i\log \frac{q_i}{p_i}   = \sum_{i=1}^k q_i\log \frac{p_i}{q_i} \le \sum_{i=1}^k q_i( \frac{p_i}{q_i}  - 1) = 0.$
@@ -67,7 +68,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     H(q,p) = H(q) + D_{\rm KL}(q,p).
 # $$ (rel1)
 # 
-# It follows from the [relation](rel1) that 
+# It follows from the {eq}`rel1` that 
 # 
 # $$
 #     \mathop{\arg\min}_p D_{\rm KL}(q,p)=\mathop{\arg\min}_p H(q,p).
@@ -90,7 +91,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \vdots \\
 # p_k(x; \theta)
 # \end{pmatrix}$
-# for any data $x \in A$. By[.](rel2), the minimization of KL divergence is
+# for any data $x \in A$. By{eq}`rel2`, the minimization of KL divergence is
 # equivalent to the minimization of the cross-entropy, namely
 # $\mathop{\arg\min}_{\theta} \sum_{i=1}^N D_{\rm KL}(y_i, p(x_i;\theta)) = \mathop{\arg\min}_{\theta} \sum_{i=1}^N H(y_i,  p(x_i;  \theta)).$
 # Recall that we have all data
@@ -110,7 +111,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $L( \theta) = - \sum_{i=1}^k \sum_{x\in A_i} \log p_{i}(x; \theta).$
 # 
 # That is to say, the logistic regression loss function defined by
-# likelihood in []() is exact the loss function defined by measuring
+# likelihood is exact the loss function defined by measuring
 # the distance between real label and predicted one via cross-entropy. We
 # can note $\label{key}
 # \min_{ \theta} L_\lambda( \theta) \Leftrightarrow \min_{ \theta} \sum_{j=1}^N H(y_i,  p(x_i;  \theta)) + \lambda R(\| \theta\|) 

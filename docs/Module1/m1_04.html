@@ -594,17 +594,17 @@ with <span class="math notranslate nohighlight">\(
 and
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{k}p_i=\sum_{i=1}^{k}q_i=1\)</span> by <span class="math notranslate nohighlight">\(
 D_{\rm KL}(q,p)= \sum_{i=1}^k q_i\log \frac{q_i}{p_i}.\)</span></p>
-<div class="admonition-lemma admonition">
-<p class="admonition-title">Lemma</p>
+<div class="proof lemma admonition" id="label14_1">
+<p class="admonition-title"><span class="caption-number">Lemma 5 </span></p>
+<div class="lemma-content section" id="proof-content">
 <p><span class="math notranslate nohighlight">\(D_{\rm KL}(q,p)\)</span> works like a “distance” without the symmetry:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(D_{\rm KL}(q,p)\ge0\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(D_{\rm KL}(q,p)=0\)</span> if and only if <span class="math notranslate nohighlight">\(p=q\)</span>;</p></li>
 </ol>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p><em>Proof.</em> We first note that the elementary inequality
+</div><div class="proof admonition" id="proof">
+<p>Proof. We first note that the elementary inequality
 <span class="math notranslate nohighlight">\(\log x \le x - 1, \quad\mathrm{for\ any\ }x\ge0,\)</span> and the equality
 holds if and only if <span class="math notranslate nohighlight">\(x=1\)</span>.
 <span class="math notranslate nohighlight">\(-D_{\rm KL}(q,p) = - \sum_{i=1}^c q_i\log \frac{q_i}{p_i}   = \sum_{i=1}^k q_i\log \frac{p_i}{q_i} \le \sum_{i=1}^k q_i( \frac{p_i}{q_i}  - 1) = 0.\)</span>
@@ -663,7 +663,7 @@ meantime, we can check that
 defined in as
 <span class="math notranslate nohighlight">\(L( \theta) = - \sum_{i=1}^k \sum_{x\in A_i} \log p_{i}(x; \theta).\)</span></p>
 <p>That is to say, the logistic regression loss function defined by
-likelihood in <span class="xref myst"></span> is exact the loss function defined by measuring
+likelihood is exact the loss function defined by measuring
 the distance between real label and predicted one via cross-entropy. We
 can note <span class="math notranslate nohighlight">\(\label{key}
 \min_{ \theta} L_\lambda( \theta) \Leftrightarrow \min_{ \theta} \sum_{j=1}^N H(y_i,  p(x_i;  \theta)) + \lambda R(\| \theta\|) 

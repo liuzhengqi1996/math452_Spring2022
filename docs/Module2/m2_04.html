@@ -610,8 +610,15 @@
 <h2>Stochastic gradient descent method and convergence theory<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The next optimization problem is the most common case in machine
 learning.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<div class="math notranslate nohighlight">
+\[
+    \min_{x \in \mathbb{R}^n} f(x)\quad \mbox{and}\quad f(x) = \frac{1}{N} \sum_{i=1}^N f_i(x).
+\]</div>
+</div>
 <p>One version of stochastic gradient descent (SGD) algorithm is:</p>
-<div class="proof algorithm admonition" id="algorithm-0">
+<div class="proof algorithm admonition" id="SGD">
 <p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (SGD)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>
@@ -697,7 +704,7 @@ probability <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span></p
 <h3>SGD with mini-batch<a class="headerlink" href="#sgd-with-mini-batch" title="Permalink to this headline">¶</a></h3>
 <p>Firstly, we will introduce a natural extended version of the SGD
 discussed above with introducing mini-batch.</p>
-<div class="proof algorithm admonition" id="algorithm-2">
+<div class="proof algorithm admonition" id="sgd_mini">
 <p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (SGD with mini-batch)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Input</strong>: initialization <span class="math notranslate nohighlight">\(x_0\)</span>, learning rate <span class="math notranslate nohighlight">\(\eta_t\)</span>.</p>

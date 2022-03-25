@@ -555,7 +555,7 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
+    <a class="reference internal nav-link" href="#id1">
      Image classification problem
     </a>
    </li>
@@ -640,15 +640,15 @@
 <div class="section" id="a-basic-machine-learning-problem-image-classification">
 <h2>1. A basic machine learning problem: image classification<a class="headerlink" href="#a-basic-machine-learning-problem-image-classification" title="Permalink to this headline">¶</a></h2>
 <p>Can a machine (function) tell the difference ?</p>
-<a class="reference internal image-reference" href="../_images/cat-dog-1.png" id="label"><img alt="../_images/cat-dog-1.png" id="label" src="../_images/cat-dog-1.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/cat-dog-1.png" id="label1-1"><img alt="../_images/cat-dog-1.png" id="label1-1" src="../_images/cat-dog-1.png" style="height: 150px;" /></a>
 <p>Mathematically, gray-scale image can be just taken as matrix in <span class="math notranslate nohighlight">\(R^{n_0\times n_0}\)</span>.</p>
 <a class="reference internal image-reference" href="../_images/gray-1.png"><img alt="../_images/gray-1.png" src="../_images/gray-1.png" style="height: 250px;" /></a>
 <p>The next figure shows different result from: human vision and computer representation:</p>
-<a class="reference internal image-reference" href="../_images/ImagePixels.png" id="id1"><img alt="../_images/ImagePixels.png" id="id1" src="../_images/ImagePixels.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/ImagePixels.png" id="label1-2"><img alt="../_images/ImagePixels.png" id="label1-2" src="../_images/ImagePixels.png" style="height: 150px;" /></a>
 <p>An image is just a big grid of numbers between [0,255]
 e.g. <span class="math notranslate nohighlight">\(800 \times 600 \times 3\)</span> (3 channels RGB)</p>
 <p>Futhermore, color image can be taken as 3D tensor (matrix with 3 channel(RGB) ) in <span class="math notranslate nohighlight">\(R^{n_0\times n_0 \times 3}\)</span>.</p>
-<a class="reference internal image-reference" href="../_images/corlor-1.png" id="id2"><img alt="../_images/corlor-1.png" id="id2" src="../_images/corlor-1.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/corlor-1.png" id="label1-3"><img alt="../_images/corlor-1.png" id="label1-3" src="../_images/corlor-1.png" style="height: 150px;" /></a>
 <p>Supervised learning
 Then, let us think about the general supervised learning case.</p>
 <p>Each image = a big vector of pixel values</p>
@@ -716,8 +716,8 @@ is a  general distance between real label <span class="math notranslate nohighli
 </div>
 <div class="section" id="image-classification-problem">
 <h2>2. Image classification problem<a class="headerlink" href="#image-classification-problem" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id3">
-<h3>Image classification problem<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Image classification problem<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>We consider a basic machine learning problem for classifying a collection of images
 into k distinctive classes. As an example, we consider a two-dimensional image
 which is usually represented by a tensor <span class="math notranslate nohighlight">\(x \in R^{n_0\times n_0 \times c} = R^d\)</span>
@@ -870,7 +870,7 @@ classification.</p>
 <li><p>Image size : d = 224 * 224 * 3</p></li>
 <li><p>Classes: k = 1，000</p></li>
 </ul>
-<div class="figure align-default" id="id4">
+<div class="figure align-default" id="id2">
 <img alt="../_images/imagenet1_1.png" src="../_images/imagenet1_1.png" />
 </div>
 <div class="figure align-default" id="mt">

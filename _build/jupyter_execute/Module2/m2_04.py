@@ -25,8 +25,6 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # learning.
 # 
 # ```{admonition} Problem
-# :label: SGDproblem
-# 
 # $$
 #     \min_{x \in \mathbb{R}^n} f(x)\quad \mbox{and}\quad f(x) = \frac{1}{N} \sum_{i=1}^N f_i(x).
 # $$
@@ -36,6 +34,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # One version of stochastic gradient descent (SGD) algorithm is:
 # 
 # ```{prf:algorithm} SGD
+# :label: SGD
 # **Input**: initialization $x_0$, learning rate $\eta_t$.
 # 
 # **For**: t = 0,1,2,$\dots$
@@ -131,6 +130,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # discussed above with introducing mini-batch.
 # 
 # ```{prf:algorithm} SGD with mini-batch
+# :label: sgd_mini
 # **Input**: initialization $x_0$, learning rate $\eta_t$.
 # 
 # **For**: t = 0,1,2,$\dots$

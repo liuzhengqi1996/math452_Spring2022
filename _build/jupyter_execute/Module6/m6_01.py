@@ -27,6 +27,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ### Multigrid algorithm for $A * \mu=f$
 # 
 # ```{prf:algorithm} A multigrid algorithm $\mu=\operatorname{MG} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)$
+# :label: alg61_1
 # Set up:
 # 
 # $$
@@ -81,6 +82,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ### MgNet
 # 
 # ```{prf:algorithm} $\mu^{J}=\operatorname{MgNet} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)$
+# :label: alg61_2
 # Set up:
 # 
 # $$
