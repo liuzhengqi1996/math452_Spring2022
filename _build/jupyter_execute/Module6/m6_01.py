@@ -16,11 +16,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 1D and 2D Comparison for Finite Element and Multigrid
 # 
-# ![image](images/img1)
+# ![image](images/img1.png)
 # 
 # Basic multigrid components
 # 
-# ![image](images/img2)
+# ![image](images/img2.png)
 # 
 # ### Multigrid algorithm for $A * \mu=f$
 # 
