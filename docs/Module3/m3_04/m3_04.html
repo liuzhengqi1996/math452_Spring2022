@@ -642,11 +642,16 @@ grid points <span class="math notranslate nohighlight">\(x_{\ell, i}\)</span> ar
     \varphi(x)= \begin{cases}2 x &amp; x \in\left[0, \frac{1}{2}\right] \\ 2(1-x) &amp; x \in\left[\frac{1}{2}, 1\right] \\ 0, &amp; \text { others }\end{cases}
 \end{split}\]</div>
 <p>The next diagram shows this basis function:</p>
-<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" /></p>
-<p>Fig. 1.1. Diagram of <span class="math notranslate nohighlight">\(\varphi(x)\)</span> Then, for any nodal basis function
+<div class="figure align-default" id="img1">
+<a class="reference internal image-reference" href="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg"><img alt="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Diagram of <span class="math notranslate nohighlight">\(\varphi(x)\)</span></span><a class="headerlink" href="#img1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Then, for any nodal basis function
 <span class="math notranslate nohighlight">\(\varphi_{\ell, i}\)</span> as below:</p>
-<p><img alt="image" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" /></p>
-<p>Fig. 1.2. Diagram of <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span></p>
+<div class="figure align-default" id="img2">
+<a class="reference internal image-reference" href="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg"><img alt="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Diagram of <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span></span><a class="headerlink" href="#img2" title="Permalink to this image">¶</a></p>
+</div>
 <p>in a fine grid <span class="math notranslate nohighlight">\(\mathcal{T}_{\ell}\)</span> can be written as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -734,7 +739,7 @@ has support in <span class="math notranslate nohighlight">\(\left[x_{i-1}, x_{i+
 <p>where <span class="math notranslate nohighlight">\(h_{i}=x_{i+1}-x_{i}\)</span>.</p>
 <p>Thus is to say, we have the next theorem.</p>
 <div class="proof theorem admonition" id="thm1">
-<p class="admonition-title"><span class="caption-number">Theorem 4 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 6 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>For <span class="math notranslate nohighlight">\(d=1\)</span>, and <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is a bounded
 interval, then DNN <span class="math notranslate nohighlight">\(_{1}\)</span> can be used to cover all linear finite element
@@ -743,7 +748,7 @@ function in on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
 </div></div>
 <div class="section" id="linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2">
 <h3>Linear finite element cannot be recovered by DNN <span class="math notranslate nohighlight">\(_{1}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span><a class="headerlink" href="#linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2" title="Permalink to this headline">¶</a></h3>
-<p>In view of <a class="reference internal" href="../m3_05/m3_05.html#thm1">Theorem 7</a> and the fact that
+<p>In view of <a class="reference internal" href="#thm1">Theorem 6</a> and the fact that
 <span class="math notranslate nohighlight">\(\mathrm{DNN}_{\mathrm{J}} \subseteq \mathrm{DNN}_{\mathrm{J}+1}\)</span>, it is
 natural to ask that how many layers are needed at least to recover all
 linear finite element functions in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span>. In
@@ -756,7 +761,7 @@ this section, we will show that</p>
 <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> can be recovered by DNN <span class="math notranslate nohighlight">\(_{J}\)</span></p>
 <p>In particular, we will show the following theorem.</p>
 <div class="proof theorem admonition" id="thm2">
-<p class="admonition-title"><span class="caption-number">Theorem 5 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 7 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is either a bounded domain
 or <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}, \mathrm{DNN}_{1}\)</span> can not be used to recover
@@ -781,8 +786,12 @@ domain, we assume that</p>
 <span class="eqno">(32)<a class="headerlink" href="#equation-eq1-15" title="Permalink to this equation">¶</a></span>\[
     d(\operatorname{supp}(f), \partial \Omega)&gt;0
 \]</div>
-<p>with $<span class="math notranslate nohighlight">\(d(A, B)=\inf _{x \in A, y \in B}\|x-y\|,\)</span>$ as the distance of two
-closed sets.</p>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+    d(A, B)=\inf _{x \in A, y \in B}\|x-y\|
+\]</div>
+<p>as the distance of two closed sets.</p>
 <p>A more important observation is that
 <span class="math notranslate nohighlight">\(\nabla f: \Omega \rightarrow \mathbb{R}^{d}\)</span> is a piecewise constant
 vector function. The key point is to consider the discontinuous points
@@ -877,7 +886,9 @@ finite number,</p>
 <li><p>If <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\operatorname{supp}(\mathrm{f}) \supseteq D_{g}=D_{\sum_{i=1}^{N} g_{i}}=D_{\sum_{t=1}^{N} \tilde{g}_{\ell}} \supseteq D\]</div>
+\[
+    \operatorname{supp}(\mathrm{f}) \supseteq D_{g}=D_{\sum_{i=1}^{N} g_{i}}=D_{\sum_{t=1}^{N} \tilde{g}_{\ell}} \supseteq D
+\]</div>
 <p>is contradictory to the assumption that <span class="math notranslate nohighlight">\(f\)</span> is locally supported.</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded domain,</p></li>
@@ -898,7 +909,7 @@ assumption in <a class="reference internal" href="#equation-eq1-15">(32)</a>.</p
 </div>
 <p>Following the proof above, we have the following theorem</p>
 <div class="proof theorem admonition" id="theorem-2">
-<p class="admonition-title"><span class="caption-number">Theorem 6 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p><span class="math notranslate nohighlight">\(\left\{\operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right\}_{i=1}^{m}\)</span>
 are linearly independent if <span class="math notranslate nohighlight">\(\left(w_{i}, b_{i}\right)\)</span> and
@@ -909,9 +920,9 @@ are linearly independent if <span class="math notranslate nohighlight">\(\left(w
 </div>
 <div class="section" id="definition-of-neural-network-space">
 <h2>Definition of neural network space<a class="headerlink" href="#definition-of-neural-network-space" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+<ul class="simple">
 <li><p>Primary variables <span class="math notranslate nohighlight">\(n_{0}=d\)</span></p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     x^{0}=x=\left(\begin{array}{c}
@@ -921,9 +932,9 @@ x_{2} \\
 x_{n}
 \end{array}\right)
 \end{split}\]</div>
-<ol class="simple">
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{1}\)</span> hyperplanes</p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     W^{1} x+b^{1}=\left(\begin{array}{c}
@@ -933,9 +944,9 @@ w_{2}^{1} x+b_{2}^{1} \\
 w_{n}^{1} x+b_{n}^{1}
 \end{array}\right)
 \end{split}\]</div>
-<ol class="simple">
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{1}\)</span>-neurons:</p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     x^{1}=\sigma\left(W^{1} x+b^{1}\right)=\left(\begin{array}{c}
@@ -945,9 +956,9 @@ w_{n}^{1} x+b_{n}^{1}
 \sigma\left(w_{n}^{1} x+b_{n}^{1}\right)
 \end{array}\right)
 \end{split}\]</div>
-<ol class="simple">
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{2}\)</span>-hyperplanes</p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     W^{2} x^{1}+b^{2}=\left(\begin{array}{c}

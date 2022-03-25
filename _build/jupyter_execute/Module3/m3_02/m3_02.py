@@ -40,15 +40,19 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # -   dense in all Sobolev spaces:
 #     $L^{2}(\Omega), W^{m, p}(\Omega), \ldots$
 # 
-# Theorem 1. Let $\Omega \subset R^{n}$ be a closed and bounded set. Given
+# 
+# ```{prf:theorem}
+# Let $\Omega \subset R^{n}$ be a closed and bounded set. Given
 # any continuous function $f(x)$ on $\Omega$, there exists a sequence of
 # polynomials $\left\{P_{n}(x)\right\}$ such that
 # 
 # $$
 #     \lim _{n \rightarrow \infty} \max _{x \in \Omega}\left|f(x)-P_{n}(x)\right|=0
 # $$
+# ```
 # 
-# Proof. Let us first give the proof for $d=1$ and $\Omega=[0,1] .$ Given $f:[0,1] \rightarrow R$ be a continuous function.
+# ```{prf:proof}
+# Let us first give the proof for $d=1$ and $\Omega=[0,1] .$ Given $f:[0,1] \rightarrow R$ be a continuous function.
 # 
 # Let 
 # 
@@ -120,6 +124,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # 
 # for all large enough $n$, which proves the theorem.
+# ```
 # 
 # The above proof generalize the high dimensional case easily. We consider
 # the case that 
@@ -155,9 +160,21 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # For example $n=100$ :
 # 
-#    $d=$           2                    4                     8
-#   ------ ------------------- --------------------- ----------------------
-#    $N=$   $5 \times 10^{3}$   $4.6 \times 10^{6}$   $3.5 \times 10^{11}$
+# ```{list-table}
+# :header-rows: 1
+# :name: curse
+# * - d=
+#   - 2
+#   - 4
+#   - 8
+#  * - N=
+#    - $5 \times 10^3$
+#    - $4.6 \times 10^{6}$
+#    - $3.5 \times 10^{11}$
+#   
+# 
+# ```
+#  
 # 
 # ### Runge's phenomenon
 # 

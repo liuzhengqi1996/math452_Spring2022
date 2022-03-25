@@ -44,14 +44,20 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # The next diagram shows this basis function:
 # 
-# ![image](images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg)
+# ```{figure} ./images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg
+# :height: 150px
+# :name: img1
+# Diagram of $\varphi(x)$
+# ```
 # 
-# Fig. 1.1. Diagram of $\varphi(x)$ Then, for any nodal basis function
+# Then, for any nodal basis function
 # $\varphi_{\ell, i}$ as below:
 # 
-# ![image](images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg)
-# 
-# Fig. 1.2. Diagram of $\varphi_{\ell, i}(x)$
+# ```{figure} ./images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg
+# :height: 150px
+# :name: img2
+# Diagram of $\varphi_{\ell, i}(x)$
+# ```
 # 
 # in a fine grid $\mathcal{T}_{\ell}$ can be written as
 # 
@@ -211,8 +217,13 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     d(\operatorname{supp}(f), \partial \Omega)>0
 # $$ (eq1_15)
 # 
-# with $$d(A, B)=\inf _{x \in A, y \in B}\|x-y\|,$$ as the distance of two
-# closed sets.
+# with 
+# 
+# $$
+#     d(A, B)=\inf _{x \in A, y \in B}\|x-y\|
+# $$
+# 
+# as the distance of two closed sets.
 # 
 # A more important observation is that
 # $\nabla f: \Omega \rightarrow \mathbb{R}^{d}$ is a piecewise constant
@@ -322,7 +333,10 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # -   If $\Omega=\mathbb{R}^{d}$,
 # 
-# $$\operatorname{supp}(\mathrm{f}) \supseteq D_{g}=D_{\sum_{i=1}^{N} g_{i}}=D_{\sum_{t=1}^{N} \tilde{g}_{\ell}} \supseteq D$$
+# $$
+#     \operatorname{supp}(\mathrm{f}) \supseteq D_{g}=D_{\sum_{i=1}^{N} g_{i}}=D_{\sum_{t=1}^{N} \tilde{g}_{\ell}} \supseteq D
+# $$
+# 
 # is contradictory to the assumption that $f$ is locally supported.
 # 
 # -   If $\Omega$ is a bounded domain,
@@ -355,7 +369,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ## Definition of neural network space
 # 
 # 
-# 1.  Primary variables $n_{0}=d$
+# - Primary variables $n_{0}=d$
 # 
 # $$
 #     x^{0}=x=\left(\begin{array}{c}
@@ -366,7 +380,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \end{array}\right)
 # $$
 # 
-# 2.  $n_{1}$ hyperplanes
+# - $n_{1}$ hyperplanes
 # 
 # $$
 #     W^{1} x+b^{1}=\left(\begin{array}{c}
@@ -377,7 +391,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \end{array}\right)
 # $$
 # 
-# 3.  $n_{1}$-neurons:
+# - $n_{1}$-neurons:
 # 
 # $$
 #     x^{1}=\sigma\left(W^{1} x+b^{1}\right)=\left(\begin{array}{c}
@@ -388,7 +402,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \end{array}\right)
 # $$
 # 
-# 4.  $n_{2}$-hyperplanes
+# - $n_{2}$-hyperplanes
 # 
 # $$
 #     W^{2} x^{1}+b^{2}=\left(\begin{array}{c}

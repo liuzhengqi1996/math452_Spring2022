@@ -738,7 +738,7 @@ From a numerical point of view, we say a relatively low frequency vector
 is relatively smoother whereas a high frequency vector is nonsmooth.</p>
 <div class="figure align-default" id="fig8-1">
 <a class="reference internal image-reference" href="../../_images/img15.png"><img alt="../../_images/img15.png" src="../../_images/img15.png" style="height: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">The eigenvectors</span><a class="headerlink" href="#fig8-1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">The eigenvectors</span><a class="headerlink" href="#fig8-1" title="Permalink to this image">¶</a></p>
 </div>
 <p>We note that the set of eigenvectors
 <span class="math notranslate nohighlight">\(\xi^{k}=\left(\xi_{j}^{k}\right)\)</span> forms an orthogonal basis of <span class="math notranslate nohighlight">\(R^{N}\)</span>.
@@ -760,11 +760,11 @@ coefficients <span class="math notranslate nohighlight">\(\alpha_{k}\)</span>. T
 \]</div>
 <div class="figure align-default" id="fig8-2">
 <a class="reference internal image-reference" href="../../_images/img23.png"><img alt="../../_images/img23.png" src="../../_images/img23.png" style="height: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Plots of <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\sigma . \xi\)</span>-solid line; <span class="math notranslate nohighlight">\(\sigma\)</span> dashed line</span><a class="headerlink" href="#fig8-2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Plots of <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\sigma . \xi\)</span>-solid line; <span class="math notranslate nohighlight">\(\sigma\)</span> dashed line</span><a class="headerlink" href="#fig8-2" title="Permalink to this image">¶</a></p>
 </div>
 <p>The first vector <span class="math notranslate nohighlight">\(\xi\)</span> has larger coefficients in front of lower
 frequencies whereas the second vector <span class="math notranslate nohighlight">\(\sigma\)</span> has larger coefficients
-in front of higher frequencies. From Figure <a class="reference internal" href="#fig8-2"><span class="std std-numref">Fig. 17</span></a>, it is easy to see how
+in front of higher frequencies. From Figure <a class="reference internal" href="#fig8-2"><span class="std std-numref">Fig. 19</span></a>, it is easy to see how
 the smoothness of a vector depends on the relative size of its Fourier
 coefficients. We conclude that, in general, a vector with relatively
 small Fourier coefficients in front of the higher frequencies is
@@ -849,12 +849,12 @@ iteration converges to the exact solution <span class="math notranslate nohighli
 \]</div>
 <p>In the rest of this section, unless otherwise noted, we shall choose <span class="math notranslate nohighlight">\(\eta\)</span>
 as above for simplicity.</p>
-<p>On Figure <a class="reference internal" href="#fig8-3"><span class="std std-numref">Fig. 18</span></a> the convergence history plot of the above gradient
+<p>On Figure <a class="reference internal" href="#fig8-3"><span class="std std-numref">Fig. 20</span></a> the convergence history plot of the above gradient
 descent iterative method for typical application is shown. As we see,
 this iterative scheme converges very slowly.</p>
 <div class="figure align-default" id="fig8-3">
 <a class="reference internal image-reference" href="../../_images/img32.png"><img alt="../../_images/img32.png" src="../../_images/img32.png" style="height: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">A picture on the GD method convergence history</span><a class="headerlink" href="#fig8-3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">A picture on the GD method convergence history</span><a class="headerlink" href="#fig8-3" title="Permalink to this image">¶</a></p>
 </div>
 <p>Our main goal is to find a way to speed up such kind of rather slowly
 convergent iterative scheme. To do that, we need to study its convergent
@@ -874,7 +874,7 @@ after a few such simple iterations. This property of the iterative scheme is nat
 scheme having this smoothing property is called a smoother.</p>
 <div class="figure align-default" id="fig8-4">
 <a class="reference internal image-reference" href="../../_images/img41.png"><img alt="../../_images/img41.png" src="../../_images/img41.png" style="height: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">The smoothing effect of the Richardson method</span><a class="headerlink" href="#fig8-4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">The smoothing effect of the Richardson method</span><a class="headerlink" href="#fig8-4" title="Permalink to this image">¶</a></p>
 </div>
 <p>The above two observations, especially the second one, concern the most
 important property of the simple gradient descent method that we can
@@ -1006,7 +1006,7 @@ for example <span class="math notranslate nohighlight">\(k=1, \alpha_{k}^{(m)}\)
 been observed by numerical experiments.</p>
 <div class="figure align-default" id="fig8-5">
 <a class="reference internal image-reference" href="../../_images/img51.png"><img alt="../../_images/img51.png" src="../../_images/img51.png" style="height: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text"><span class="math notranslate nohighlight">\(u^{0}, u^{1}, u^{2}, u^{3}, u^{4}\)</span></span><a class="headerlink" href="#fig8-5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text"><span class="math notranslate nohighlight">\(u^{0}, u^{1}, u^{2}, u^{3}, u^{4}\)</span></span><a class="headerlink" href="#fig8-5" title="Permalink to this image">¶</a></p>
 </div>
 <p>An intuitive discussion</p>
 <p>Both the gradient decsent and Gauss-Seidel methods are oftentimes called

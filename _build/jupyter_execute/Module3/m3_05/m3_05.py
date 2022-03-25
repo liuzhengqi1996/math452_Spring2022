@@ -18,8 +18,8 @@ IFrame(src= "https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/
 # 
 # ### Qualitative convergence results
 # 
-# ```{prf:theorem} (Universal Approximation Property of Shallow Neural Networks)
-# :label: thm1
+# ```{prf:theorem} Universal Approximation Property of Shallow Neural Networks
+# :label: thm0305_1
 # Let $\sigma$ be a Riemann integrable function and
 # $\sigma \in L_{l o c}^{\infty}(\mathbb{R}) .$ Then $\Sigma_{d}(\sigma)$
 # in dense in $C(\Omega)$ for any compact $\Omega \subset \mathbb{R}^{n}$

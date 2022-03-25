@@ -584,7 +584,10 @@ case. A natural extension is like what kernel method does in SVM for
 binary case, we will introduce the so-called feature mapping.</p>
 <p>Thus, we have the following natural extension for linearly separable by
 using feature mapping and original definition of linearly separable.</p>
-<p>Definition 1 (nonlinearly separable sets). These data sets</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (nonlinearly separable sets)</p>
+<div class="definition-content section" id="proof-content">
+<p>These data sets</p>
 <div class="math notranslate nohighlight">
 \[
     A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}
@@ -601,7 +604,9 @@ using feature mapping and original definition of linearly separable.</p>
     \tilde{A}_{i}:=\varphi\left(A_{i}\right)=\left\{\tilde{x} \mid \tilde{x}=\varphi(x), x \in A_{i}\right\},\quad i=1,2, \ldots, k
 \]</div>
 <p>are linearly separable.</p>
-<p>Remark 1.</p>
+</div>
+</div><div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
 <ol class="simple">
 <li><p>This definition is also consistent with the definition of
 linearly separable as we can just take  <span class="math notranslate nohighlight">\(\tilde{d}=d\)</span> and <span class="math notranslate nohighlight">\(\varphi= id\)</span> if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span></p></li>
@@ -617,9 +622,12 @@ this <span class="math notranslate nohighlight">\(\varphi(x)\)</span></p>
 with a softmax mapping which means that we can interpret these deep
 learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p></li>
 </ol>
+</div>
 <p>However, softmax is not so crucial for this definition actually as we
 have the next equivalent result.</p>
-<p>Theorem 1.</p>
+<div class="proof theorem admonition" id="theorem-1">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
+<div class="theorem-content section" id="proof-content">
 <p><span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span> are nonlinearly separable is equivalent that there there exist a smooth classification
 function</p>
 <div class="math notranslate nohighlight">
@@ -632,6 +640,8 @@ function</p>
 \[
     \psi_{i}(x)&gt;\psi_{j}(x), \quad \forall x \in A_{i}
 \]</div>
+</div>
+</div><div class="proof admonition" id="proof">
 <p>Proof. On the one
 hand, it is easy to see that if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}\)</span></p>
 <p>are nonlinearly separable then they we can just take</p>
@@ -657,13 +667,18 @@ hand, it is easy to see that if <span class="math notranslate nohighlight">\(A_{
 \[
     \boldsymbol{p}_{i}(\varphi(x) ; \theta)=\frac{e^{\psi_{i}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}&gt;\frac{e^{\psi_{j}(x)}}{\sum_{i=1}^{k} e^{\psi_{i}(x)}}=\boldsymbol{p}_{j}(\varphi(x) ; \theta), \quad \forall x \in A_{i} .
 \]</div>
+</div>
 <p>Similarly to linearly separable sets, we have the next lemme for <span class="math notranslate nohighlight">\(k=2\)</span></p>
-<p>Lemma 1.
-<span class="math notranslate nohighlight">\(A _{1}\)</span> and <span class="math notranslate nohighlight">\(A_{2}\)</span> are nonlinearly separable is equivalent that there exists a function <span class="math notranslate nohighlight">\( \varphi: \mathbb{R}^{d} \mapsto \mathbb{R} \)</span> such that</p>
+<div class="proof lemma admonition" id="lemma1">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(A _{1}\)</span> and <span class="math notranslate nohighlight">\(A_{2}\)</span> are nonlinearly separable is equivalent that there exists a function <span class="math notranslate nohighlight">\( \varphi: \mathbb{R}^{d} \mapsto \mathbb{R} \)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
     \varphi(x)&gt;0 \quad \forall x \in A_{1} \quad \text { and } \quad \varphi(x)&lt;0 \quad \forall x \in A_{2}
 \]</div>
+</div>
+</div><div class="proof admonition" id="proof">
 <p>Proof. Based the equivalence of nonlinearly separable sets, there exists <span class="math notranslate nohighlight">\(\psi_{1}(x)\)</span> and <span class="math notranslate nohighlight">\(\psi_{2}(2)\)</span></p>
 <p>such that for all <span class="math notranslate nohighlight">\(i=1: 2\)</span> and <span class="math notranslate nohighlight">\(j \neq i \)</span></p>
 <div class="math notranslate nohighlight">
@@ -680,12 +695,16 @@ hand, it is easy to see that if <span class="math notranslate nohighlight">\(A_{
 \[
     \psi_{1}(x)=\frac{1}{2} \varphi(x) \quad \text { and } \quad \psi_{2}(x)=-\frac{2}{2} \varphi(x)
 \]</div>
-<p>Remark 2. Here we mention that, we only assume that for all <span class="math notranslate nohighlight">\(i=1: k\)</span> and <span class="math notranslate nohighlight">\(j \neq i\)</span> we have <span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \forall x \in A_{i}\)</span> for nonlinearly separable. We do not assume that <span class="math notranslate nohighlight">\(\psi_{i}(x) \geq 0\)</span> or <span class="math notranslate nohighlight">\(\sum_{i=1}^{k} \psi_{i}(x)=1\)</span> , which means that</p>
+</div>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>Here we mention that, we only assume that for all <span class="math notranslate nohighlight">\(i=1: k\)</span> and <span class="math notranslate nohighlight">\(j \neq i\)</span> we have <span class="math notranslate nohighlight">\(\psi_{i}(x)&gt;\psi_{j}(x), \forall x \in A_{i}\)</span> for nonlinearly separable. We do not assume that <span class="math notranslate nohighlight">\(\psi_{i}(x) \geq 0\)</span> or <span class="math notranslate nohighlight">\(\sum_{i=1}^{k} \psi_{i}(x)=1\)</span> , which means that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \psi(x)=\left(\begin{array}{c}\psi_{1}(x) \\ \psi_{2}(x) \\ \vdots \\ \psi_{k}(x)\end{array}\right)
 \end{split}\]</div>
 <p>is not a discrete probability distribution over all k classes.</p>
+</div>
 <p>The previous theorem shows that softmax function is not so crucial in
 nonlinearly separable case. Combined with deep learning models, we have
 the following understanding about what deep learning models are
@@ -696,7 +715,7 @@ approximating the feature mapping <span class="math notranslate nohighlight">\(\
 <li><p>If the classification model dose not followed by softmax, then it is
 approximating <span class="math notranslate nohighlight">\(\psi: \mathbb{R}^{d} \mapsto \mathbb{R}^{k}\)</span> directly.</p></li>
 </ol>
-<p>Example 1. Consider <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(A_{1} \subset\left\{(x, y) \mid x^{2}+y^{2}&lt;1\right\}, \quad A_{2} \subset\left\{(x, y) \mid x^{2}+y^{2}&gt;1\right\}\)</span>, then we can have the following nonlinear feature mapping:</p>
+<p>Example. Consider <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(A_{1} \subset\left\{(x, y) \mid x^{2}+y^{2}&lt;1\right\}, \quad A_{2} \subset\left\{(x, y) \mid x^{2}+y^{2}&gt;1\right\}\)</span>, then we can have the following nonlinear feature mapping:</p>
 <p><img alt="image" src="../../_images/img1.png" /></p>
 <p>Here we have the following comparison for linear and nonlinear models
 from the viewpoint of loss functions:</p>
@@ -710,7 +729,9 @@ from the viewpoint of loss functions:</p>
 \[
     L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(\varphi\left(x_{j} ; \theta_{1}\right) ; \theta_{2}\right)\right)+\lambda R(\|\theta\|)
 \]</div>
-<p>Remark 3. We have the following remarks.</p>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>We have the following remarks.</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\ell(q, p)=\sum_{i=1}^{k}-q_{i} \log p_{i} \leftrightarrow \text { cross-entropy }\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(x ; \theta)=\operatorname{softmax}(W x+b)\)</span> where <span class="math notranslate nohighlight">\(\theta=(W, b)\)</span></p></li>
@@ -724,6 +745,7 @@ from the viewpoint of loss functions:</p>
 <li><p>Kernel functions in SVM.</p></li>
 <li><p>Deep neural networks.</p></li>
 </ol>
+</div>
 </div>
 </div>
 
