@@ -114,11 +114,12 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # The above function is also called one hidden neural network function
 # with $N$ neurons.
 # 
-# Remark $1 . \quad$ 1. By making $w_{\ell}$ and $b_{\ell, i}$ arbitrary,
+# ```{admonition} Remark
+# 1- By making $w_{\ell}$ and $b_{\ell, i}$ arbitrary,
 # we get a much larger class of function which is exact a special neural
 # network with activation function $\varphi(x)$.
 # 
-# 3.  Generalizations:
+# 2- Generalizations:
 # 
 # a\) $\varphi$ can be different, such as
 # $\operatorname{ReLU}(x)=\max \{0, x\}$.
@@ -133,8 +134,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $w \in \mathbb{R}^{d}, b \in \mathbb{R}$ and
 # $w \cdot x=\sum_{i=1}^{d} w_{i} x_{i}$. This is called “deep” neural
 # network with one hidden layer.
+# ```
 # 
-# ##Why we need deep neural networks via composition
+# ## Why we need deep neural networks via composition
 # 
 # ### FEM ans DNN $_{1}$ in 1D
 # 

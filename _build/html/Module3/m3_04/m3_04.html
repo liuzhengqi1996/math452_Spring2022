@@ -541,6 +541,11 @@
   <a class="reference internal nav-link" href="#motivation-from-finite-element-to-neural-network">
    Motivation: from finite element to neural network
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-we-need-deep-neural-networks-via-composition">
+   Why we need deep neural networks via composition
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fem-ans-dnn-1-in-1d">
@@ -696,12 +701,12 @@ such that</p>
 \]</div>
 <p>The above function is also called one hidden neural network function
 with <span class="math notranslate nohighlight">\(N\)</span> neurons.</p>
-<p>Remark <span class="math notranslate nohighlight">\(1 . \quad\)</span> 1. By making <span class="math notranslate nohighlight">\(w_{\ell}\)</span> and <span class="math notranslate nohighlight">\(b_{\ell, i}\)</span> arbitrary,
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>1- By making <span class="math notranslate nohighlight">\(w_{\ell}\)</span> and <span class="math notranslate nohighlight">\(b_{\ell, i}\)</span> arbitrary,
 we get a much larger class of function which is exact a special neural
 network with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p>
-<ol class="simple">
-<li><p>Generalizations:</p></li>
-</ol>
+<p>2- Generalizations:</p>
 <p>a) <span class="math notranslate nohighlight">\(\varphi\)</span> can be different, such as
 <span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\max \{0, x\}\)</span>.</p>
 <p>b) There is a natural extension for hight dimension <span class="math notranslate nohighlight">\(d\)</span> as</p>
@@ -713,7 +718,10 @@ network with activation function <span class="math notranslate nohighlight">\(\v
 <span class="math notranslate nohighlight">\(w \in \mathbb{R}^{d}, b \in \mathbb{R}\)</span> and
 <span class="math notranslate nohighlight">\(w \cdot x=\sum_{i=1}^{d} w_{i} x_{i}\)</span>. This is called “deep” neural
 network with one hidden layer.</p>
-<p>##Why we need deep neural networks via composition</p>
+</div>
+</div>
+<div class="section" id="why-we-need-deep-neural-networks-via-composition">
+<h2>Why we need deep neural networks via composition<a class="headerlink" href="#why-we-need-deep-neural-networks-via-composition" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fem-ans-dnn-1-in-1d">
 <h3>FEM ans DNN <span class="math notranslate nohighlight">\(_{1}\)</span> in 1D<a class="headerlink" href="#fem-ans-dnn-1-in-1d" title="Permalink to this headline">¶</a></h3>
 <p>Thanks to the connection between <span class="math notranslate nohighlight">\(\varphi(x)\)</span> and
