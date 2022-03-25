@@ -857,11 +857,13 @@ mesh in Fig. 1.2. The discrete space for linear finite element is</p>
 \end{split}\]</div>
 <p>where
 <span class="math notranslate nohighlight">\(A=\left(\begin{array}{ccc}-1 &amp; -1 &amp; -1 \\ -1 &amp; 8 &amp; -1 \\ -1 &amp; -1 &amp; -1\end{array}\right)\)</span>
-and <span class="math notranslate nohighlight">\(A * u\)</span> is given by <span class="math notranslate nohighlight">\((1.20)\)</span></p>
+and <span class="math notranslate nohighlight">\(A * u\)</span> is given by <a class="reference internal" href="#equation-eq1-20">(42)</a></p>
 <p>And we have</p>
-<p>(1.20)
-<span class="math notranslate nohighlight">\(8 u_{i j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}+u_{i+1, j+1}+u_{i-1, j-1}+u_{i-1, j+1}+u_{i+1, j-1}\right)=f_{i, j}\)</span>,
-and <span class="math notranslate nohighlight">\(u_{i, j}=0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\} .\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq1-20">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq1-20" title="Permalink to this equation">¶</a></span>\[
+    8 u_{i j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}+u_{i+1, j+1}+u_{i-1, j-1}+u_{i-1, j+1}+u_{i+1, j-1}\right)=f_{i, j}
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(u_{i, j}=0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j \in\{0, n+1\} .\)</span></p>
 </div>
 </div>
 </div>

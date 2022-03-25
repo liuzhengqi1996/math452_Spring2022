@@ -626,7 +626,7 @@ the batch,</p>
 <p>Let the normalized values be <span class="math notranslate nohighlight">\(\hat{f}^{\ell}\)</span>, and their linear transformations be
 <span class="math notranslate nohighlight">\(\tilde{f}^{\ell} .\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq1-51">
-<span class="eqno">(43)<a class="headerlink" href="#equation-eq1-51" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq1-51" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \begin{gathered}
 \mu_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]=\frac{1}{N} \sum_{i=1}^{N} f^{\ell}\left(x_{i}\right) \\
 \sigma_{X}^{\ell} \leftarrow \mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right]=\frac{1}{N} \sum_{i=1}^{N}\left(f^{\ell}\left(x_{i}\right)-\mu_{X}\right)^{2} \quad \text { batch mean } \\
@@ -657,7 +657,7 @@ In summary, we have the new DNN model with BN as:</p>
 We can remove the basis <span class="math notranslate nohighlight">\(b^{\ell}\)</span> in <span class="math notranslate nohighlight">\(\theta^{\ell}\)</span>, thus to say the
 real model we will compute should be</p>
 <div class="math notranslate nohighlight" id="equation-eq1-55">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eq1-55" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq1-55" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i} \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
 \end{split}\]</div>
 <p>Combine the two definition, we note</p>
@@ -669,12 +669,12 @@ real model we will compute should be</p>
 and <span class="math notranslate nohighlight">\(\beta:=\left\{\beta^{2}, \cdots, \beta^{L}\right\}\)</span></p>
 <p>Finally, we have the loss function as:</p>
 <div class="math notranslate nohighlight" id="equation-eq1-57">
-<span class="eqno">(45)<a class="headerlink" href="#equation-eq1-57" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq1-57" title="Permalink to this equation">¶</a></span>\[
     \mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
 \]</div>
-<p>A key observation in <a class="reference internal" href="#equation-eq1-57">(45)</a> and the new BN model <a class="reference internal" href="#equation-eq1-55">(44)</a> is that</p>
+<p>A key observation in <a class="reference internal" href="#equation-eq1-57">(46)</a> and the new BN model <a class="reference internal" href="#equation-eq1-55">(45)</a> is that</p>
 <div class="math notranslate nohighlight" id="equation-eq1-58">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq1-58" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq1-58" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \begin{aligned}
 \mu_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right] \\
 \sigma_{X}^{\ell} &amp;=\mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right] \\
@@ -684,19 +684,19 @@ and <span class="math notranslate nohighlight">\(\beta:=\left\{\beta^{2}, \cdots
 <p>Here we need to mention that <span class="math notranslate nohighlight">\(x \sim X\)</span> means <span class="math notranslate nohighlight">\(x\)</span> subject to the discrete distribution of all data <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <div class="section" id="bn-some-modified-sgd-on-new-batch-normalized-model">
 <h3>BN: some ’modified” SGD on new batch normalized model<a class="headerlink" href="#bn-some-modified-sgd-on-new-batch-normalized-model" title="Permalink to this headline">¶</a></h3>
-<p>Following the key observation in <a class="reference internal" href="#equation-eq1-58">(46)</a>, and recall the similar case in
-SGD, we do the the sampling trick in <a class="reference internal" href="#equation-eq1-57">(45)</a> and obtain the mini-batch
+<p>Following the key observation in <a class="reference internal" href="#equation-eq1-58">(47)</a>, and recall the similar case in
+SGD, we do the the sampling trick in <a class="reference internal" href="#equation-eq1-57">(46)</a> and obtain the mini-batch
 SGD:</p>
 <div class="math notranslate nohighlight" id="equation-eq1-59">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq1-59" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq1-59" title="Permalink to this equation">¶</a></span>\[
     x \sim X \approx x \sim \mathcal{B}
 \]</div>
 <p>here <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> is a mini-batch of batch <span class="math notranslate nohighlight">\(X\)</span> with <span class="math notranslate nohighlight">\(\mathcal{B} \subset X .\)</span></p>
-<p>However, for problem in <a class="reference internal" href="#equation-eq1-57">(45)</a>, it is very difficult to find some subtle
+<p>However, for problem in <a class="reference internal" href="#equation-eq1-57">(46)</a>, it is very difficult to find some subtle
 sampling method because of the composition of <span class="math notranslate nohighlight">\(\mu_{X}^{\ell}\)</span> and
 <span class="math notranslate nohighlight">\(\left[\sigma_{X}^{\ell}\right]^{2}\)</span>. However, one simple way for
-sampling <a class="reference internal" href="#equation-eq1-57">(45)</a> can be chosen as taking <a class="reference internal" href="#equation-eq1-59">(47)</a> for all the expectation
-case in <a class="reference internal" href="#equation-eq1-57">(45)</a> and <a class="reference internal" href="#equation-eq1-58">(46)</a>.</p>
+sampling <a class="reference internal" href="#equation-eq1-57">(46)</a> can be chosen as taking <a class="reference internal" href="#equation-eq1-59">(48)</a> for all the expectation
+case in <a class="reference internal" href="#equation-eq1-57">(46)</a> and <a class="reference internal" href="#equation-eq1-58">(47)</a>.</p>
 <p>This is to say, in training process ( <span class="math notranslate nohighlight">\(t\)</span>-th step for example), once we
 choose <span class="math notranslate nohighlight">\(B_{t} \subset X\)</span> as the mini-batch, then the model becomes
 $<span class="math notranslate nohighlight">\(\begin{cases}\tilde{f}^{1}\left(x_{i}\right) &amp; =W^{1} x_{i}, \\ \tilde{f}^{\ell} &amp; =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}\)</span>$
@@ -745,10 +745,10 @@ the only problem is to compute the mean <span class="math notranslate nohighligh
 All the mean <span class="math notranslate nohighlight">\(\mu_{\mathcal{B}_{t}}\)</span> and variance
 <span class="math notranslate nohighlight">\(\sigma_{\mathcal{B}}^{2}\)</span> during the training phase are just the
 approximation of the mean and variance of whole batch i.e. <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
-<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> as shown in <a class="reference internal" href="#equation-eq1-58">(46)</a>.</p>
+<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> as shown in <a class="reference internal" href="#equation-eq1-58">(47)</a>.</p>
 <p>One natural idea might be just use the BN operator w.r.t to the whole
 training data set, thus to say just compute <span class="math notranslate nohighlight">\(\mu_{X}\)</span> and
-<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> by definition in <a class="reference internal" href="#equation-eq1-51">(43)</a>.</p>
+<span class="math notranslate nohighlight">\(\sigma_{X}^{2}\)</span> by definition in <a class="reference internal" href="#equation-eq1-51">(44)</a>.</p>
 <p>However, there are at least the next few problems:</p>
 <ul class="simple">
 <li><p>computation cost,</p></li>

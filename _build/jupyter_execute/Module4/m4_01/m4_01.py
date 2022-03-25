@@ -314,12 +314,15 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # where
 # $A=\left(\begin{array}{ccc}-1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1\end{array}\right)$
-# and $A * u$ is given by $(1.20)$
+# and $A * u$ is given by {eq}`eq1_20`
 # 
 # And we have
 # 
-# (1.20)
-# $8 u_{i j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}+u_{i+1, j+1}+u_{i-1, j-1}+u_{i-1, j+1}+u_{i+1, j-1}\right)=f_{i, j}$,
+# 
+# $$
+#     8 u_{i j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}+u_{i+1, j+1}+u_{i-1, j-1}+u_{i-1, j+1}+u_{i+1, j-1}\right)=f_{i, j}
+# $$ (eq1_20)
+# 
 # and $u_{i, j}=0$ if $i$ or $j \in\{0, n+1\} .$ 
 # 
 
