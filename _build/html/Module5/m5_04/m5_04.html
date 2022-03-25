@@ -630,7 +630,7 @@ the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefo
 \]</div>
 <p>It can be proved that the above identity holds if and only if
 <span class="math notranslate nohighlight">\(-u^{\prime \prime}=f\)</span> for all <span class="math notranslate nohighlight">\(x \in(0,1)\)</span>. Namely <span class="math notranslate nohighlight">\(u\)</span> satisfies
-<code class="xref eq docutils literal notranslate"><span class="pre">eq8_10</span></code>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<a class="reference internal" href="#equation-eq8-10">(48)</a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
 basis of the <span class="math notranslate nohighlight">\(V_{h}\)</span>. Let
@@ -873,9 +873,9 @@ scheme having this smoothing property is called a smoother.</p>
 <p>The above two observations, especially the second one, concern the most
 important property of the simple gradient descent method that we can
 take advantage to get a much faster algorithm.</p>
-<p>Example 7. Let <span class="math notranslate nohighlight">\(f(x)=\pi^{2} \sin \pi x\)</span>. Consider</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>Example . Let <span class="math notranslate nohighlight">\(f(x)=\pi^{2} \sin \pi x\)</span>. Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq8-10">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq8-10" title="Permalink to this equation">¶</a></span>\[\begin{split}
     \{\begin{array}{l}
 -u^{\prime \prime}=f, 0&lt;x&lt;1, \\
 u(0)=u(1)=0 .
@@ -885,10 +885,10 @@ u(0)=u(1)=0 .
 <span class="math notranslate nohighlight">\(x_{i}=\frac{i}{n+1}, i=0,1, \cdots, n+1\)</span>, then by finite element
 discretization, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq8-11">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq8-11" title="Permalink to this equation">¶</a></span>\[
     A * \mu=b, A=\frac{1}{h}[-1,2,-1]
 \]</div>
-<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(48)</a> with random initial guess
+<p>Use gradient descent method to solve <a class="reference internal" href="#equation-eq8-11">(49)</a> with random initial guess
 <span class="math notranslate nohighlight">\(\mu^{0}\)</span>. Plot <span class="math notranslate nohighlight">\(\mu^{\ell}-\mu^{0}\)</span> and
 <span class="math notranslate nohighlight">\(\left\|\mu^{\ell}-\mu^{0}\right\|\)</span> for <span class="math notranslate nohighlight">\(\ell=1,2,3\)</span>.</p>
 <p>The gradient descent method can be written in terms of

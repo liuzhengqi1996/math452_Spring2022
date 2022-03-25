@@ -88,8 +88,13 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\left(\varphi_{i}, \psi_{j}\right)=\delta_{i j} .$
 # 
 # $$
-#     J\left(v_{h}\right)=\frac{1}{2} \int_{0}^{1}\left|v_{h}^{\prime}\right|^{2} d x-\int_{0}^{1} f v_{h} d x .$$
-# Let $$u_{h}=\sum_{i=1}^{n} v_{i} \varphi
+#     J\left(v_{h}\right)=\frac{1}{2} \int_{0}^{1}\left|v_{h}^{\prime}\right|^{2} d x-\int_{0}^{1} f v_{h} d x .
+# $$
+# 
+# Let 
+# 
+# $$
+#     u_{h}=\sum_{i=1}^{n} v_{i} \varphi
 # $$
 # 
 # then

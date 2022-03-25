@@ -359,14 +359,14 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # important property of the simple gradient descent method that we can
 # take advantage to get a much faster algorithm.
 # 
-# Example 7. Let $f(x)=\pi^{2} \sin \pi x$. Consider
+# Example . Let $f(x)=\pi^{2} \sin \pi x$. Consider
 # 
 # $$
 #     \{\begin{array}{l}
 # -u^{\prime \prime}=f, 0<x<1, \\
 # u(0)=u(1)=0 .
 # \end{array}
-# $$
+# $$ (eq8_10)
 # 
 # The true solution $u=\sin \pi x$. Given the partition with the grid points
 # $x_{i}=\frac{i}{n+1}, i=0,1, \cdots, n+1$, then by finite element
