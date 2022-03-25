@@ -777,7 +777,7 @@ variables with mean 0, namely the probability density function of
 <p>Now we choose the variance of the initial weights to ensure that the
 features <span class="math notranslate nohighlight">\(f^{L}\)</span> and gradients don’t blow up or vanish. To this end we
 have the following lemma.</p>
-<div class="proof lemma admonition" id="lemma1">
+<div class="proof lemma admonition" id="lemma51_1">
 <p class="admonition-title"><span class="caption-number">Lemma 7 </span></p>
 <div class="lemma-content section" id="proof-content">
 <p>Under the previous assumptions <span class="math notranslate nohighlight">\(f_{i}^{\ell}\)</span> is a symmetric
@@ -858,7 +858,7 @@ initialization takes the trade-off type as</p>
 <div class="section" id="kaimings-initialization">
 <h3>Kaiming’s initialization<a class="headerlink" href="#kaimings-initialization" title="Permalink to this headline">¶</a></h3>
 <p>We first have the following lemma for symmetric distribution.</p>
-<div class="proof lemma admonition" id="lemma2">
+<div class="proof lemma admonition" id="lemma51_2">
 <p class="admonition-title"><span class="caption-number">Lemma 8 </span></p>
 <div class="lemma-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X_{i} \in \mathbb{R}\)</span> for <span class="math notranslate nohighlight">\(i=1:\)</span> n are i.i.d with symmetric
@@ -874,7 +874,7 @@ independent with <span class="math notranslate nohighlight">\(X_{i}\)</span>, th
 </div>
 </div><p>Then state the following result for ReLU function and random variable
 with symmetric distribution around 0 .</p>
-<div class="proof lemma admonition" id="lemma3">
+<div class="proof lemma admonition" id="lemma51_3">
 <p class="admonition-title"><span class="caption-number">Lemma 9 </span></p>
 <div class="lemma-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a random variable on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> with symmetric
@@ -888,7 +888,7 @@ $<span class="math notranslate nohighlight">\(
 \[
     \mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]
 \]</div>
-<p>Based on the previous <a class="reference internal" href="../../Module3/m3_01/m3_01.html#lemma1">Lemma 1</a>, we know that <span class="math notranslate nohighlight">\(f_{k}^{\ell-1}\)</span> is a
+<p>Based on the previous <a class="reference internal" href="#lemma51_1">Lemma 7</a>, we know that <span class="math notranslate nohighlight">\(f_{k}^{\ell-1}\)</span> is a
 symmetric distribution around 0 . The most important observation in
 Kaiming’s paper is that:</p>
 <div class="math notranslate nohighlight">
@@ -979,9 +979,9 @@ initialization</p>
     \mathbb{V}\left[K_{h, o ; s, t}^{\ell, i}\right]=\frac{4}{\left(c_{\ell}+h_{\ell}\right)(2 k+1)^{2}}=\frac{2}{c_{\ell}(2 k+1)^{2}} 
 \]</div>
 <p>And they have the both uniform and normal distribution type.</p>
-<div class="figure align-default" id="fig1-1">
+<div class="figure align-default" id="fig51-1">
 <a class="reference internal image-reference" href="../../_images/img14.png"><img alt="../../_images/img14.png" src="../../_images/img14.png" style="height: 150px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">The convergence of a 22-layer large model.</span><a class="headerlink" href="#fig1-1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">The convergence of a 22-layer large model.</span><a class="headerlink" href="#fig51-1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <span class="math notranslate nohighlight">\(x\)</span>-axis is the
 number of training epochs. The y-axis is the top-1 error of 3,000 random
@@ -989,9 +989,9 @@ val samples, evaluated on the center crop. Use ReLU as the activation
 for both cases. Both Kaiming’s initialization (red) and “Xavier’s”
 (blue) lead to convergence, but Kaiming’s initialization starts
 reducing error earlier.</p>
-<div class="figure align-default" id="fig1-2">
+<div class="figure align-default" id="fig51-2">
 <a class="reference internal image-reference" href="../../_images/img22.png"><img alt="../../_images/img22.png" src="../../_images/img22.png" style="height: 150px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">The convergence of a 30-layer small model</span><a class="headerlink" href="#fig1-2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">The convergence of a 30-layer small model</span><a class="headerlink" href="#fig51-2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Use ReLU as the activation for both cases. Kaiming’s initialization
 (red) is able to make it converge. But “Xavier’s” (blue)

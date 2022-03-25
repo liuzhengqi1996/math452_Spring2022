@@ -48,7 +48,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### A basic result
 # ```{prf:lemma}
-# :label: lemma1
+# :label: lemma38_1
 # 
 # For any $g \in L^{\infty}(G)$, we have
 # 
@@ -185,7 +185,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Application
 # ```{prf:lemma}
-# :label: lemma2
+# :label: lemma38_2
 # Let
 # 
 # $$
@@ -216,7 +216,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     f(x)=\mathbb{Z}(g)
 # $$
 # 
-# By {prf:ref}`lemma1`,
+# By {prf:ref}`lemma38_1`,
 # 
 # $$
 #     \left.\mathbb{E}_{n}\left(\left(\mathbb{E}(g(x, \cdot))-\frac{1}{n} \sum_{i=1}^{n} g\left(x, \theta_{i}\right)\right)\right)^{2}\right) \leq \frac{1}{n} \mathbb{E}\left(g^{2}\right)
@@ -256,7 +256,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # We also have a more general version of the above lemma.
 # 
 # ```{prf:lemma}
-# :label: lemma3
+# :label: lemma38_3
 # Let
 # 
 # $$

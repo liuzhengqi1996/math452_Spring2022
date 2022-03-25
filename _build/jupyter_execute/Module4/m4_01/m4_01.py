@@ -17,7 +17,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 # ```{prf:lemma}
-# :label: lemma1
+# :label: lemma41_1
 # Assume that $u$ is continuous in $(0,1)$, then the following
 # statements are equivalent
 # 
@@ -72,7 +72,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V \text {. }
 # $$
 # 
-# By variational principal {prf:ref}`lemma1` , we obtain 
+# By variational principal {prf:ref}`lemma41_1` , we obtain 
 # 
 # $$
 #     \left\{\begin{array}{l}

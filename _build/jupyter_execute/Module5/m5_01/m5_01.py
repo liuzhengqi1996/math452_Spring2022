@@ -204,7 +204,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # have the following lemma.
 # 
 # ```{prf:lemma}
-# :label: lemma1
+# :label: lemma51_1
 # Under the previous assumptions $f_{i}^{\ell}$ is a symmetric
 # random variable with $\mathbb{E}\left[f^{\ell}\right]=0 .$ Moreover, we
 # have the following identity
@@ -291,7 +291,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # We first have the following lemma for symmetric distribution.
 # 
 # ```{prf:lemma}
-# :label: lemma2
+# :label: lemma51_2
 # If $X_{i} \in \mathbb{R}$ for $i=1:$ n are i.i.d with symmetric
 # probability density function $p(x)$, i.e. $p(x)$ is even. Then for any
 # nonzero random vector
@@ -309,7 +309,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # with symmetric distribution around 0 .
 # 
 # ```{prf:lemma}
-# :label: lemma3
+# :label: lemma51_3
 # If $X$ is a random variable on $\mathbb{R}$ with symmetric
 # probability density $p(x)$ around zero, i.e., 
 # $$
@@ -323,7 +323,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]
 # $$
 # 
-# Based on the previous {prf:ref}`lemma1`, we know that $f_{k}^{\ell-1}$ is a
+# Based on the previous {prf:ref}`lemma51_1`, we know that $f_{k}^{\ell-1}$ is a
 # symmetric distribution around 0 . The most important observation in
 # Kaiming’s paper is that:
 # 
@@ -428,7 +428,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ```{figure} ./images/img1.png
 # :height: 150px
-# :name: fig1_1
+# :name: fig51_1
 # The convergence of a 22-layer large model.
 # ```
 # 
@@ -441,7 +441,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ```{figure} ./images/img2.png
 # :height: 150px
-# :name: fig1_2
+# :name: fig51_2
 # The convergence of a 30-layer small model 
 # ```
 # 

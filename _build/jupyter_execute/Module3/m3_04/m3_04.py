@@ -276,7 +276,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # 
 # When the other case occurs, i.e. $D_{g_{6}}=D_{g_{2}}=\cdots=D_{g_{\ell_{2}}}$, by the definition of
-# $g_{i}$ in {eq}`eq1_18` and $D_{g_{i}}$ in {eq}`eq`_19`, this happens if and only if
+# $g_{i}$ in {eq}`eq1_18` and $D_{g_{i}}$ in {eq}`eq1_19`, this happens if and only if
 # there is a row vector $(w, b)$ such that
 # 
 # $$
@@ -427,6 +427,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # network.
 # 
 # The 1 -hidden layer (shallow) neural network is defined as:
+# 
 # $$
 #     { }_{n} \mathrm{~N}={ }_{n} \mathrm{~N}(\sigma)={ }_{n} \mathrm{~N}^{1}(\sigma)=\bigcup_{n_{1} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, 1\right)
 # $$
