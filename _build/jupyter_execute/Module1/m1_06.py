@@ -315,7 +315,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \|x_{t+1} - x^* \|^2 &=  \| x_{t} - \eta_t \nabla f(x_t) - x^* \|^2 \\
 #     &= \|x_t-x^*\|^2 - 2\eta_t \nabla f(x_t)^\top (x_t - x^*) + \eta_t^2 \|\nabla f(x_t) - \nabla f(x^*)\|^2 \qquad \mbox{ (by $\nabla f(x^*)=0$)}\\
 #     &\le \|x_t - x^*\|^2 - 2\eta_t \lambda \|x_t - x^*\|^2 + \eta_t ^2 L^2 \|x_t - x^*\|^2  \quad
-#     \mbox{(by $\lambda$- strongly convex \eqref{strongConvIneq} and Lipschitz)}\\
+#     \mbox{(by $\lambda$- strongly convex and Lipschitz)}\\
 #     &\le (1 - 2\eta_t \lambda + \eta_t^2 L^2) \|x_t - x^*\|^2
 #     =\alpha \|x_t - x^*\|^2,
 #     \end{aligned}
