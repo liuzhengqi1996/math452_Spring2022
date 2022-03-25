@@ -290,6 +290,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # m
 # \end{array}\right)^{1 / 2}|\Omega|^{1 / 2} n^{-1 / 2}
 # $$
+# ```
 # 
 # For any
 # $f(x)=\int_{G} g(x, \theta) \rho(\theta) d \theta$ with
@@ -302,7 +303,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # with $\|\lambda(\theta)\|_{L^{1}(\Theta)}=1 .$ We can apply the above
 # two lemmas to the given function $f(x)$.
-# ```
+# 
 # 
 # ## Integral representations of functions
 # 
