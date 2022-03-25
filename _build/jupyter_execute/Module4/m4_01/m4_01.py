@@ -247,9 +247,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 # $$
-#     4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0$
-# if $i$ or $j \in\{0, n+1\}
+#     4 u_{i, j}-\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)=f_{i, j}, \quad u_{i, j}=0
 # $$ (eq1_16)
+# 
+# if $i$ or $j \in\{0, n+1\}$
+#  
 # 
 # where
 # 
