@@ -80,17 +80,35 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### MgNet
 # 
-# Algorithm
-# $12 \mu^{J}=\operatorname{MgNet} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)$
-# $$\begin{array}{l}\text { Set up } \\ \qquad f^{1}=\theta * f, \quad \mu^{1}=\mu^{0} .\end{array}$$
+# ```{prf:algorithm} $\mu^{J}=\operatorname{MgNet} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)$
+# Set up:
+# 
+# $$
+#     \qquad f^{1}=\theta * f, \quad \mu^{1}=\mu^{0} 
+# $$
+# 
 # Smoothing and restriction from fine to coarse level (nested)\
-# for $\ell=1: J$ do $\quad$ for $i=1: v_{\ell}$ do\
-# (8.34)
-# $\quad \mu^{\ell} \leftarrow \mu^{\ell}+\sigma \circ S^{\ell} * \sigma \circ\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right) .$\
-# end for
-# $\quad f^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *_{2}\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}$,\
-# Form restricted residual and set initial guess:\
-# end for
+# 
+# **For** $\ell=1: J$ do 
+# 
+# $\quad$
+# 
+# **For** $i=1: v_{\ell}$ do
+# 
+# $$
+#     \quad \mu^{\ell} \leftarrow \mu^{\ell}+\sigma \circ S^{\ell} * \sigma \circ\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)
+# $$
+# 
+# **EndFor**
+# 
+# Form restricted residual and set initial guess:
+# 
+# $$
+#     \quad \mu^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *_{2}\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}$
+# $$
+# 
+# **EndFor**
+# ```
 # 
 
 # In[ ]:

@@ -646,18 +646,31 @@ operation is critical for nonlinear problems.</p>
 </div>
 <div class="section" id="mgnet">
 <h3>MgNet<a class="headerlink" href="#mgnet" title="Permalink to this headline">¶</a></h3>
-<p>Algorithm
-<span class="math notranslate nohighlight">\(12 \mu^{J}=\operatorname{MgNet} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)\)</span>
-$<span class="math notranslate nohighlight">\(\begin{array}{l}\text { Set up } \\ \qquad f^{1}=\theta * f, \quad \mu^{1}=\mu^{0} .\end{array}\)</span><span class="math notranslate nohighlight">\(
-Smoothing and restriction from fine to coarse level (nested)\
-for \)</span>\ell=1: J<span class="math notranslate nohighlight">\( do \)</span>\quad<span class="math notranslate nohighlight">\( for \)</span>i=1: v_{\ell}<span class="math notranslate nohighlight">\( do\
-(8.34)
-\)</span>\quad \mu^{\ell} \leftarrow \mu^{\ell}+\sigma \circ S^{\ell} * \sigma \circ\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right) .<span class="math notranslate nohighlight">\(\
-end for
-\)</span>\quad f^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *<em>{2}\left(f^{\ell}-A</em>{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}$,<br />
-Form restricted residual and set initial guess:<br />
-end for</p>
+<div class="proof algorithm admonition" id="algorithm-1">
+<p class="admonition-title"><span class="caption-number">Algorithm 10 </span> (<span class="math notranslate nohighlight">\(\mu^{J}=\operatorname{MgNet} 1\left(f ; \mu^{0} ; J, v_{1}, \cdots, v_{J}\right)\)</span>)</p>
+<div class="algorithm-content section" id="proof-content">
+<p>Set up:</p>
+<div class="math notranslate nohighlight">
+\[
+    \qquad f^{1}=\theta * f, \quad \mu^{1}=\mu^{0} 
+\]</div>
+<p>Smoothing and restriction from fine to coarse level (nested)\</p>
+<p><strong>For</strong> <span class="math notranslate nohighlight">\(\ell=1: J\)</span> do</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span></p>
+<p><strong>For</strong> <span class="math notranslate nohighlight">\(i=1: v_{\ell}\)</span> do</p>
+<div class="math notranslate nohighlight">
+\[
+    \quad \mu^{\ell} \leftarrow \mu^{\ell}+\sigma \circ S^{\ell} * \sigma \circ\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)
+\]</div>
+<p><strong>EndFor</strong></p>
+<p>Form restricted residual and set initial guess:</p>
+<div class="math notranslate nohighlight">
+\[
+    \quad \mu^{\ell+1} \leftarrow \Pi_{\ell}^{\ell+1} \mu^{\ell}, \quad f^{\ell+1} \leftarrow R *_{2}\left(f^{\ell}-A_{\ell} * \mu^{\ell}\right)+A_{\ell+1} * \mu^{\ell+1}$
+\]</div>
+<p><strong>EndFor</strong></p>
 </div>
+</div></div>
 </div>
 </div>
 
