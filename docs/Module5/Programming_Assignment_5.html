@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Module 6: MgNet" href="../Module6/module6_.html" />
-    <link rel="prev" title="Multigrid Method for Finite Element" href="m5_04/m5_04.html" />
+    <link rel="next" title="Quiz 5" href="quiz5.html" />
+    <link rel="prev" title="Homework 5" href="m5_hw.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -392,9 +392,19 @@
      Multigrid Method for Finite Element
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m5_hw.html">
+     Homework 5
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz5.html">
+     Quiz 5
     </a>
    </li>
   </ul>
@@ -577,8 +587,8 @@
 </div>
 <div class="section" id="problem-2-3-pts-consider-the-possion-equation">
 <h2>Problem 2 (3 pts):  Consider the possion equation<a class="headerlink" href="#problem-2-3-pts-consider-the-possion-equation" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-9e1339f6-2220-4a9e-8471-31709a636a19">
-<span class="eqno">(38)<a class="headerlink" href="#equation-9e1339f6-2220-4a9e-8471-31709a636a19" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
+<div class="amsmath math notranslate nohighlight" id="equation-400fae3b-e40a-4d50-b42f-ce61614b3a51">
+<span class="eqno">(38)<a class="headerlink" href="#equation-400fae3b-e40a-4d50-b42f-ce61614b3a51" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
 \left\{
 \begin{aligned}
 -u''&amp;= f, \,\, 0&lt;x&lt;1, \\
@@ -589,8 +599,8 @@
 <p>Assume <span class="math notranslate nohighlight">\(f(x)=1\)</span>, then the exact solution is <span class="math notranslate nohighlight">\(u(x)=\frac{1}{2}x(1-x)\)</span>. Given the partition with the grid points
 <span class="math notranslate nohighlight">\(x_i=\frac{i}{n+1}, i=0,1,\cdots,n+1\)</span>, then by finite element discretization,
 we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d7ff79a-90e5-43fa-812d-f4cec2a53b31">
-<span class="eqno">(39)<a class="headerlink" href="#equation-3d7ff79a-90e5-43fa-812d-f4cec2a53b31" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-db1c0b54-4c4a-4c91-80e5-1cd947b447c0">
+<span class="eqno">(39)<a class="headerlink" href="#equation-db1c0b54-4c4a-4c91-80e5-1cd947b447c0" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 \end{equation}\]</div>
 <p>Use gradient descent method to solve the above problem with random initial guess <span class="math notranslate nohighlight">\(\mu^0\)</span>:</p>
@@ -794,19 +804,19 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="m5_04/m5_04.html" title="previous page">
+        <a class="left-prev" href="m5_hw.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Multigrid Method for Finite Element</p>
+                <p class="prevnext-title">Homework 5</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../Module6/module6_.html" title="next page">
+        <a class="right-next" href="quiz5.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Module 6: MgNet</p>
+                <p class="prevnext-title">Quiz 5</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
