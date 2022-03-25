@@ -198,7 +198,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # have the following identity
 # $$\mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]$$
 # Now, if $\sigma=i d$, we can prove by induction from $\ell=1$ that
-# $$\mathbb{V}\left[f_{i}^{L}\right]=\left(\Pi_{\ell=2}^{L} n_{\ell-1} \operatorname{Var}\left[W_{s t}^{\ell}\right]\right)\left(\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\right)$$
+# 
+# $$
+#     \mathbb{V}\left[f_{i}^{L}\right]=\left(\Pi_{\ell=2}^{L} n_{\ell-1} \operatorname{Var}\left[W_{s t}^{\ell}\right]\right)\left(\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\right)
+# $$
+# 
 # We make this assumption that $\sigma=i d$, which is pretty reasonably
 # since most activation functions in use at the time (such as the
 # hyperbolic tangent) were close to the identity near 0 .
