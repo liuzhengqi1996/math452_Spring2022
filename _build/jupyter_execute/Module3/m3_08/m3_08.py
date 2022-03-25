@@ -302,7 +302,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # with $\|\lambda(\theta)\|_{L^{1}(\Theta)}=1 .$ We can apply the above
 # two lemmas to the given function $f(x)$.
-# 
+# ```
 # 
 # ## Integral representations of functions
 # 
@@ -421,10 +421,16 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     k(x, \theta)=\frac{1}{2 \pi \hat{\sigma}(a)} \sigma\left(a^{-1} \omega \cdot x+b\right) \hat{f}(\omega) e^{-i a b}
 # $$
 # 
-# Thus we have $$\begin{aligned}
+# Thus we have 
+# 
+# $$
+#     \begin{aligned}
 # |k(x, \theta)| & \leq \frac{1}{2 \pi|\hat{\sigma}(a)|} \max _{x \in \Omega}\left|\sigma\left(a^{-1} \omega \cdot x+b\right) \| \hat{f}(\omega)\right| \\
 # & \leq h(\omega, b)|\hat{f}(\omega)|=\rho(\theta)
-# \end{aligned}$$ where
+# \end{aligned}
+# $$
+# 
+# where
 # 
 # $$
 #     h(\omega, b)=\max _{x \in \Omega}\left|\sigma\left(a^{-1} \omega \cdot x+b\right)\right|

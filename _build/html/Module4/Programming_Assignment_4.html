@@ -533,81 +533,83 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-1-5-pts-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
-   Problem 1 (5 pts): Given a image
+  <a class="reference internal nav-link" href="#problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
+   Problem 1 : Given a image
    <span class="math notranslate nohighlight">
     \(x\)
    </span>
    , use Pytorch to apply the following three operations to the image sequentially:
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1">
-   (1) Do a convolution
-   <span class="math notranslate nohighlight">
-    \(x_{conv1}= self.conv1(x)\)
-   </span>
-   with
-   <span class="math notranslate nohighlight">
-    \(stride=1\)
-   </span>
-   ,  zero
-   <span class="math notranslate nohighlight">
-    \(padding=2\)
-   </span>
-   and  the
-   <span class="math notranslate nohighlight">
-    \(kernel_1\)
-   </span>
-   :
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   $$
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-a-relu-x-relu-f-relu-x-conv1">
-   (2) Do a ReLu
-   <span class="math notranslate nohighlight">
-    \(x_{relu} = F.relu(x_{conv1})\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2">
-   (3) Do another convolution
-   <span class="math notranslate nohighlight">
-    \(x_{conv2}= self.conv2(x_{relu})\)
-   </span>
-   with
-   <span class="math notranslate nohighlight">
-    \(stride=1\)
-   </span>
-   ,  zero
-   <span class="math notranslate nohighlight">
-    \(padding=1\)
-   </span>
-   and the average
-   <span class="math notranslate nohighlight">
-    \(kernel_2\)
-   </span>
-   :
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   $$
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2">
-   Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are
-   <span class="math notranslate nohighlight">
-    \(x,~x_{conv1},~x_{relu},~x_{conv2}.\)
-   </span>
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1">
+     (1) Do a convolution
+     <span class="math notranslate nohighlight">
+      \(x_{conv1}= self.conv1(x)\)
+     </span>
+     with
+     <span class="math notranslate nohighlight">
+      \(stride=1\)
+     </span>
+     ,  zero
+     <span class="math notranslate nohighlight">
+      \(padding=2\)
+     </span>
+     and  the
+     <span class="math notranslate nohighlight">
+      \(kernel_1\)
+     </span>
+     :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     $$
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-a-relu-x-relu-f-relu-x-conv1">
+     (2) Do a ReLu
+     <span class="math notranslate nohighlight">
+      \(x_{relu} = F.relu(x_{conv1})\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2">
+     (3) Do another convolution
+     <span class="math notranslate nohighlight">
+      \(x_{conv2}= self.conv2(x_{relu})\)
+     </span>
+     with
+     <span class="math notranslate nohighlight">
+      \(stride=1\)
+     </span>
+     ,  zero
+     <span class="math notranslate nohighlight">
+      \(padding=1\)
+     </span>
+     and the average
+     <span class="math notranslate nohighlight">
+      \(kernel_2\)
+     </span>
+     :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     $$
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2">
+     Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are
+     <span class="math notranslate nohighlight">
+      \(x,~x_{conv1},~x_{relu},~x_{conv2}.\)
+     </span>
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies">
@@ -616,26 +618,28 @@
    </strong>
    Try to use stochastic gradient descent method to train CIFAR10 with LeNet-5 to achieve 60% test accuracy. Apply the following two strategies:
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
-   Run 30 epochs, and divide the learning rate by 10 every 10 epochs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#weight-decay">
-   Weight decay
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-normalization">
-   Data normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#print-the-results-with-the-following-format">
-   Print the results with the following format:
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+     Run 30 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weight-decay">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-normalization">
+     Data normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-the-results-with-the-following-format">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies">
@@ -644,21 +648,23 @@
    </strong>
    Try to use stochastic gradient descent method to train MNIST with LeNet-5 to achieve 99% test accuracy. Apply the following two strategies:
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
-   Run 20 epochs, and divide the learning rate by 10 every 10 epochs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Weight decay
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   Print the results with the following format:
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+     Run 20 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5">
@@ -667,41 +673,43 @@
    </strong>
    Try to use stochastic gradient descent method to train CIFAR10 with a CNN to achieve 70% test accuracy. For the CNN model, you can modified the LeNet-5:
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
-   Increase the number of out_channels in conv1 from 6 to 16 or more.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
-   Increase the number of out_channels in conv2 from 16 to 32 or more.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#you-will-also-need-to-change-the-size-of-fc1-layer">
-   You will also need to change the size of fc1 layer.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   Run 30 epochs, and divide the learning rate by 10 every 10 epochs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   Weight decay
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   Data normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   Print the results with the following format:
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
+     Increase the number of out_channels in conv1 from 6 to 16 or more.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
+     Increase the number of out_channels in conv2 from 16 to 32 or more.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-will-also-need-to-change-the-size-of-fc1-layer">
+     You will also need to change the size of fc1 layer.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Run 30 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Data normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -719,14 +727,13 @@
 <p>Remark:</p>
 <p>Please upload your solutions of this assignment to Canvas with a file named “Programming_Assignment_4 _yourname.ipynb”</p>
 <p>=================================================================================================================</p>
-<div class="section" id="problem-1-5-pts-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
-<h2>Problem 1 (5 pts): Given a image <span class="math notranslate nohighlight">\(x\)</span>, use Pytorch to apply the following three operations to the image sequentially:<a class="headerlink" href="#problem-1-5-pts-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially" title="Permalink to this headline">¶</a></h2>
-</div>
+<div class="section" id="problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
+<h2>Problem 1 : Given a image <span class="math notranslate nohighlight">\(x\)</span>, use Pytorch to apply the following three operations to the image sequentially:<a class="headerlink" href="#problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1">
-<h2>(1) Do a convolution  <span class="math notranslate nohighlight">\(x_{conv1}= self.conv1(x)\)</span> with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=2\)</span> and  the <span class="math notranslate nohighlight">\(kernel_1\)</span>:<a class="headerlink" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1" title="Permalink to this headline">¶</a></h2>
+<h3>(1) Do a convolution  <span class="math notranslate nohighlight">\(x_{conv1}= self.conv1(x)\)</span> with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=2\)</span> and  the <span class="math notranslate nohighlight">\(kernel_1\)</span>:<a class="headerlink" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id1">
-<h2>$$<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h3>$$<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Kernel_1=\begin{bmatrix}
 0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \<br />
 0&amp;-1&amp;-2&amp;-1&amp; 0\
@@ -737,13 +744,13 @@
 $$</p>
 </div>
 <div class="section" id="do-a-relu-x-relu-f-relu-x-conv1">
-<h2>(2) Do a ReLu <span class="math notranslate nohighlight">\(x_{relu} = F.relu(x_{conv1})\)</span><a class="headerlink" href="#do-a-relu-x-relu-f-relu-x-conv1" title="Permalink to this headline">¶</a></h2>
+<h3>(2) Do a ReLu <span class="math notranslate nohighlight">\(x_{relu} = F.relu(x_{conv1})\)</span><a class="headerlink" href="#do-a-relu-x-relu-f-relu-x-conv1" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2">
-<h2>(3) Do another convolution  <span class="math notranslate nohighlight">\(x_{conv2}= self.conv2(x_{relu})\)</span>  with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=1\)</span> and the average <span class="math notranslate nohighlight">\(kernel_2\)</span>:<a class="headerlink" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2" title="Permalink to this headline">¶</a></h2>
+<h3>(3) Do another convolution  <span class="math notranslate nohighlight">\(x_{conv2}= self.conv2(x_{relu})\)</span>  with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=1\)</span> and the average <span class="math notranslate nohighlight">\(kernel_2\)</span>:<a class="headerlink" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id2">
-<h2>$$<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h3>$$<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Kernel_2=\begin{bmatrix}
 \frac{1}{9} &amp; \frac{1}{9} &amp;\frac{1}{9}  \<br />
 \frac{1}{9} &amp; \frac{1}{9} &amp;\frac{1}{9}  \<br />
@@ -752,7 +759,7 @@ $$</p>
 $$</p>
 </div>
 <div class="section" id="define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2">
-<h2>Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are <span class="math notranslate nohighlight">\(x,~x_{conv1},~x_{relu},~x_{conv2}.\)</span><a class="headerlink" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2" title="Permalink to this headline">¶</a></h2>
+<h3>Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are <span class="math notranslate nohighlight">\(x,~x_{conv1},~x_{relu},~x_{conv2}.\)</span><a class="headerlink" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can finish the following code to solve Problem 1.</span>
@@ -833,6 +840,7 @@ $$</p>
 </div>
 <p>=================================================================================================================</p>
 </div>
+</div>
 <div class="section" id="problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies">
 <h2><strong>Problem 2 (5 pts).</strong> Try to use stochastic gradient descent method to train CIFAR10 with LeNet-5 to achieve 60% test accuracy. Apply the following two strategies:<a class="headerlink" href="#problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -840,21 +848,21 @@ $$</p>
 <li></li>
 <li></li>
 </ul>
-</div>
 <div class="section" id="run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
-<h2>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h2>
+<h3>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="weight-decay">
-<h2>Weight decay<a class="headerlink" href="#weight-decay" title="Permalink to this headline">¶</a></h2>
+<h3>Weight decay<a class="headerlink" href="#weight-decay" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="data-normalization">
-<h2>Data normalization<a class="headerlink" href="#data-normalization" title="Permalink to this headline">¶</a></h2>
+<h3>Data normalization<a class="headerlink" href="#data-normalization" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="print-the-results-with-the-following-format">
-<h2>Print the results with the following format:<a class="headerlink" href="#print-the-results-with-the-following-format" title="Permalink to this headline">¶</a></h2>
+<h3>Print the results with the following format:<a class="headerlink" href="#print-the-results-with-the-following-format" title="Permalink to this headline">¶</a></h3>
 <p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
 <p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
 <p>=================================================================================================================</p>
+</div>
 </div>
 <div class="section" id="optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies">
 <h2><strong>Optional Problem 1.</strong> Try to use stochastic gradient descent method to train MNIST with LeNet-5 to achieve 99% test accuracy. Apply the following two strategies:<a class="headerlink" href="#optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies" title="Permalink to this headline">¶</a></h2>
@@ -862,18 +870,18 @@ $$</p>
 <li></li>
 <li></li>
 </ul>
-</div>
 <div class="section" id="run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
-<h2>Run 20 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h2>
+<h3>Run 20 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id3">
-<h2>Weight decay<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>Weight decay<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id4">
-<h2>Print the results with the following format:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h3>Print the results with the following format:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
 <p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
 <p>=================================================================================================================</p>
+</div>
 </div>
 <div class="section" id="optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5">
 <h2><strong>Optional Problem 2.</strong> Try to use stochastic gradient descent method to train CIFAR10 with a CNN to achieve 70% test accuracy. For the CNN model, you can modified the LeNet-5:<a class="headerlink" href="#optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5" title="Permalink to this headline">¶</a></h2>
@@ -882,35 +890,35 @@ $$</p>
 <li></li>
 <li></li>
 </ul>
+<div class="section" id="increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
+<h3>Increase the number of out_channels in conv1 from 6 to 16 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
+<h3>Increase the number of out_channels in conv2 from 16 to 32 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="you-will-also-need-to-change-the-size-of-fc1-layer">
+<h3>You will also need to change the size of fc1 layer.<a class="headerlink" href="#you-will-also-need-to-change-the-size-of-fc1-layer" title="Permalink to this headline">¶</a></h3>
+</div>
 <p>Apply the following two strategies:</p>
 <ul class="simple">
 <li></li>
 <li></li>
 <li></li>
 </ul>
-</div>
-<div class="section" id="increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
-<h2>Increase the number of out_channels in conv1 from 6 to 16 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
-<h2>Increase the number of out_channels in conv2 from 16 to 32 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="you-will-also-need-to-change-the-size-of-fc1-layer">
-<h2>You will also need to change the size of fc1 layer.<a class="headerlink" href="#you-will-also-need-to-change-the-size-of-fc1-layer" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="id5">
-<h2>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h3>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id6">
-<h2>Weight decay<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h3>Weight decay<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id7">
-<h2>Data normalization<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h3>Data normalization<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id8">
-<h2>Print the results with the following format:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h3>Print the results with the following format:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
 <p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
+</div>
 </div>
 </div>
 

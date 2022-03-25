@@ -78,6 +78,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $\Pi_{\ell}^{\ell+1}: \mathbb{R}^{n_{\ell} \times n_{\ell}} \mapsto \mathbb{R}^{n_{\ell+1} \times n_{\ell+1}}$
 # and in particular, we could take $\Pi_{\ell}^{\ell+1}:=0$. But such an
 # operation is critical for nonlinear problems.
+# ```
 # 
 # ### MgNet
 # 

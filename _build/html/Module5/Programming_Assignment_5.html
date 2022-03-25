@@ -533,18 +533,18 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-1-4-pts-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18">
-   Problem 1 (4 pts): Use stochastic gradient descent method to train CIFAR10 with ResNet18.
+  <a class="reference internal nav-link" href="#problem-1-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18">
+   Problem 1 : Use stochastic gradient descent method to train CIFAR10 with ResNet18.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-2-3-pts-consider-the-possion-equation">
-   Problem 2 (3 pts):  Consider the possion equation
+  <a class="reference internal nav-link" href="#problem-2-consider-the-possion-equation">
+   Problem 2 :  Consider the possion equation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-3-3-pts-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu">
-   Problem 3 (3 pts): Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution
+  <a class="reference internal nav-link" href="#problem-3-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu">
+   Problem 3 : Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution
    <span class="math notranslate nohighlight">
     \(u^{\nu}\)
    </span>
@@ -565,10 +565,10 @@
   <div class="section" id="week-5-programming-assignment">
 <h1>Week 5 Programming Assignment<a class="headerlink" href="#week-5-programming-assignment" title="Permalink to this headline">¶</a></h1>
 <p>Remark:</p>
-<p>Please upload your solutions of this assignment to Canvas with a file named “Programming_Assignment_5 _yourname.ipynb” before 11:59pm June 20.</p>
+<p>Please upload your solutions of this assignment to Canvas with a file named “Programming_Assignment_5 _yourname.ipynb” before deadline.</p>
 <p>=================================================================================================================</p>
-<div class="section" id="problem-1-4-pts-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18">
-<h2>Problem 1 (4 pts): Use stochastic gradient descent method to train CIFAR10 with ResNet18.<a class="headerlink" href="#problem-1-4-pts-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-1-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18">
+<h2>Problem 1 : Use stochastic gradient descent method to train CIFAR10 with ResNet18.<a class="headerlink" href="#problem-1-use-stochastic-gradient-descent-method-to-train-cifar10-with-resnet18" title="Permalink to this headline">¶</a></h2>
 <p>Apply the following two different learning rate schedules respectively</p>
 <p>(1) run 120 epochs with a fixed learning rate 0.1,</p>
 <p>(2) run 120 epochs, and divide the learning rate by 10 every 30 epochs, which can achieve 94% test accuracy.</p>
@@ -585,10 +585,10 @@
 </div>
 <p>=================================================================================================================</p>
 </div>
-<div class="section" id="problem-2-3-pts-consider-the-possion-equation">
-<h2>Problem 2 (3 pts):  Consider the possion equation<a class="headerlink" href="#problem-2-3-pts-consider-the-possion-equation" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-66d75add-1eac-4c62-b835-9680fc8c864d">
-<span class="eqno">(56)<a class="headerlink" href="#equation-66d75add-1eac-4c62-b835-9680fc8c864d" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
+<div class="section" id="problem-2-consider-the-possion-equation">
+<h2>Problem 2 :  Consider the possion equation<a class="headerlink" href="#problem-2-consider-the-possion-equation" title="Permalink to this headline">¶</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-428f1ecd-09e8-44be-8275-3c6682ecaa14">
+<span class="eqno">(56)<a class="headerlink" href="#equation-428f1ecd-09e8-44be-8275-3c6682ecaa14" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{1Dposi}
 \left\{
 \begin{aligned}
 -u''&amp;= f, \,\, 0&lt;x&lt;1, \\
@@ -599,8 +599,8 @@
 <p>Assume <span class="math notranslate nohighlight">\(f(x)=1\)</span>, then the exact solution is <span class="math notranslate nohighlight">\(u(x)=\frac{1}{2}x(1-x)\)</span>. Given the partition with the grid points
 <span class="math notranslate nohighlight">\(x_i=\frac{i}{n+1}, i=0,1,\cdots,n+1\)</span>, then by finite element discretization,
 we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1fc2b4c2-6b09-4ee4-8429-379903f37b88">
-<span class="eqno">(57)<a class="headerlink" href="#equation-1fc2b4c2-6b09-4ee4-8429-379903f37b88" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-9aceaafd-a4b4-40a9-a871-60840ee2f0ba">
+<span class="eqno">(57)<a class="headerlink" href="#equation-9aceaafd-a4b4-40a9-a871-60840ee2f0ba" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 \end{equation}\]</div>
 <p>Use gradient descent method to solve the above problem with random initial guess <span class="math notranslate nohighlight">\(\mu^0\)</span>:</p>
@@ -674,8 +674,8 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 </div>
 <p>=================================================================================================================</p>
 </div>
-<div class="section" id="problem-3-3-pts-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu">
-<h2>Problem 3 (3 pts): Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution <span class="math notranslate nohighlight">\(u^{\nu}\)</span>.<a class="headerlink" href="#problem-3-3-pts-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-3-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu">
+<h2>Problem 3 : Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution <span class="math notranslate nohighlight">\(u^{\nu}\)</span>.<a class="headerlink" href="#problem-3-consider-the-poisson-equation-described-in-problem-1-call-the-multigrid-code-given-in-the-following-cell-to-obtain-a-solution-u-nu" title="Permalink to this headline">¶</a></h2>
 <p>Use multigrid method to solve the above problem with random initial guess <span class="math notranslate nohighlight">\(\mu^0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -766,6 +766,14 @@ A\ast \mu =b,~~ A=\frac{1}{h}[-1,2,-1].
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-3-aa9ad0354799&gt;&quot;</span><span class="gt">, line </span><span class="mi">63</span>
+    <span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span> <span class="n">to</span> <span class="n">call</span> <span class="n">MG1</span> <span class="n">function</span><span class="p">}</span>
+           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>

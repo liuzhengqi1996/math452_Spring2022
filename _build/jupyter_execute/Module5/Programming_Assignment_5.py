@@ -5,11 +5,11 @@
 # 
 # Remark: 
 # 
-# Please upload your solutions of this assignment to Canvas with a file named "Programming_Assignment_5 _yourname.ipynb" before 11:59pm June 20.
+# Please upload your solutions of this assignment to Canvas with a file named "Programming_Assignment_5 _yourname.ipynb" before deadline.
 
 # =================================================================================================================
 
-# ### Problem 1 (4 pts): Use stochastic gradient descent method to train CIFAR10 with ResNet18.
+# ## Problem 1 : Use stochastic gradient descent method to train CIFAR10 with ResNet18.
 # 
 # Apply the following two different learning rate schedules respectively
 # 
@@ -33,7 +33,7 @@
 
 # =================================================================================================================
 
-# ### Problem 2 (3 pts):  Consider the possion equation 
+# ## Problem 2 :  Consider the possion equation 
 # \begin{equation}\label{1Dposi}
 # \left\{
 # \begin{aligned}
@@ -118,7 +118,7 @@ plt.show()
 
 # =================================================================================================================
 
-# ### Problem 3 (3 pts): Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution $u^{\nu}$.
+# ## Problem 3 : Consider the Poisson equation described in Problem 1, call the Multigrid code given in the following cell to obtain a solution $u^{\nu}$.
 # Use multigrid method to solve the above problem with random initial guess $\mu^0$:
 # 
 # $$
@@ -131,7 +131,7 @@ plt.show()
 # 
 # (2) Compute the error of the residual by $e^m = \sqrt{\sum_{i=0}^{n+1}|(A* \mu^{m}- b)_i |^2},~~ m=1,2,3,...,M$ and the index $i$ means the $i$-th entry of the vector. Plot a curve, where x-axis is $m=1,2,3,...,M$ and y-axis is $e^m$.
 
-# In[ ]:
+# In[3]:
 
 
 import numpy as np

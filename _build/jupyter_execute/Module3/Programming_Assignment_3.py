@@ -5,11 +5,11 @@
 # 
 # Remark: 
 # 
-# Please upload your solutions of this assignment to Canvas with a file named "Programming_Assignment_3 _yourname.ipynb" before 11:59pm June 6.
+# Please upload your solutions of this assignment to Canvas with a file named "Programming_Assignment_3 _yourname.ipynb" before deadline.
 
 # =================================================================================================================
 
-# ### **Problem 1 (6 pt).** Use stochastic gradient descent method to train MNIST with 1 hidden layer neural network model to achieve at least 97% test accuracy. Print the results with the following format:
+# ## **Problem 1 .** Use stochastic gradient descent method to train MNIST with 1 hidden layer neural network model to achieve at least 97% test accuracy. Print the results with the following format:
 # 
 #    "Epoch: i, Training accuracy: $a_i$, Test accuracy: $b_i$"
 # 
@@ -23,7 +23,7 @@
 
 # =================================================================================================================
 
-# ### **Problem 2 (4 pts).** Use stochastic gradient descent method to train CIFAR-10 with
+# ## **Problem 2 .** Use stochastic gradient descent method to train CIFAR-10 with
 # * (1) logistic regression model to achieve at least 25% test accuracy 
 # * (2) 2-hidden layers neural network model to achieve at least 50% test accuracy
 # 

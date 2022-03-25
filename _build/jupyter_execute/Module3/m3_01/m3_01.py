@@ -68,6 +68,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # 
 # ```{prf:theorem}
+# :label: thm31_1
 # $A_{1}, A_{2}, \cdots, A_{k} \subset \mathbb{R}^{d}$ are nonlinearly separable is equivalent that there there exist a smooth classification
 # function 
 # 
