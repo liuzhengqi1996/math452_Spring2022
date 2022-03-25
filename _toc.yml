@@ -63,6 +63,7 @@ parts:
     - file: Module5/m5_03/m5_03.ipynb
     - file: Module5/m5_04/m5_04.ipynb
     - file: Module5/m5_05.ipynb
+    - file: Module5/m5_hw.ipynb
     - file: Module5/Programming_Assignment_5.ipynb
     - file: Module5/quiz5.ipynb
   - file: Module6/module6_
