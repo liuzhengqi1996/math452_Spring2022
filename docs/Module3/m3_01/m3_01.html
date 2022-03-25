@@ -607,18 +607,11 @@ using feature mapping and original definition of linearly separable.</p>
 </div>
 </div><div class="admonition-remark admonition">
 <p class="admonition-title">Remark</p>
-<p>1- This definition is also consistent with the definition of
+<p>1-  This definition is also consistent with the definition of
 linearly separable as we can just take  <span class="math notranslate nohighlight">\(\tilde{d}=d\)</span> and <span class="math notranslate nohighlight">\(\varphi= id\)</span> if <span class="math notranslate nohighlight">\(A_{1}, A_{2}, \cdots, A_{k}\)</span></p>
 <p>are already linearly separable.</p>
-<p>2-  The kernel method in SVM is mainly based on this idea for binary
-case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>where they use kernel functions to approximate
-this $\varphi(x)$
-</pre></div>
-</div>
-<p>3-  For most commonly used deep learning models, they are all associated
-with a softmax mapping which means that we can interpret these deep
-learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p>
+<p>2-  The kernel method in SVM is mainly based on this idea for binary case <span class="math notranslate nohighlight">\((\mathrm{k}=2)\)</span> where they use kernel functions to approximate this <span class="math notranslate nohighlight">\(\varphi(x)\)</span></p>
+<p>3-  For most commonly used deep learning models, they are all associated with a softmax mapping which means that we can interpret these deep learning models as the approximation for feature mapping <span class="math notranslate nohighlight">\(\varphi\)</span></p>
 </div>
 <p>However, softmax is not so crucial for this definition actually as we
 have the next equivalent result.</p>
@@ -726,15 +719,16 @@ from the viewpoint of loss functions:</p>
 \[
     L_{\lambda}(\theta)=\sum_{j=1}^{N} \ell\left(y_{j}, p\left(\varphi\left(x_{j} ; \theta_{1}\right) ; \theta_{2}\right)\right)+\lambda R(\|\theta\|)
 \]</div>
+<p>We have the following remarks:</p>
 <div class="admonition-remark admonition">
 <p class="admonition-title">Remark</p>
-<p>We have the following remarks.</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\ell(q, p)=\sum_{i=1}^{k}-q_{i} \log p_{i} \leftrightarrow \text { cross-entropy }\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(x ; \theta)=\operatorname{softmax}(W x+b)\)</span> where <span class="math notranslate nohighlight">\(\theta=(W, b)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\theta=\left(\theta_{1}, \theta_{2}\right)\)</span> for nonlinear case</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda R(\|\theta\|) \leftrightarrow\)</span> regularization term</p></li>
 </ol>
+</div>
 <p>In general, we have the following popular nonlinear models for <span class="math notranslate nohighlight">\(\varphi(x ; \theta)\)</span></p>
 <ol class="simple">
 <li><p>Polynomials.</p></li>
@@ -742,7 +736,6 @@ from the viewpoint of loss functions:</p>
 <li><p>Kernel functions in SVM.</p></li>
 <li><p>Deep neural networks.</p></li>
 </ol>
-</div>
 </div>
 </div>
 
