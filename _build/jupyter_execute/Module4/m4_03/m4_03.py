@@ -135,7 +135,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Here $f_{\text {in }}(\cdot)$ may depend on different data set and
 # problems such as $f_{\text {in }}(f)=\sigma \circ \theta^{0} * f$ for
-# CIFAR \[4\] and
+# CIFAR and
 # $f_{\text {in }}(f)=R_{\max } \circ \sigma \circ \theta^{0} * f$ for
 # ImageNet \[1\] as in \[3\]. In addition
 # $r^{\ell, i}=r^{\ell, i-1}+A^{\ell, i} * \sigma \circ B^{\ell, i} * \sigma\left(r^{i-1}\right)$
@@ -145,7 +145,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # means convolution with stride 2 and $B^{\ell, 0}$ is taken as the
 # $3 \times 3$ kernel with same output channel dimension of
 # $R_{\ell}^{\ell+1}$ which is taken as $1 \times 1$ kernel and called as
-# projection operator in \[3\]. During two consecutive pooling blocks,
+# projection operator. During two consecutive pooling blocks,
 # index $\ell$ means the fixed resolution or we $\ell$-th grid level as in
 # multigrid methods. Finally, $R_{\mathrm{ave}}$ $\left(R_{\max }\right)$
 # means average (max) pooling with different strides which is also

@@ -152,6 +152,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ### Comparison of $\sqrt{\left[\sigma_{X}\right]_{j}}$ and $\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}$ on CIFAR10.
 # 
 # They share the same $\mu_{X}$ as 
+# 
 # $$
 #     \mu_{X}=\left(\begin{array}{lll}
 # 0.49140105 & 0.48215663 & 0.44653168
@@ -173,7 +174,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Xavier’s Initialization
 # 
-# The goal of Xavier initialization \[1\] is to initialize the deep neural
+# The goal of Xavier initialization is to initialize the deep neural
 # network to avoid gradient vanishing or blowup when the input is white
 # noise.
 # 
@@ -202,13 +203,16 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # features $f^{L}$ and gradients don’t blow up or vanish. To this end we
 # have the following lemma.
 # 
-# Lemma 1. Under the previous assumptions $f_{i}^{\ell}$ is a symmetric
+# ```{prf:lemma}
+# :label: lemma1
+# Under the previous assumptions $f_{i}^{\ell}$ is a symmetric
 # random variable with $\mathbb{E}\left[f^{\ell}\right]=0 .$ Moreover, we
 # have the following identity
 # 
 # $$
 #     \mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]
 # $$
+# ```
 # 
 # Now, if $\sigma=i d$, we can prove by induction from $\ell=1$ that
 # 
@@ -286,7 +290,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # We first have the following lemma for symmetric distribution.
 # 
-# Lemma 2. If $X_{i} \in \mathbb{R}$ for $i=1:$ n are i.i.d with symmetric
+# ```{prf:lemma}
+# :label: lemma2
+# If $X_{i} \in \mathbb{R}$ for $i=1:$ n are i.i.d with symmetric
 # probability density function $p(x)$, i.e. $p(x)$ is even. Then for any
 # nonzero random vector
 # $Y=\left(Y_{1}, Y_{2}, \cdots, Y_{n}\right) \in \mathbb{R}^{n}$ which is
@@ -297,15 +303,19 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $$
 # 
 # is also symmetric.
+# ```
 # 
 # Then state the following result for ReLU function and random variable
 # with symmetric distribution around 0 .
 # 
-# Lemma 3. If $X$ is a random variable on $\mathbb{R}$ with symmetric
+# ```{prf:lemma}
+# :label: lemma3
+# If $X$ is a random variable on $\mathbb{R}$ with symmetric
 # probability density $p(x)$ around zero, i.e., 
 # $$
 #     p(x)=p(-x)
 # $$
+# ```
 # 
 # Then we have $\mathbb{E} X=0$ and
 # 
@@ -313,7 +323,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]
 # $$
 # 
-# Based on the previous Lemma 1, we know that $f_{k}^{\ell-1}$ is a
+# Based on the previous {prf:ref}`lemma1`, we know that $f_{k}^{\ell-1}$ is a
 # symmetric distribution around 0 . The most important observation in
 # Kaiming’s paper is that:
 # 
@@ -415,20 +425,28 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # And they have the both uniform and normal distribution type.
 # 
-# ![image](images/img1.png)
 # 
-# Fig. The convergence of a 22-layer large model. The $x$-axis is the
+# ```{figure} ./images/img1.png
+# :height: 150px
+# :name: fig1_1
+# The convergence of a 22-layer large model.
+# ```
+# 
+# The $x$-axis is the
 # number of training epochs. The y-axis is the top-1 error of 3,000 random
 # val samples, evaluated on the center crop. Use ReLU as the activation
 # for both cases. Both Kaiming’s initialization (red) and “Xavier’s”
 # (blue) lead to convergence, but Kaiming’s initialization starts
 # reducing error earlier.
 # 
-# ![image](images/img2.png)
+# ```{figure} ./images/img2.png
+# :height: 150px
+# :name: fig1_2
+# The convergence of a 30-layer small model 
+# ```
 # 
-# Fig. The convergence of a 30-layer small model (see the main text).
 # Use ReLU as the activation for both cases. Kaiming’s initialization
-# (red) is able to make it converge. But “Xavier’s” (blue) \[1\]
+# (red) is able to make it converge. But “Xavier’s” (blue)
 # completely stalls - It is also verified that that its gradients are all
 # diminishing. It does not converge even given more epochs. Given a
 # 22-layer model, in cifar10 the convergence with Kaiming’s initialization

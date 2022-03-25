@@ -16,13 +16,16 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # ## Variational problems
 # 
 # 
-# Lemma 1. Assume that $u$ is continuous in $(0,1)$, then the following
+# ```{prf:lemma}
+# :label: lemma1
+# Assume that $u$ is continuous in $(0,1)$, then the following
 # statements are equivalent
 # 
 # \(1) $u(x)=0$.
 # 
 # \(2) $\int_{0}^{1} u(x) v(x) d x=0$ for any smooth (compactly supported)
 # function $v$ in $(0,1)$.
+# ```
 # 
 # Define function $v:[0,1] \rightarrow R$ and define space
 # 
@@ -54,7 +57,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \end{array}\right.
 # $$
 # 
-# Proof. For any $v \in V, t \in R$, let
+# ```{prf:proof} For any $v \in V, t \in R$, let
 # $g(t)=J(u+t v)$. Since $u=\arg \min _{v \in V} J(v)$ means
 # $g(t) \geq g(0) .$ Hence, for any $v \in V, 0$ is the global minimum of
 # the function $g(t)$. Therefore $g^{\prime}(0)=0$ implies
@@ -69,7 +72,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V \text {. }
 # $$
 # 
-# By variational principal Lemma 1, we obtain 
+# By variational principal {prf:ref}`lemma1` , we obtain 
 # 
 # $$
 #     \left\{\begin{array}{l}
@@ -77,7 +80,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # u(0)=u(1)=0 .
 #     \end{array}\right.
 # $$
-# 
+# ```
 # 
 # 
 # Let $V_{h}$ be finite element space and
@@ -178,15 +181,17 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # Such a uniform partition in the $x$ and $y$ directions
 # leads us to a special example in two dimensions, a uniform square mesh
-# $\mathbb{R}_{h}^{2}=\{(i h, j h) ; i, j \in \mathbb{Z}\}$ (Figure 1.2).
+# $\mathbb{R}_{h}^{2}=\{(i h, j h) ; i, j \in \mathbb{Z}\}$.
 # Let $\Omega_{h}=\Omega \cap \mathbb{R}_{h}^{2}$, the set of interior
 # mesh points and
 # $\partial \Omega_{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}$, the set
 # of boundary mesh points.\
 # 
-# ![image](images/img1.png)
-# Fig. 1.1. Two-dimensional uniform grid for finite element and finite
-# difference
+# ```{figure} ./images/img1.png
+# :height: 150px
+# :name: fig1_1
+# Two-dimensional uniform grid for finite element and finitedifference
+# ```
 # 
 # ## Finite element methods
 # 

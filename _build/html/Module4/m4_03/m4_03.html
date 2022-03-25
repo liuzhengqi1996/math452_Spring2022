@@ -690,7 +690,7 @@ architectures in image classification problems.</p>
 </div>
 </div><p>Here <span class="math notranslate nohighlight">\(f_{\text {in }}(\cdot)\)</span> may depend on different data set and
 problems such as <span class="math notranslate nohighlight">\(f_{\text {in }}(f)=\sigma \circ \theta^{0} * f\)</span> for
-CIFAR [4] and
+CIFAR and
 <span class="math notranslate nohighlight">\(f_{\text {in }}(f)=R_{\max } \circ \sigma \circ \theta^{0} * f\)</span> for
 ImageNet [1] as in [3]. In addition
 <span class="math notranslate nohighlight">\(r^{\ell, i}=r^{\ell, i-1}+A^{\ell, i} * \sigma \circ B^{\ell, i} * \sigma\left(r^{i-1}\right)\)</span>
@@ -700,7 +700,7 @@ convolutions with zero padding and stride 1. In pooling block, <span class="math
 means convolution with stride 2 and <span class="math notranslate nohighlight">\(B^{\ell, 0}\)</span> is taken as the
 <span class="math notranslate nohighlight">\(3 \times 3\)</span> kernel with same output channel dimension of
 <span class="math notranslate nohighlight">\(R_{\ell}^{\ell+1}\)</span> which is taken as <span class="math notranslate nohighlight">\(1 \times 1\)</span> kernel and called as
-projection operator in [3]. During two consecutive pooling blocks,
+projection operator. During two consecutive pooling blocks,
 index <span class="math notranslate nohighlight">\(\ell\)</span> means the fixed resolution or we <span class="math notranslate nohighlight">\(\ell\)</span>-th grid level as in
 multigrid methods. Finally, <span class="math notranslate nohighlight">\(R_{\mathrm{ave}}\)</span> <span class="math notranslate nohighlight">\(\left(R_{\max }\right)\)</span>
 means average (max) pooling with different strides which is also

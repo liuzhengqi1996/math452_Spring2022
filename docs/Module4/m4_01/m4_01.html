@@ -601,12 +601,16 @@
 </div>
 <div class="section" id="variational-problems">
 <h2>Variational problems<a class="headerlink" href="#variational-problems" title="Permalink to this headline">¶</a></h2>
-<p>Lemma 1. Assume that <span class="math notranslate nohighlight">\(u\)</span> is continuous in <span class="math notranslate nohighlight">\((0,1)\)</span>, then the following
+<div class="proof lemma admonition" id="lemma1">
+<p class="admonition-title"><span class="caption-number">Lemma 5 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Assume that <span class="math notranslate nohighlight">\(u\)</span> is continuous in <span class="math notranslate nohighlight">\((0,1)\)</span>, then the following
 statements are equivalent</p>
 <p>(1) <span class="math notranslate nohighlight">\(u(x)=0\)</span>.</p>
 <p>(2) <span class="math notranslate nohighlight">\(\int_{0}^{1} u(x) v(x) d x=0\)</span> for any smooth (compactly supported)
 function <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
-<p>Define function <span class="math notranslate nohighlight">\(v:[0,1] \rightarrow R\)</span> and define space</p>
+</div>
+</div><p>Define function <span class="math notranslate nohighlight">\(v:[0,1] \rightarrow R\)</span> and define space</p>
 <div class="math notranslate nohighlight">
 \[
     V=\{v: v \text { is continuous and } v(0)=v(1)=0\}
@@ -631,6 +635,7 @@ is equivalent to: Find <span class="math notranslate nohighlight">\(u \in V\)</s
 u(0)=u(1)=0 .
 \end{array}\right.
 \end{split}\]</div>
+<div class="proof admonition" id="proof">
 <p>Proof. For any <span class="math notranslate nohighlight">\(v \in V, t \in R\)</span>, let
 <span class="math notranslate nohighlight">\(g(t)=J(u+t v)\)</span>. Since <span class="math notranslate nohighlight">\(u=\arg \min _{v \in V} J(v)\)</span> means
 <span class="math notranslate nohighlight">\(g(t) \geq g(0) .\)</span> Hence, for any <span class="math notranslate nohighlight">\(v \in V, 0\)</span> is the global minimum of
@@ -644,7 +649,7 @@ the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefo
 \[
     \int_{0}^{1}\left(-u^{\prime \prime}-f\right) v d x=0 \quad \forall v \in V \text {. }
 \]</div>
-<p>By variational principal Lemma 1, we obtain</p>
+<p>By variational principal <a class="reference internal" href="#lemma1">Lemma 5</a> , we obtain</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \left\{\begin{array}{l}
@@ -652,6 +657,7 @@ the function <span class="math notranslate nohighlight">\(g(t)\)</span>. Therefo
 u(0)=u(1)=0 .
     \end{array}\right.
 \end{split}\]</div>
+</div>
 <p>Let <span class="math notranslate nohighlight">\(V_{h}\)</span> be finite element space and
 <span class="math notranslate nohighlight">\(\left\{\varphi_{1}, \varphi_{2}, \cdots \varphi_{n}\right\}\)</span> be a nodal
 basis of the <span class="math notranslate nohighlight">\(V_{h} .\)</span> Let
@@ -738,14 +744,15 @@ value problem</p>
 \end{split}\]</div>
 <p>Such a uniform partition in the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions
 leads us to a special example in two dimensions, a uniform square mesh
-<span class="math notranslate nohighlight">\(\mathbb{R}_{h}^{2}=\{(i h, j h) ; i, j \in \mathbb{Z}\}\)</span> (Figure 1.2).
+<span class="math notranslate nohighlight">\(\mathbb{R}_{h}^{2}=\{(i h, j h) ; i, j \in \mathbb{Z}\}\)</span>.
 Let <span class="math notranslate nohighlight">\(\Omega_{h}=\Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set of interior
 mesh points and
 <span class="math notranslate nohighlight">\(\partial \Omega_{h}=\partial \Omega \cap \mathbb{R}_{h}^{2}\)</span>, the set
 of boundary mesh points.\</p>
-<p><img alt="image" src="../../_images/img12.png" />
-Fig. 1.1. Two-dimensional uniform grid for finite element and finite
-difference</p>
+<div class="figure align-default" id="fig1-1">
+<a class="reference internal image-reference" href="../../_images/img12.png"><img alt="../../_images/img12.png" src="../../_images/img12.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Two-dimensional uniform grid for finite element and finitedifference</span><a class="headerlink" href="#fig1-1" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="finite-element-methods">
 <h2>Finite element methods<a class="headerlink" href="#finite-element-methods" title="Permalink to this headline">¶</a></h2>
