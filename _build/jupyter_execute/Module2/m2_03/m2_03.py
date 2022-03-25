@@ -227,7 +227,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # :label: FGD
 # **For** $t = 1,2,\cdots$
 # 
-#     $x_{t+1} = x_t - \eta_t \nabla f(x_t)$
+# $$ 
+#     \quad x_{t+1} = x_t - \eta_t \nabla f(x_t)
+# $$
+# 
+# **EndFor**
 # 
 # where $\eta_t$ is the stepsize / learning rate
 # ```
