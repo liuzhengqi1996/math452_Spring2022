@@ -58,7 +58,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     \tilde{x}_{i}=\frac{x_{i}-\mu_{X}}{\sqrt{\sigma_{X}}}
-# $$ 
+# $$ (eq1_6)
 # 
 # where
 # 
@@ -66,7 +66,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     x_{i}, \tilde{x}_{i}, \mu_{X}, \sigma_{X} \in \mathbb{R}^{d}
 # $$
 # 
-# defined as before and all operations in (1.6) are element-wise.
+# defined as before and all operations in {eq}`eq1_6` are element-wise.
 # 
 # Here we note that, by normalizing the data set, we have the next
 # properties for new data $\tilde{x} \in \tilde{X}$ with component

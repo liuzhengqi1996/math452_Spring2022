@@ -51,7 +51,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \hat{f}^{\ell}(x) \leftarrow \frac{f^{\ell}(x)-\mu_{X}^{\ell}}{\sqrt{\sigma_{X}^{\ell}+\epsilon}} \\
 # \tilde{f}^{\ell}(x) \leftarrow \gamma^{\ell} \hat{f}^{\ell}(x)+\beta^{\ell}
 # \end{gathered}
-# $$
+# $$ (eq1_51)
 # 
 # Here we note that all these operations in the previous equation are defined by element-wise. Then at last, we define the BN operation based on the batch set as
 # 
@@ -82,7 +82,7 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     \begin{cases}\tilde{f}^{1}\left(x_{i}\right) & =W^{1} x_{i} \\ \tilde{f}^{\ell} & =W^{\ell} \sigma_{\mathrm{BN}}\left(\tilde{f}^{\ell-1}\right), \quad \ell=2, \ldots, L .\end{cases}
-# $$
+# $$ (eq1_55)
 # 
 # Combine the two definition, we note
 # 
@@ -97,9 +97,9 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # $$
 #     \mathcal{L}(\tilde{\Theta})=\mathbb{E}_{(x, y) \sim(X, Y)} \approx \frac{1}{N} \sum_{i=1}^{N} \ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)
-# $$
+# $$ (eq1_57)
 # 
-# A key observation in $(1.57)$ and the new BN model $(1.55)$ is that
+# A key observation in {eq}`eq1_57` and the new BN model {eq}`eq1_55` is that
 # 
 # $$
 #     \begin{aligned}
@@ -107,22 +107,27 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # \sigma_{X}^{\ell} &=\mathbb{E}_{x \sim X}\left[\left(f^{\ell}(x)-\mathbb{E}_{x \sim X}\left[f^{\ell}(x)\right]\right)^{2}\right] \\
 # \mathcal{L}(\tilde{\Theta}) &=\mathbb{E}_{(x, y) \sim(X, Y)}\left[\ell\left(\tilde{f}^{L}\left(x_{i} ; \tilde{\Theta}\right), y_{i}\right)\right]
 # \end{aligned}
-# $$
+# $$ (eq1_58)
 # 
 # Here we need to mention that $x \sim X$ means $x$ subject to the discrete distribution of all data $X$.
 # 
 # ### BN: some ’modified” SGD on new batch normalized model
 # 
-# Following the key observation in (1.58), and recall the similar case in
-# SGD, we do the the sampling trick in (1.57) and obtain the mini-batch
-# SGD: $$x \sim X \approx x \sim \mathcal{B},$$ here $\mathcal{B}$ is a
-# mini-batch of batch $X$ with $\mathcal{B} \subset X .$
+# Following the key observation in {eq}`eq1_58`, and recall the similar case in
+# SGD, we do the the sampling trick in {eq}`eq1_57` and obtain the mini-batch
+# SGD: 
 # 
-# However, for problem in (1.57), it is very difficult to find some subtle
+# $$
+#     x \sim X \approx x \sim \mathcal{B}
+# $$ (eq1_59)
+# 
+# here $\mathcal{B}$ is a mini-batch of batch $X$ with $\mathcal{B} \subset X .$
+# 
+# However, for problem in {eq}`eq1_57`, it is very difficult to find some subtle
 # sampling method because of the composition of $\mu_{X}^{\ell}$ and
 # $\left[\sigma_{X}^{\ell}\right]^{2}$. However, one simple way for
-# sampling (1.57) can be chosen as taking (1.59) for all the expectation
-# case in (1.57) and (1.58).
+# sampling {eq}`eq1_57` can be chosen as taking {eq}`eq1_59` for all the expectation
+# case in {eq}`eq1_57` and {eq}`eq1_58`.
 # 
 # This is to say, in training process ( $t$-th step for example), once we
 # choose $B_{t} \subset X$ as the mini-batch, then the model becomes
@@ -180,11 +185,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # All the mean $\mu_{\mathcal{B}_{t}}$ and variance
 # $\sigma_{\mathcal{B}}^{2}$ during the training phase are just the
 # approximation of the mean and variance of whole batch i.e. $\mu_{X}$ and
-# $\sigma_{X}^{2}$ as shown in (1.58).
+# $\sigma_{X}^{2}$ as shown in {eq}`eq1_58`.
 # 
 # One natural idea might be just use the BN operator w.r.t to the whole
 # training data set, thus to say just compute $\mu_{X}$ and
-# $\sigma_{X}^{2}$ by definition in (1.51).
+# $\sigma_{X}^{2}$ by definition in {eq}`eq1_51`.
 # 
 # However, there are at least the next few problems:
 # 
