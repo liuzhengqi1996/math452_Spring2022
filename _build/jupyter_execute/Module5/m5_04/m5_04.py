@@ -188,9 +188,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # From a numerical point of view, we say a relatively low frequency vector
 # is relatively smoother whereas a high frequency vector is nonsmooth.
 # 
-# ![image](images/img1.png)
-# 
-# Fig. 8.1. The eigenvectors
+# ```{figure} ./images/img1.png
+# :height: 350px
+# :name: fig8_1
+# The eigenvectors
+# ```
 # 
 # We note that the set of eigenvectors
 # $\xi^{k}=\left(\xi_{j}^{k}\right)$ forms an orthogonal basis of $R^{N}$.
@@ -212,14 +214,15 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 #     \xi=\sum_{k=1}^{4} 2^{1-k} \xi^{k}, \quad \sigma=\sum_{k=1}^{4} 2^{k-4} \xi^{k}
 # $$
 # 
-# ![image](images/img2.png)
-# 
-# Fig. 8.2. Plots of $\xi$ and $\sigma . \xi$-solid line; $\sigma$ dashed
-# line
+# ```{figure} ./images/img2.png
+# :height: 350px
+# :name: fig8_2
+# Plots of $\xi$ and $\sigma . \xi$-solid line; $\sigma$ dashed line
+# ```
 # 
 # The first vector $\xi$ has larger coefficients in front of lower
 # frequencies whereas the second vector $\sigma$ has larger coefficients
-# in front of higher frequencies. From Figure $8.2$, it is easy to see how
+# in front of higher frequencies. From Figure {numref}`fig8_2`, it is easy to see how
 # the smoothness of a vector depends on the relative size of its Fourier
 # coefficients. We conclude that, in general, a vector with relatively
 # small Fourier coefficients in front of the higher frequencies is
@@ -320,13 +323,15 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # In the rest of this section, unless otherwise noted, we shall choose $\eta$
 # as above for simplicity.
 # 
-# On Figure $8.3$ the convergence history plot of the above gradient
+# On Figure {numref}`fig8_3` the convergence history plot of the above gradient
 # descent iterative method for typical application is shown. As we see,
 # this iterative scheme converges very slowly.
 # 
-# ![image](images/img3.png)
-# 
-# Fig. 8.3. A picture on the GD method convergence history
+# ```{figure} ./images/img3.png
+# :height: 350px
+# :name: fig8_3
+# A picture on the GD method convergence history
+# ```
 # 
 # Our main goal is to find a way to speed up such kind of rather slowly
 # convergent iterative scheme. To do that, we need to study its convergent
@@ -346,14 +351,14 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # steps, but also smooth out the error function very quickly.
 # 
 # In other words, the error function becomes a much smoother function
-# after a few such simple iterations. This property of the itera-
-# 
-# ![image](images/img4.png)
-# 
-# Fig. 8.4. The smoothing effect of the Richardson method
-# 
-# tive scheme is naturally called a smoothing property and an iterative
+# after a few such simple iterations. This property of the iterative scheme is naturally called a smoothing property and an iterative
 # scheme having this smoothing property is called a smoother.
+# 
+# ```{figure} ./images/img4.png
+# :height: 350px
+# :name: fig8_4
+# The smoothing effect of the Richardson method
+# ```
 # 
 # The above two observations, especially the second one, concern the most
 # important property of the simple gradient descent method that we can
@@ -507,15 +512,14 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # $m \rightarrow \infty$.
 # 
 # This simple analysis clearly justifies the smoothing property that has
-# been observed by numerical experiments.\
-# ![image](images/img5.png)
+# been observed by numerical experiments.
 # 
-# Fig. 8.5. $u^{0}, u^{1}, u^{2}, u^{3}, u^{4}$ CHAPTER 8. FINITE ELEMENT
-# METHOD AND MULTIGRID
+# ```{figure} ./images/img5.png
+# :height: 350px
+# :name: fig8_5
+# $u^{0}, u^{1}, u^{2}, u^{3}, u^{4}$
+# ```
 # 
-# METHOD IN CONVOLUTION
-# 
-# Jinchao $\mathrm{Xu}$
 # 
 # An intuitive discussion
 # 
