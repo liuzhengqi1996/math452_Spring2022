@@ -733,13 +733,21 @@ in the data direction.</p>
 </div>
 <div class="section" id="comparison-of-sqrt-left-sigma-x-right-j-and-sqrt-left-tilde-sigma-x-right-j-on-cifar10">
 <h3>Comparison of <span class="math notranslate nohighlight">\(\sqrt{\left[\sigma_{X}\right]_{j}}\)</span> and <span class="math notranslate nohighlight">\(\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}\)</span> on CIFAR10.<a class="headerlink" href="#comparison-of-sqrt-left-sigma-x-right-j-and-sqrt-left-tilde-sigma-x-right-j-on-cifar10" title="Permalink to this headline">¶</a></h3>
-<p>They share the same <span class="math notranslate nohighlight">\(\mu_{X}\)</span> as $<span class="math notranslate nohighlight">\(\mu_{X}=\left(\begin{array}{lll}
+<p>They share the same <span class="math notranslate nohighlight">\(\mu_{X}\)</span> as
+$<span class="math notranslate nohighlight">\(
+    \mu_{X}=\left(\begin{array}{lll}
 0.49140105 &amp; 0.48215663 &amp; 0.44653168
-\end{array}\right)\)</span><span class="math notranslate nohighlight">\( But they had different standard deviation
-estimates: \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+\end{array}\right)
+\)</span>$</p>
+<p>But they had different standard deviation
+estimates:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
 &amp;\sqrt{\left[\sigma_{X}\right]_{j}}=(0.247032840 .243484990 .26158834) \\
 &amp;\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=(0.202201930 .199316350 .20086373)
-\end{aligned}\)</span>$</p>
+\end{aligned}
+\end{split}\]</div>
 <p>##Initialization for deep neural networks</p>
 </div>
 <div class="section" id="xaviers-initialization">
@@ -770,9 +778,12 @@ features <span class="math notranslate nohighlight">\(f^{L}\)</span> and gradien
 have the following lemma.</p>
 <p>Lemma 1. Under the previous assumptions <span class="math notranslate nohighlight">\(f_{i}^{\ell}\)</span> is a symmetric
 random variable with <span class="math notranslate nohighlight">\(\mathbb{E}\left[f^{\ell}\right]=0 .\)</span> Moreover, we
-have the following identity
-$<span class="math notranslate nohighlight">\(\mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]\)</span><span class="math notranslate nohighlight">\(
-Now, if \)</span>\sigma=i d<span class="math notranslate nohighlight">\(, we can prove by induction from \)</span>\ell=1$ that</p>
+have the following identity</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]
+\]</div>
+<p>Now, if <span class="math notranslate nohighlight">\(\sigma=i d\)</span>, we can prove by induction from <span class="math notranslate nohighlight">\(\ell=1\)</span> that</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbb{V}\left[f_{i}^{L}\right]=\left(\Pi_{\ell=2}^{L} n_{\ell-1} \operatorname{Var}\left[W_{s t}^{\ell}\right]\right)\left(\mathbb{V}\left[W_{s t}^{1}\right] \sum_{k} \mathbb{E}\left[\left([x]_{k}\right)^{2}\right]\right)
@@ -857,8 +868,11 @@ independent with <span class="math notranslate nohighlight">\(X_{i}\)</span>, th
 <p>Then state the following result for ReLU function and random variable
 with symmetric distribution around 0 .</p>
 <p>Lemma 3. If <span class="math notranslate nohighlight">\(X\)</span> is a random variable on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> with symmetric
-probability density <span class="math notranslate nohighlight">\(p(x)\)</span> around zero, i.e., $<span class="math notranslate nohighlight">\(p(x)=p(-x)\)</span><span class="math notranslate nohighlight">\( Then we
-have \)</span>\mathbb{E} X=0$ and</p>
+probability density <span class="math notranslate nohighlight">\(p(x)\)</span> around zero, i.e.,
+$<span class="math notranslate nohighlight">\(
+    p(x)=p(-x)
+\)</span>$</p>
+<p>Then we have <span class="math notranslate nohighlight">\(\mathbb{E} X=0\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]

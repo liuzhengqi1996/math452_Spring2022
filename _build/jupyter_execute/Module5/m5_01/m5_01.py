@@ -151,13 +151,22 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # 
 # ### Comparison of $\sqrt{\left[\sigma_{X}\right]_{j}}$ and $\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}$ on CIFAR10.
 # 
-# They share the same $\mu_{X}$ as $$\mu_{X}=\left(\begin{array}{lll}
+# They share the same $\mu_{X}$ as 
+# $$
+#     \mu_{X}=\left(\begin{array}{lll}
 # 0.49140105 & 0.48215663 & 0.44653168
-# \end{array}\right)$$ But they had different standard deviation
-# estimates: $$\begin{aligned}
+# \end{array}\right)
+# $$
+# 
+# But they had different standard deviation
+# estimates: 
+# 
+# $$
+#     \begin{aligned}
 # &\sqrt{\left[\sigma_{X}\right]_{j}}=(0.247032840 .243484990 .26158834) \\
 # &\sqrt{\left[\tilde{\sigma}_{X}\right]_{j}}=(0.202201930 .199316350 .20086373)
-# \end{aligned}$$
+# \end{aligned}
+# $$
 # 
 # ##Initialization for deep neural networks
 # 
@@ -196,7 +205,11 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # Lemma 1. Under the previous assumptions $f_{i}^{\ell}$ is a symmetric
 # random variable with $\mathbb{E}\left[f^{\ell}\right]=0 .$ Moreover, we
 # have the following identity
-# $$\mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]$$
+# 
+# $$
+#     \mathbb{E}\left[\left(f_{i}^{\ell}\right)^{2}\right]=\sum_{k} \mathbb{E}\left[\left(W_{i k}^{\ell}\right)^{2}\right] \mathbb{E}\left[\sigma\left(f_{k}^{\ell-1}\right)^{2}\right]
+# $$
+# 
 # Now, if $\sigma=i d$, we can prove by induction from $\ell=1$ that
 # 
 # $$
@@ -292,8 +305,12 @@ IFrame(src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/u
 # with symmetric distribution around 0 .
 # 
 # Lemma 3. If $X$ is a random variable on $\mathbb{R}$ with symmetric
-# probability density $p(x)$ around zero, i.e., $$p(x)=p(-x)$$ Then we
-# have $\mathbb{E} X=0$ and
+# probability density $p(x)$ around zero, i.e., 
+# $$
+#     p(x)=p(-x)
+# $$
+# 
+# Then we have $\mathbb{E} X=0$ and
 # 
 # $$
 #     \mathbb{E}\left[[\operatorname{ReLU}(X)]^{2}\right]=\frac{1}{2} \operatorname{Var}[X]
