@@ -5,5 +5,4 @@ torch
 torchvision
 
 
-nbinteract init
-nbinteract ./Module0/quiz0.ipynb.ipynb
+
