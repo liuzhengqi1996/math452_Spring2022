@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep neural network functions &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Universal approximation properties" href="../m3_05/m3_05.html" />
+    <link rel="prev" title="Finite element method" href="../m3_03/m3_03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/quiz1.html">
+     Quiz 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/quiz2.html">
+     Quiz 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_01/m3_01.html">
+     Nonlinear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_02/m3_02.html">
+     Polynomials and Weierstrass theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_03/m3_03.html">
+     Finite element method
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Deep neural network functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_05/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_08/m3_08.html">
+     Monte Carlo Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module4/module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_01/m4_01.html">
+     Convolutional neural networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_02/m4_02.html">
+     Convolutional operations on images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_03/m4_03.html">
+     Some classic CNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_hw.html">
+     Homework 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/Programming_Assignment_4.html">
+     Week 4 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/quiz4.html">
+     Quiz 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module5/module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_01/m5_01.html">
+     Data normalization and weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_04/m5_04.html">
+     Multigrid Method for Finite Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_hw.html">
+     Homework 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/quiz5.html">
+     Quiz 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_01.html">
+     MgNet: a special CNN based on multigrid method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_04/m3_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module3/m3_04/m3_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation-from-finite-element-to-neural-network">
+   Motivation: from finite element to neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-we-need-deep-neural-networks-via-composition">
+   Why we need deep neural networks via composition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fem-ans-dnn-1-in-1d">
+     FEM ans DNN
+     <span class="math notranslate nohighlight">
+      \(_{1}\)
+     </span>
+     in 1D
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2">
+     Linear finite element cannot be recovered by DNN
+     <span class="math notranslate nohighlight">
+      \(_{1}\)
+     </span>
+     for
+     <span class="math notranslate nohighlight">
+      \(d \geq 2\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-of-neural-network-space">
+   Definition of neural network space
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="deep-neural-network-functions">
+<h1>Deep neural network functions<a class="headerlink" href="#deep-neural-network-functions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span> <span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_1x52r7v2&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_3eff9dla&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_1x52r7v2&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_3eff9dla"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_wwt0aak3&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_u1s5u1jt&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_wwt0aak3&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_u1s5u1jt"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C04_-Deep-neural-network-functions.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="motivation-from-finite-element-to-neural-network">
+<h2>Motivation: from finite element to neural network<a class="headerlink" href="#motivation-from-finite-element-to-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter, we will introduce the so-called shallow neural network
+(deep neural network with one hidden layer) from the viewpoint of finite
+element method.</p>
+<p>Let us first consider the linear finite element functions on the unit
+interval <span class="math notranslate nohighlight">\(\bar{\Omega}=\)</span> <span class="math notranslate nohighlight">\([0,1]\)</span> in <span class="math notranslate nohighlight">\(1 \mathrm{D}\)</span>. We then consider a
+set of equidistant girds <span class="math notranslate nohighlight">\(\Omega_{\ell}\)</span> of level <span class="math notranslate nohighlight">\(\ell\)</span> on the unit
+interval <span class="math notranslate nohighlight">\(\bar{\Omega}=[0,1]\)</span> and mesh length <span class="math notranslate nohighlight">\(h_{\ell}=2^{-\ell}\)</span>. The
+grid points <span class="math notranslate nohighlight">\(x_{\ell, i}\)</span> are given by</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{\ell, i}:=i h_{\ell}, \quad 0 \leq i \leq 2^{\ell} 
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(\ell=1\)</span>, we denote the special hat function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \varphi(x)= \begin{cases}2 x &amp; x \in\left[0, \frac{1}{2}\right] \\ 2(1-x) &amp; x \in\left[\frac{1}{2}, 1\right] \\ 0, &amp; \text { others }\end{cases}
+\end{split}\]</div>
+<p>The next diagram shows this basis function:</p>
+<div class="figure align-default" id="img1">
+<a class="reference internal image-reference" href="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg"><img alt="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-05.jpg" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Diagram of <span class="math notranslate nohighlight">\(\varphi(x)\)</span></span><a class="headerlink" href="#img1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Then, for any nodal basis function
+<span class="math notranslate nohighlight">\(\varphi_{\ell, i}\)</span> as below:</p>
+<div class="figure align-default" id="img2">
+<a class="reference internal image-reference" href="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg"><img alt="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" src="../../_images/2022_01_05_e65f0d6bf0db4974ee45g-06.jpg" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Diagram of <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span></span><a class="headerlink" href="#img2" title="Permalink to this image">¶</a></p>
+</div>
+<p>in a fine grid <span class="math notranslate nohighlight">\(\mathcal{T}_{\ell}\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{\ell, i}=\varphi\left(\frac{x-x_{\ell, i-1}}{2 h_{\ell}}\right)=\varphi\left(w_{\ell} x+b_{\ell, i}\right)
+\]</div>
+<p>That is to say, any <span class="math notranslate nohighlight">\(\varphi_{\ell, i}(x)\)</span> can be obtained from
+<span class="math notranslate nohighlight">\(\varphi(x)\)</span> ba scaling (dilation) and translation with</p>
+<div class="math notranslate nohighlight">
+\[
+    w_{\ell}=2^{\ell-1}, \quad b_{\ell, i}=\frac{-(i-1)}{2}
+\]</div>
+<p>in <span class="math notranslate nohighlight">\(\varphi_{\ell, i}=\varphi\left(w_{\ell} x+b_{\ell, i}\right)\)</span>.</p>
+<p>Let recall the finite element interpolation as</p>
+<div class="math notranslate nohighlight">
+\[
+    u(x) \approx u_{\ell}(x):=\sum_{0 \leq i \leq 2^{\ell}} u\left(x_{\ell, i}\right) \varphi_{\ell, i}(x)
+\]</div>
+<p>for any smooth function <span class="math notranslate nohighlight">\(u(x)\)</span> on <span class="math notranslate nohighlight">\((0,1)\)</span>. The above interpolation will
+converge as <span class="math notranslate nohighlight">\(\ell \rightarrow \infty\)</span>, which show that</p>
+<div class="math notranslate nohighlight">
+\[
+    \operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right)\right\} \quad \text { is dense in } \quad H^{1}(0,1)
+\]</div>
+<p>Thus, we may have the next concise relation:</p>
+<p>FE space <span class="math notranslate nohighlight">\(=\operatorname{span}\left\{\varphi\left(w_{\ell} x+b_{\ell, i}\right) \mid 0 \leq i \leq 2^{\ell}, \ell=1,2, \cdots\right\} \subset \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\} .\)</span></p>
+<p>In other words, the finite element space can be understood as the linear
+combination of <span class="math notranslate nohighlight">\(\varphi(w x+b)\)</span> with certain special choice of <span class="math notranslate nohighlight">\(w\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>Here, we need to point that this
+<span class="math notranslate nohighlight">\(\operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\}\)</span> is
+exact the deep neural networks with one hidden layer (shallow neural
+networks) with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>. More precisely,</p>
+<div class="math notranslate nohighlight">
+\[
+    f \in \operatorname{span}\{\varphi(w x+b) \mid w, b \in \mathbb{R}\}
+\]</div>
+<p>means there exist positive integer <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(w_{j}, b_{j} \in \mathbb{R}\)</span>
+such that</p>
+<div class="math notranslate nohighlight">
+\[
+    f=\sum_{j=1}^{N} a_{j} \varphi\left(w_{j} x+b_{j}\right)
+\]</div>
+<p>The above function is also called one hidden neural network function
+with <span class="math notranslate nohighlight">\(N\)</span> neurons.</p>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>1- By making <span class="math notranslate nohighlight">\(w_{\ell}\)</span> and <span class="math notranslate nohighlight">\(b_{\ell, i}\)</span> arbitrary,
+we get a much larger class of function which is exact a special neural
+network with activation function <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p>
+<p>2- Generalizations:</p>
+<p>a) <span class="math notranslate nohighlight">\(\varphi\)</span> can be different, such as
+<span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\max \{0, x\}\)</span>.</p>
+<p>b) There is a natural extension for hight dimension <span class="math notranslate nohighlight">\(d\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+    \{\varphi(w \cdot x+b)\}
+\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(w \in \mathbb{R}^{d}, b \in \mathbb{R}\)</span> and
+<span class="math notranslate nohighlight">\(w \cdot x=\sum_{i=1}^{d} w_{i} x_{i}\)</span>. This is called “deep” neural
+network with one hidden layer.</p>
+</div>
+</div>
+<div class="section" id="why-we-need-deep-neural-networks-via-composition">
+<h2>Why we need deep neural networks via composition<a class="headerlink" href="#why-we-need-deep-neural-networks-via-composition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fem-ans-dnn-1-in-1d">
+<h3>FEM ans DNN <span class="math notranslate nohighlight">\(_{1}\)</span> in 1D<a class="headerlink" href="#fem-ans-dnn-1-in-1d" title="Permalink to this headline">¶</a></h3>
+<p>Thanks to the connection between <span class="math notranslate nohighlight">\(\varphi(x)\)</span> and
+<span class="math notranslate nohighlight">\(\operatorname{ReLU}(x)=\{0, x\}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi(x)=2 \operatorname{ReLU}(x)-4 \operatorname{ReLu}\left(x-\frac{1}{2}\right)+2 \operatorname{ReLU}(x-1)
+\]</div>
+<p>It suffices to show that each basis function <span class="math notranslate nohighlight">\(\varphi_{\ell, i}\)</span> can be
+represented by a ReLU DNN. We first note that the basis function
+<span class="math notranslate nohighlight">\(\varphi_{i}\)</span> has the support in <span class="math notranslate nohighlight">\(\left[x_{i-1}, x_{i+1}\right]\)</span> can be
+easily written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{\ell, i}(x)=\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i-1}\right)-\left(\frac{2}{h_{\ell}}\right) \operatorname{ReLU}\left(x-x_{\ell, i}\right)+\frac{1}{h_{\ell}} \operatorname{ReLU}\left(x-x_{\ell, i+1}\right)
+\]</div>
+<p>More generally, if function <span class="math notranslate nohighlight">\(\varphi_{i}\)</span> is not on the uniform grid but
+has support in <span class="math notranslate nohighlight">\(\left[x_{i-1}, x_{i+1}\right]\)</span> can be easily written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi_{i}(x)=\frac{1}{h_{i-1}} \operatorname{ReLU}\left(x-x_{i-1}\right)-\left(\frac{1}{h_{i-1}}+\frac{1}{h_{i}}\right) \operatorname{ReLU}\left(x-x_{i}\right)+\frac{1}{h_{i}} \operatorname{ReLU}\left(x-x_{i+1}\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_{i}=x_{i+1}-x_{i}\)</span>.</p>
+<p>Thus is to say, we have the next theorem.</p>
+<div class="proof theorem admonition" id="thm34_1">
+<p class="admonition-title"><span class="caption-number">Theorem 7 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>For <span class="math notranslate nohighlight">\(d=1\)</span>, and <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is a bounded
+interval, then DNN <span class="math notranslate nohighlight">\(_{1}\)</span> can be used to cover all linear finite element
+function in on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div>
+</div></div>
+<div class="section" id="linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2">
+<h3>Linear finite element cannot be recovered by DNN <span class="math notranslate nohighlight">\(_{1}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span><a class="headerlink" href="#linear-finite-element-cannot-be-recovered-by-dnn-1-for-d-geq-2" title="Permalink to this headline">¶</a></h3>
+<p>In view of <a class="reference internal" href="#thm34_1">Theorem 7</a> and the fact that
+<span class="math notranslate nohighlight">\(\mathrm{DNN}_{\mathrm{J}} \subseteq \mathrm{DNN}_{\mathrm{J}+1}\)</span>, it is
+natural to ask that how many layers are needed at least to recover all
+linear finite element functions in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> for <span class="math notranslate nohighlight">\(d \geq 2\)</span>. In
+this section, we will show that</p>
+<div class="math notranslate nohighlight">
+\[
+    J_{d} \geq 2, \quad \text { if } \quad d \geq 2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J_{d}\)</span> is the minimal <span class="math notranslate nohighlight">\(J\)</span> such that all linear finite element functions in
+<span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span> can be recovered by DNN <span class="math notranslate nohighlight">\(_{J}\)</span></p>
+<p>In particular, we will show the following theorem.</p>
+<div class="proof theorem admonition" id="thm34_2">
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(\Omega \subset \mathbb{R}^{d}\)</span> is either a bounded domain
+or <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}, \mathrm{DNN}_{1}\)</span> can not be used to recover
+all linear finite element functions on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. We prove it by contradiction. Let us assume that for any
+continuous piecewise linear function <span class="math notranslate nohighlight">\(f: \Omega \rightarrow \mathbb{R}\)</span>,
+we can find finite <span class="math notranslate nohighlight">\(N \in \mathbb{N}, w_{i} \in \mathbb{R}^{1, d}\)</span> as
+row vector and <span class="math notranslate nohighlight">\(\alpha_{i}, b_{i}, \beta \in \mathbb{R}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    f=\sum_{i=1}^{N} \alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)+\beta
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(f_{i}=\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right), \alpha_{i} \neq 0\)</span>
+and <span class="math notranslate nohighlight">\(w_{i} \neq 0 .\)</span> Consider the finite element functions, if this one
+hidden layer ReLU DNN can recover any basis function of FEM, then it can
+recover the finite element space. Thus let us assume <span class="math notranslate nohighlight">\(f\)</span> is a locally
+supported basis function for FEM. Furthermore, if <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded
+domain, we assume that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-15">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq1-15" title="Permalink to this equation">¶</a></span>\[
+    d(\operatorname{supp}(f), \partial \Omega)&gt;0
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+    d(A, B)=\inf _{x \in A, y \in B}\|x-y\|
+\]</div>
+<p>as the distance of two closed sets.</p>
+<p>A more important observation is that
+<span class="math notranslate nohighlight">\(\nabla f: \Omega \rightarrow \mathbb{R}^{d}\)</span> is a piecewise constant
+vector function. The key point is to consider the discontinuous points
+for <span class="math notranslate nohighlight">\(g:=\nabla f=\)</span> <span class="math notranslate nohighlight">\(\sum_{i=1}^{N} \nabla f_{i} .\)</span></p>
+<p>For more general case, we can define the set of discontinuous points of
+a function by</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{g}:=\{x \in \Omega \mid x \text { is a discontinuous point of } g\}
+\]</div>
+<p>Because of the property that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{f+g} \supseteq D_{f} \cup D_{g} \backslash\left(D_{f} \cap D_{g}\right)
+\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{\sum_{i=1}^{N} g_{i}} \supseteq \bigcup_{i=1}^{N} D_{g_{i}} \backslash \bigcup_{i \neq j}\left(D_{g_{i}} \cap D_{g_{j}}\right)
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-18">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq1-18" title="Permalink to this equation">¶</a></span>\[
+    g_{i}=\nabla f_{i}(x)=\nabla\left(\alpha_{i} \operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right)=\left(\alpha_{i} H\left(w_{i} x+b_{i}\right)\right) w_{i} \in \mathbb{R}^{d}
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(i=1: N\)</span> with <span class="math notranslate nohighlight">\(H\)</span> be the Heaviside function defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    H(x)= \begin{cases}0 &amp; \text { if } x \leq 0 \\ 1 &amp; \text { if } x&gt;0\end{cases}
+\end{split}\]</div>
+<p>This means that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-19">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq1-19" title="Permalink to this equation">¶</a></span>\[
+    D_{g_{i}}=\left\{x \mid w_{i} x+b_{i}=0\right\}
+\]</div>
+<p>is a <span class="math notranslate nohighlight">\(d-1\)</span> dimensional affine space in <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span></p>
+<p>Without loss of generality, we can assume that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{g_{i}} \neq D_{g_{j}}
+\]</div>
+<p>When the other case occurs, i.e. <span class="math notranslate nohighlight">\(D_{g_{6}}=D_{g_{2}}=\cdots=D_{g_{\ell_{2}}}\)</span>, by the definition of
+<span class="math notranslate nohighlight">\(g_{i}\)</span> in <a class="reference internal" href="#equation-eq1-18">(33)</a> and <span class="math notranslate nohighlight">\(D_{g_{i}}\)</span> in <a class="reference internal" href="#equation-eq1-19">(34)</a>, this happens if and only if
+there is a row vector <span class="math notranslate nohighlight">\((w, b)\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq1-21">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq1-21" title="Permalink to this equation">¶</a></span>\[
+    c_{\ell_{i}}(w b)=\left(w_{\ell_{i}} b_{\ell_{i}}\right)
+\]</div>
+<p>with some <span class="math notranslate nohighlight">\(c_{\ell_{i}} \neq 0\)</span> for <span class="math notranslate nohighlight">\(i=1: k\)</span>. We combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+\tilde{g}_{\ell} &amp;=\sum_{i=1}^{k} g_{\ell_{i}}=\sum_{i=1}^{k} \alpha_{\ell_{i}} H\left(w_{\ell_{i}} x+b_{\ell_{i}}\right) w_{\ell_{i}}, \\
+&amp;=\sum_{i=1}^{k}\left(c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}(w x+b)\right)\right) w, \\
+&amp;=\left\{\begin{array}{lll}
+\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}\right)\right) w &amp; \text { if } &amp; w x+b&gt;0, \\
+\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(-c_{\ell_{i}}\right)\right) w &amp; \text { if } &amp; w x+b \leq 0 .
+\end{array}\right.
+\end{aligned}
+\end{split}\]</div>
+<p>Thus, if</p>
+<div class="math notranslate nohighlight">
+\[
+    \left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(c_{\ell_{i}}\right)\right)=\left(\sum_{i=1}^{k} c_{\ell_{i}} \alpha_{\ell_{i}} H\left(-c_{\ell_{i}}\right)\right)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\tilde{g}_{\ell}\)</span> is a constant vector function, that is to say
+<span class="math notranslate nohighlight">\(D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=\emptyset .\)</span>
+Otherwise, <span class="math notranslate nohighlight">\(\tilde{g}_{\ell}\)</span> is a piecewise constant vector function
+with the property that</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{\sum_{i=1}^{k} g_{\ell_{i}}}=D_{\tilde{g}_{\ell}}=D_{g_{\ell_{i}}}=\{x \mid w x+b=0\} 
+\]</div>
+<p>This means that we can use condition <a class="reference internal" href="#equation-eq1-21">(35)</a> as an equivalence relation
+and split <span class="math notranslate nohighlight">\(\left\{g_{i}\right\}_{i=1}^{N}\)</span> into some groups, and we can
+combine those <span class="math notranslate nohighlight">\(g_{\ell_{i}}\)</span> in each group as what we do above. After
+that, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{i=1}^{N} g_{i}=\sum_{\ell=1}^{\bar{N}} \tilde{g}_{\ell}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(D_{\tilde{g}_{s}} \neq D_{\bar{g}_{t}}\)</span>. Finally, we can have that
+<span class="math notranslate nohighlight">\(D_{\tilde{g}_{s}} \cap D_{\bar{g}_{t}}\)</span> is an empty set or a <span class="math notranslate nohighlight">\(d-2\)</span>
+dimensional affine space in <span class="math notranslate nohighlight">\(\mathbb{R}^{d} .\)</span> Since <span class="math notranslate nohighlight">\(N \leq N\)</span> is a
+finite number,</p>
+<div class="math notranslate nohighlight">
+\[
+    D:=\bigcup_{i=1}^{N} D_{\tilde{g}_{\ell}} \backslash \bigcup_{s \neq t}\left(D_{\tilde{g}_{s}} \cap D_{\tilde{g}_{t}}\right)
+\]</div>
+<p>is an unbounded set.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\Omega=\mathbb{R}^{d}\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    \operatorname{supp}(\mathrm{f}) \supseteq D_{g}=D_{\sum_{i=1}^{N} g_{i}}=D_{\sum_{t=1}^{N} \tilde{g}_{\ell}} \supseteq D
+\]</div>
+<p>is contradictory to the assumption that <span class="math notranslate nohighlight">\(f\)</span> is locally supported.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded domain,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    d(D, \partial \Omega)= \begin{cases}s&gt;0 &amp; \text { if } D_{\tilde{g}_{i}} \cap \Omega=\emptyset, \forall i \\ 0 &amp; \text { otherwise. }\end{cases}
+\end{split}\]</div>
+<p>Note again that all <span class="math notranslate nohighlight">\(D_{\tilde{g}_{i}}\)</span> ’s are <span class="math notranslate nohighlight">\(d-1\)</span> dimensional affine
+spaces, while <span class="math notranslate nohighlight">\(D_{\tilde{g}_{i}} \cap D_{\tilde{g}_{j}}\)</span> is either an
+empty set or a d-2 dimensional affine space. If
+<span class="math notranslate nohighlight">\(d(D, \partial \Omega)&gt;0\)</span>, this implies that <span class="math notranslate nohighlight">\(\nabla f\)</span> is continuous in
+<span class="math notranslate nohighlight">\(\Omega\)</span>, which contradicts the assumption that <span class="math notranslate nohighlight">\(f\)</span> is a basis function
+in FEM. If <span class="math notranslate nohighlight">\(d(D, \partial \Omega)=0\)</span>, this contradicts the previous
+assumption in <a class="reference internal" href="#equation-eq1-15">(32)</a>.</p>
+<p>Hence DNN <span class="math notranslate nohighlight">\(_{1}\)</span> cannot recover any piecewise linear function in
+<span class="math notranslate nohighlight">\(\Omega\)</span> for <span class="math notranslate nohighlight">\(d \geq 2 .\)</span></p>
+</div>
+<p>Following the proof above, we have the following theorem</p>
+<div class="proof theorem admonition" id="theorem-2">
+<p class="admonition-title"><span class="caption-number">Theorem 9 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\left\{\operatorname{ReLU}\left(w_{i} x+b_{i}\right)\right\}_{i=1}^{m}\)</span>
+are linearly independent if <span class="math notranslate nohighlight">\(\left(w_{i}, b_{i}\right)\)</span> and
+<span class="math notranslate nohighlight">\(\left(w_{j}, b_{j}\right)\)</span> are linearly independent in
+<span class="math notranslate nohighlight">\(\mathbb{R}^{1 \times(d+1)}\)</span> for any <span class="math notranslate nohighlight">\(i \neq j .\)</span></p>
+</div>
+</div></div>
+</div>
+<div class="section" id="definition-of-neural-network-space">
+<h2>Definition of neural network space<a class="headerlink" href="#definition-of-neural-network-space" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Primary variables <span class="math notranslate nohighlight">\(n_{0}=d\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x^{0}=x=\left(\begin{array}{c}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{n}
+\end{array}\right)
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{1}\)</span> hyperplanes</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    W^{1} x+b^{1}=\left(\begin{array}{c}
+w_{1}^{1} x+b_{1}^{1} \\
+w_{2}^{1} x+b_{2}^{1} \\
+\vdots \\
+w_{n}^{1} x+b_{n}^{1}
+\end{array}\right)
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{1}\)</span>-neurons:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x^{1}=\sigma\left(W^{1} x+b^{1}\right)=\left(\begin{array}{c}
+\sigma\left(w_{1}^{1} x+b_{1}^{1}\right) \\
+\sigma\left(w_{2}^{1} x+b_{2}^{1}\right) \\
+\vdots \\
+\sigma\left(w_{n}^{1} x+b_{n}^{1}\right)
+\end{array}\right)
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{2}\)</span>-hyperplanes</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    W^{2} x^{1}+b^{2}=\left(\begin{array}{c}
+w_{1}^{2} x^{1}+b_{2}^{2} \\
+w_{2}^{2} x^{1}+b_{2}^{2} \\
+\vdots \\
+w_{n}^{2} x^{1}+b_{n}^{2}
+\end{array}\right)
+\end{split}\]</div>
+<p>Shallow neural network functions:</p>
+<p><span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}\left(n_{1}, n_{2}\right)={ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}\right)=\left\{W^{2} x^{1}+b^{2}, x^{1}=\sigma\left(W^{1} x+b^{1}\right)\right.\)</span>
+with
+<span class="math notranslate nohighlight">\(\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1,2, n_{0}=d\right\}\)</span></p>
+<p><span class="math notranslate nohighlight">\({ }_{n} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, \ldots, n_{L}\right)=\left\{W^{L} x^{L-1}+b^{L}, x^{\ell}=\sigma\left(W^{\ell} x^{\ell-1}+b^{\ell}\right)\right.\)</span>
+with
+<span class="math notranslate nohighlight">\(\left.W^{\ell} \in \mathbb{R}^{n_{\ell} \times n_{\ell-1}}, b^{\ell} \in \mathbb{R}^{n_{\ell}}, \ell=1: L, n_{0}=d, x^{0}=x\right\}\)</span></p>
+<p>First, let us first define the so-called 1-hidden layer (shallow) neural
+network.</p>
+<p>The 1 -hidden layer (shallow) neural network is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+    { }_{n} \mathrm{~N}={ }_{n} \mathrm{~N}(\sigma)={ }_{n} \mathrm{~N}^{1}(\sigma)=\bigcup_{n_{1} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, 1\right)
+\]</div>
+<p>The 2-hidden layer (shallow) neural network is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+    { }_{n} \mathrm{~N}^{2}(\sigma)=\bigcup_{n_{1}, n_{2} \geq 1} \mathrm{~N}\left(\sigma ; n_{1}, n_{2}, 1\right)
+\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module3/m3_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../m3_03/m3_03.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Finite element method</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../m3_05/m3_05.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Universal approximation properties</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine learning basics, popular data sets &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linearly separable sets" href="m1_02.html" />
+    <link rel="prev" title="Module 1: Linear machine learning models" href="module1_.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz1.html">
+     Quiz 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_03/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/quiz2.html">
+     Quiz 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_01/m3_01.html">
+     Nonlinear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_02/m3_02.html">
+     Polynomials and Weierstrass theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_03/m3_03.html">
+     Finite element method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_04/m3_04.html">
+     Deep neural network functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_05/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_08/m3_08.html">
+     Monte Carlo Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module4/module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_01/m4_01.html">
+     Convolutional neural networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_02/m4_02.html">
+     Convolutional operations on images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_03/m4_03.html">
+     Some classic CNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/m4_hw.html">
+     Homework 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/Programming_Assignment_4.html">
+     Week 4 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module4/quiz4.html">
+     Quiz 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module5/module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_01/m5_01.html">
+     Data normalization and weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_04/m5_04.html">
+     Multigrid Method for Finite Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_hw.html">
+     Homework 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/quiz5.html">
+     Quiz 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/m6_01.html">
+     MgNet: a special CNN based on multigrid method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module1/m1_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module1/m1_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-basic-machine-learning-problem-image-classification">
+   1. A basic machine learning problem: image classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formulate-learning">
+     Formulate “learning”
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-classification-problem">
+   2. Image classification problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Image classification problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-popular-data-sets-in-image-classification">
+   3. Some popular data sets in image classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mnist-modified-national-institute-of-standards-and-technology-database">
+     MNIST(Modified National Institute of Standards and Technology Database)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#this-is-a-database-for-handwritten-digits">
+       This is a database for handwritten digits
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cifar">
+     CIFAR
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cifar-10">
+       CIFAR-10
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cifar-100">
+       CIFAR-100
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imagenet">
+     ImageNet
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="machine-learning-basics-popular-data-sets">
+<h1>Machine learning basics, popular data sets<a class="headerlink" href="#machine-learning-basics-popular-data-sets" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_z2ldie17&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;amp;flashvars[mediaProxy.mediaPlayTo]=600&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_27z0chwl&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_z2ldie17&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=600&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_27z0chwl"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2021/12/A01ClassificationProblem_Video_Notes.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-basic-machine-learning-problem-image-classification">
+<h2>1. A basic machine learning problem: image classification<a class="headerlink" href="#a-basic-machine-learning-problem-image-classification" title="Permalink to this headline">¶</a></h2>
+<p>Can a machine (function) tell the difference ?</p>
+<a class="reference internal image-reference" href="../_images/cat-dog-1.png" id="label1-1"><img alt="../_images/cat-dog-1.png" id="label1-1" src="../_images/cat-dog-1.png" style="height: 150px;" /></a>
+<p>Mathematically, gray-scale image can be just taken as matrix in <span class="math notranslate nohighlight">\(R^{n_0\times n_0}\)</span>.</p>
+<a class="reference internal image-reference" href="../_images/gray-1.png"><img alt="../_images/gray-1.png" src="../_images/gray-1.png" style="height: 250px;" /></a>
+<p>The next figure shows different result from: human vision and computer representation:</p>
+<a class="reference internal image-reference" href="../_images/ImagePixels.png" id="label1-2"><img alt="../_images/ImagePixels.png" id="label1-2" src="../_images/ImagePixels.png" style="height: 150px;" /></a>
+<p>An image is just a big grid of numbers between [0,255]
+e.g. <span class="math notranslate nohighlight">\(800 \times 600 \times 3\)</span> (3 channels RGB)</p>
+<p>Futhermore, color image can be taken as 3D tensor (matrix with 3 channel(RGB) ) in <span class="math notranslate nohighlight">\(R^{n_0\times n_0 \times 3}\)</span>.</p>
+<a class="reference internal image-reference" href="../_images/corlor-1.png" id="label1-3"><img alt="../_images/corlor-1.png" id="label1-3" src="../_images/corlor-1.png" style="height: 150px;" /></a>
+<p>Supervised learning
+Then, let us think about the general supervised learning case.</p>
+<p>Each image = a big vector of pixel values</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(d = 1280\times 720 \times 3\)</span>(width <span class="math notranslate nohighlight">\(\times\)</span> height <span class="math notranslate nohighlight">\(\times\)</span> RGB channel)</p></li>
+</ul>
+<p>3 different sets of points in <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>, are they separable?</p>
+<a class="reference internal image-reference" href="../_images/cat-dog-2.png"><img alt="../_images/cat-dog-2.png" src="../_images/cat-dog-2.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/cat-dog-3.png"><img alt="../_images/cat-dog-3.png" src="../_images/cat-dog-3.png" style="height: 250px;" /></a>
+<ul class="simple">
+<li><p>Mathematical problem
+Find <span class="math notranslate nohighlight">\(f(\cdot; \theta): \mathbb{R}^d \to \mathbb{R}^3\)</span> such that:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(f(cat,\theta) \approx \begin{pmatrix}
+	1\\ 0 \\ 0 
+	\end{pmatrix} \)</span></p>
+<p><span class="math notranslate nohighlight">\(f(dog,\theta)\approx \begin{pmatrix}
+	0\\ 1 \\ 0 
+	\end{pmatrix} 
+    \)</span></p>
+<p><span class="math notranslate nohighlight">\(
+f(rabbit,\theta)
+\approx 
+	\begin{pmatrix}
+	0\\ 0 \\ 1
+	\end{pmatrix} 
+\)</span></p>
+<ul class="simple">
+<li><p>Function interpolation</p></li>
+<li><p>Data fitting</p></li>
+</ul>
+<div class="section" id="formulate-learning">
+<h3>Formulate “learning”<a class="headerlink" href="#formulate-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Data: <span class="math notranslate nohighlight">\(\{x_j, y_j\}_{j=1}^N\)</span></p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(f^*\)</span> in some function class s.t. <span class="math notranslate nohighlight">\(f^*(x_j) \approx y_j\)</span>.</p></li>
+<li><p>Mathematically, solve the optimization problem by parameterizing the abstract function class
+<span class="math notranslate nohighlight">\(
+  \min_{\theta} \mathcal L(\theta)
+\)</span></p></li>
+</ul>
+<p>where
+<span class="math notranslate nohighlight">\(
+		\mathcal L( \theta):=
+		{\mathbb E}_{(x,y)\sim \mathcal D}[\ell(f(x;  \theta), y)]\approx L( \theta) :=
+		\frac{1}{N} \sum_{j=1}^N\ell(y_j, f(x_j;  \theta))
+\)</span></p>
+<p>Here
+<span class="math notranslate nohighlight">\(
+\ell(y_j,f(x_j;  \theta))
+\)</span>
+is a  general distance between real label <span class="math notranslate nohighlight">\(y_j\)</span> and predicted label <span class="math notranslate nohighlight">\(f(x_j;\theta)\)</span></p>
+<p>Two commonly used distances are</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(l^2\)</span> distance:
+<span class="math notranslate nohighlight">\(
+  	\ell(y_j,f(x_j; \theta)) = \|y_j - f(x_j; \theta)\|^2.
+\)</span></p></li>
+<li><p>KL-divergence distance:
+<span class="math notranslate nohighlight">\(
+\ell(y_j, f(x_j;  \theta)) = \sum_{i=1}^k [y_j]_i \log\frac{[y_j]_i }{[f(x_j; \theta)]_i}.
+\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="image-classification-problem">
+<h2>2. Image classification problem<a class="headerlink" href="#image-classification-problem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Image classification problem<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>We consider a basic machine learning problem for classifying a collection of images
+into k distinctive classes. As an example, we consider a two-dimensional image
+which is usually represented by a tensor <span class="math notranslate nohighlight">\(x \in R^{n_0\times n_0 \times c} = R^d\)</span>
+Here <span class="math notranslate nohighlight">\(n_0 \times n_0\)</span> is the original image resolutuon and</p>
+<p><span class="math notranslate nohighlight">\(
+c=
+	\left \{
+	\begin{array}[rl]{rl}
+	1 &amp; \mbox{for grayscale image},\\    
+	3 &amp; \mbox{for color image}.
+	\end{array}
+	\right.
+\)</span></p>
+<p>A typical supervised machine learning problem begins with a data set (training
+data)</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{aligned}
+D &amp;= \{(x_j, y_j)\}_{j=1}^N, \quad \text{and} \quad A = \{ x_1, x_2, \cdots, x_N\}  \\
+A &amp;= A_1\cup A_2\cup \cdots \cup A_k, ~A_i\cap A_j = \emptyset, \forall i \neq j
+\end{aligned}
+\)</span>
+and <span class="math notranslate nohighlight">\(y_j \in R^k\)</span> is the label for data <span class="math notranslate nohighlight">\(x_j\)</span>, with <span class="math notranslate nohighlight">\(y_i[i]\)</span> as the probability for <span class="math notranslate nohighlight">\(x_i\)</span> in classes <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(x_j \in A_i\)</span>.
+Here for image classification problem, <span class="math notranslate nohighlight">\(y_j = e_{i_j}\)</span>,
+if <span class="math notranslate nohighlight">\(x_j \in A_{i_j}\)</span> or we say <span class="math notranslate nohighlight">\(x_j\)</span> has real label <span class="math notranslate nohighlight">\(i_j\)</span>.
+Roughly speaking, a supervised learning problem can be thought as a data fitting
+problem in a high dimensional space <span class="math notranslate nohighlight">\(R^d\)</span>.
+Namely, we need to find a mapping such that, for any <span class="math notranslate nohighlight">\(x_j \in A\)</span>
+<span class="math notranslate nohighlight">\(
+f(x_j)\approx y_j = e_{i_j} \in \mathbb R^k.
+\)</span></p>
+<p>for data <span class="math notranslate nohighlight">\(x_j \in A\)</span>. For general setting above, we use a probatillistic model for understanding the output <span class="math notranslate nohighlight">\(f(x) \in R^k\)</span> as a discrete distribution on <span class="math notranslate nohighlight">\(\{1,\cdots ,k\}\)</span>,
+with <span class="math notranslate nohighlight">\([f(x)]_{i}\)</span> as the probability for x in the class i, namely
+<span class="math notranslate nohighlight">\(
+0 \leq [f(x)]_i \leq 1
+\)</span>,
+<span class="math notranslate nohighlight">\(
+\sum_{i=1}^{k}[f(x)]_{i} =1
+\)</span>.
+At last, we finish our model with a simple strategy to choose
+<span class="math notranslate nohighlight">\(
+argmax_i\{ [f(x)]_i :  i = 1:k\}
+\)</span>
+as the label for a test data <span class="math notranslate nohighlight">\(x\)</span>, which ideally is close to . The remaining key issue is the construction of the classification mapping <span class="math notranslate nohighlight">\(f\)</span>.
+Generally speaking, there will be a test set
+<span class="math notranslate nohighlight">\(T = \{(x_j,y_j)\}_{j=1}^{M}\)</span>,
+with the same dimension of training data <span class="math notranslate nohighlight">\(D\)</span>, but is not known before we finish the
+training process. That is to say, we can use this test data <span class="math notranslate nohighlight">\(T\)</span> to verify the performance
+of trained model <span class="math notranslate nohighlight">\(f\)</span> .</p>
+</div>
+</div>
+<div class="section" id="some-popular-data-sets-in-image-classification">
+<h2>3. Some popular data sets in image classification<a class="headerlink" href="#some-popular-data-sets-in-image-classification" title="Permalink to this headline">¶</a></h2>
+<p>In this subsection, we will introduce some popular and standard data sets in image
+classification.</p>
+<table class="table" id="example-table">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>dataset</p></th>
+<th class="head"><p>training(N)</p></th>
+<th class="head"><p>test(M)</p></th>
+<th class="head"><p>classes(k)</p></th>
+<th class="head"><p>channels(c)</p></th>
+<th class="head"><p>input size(d)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MNIST</p></td>
+<td><p>60K</p></td>
+<td><p>10K</p></td>
+<td><p>10</p></td>
+<td><p>GRAYSCALE</p></td>
+<td><p>28*28</p></td>
+</tr>
+<tr class="row-odd"><td><p>CIFAR-10</p></td>
+<td><p>50K</p></td>
+<td><p>10K</p></td>
+<td><p>10</p></td>
+<td><p>RGB</p></td>
+<td><p>32*32</p></td>
+</tr>
+<tr class="row-even"><td><p>CIFAR-100</p></td>
+<td><p>50K</p></td>
+<td><p>10K</p></td>
+<td><p>10</p></td>
+<td><p>RGB</p></td>
+<td><p>32*32</p></td>
+</tr>
+<tr class="row-odd"><td><p>ImageNet</p></td>
+<td><p>1.2M</p></td>
+<td><p>50K</p></td>
+<td><p>1000</p></td>
+<td><p>RGB</p></td>
+<td><p>224*224</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="mnist-modified-national-institute-of-standards-and-technology-database">
+<h3>MNIST(Modified National Institute of Standards and Technology Database)<a class="headerlink" href="#mnist-modified-national-institute-of-standards-and-technology-database" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="this-is-a-database-for-handwritten-digits">
+<h4>This is a database for handwritten digits<a class="headerlink" href="#this-is-a-database-for-handwritten-digits" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Training set : N = 60,000</p></li>
+<li><p>Test set : M = 10,000</p></li>
+<li><p>Image size : d = 28 * 28 * 1 = 784</p></li>
+<li><p>Classes: k = 10</p></li>
+</ul>
+<div class="figure align-default" id="mnist">
+<img alt="../_images/mnist2_1.png" src="../_images/mnist2_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="cifar">
+<h3>CIFAR<a class="headerlink" href="#cifar" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cifar-10">
+<h4>CIFAR-10<a class="headerlink" href="#cifar-10" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Training set : N = 50,000</p></li>
+<li><p>Test set : M = 10,000</p></li>
+<li><p>Image size : d = 32 * 32 * 3</p></li>
+<li><p>Classes: k = 10</p></li>
+</ul>
+<div class="figure align-default" id="cifar10">
+<img alt="../_images/mnist1_1.png" src="../_images/mnist1_1.png" />
+</div>
+</div>
+<div class="section" id="cifar-100">
+<h4>CIFAR-100<a class="headerlink" href="#cifar-100" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Training set : N = 50，000</p></li>
+<li><p>Test set : M = 10，000</p></li>
+<li><p>Image size : d = 32 * 32 * 3</p></li>
+<li><p>Classes: k = 100</p></li>
+</ul>
+<div class="figure align-default" id="cifar100">
+<img alt="../_images/mnist1_1.png" src="../_images/mnist1_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="imagenet">
+<h3>ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>All data set: N + M = 1，431，167</p></li>
+<li><p>Image size : d = 224 * 224 * 3</p></li>
+<li><p>Classes: k = 1，000</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<img alt="../_images/imagenet1_1.png" src="../_images/imagenet1_1.png" />
+</div>
+<div class="figure align-default" id="mt">
+<img alt="../_images/imagenet1_2.png" src="../_images/imagenet1_2.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="module1_.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Module 1: Linear machine learning models</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="m1_02.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Linearly separable sets</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

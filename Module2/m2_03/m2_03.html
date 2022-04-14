@@ -1,0 +1,946 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convex functions and convergence of gradient descen &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stochastic gradient descent method and convergence theory" href="../m2_04.html" />
+    <link rel="prev" title="Probabilistic derivation of logistic regression models" href="../m2_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/quiz1.html">
+     Quiz 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quiz2.html">
+     Quiz 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_01/m3_01.html">
+     Nonlinear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_02/m3_02.html">
+     Polynomials and Weierstrass theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_03/m3_03.html">
+     Finite element method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_04/m3_04.html">
+     Deep neural network functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_05/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_08/m3_08.html">
+     Monte Carlo Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module4/module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_01/m4_01.html">
+     Convolutional neural networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_02/m4_02.html">
+     Convolutional operations on images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_03/m4_03.html">
+     Some classic CNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_hw.html">
+     Homework 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/Programming_Assignment_4.html">
+     Week 4 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/quiz4.html">
+     Quiz 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module5/module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_01/m5_01.html">
+     Data normalization and weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_04/m5_04.html">
+     Multigrid Method for Finite Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_hw.html">
+     Homework 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/quiz5.html">
+     Quiz 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_01.html">
+     MgNet: a special CNN based on multigrid method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module2/m2_03/m2_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module2/m2_03/m2_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convex-functions-and-convergence-of-gradient-descent">
+   Convex functions and convergence of gradient descent
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convex-function">
+     Convex function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#on-the-convergence-of-gd">
+     On the Convergence of GD
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="convex-functions-and-convergence-of-gradient-descen">
+<h1>Convex functions and convergence of gradient descen<a class="headerlink" href="#convex-functions-and-convergence-of-gradient-descen" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_ts79w2r0&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_0pfj6aet&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_ts79w2r0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_0pfj6aet"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_yzpt1q76&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_ct99p37d&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_yzpt1q76&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ct99p37d"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/B03ConvexFunctionGD_Video_Notes.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="convex-functions-and-convergence-of-gradient-descent">
+<h2>Convex functions and convergence of gradient descent<a class="headerlink" href="#convex-functions-and-convergence-of-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="convex-function">
+<h3>Convex function<a class="headerlink" href="#convex-function" title="Permalink to this headline">¶</a></h3>
+<p>Then, let us first give the definition of convex sets.</p>
+<div class="proof definition admonition" id="def23_1">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Convex set)</p>
+<div class="definition-content section" id="proof-content">
+<p>A set <span class="math notranslate nohighlight">\(C\)</span> is convex, if the line segment
+between any two points in <span class="math notranslate nohighlight">\(C\)</span> lies in <span class="math notranslate nohighlight">\(C\)</span>, i.e., if any <span class="math notranslate nohighlight">\(x, y \in C\)</span> and
+any <span class="math notranslate nohighlight">\(\alpha\)</span> with <span class="math notranslate nohighlight">\(0 \leq \alpha \leq 1\)</span>, there holds</p>
+<div class="math notranslate nohighlight">
+\[
+    \alpha x+(1-\alpha) y \in C
+\]</div>
+</div>
+</div><p>Here are two diagrams for this definition about convex and non-convex sets.
+<img alt="image" src="../../_images/2022_03_25_9faca01b68c57c6da639g-3.jpg" /></p>
+<p>Following the definition of convex set, we define convex function as
+following.</p>
+<div class="proof definition admonition" id="def23_2">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Convex function)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(C \subset \mathbb{R}^{n}\)</span> be a convex set and <span class="math notranslate nohighlight">\(f: C \rightarrow \mathbb{R}\)</span> :</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is called convex if for any <span class="math notranslate nohighlight">\(x, y \in C\)</span> and <span class="math notranslate nohighlight">\(\alpha \in[0,1]\)</span></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    f(\alpha x+(1-\alpha) y) \leq \alpha f(x)+(1-\alpha) f(y) 
+\]</div>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is called strictly convex if for any <span class="math notranslate nohighlight">\(x \neq y \in C\)</span> and
+<span class="math notranslate nohighlight">\(\alpha \in(0,1)\)</span> :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    f(\alpha x+(1-\alpha) y)&lt;\alpha f(x)+(1-\alpha) f(y) 
+\]</div>
+<ol class="simple">
+<li><p>A function <span class="math notranslate nohighlight">\(f\)</span> is said to be (strictly) concave if <span class="math notranslate nohighlight">\(-f\)</span> is
+(strictly) convex.</p></li>
+</ol>
+</div>
+</div><p>We also have the next diagram for convex function definition.</p>
+<p><img alt="image" src="../../_images/2022_03_25_9faca01b68c57c6da639g-4.jpg" /></p>
+<div class="proof lemma admonition" id="lemma23_1">
+<p class="admonition-title"><span class="caption-number">Lemma 6 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is differentiable on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, then <span class="math notranslate nohighlight">\(f(x)\)</span> is
+convex if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) \geq f(y)+\nabla f(y) \cdot(x-y), \forall x, y \in \mathbb{R}^{n} 
+\]</div>
+</div>
+</div><p>Based on the lemma, we can first have the next new diagram for convex
+functions.</p>
+<p><img alt="image" src="../../_images/2022_03_25_9faca01b68c57c6da639g-4(1).jpg" /></p>
+<div class="proof admonition" id="proof">
+<p>Proof. Let <span class="math notranslate nohighlight">\(z=\alpha x+(1-\alpha) y, 0 \leq \alpha \leq 1, \forall x, y \in \mathbb{R}^{n}\)</span>,
+we have these next two Taylor expansion:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+&amp;f(x) \geq f(z)+\nabla f(z)(x-z) \\
+&amp;f(y) \geq f(z)+\nabla f(z)(y-z)
+\end{aligned}
+\end{split}\]</div>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+&amp; \alpha f(x)+(1-\alpha) f(y) \\
+\geq &amp; f(z)+\nabla f(z)[\alpha(x-z)+(1-\alpha)(y-z)] \\
+=&amp; f(z) \\
+=&amp; f(\alpha x+(1-\alpha) y) .
+\end{aligned}
+\end{split}\]</div>
+<p>Thus we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \alpha f(x)+(1-\alpha) f(y) \geq f(\alpha x+(1-\alpha) y)
+\]</div>
+<p>This finishes the proof.</p>
+</div>
+<p>On the other hand: if <span class="math notranslate nohighlight">\(f(x)\)</span> is differentiable on
+<span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, then <span class="math notranslate nohighlight">\(f(x) \geq f(y)+\)</span>
+<span class="math notranslate nohighlight">\(\nabla f(y) \cdot(x-y), \forall x, y \in \mathbb{R}^{n}\)</span> if <span class="math notranslate nohighlight">\(f(x)\)</span> is
+convex.</p>
+<div class="proof definition admonition" id="def23_3">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (<span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex)</p>
+<div class="definition-content section" id="proof-content">
+<p>We say that <span class="math notranslate nohighlight">\(f(x)\)</span> is
+<span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex if</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) \geq f(y)+\nabla f(y) \cdot(x-y)+\frac{\lambda}{2}\|x-y\|^{2}, \quad \forall x, y \in C
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>.</p>
+</div>
+</div><p>Example. Consider <span class="math notranslate nohighlight">\(f(x)=\|x\|^{2}\)</span>, then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\partial f}{\partial x_{i}}=2 x_{i}, \nabla f=2 x \in R^{n}
+\]</div>
+<p>So, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+&amp; f(x)-f(y)-\nabla f(y)(x-y) \\
+=&amp;\|x\|^{2}-\|y\|^{2}-2 y(x-y) \\
+=&amp;\|x\|^{2}-\|y\|^{2}-2 x y+2\|y\|^{2} \\
+=&amp;\|x\|^{2}-2 x y+\|y\|^{2} \\
+=&amp;\|x-y\|^{2} \\
+=&amp; \lambda\|x-y\|^{2}, \quad \lambda=2 .
+\end{aligned}
+\end{split}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(f(x)=\|x\|^{2}\)</span> is 2-strongly convex</p>
+<p>Example. Actually, the loss function of the logistic
+regression model</p>
+<div class="math notranslate nohighlight">
+\[
+    L(\theta)=-\log P(\theta)
+\]</div>
+<p>is convex as a function of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p>Furthermore, the loss function of the regularized logistic regression
+model</p>
+<div class="math notranslate nohighlight">
+\[
+    L_{\lambda}(\theta)=-\log P(\theta)+\lambda\|\theta\|_{F}^{2}, \lambda&gt;0
+\]</div>
+<p>is <span class="math notranslate nohighlight">\(\lambda^{\prime}\)</span>-strongly convex <span class="math notranslate nohighlight">\(\left(\lambda^{\prime}\right.\)</span> is
+related to <span class="math notranslate nohighlight">\(\left.\lambda\right)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p>We also have these following interesting properties of convex function.</p>
+<p>Properties (basic properties of convex function)</p>
+<p>1- If <span class="math notranslate nohighlight">\(f(x), g(x)\)</span> are both convex, then <span class="math notranslate nohighlight">\(\alpha f(x)+\beta g(x)\)</span> is
+also convex, if <span class="math notranslate nohighlight">\(\alpha, \beta \geq 0\)</span></p>
+<p>2- Linear function is both convex and concave. Here, <span class="math notranslate nohighlight">\(f(x)\)</span> is concave if and only if <span class="math notranslate nohighlight">\(-f(x)\)</span>
+is convex</p>
+<p>3-  If <span class="math notranslate nohighlight">\(f(x)\)</span> is a convex convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, then
+<span class="math notranslate nohighlight">\(g(y)=f(A y+b)\)</span> is a convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>. Here
+<span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(b \in \mathbb{R}^{m}\)</span>.</p>
+<p>4-  If <span class="math notranslate nohighlight">\(g(x)\)</span> is a convex function on <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, and the function
+<span class="math notranslate nohighlight">\(f(u)\)</span> is convex function on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and non-decreasing, then
+the composite function <span class="math notranslate nohighlight">\(f \circ g(x)=f(g(x))\)</span> is convex.</p>
+</div>
+<div class="section" id="on-the-convergence-of-gd">
+<h3>On the Convergence of GD<a class="headerlink" href="#on-the-convergence-of-gd" title="Permalink to this headline">¶</a></h3>
+<p>For the next optimization problem</p>
+<div class="math notranslate nohighlight">
+\[
+    \min _{x \in \mathbb{R}^{n}} f(x)
+\]</div>
+<p>We assume that <span class="math notranslate nohighlight">\(f(x)\)</span> is convex. Then we say that <span class="math notranslate nohighlight">\(x^{*}\)</span> is a minimizer
+if <span class="math notranslate nohighlight">\(f\left(x^{*}\right)=\)</span> <span class="math notranslate nohighlight">\(\min _{x \in \mathbb{R}^{n}} f(x) .\)</span></p>
+<p>Let recall that, for minimizer <span class="math notranslate nohighlight">\(x^{*}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \nabla f\left(x^{*}\right)=0
+\]</div>
+<p>Then we have the next tw properties of minimizer for convex functions:</p>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(x) \geq c_{0}\)</span>, for some <span class="math notranslate nohighlight">\(c_{0} \in \mathbb{R}\)</span>, then we have</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\arg \min f \neq \emptyset\]</div>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex, then <span class="math notranslate nohighlight">\(f(x)\)</span> has a unique
+minimizer, namely, there exists a unique <span class="math notranslate nohighlight">\(x^{*} \in \mathbb{R}^{n}\)</span>
+such that</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    f\left(x^{*}\right)=\min _{x \in \mathbb{R}^{n}} f(x)
+\]</div>
+<p>To investigate the convergence of gradient descent method, let recall the gradient
+descent method:</p>
+<div class="proof algorithm admonition" id="FGD">
+<p class="admonition-title"><span class="caption-number">Algorithm 3 </span></p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>For</strong> <span class="math notranslate nohighlight">\(t = 1,2,\cdots\)</span></p>
+<div class="math notranslate nohighlight">
+\[ 
+    \quad x_{t+1} = x_t - \eta_t \nabla f(x_t)
+\]</div>
+<p><strong>EndFor</strong></p>
+<p>where <span class="math notranslate nohighlight">\(\eta_t\)</span> is the stepsize / learning rate</p>
+</div>
+</div><div class="admonition-assumption admonition">
+<p class="admonition-title">Assumption</p>
+<p>We make the following assumptions</p>
+<p>1- <span class="math notranslate nohighlight">\(f(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex for some <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Recall the definition,
+we have</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) \geq f(y)+\nabla f(y) \cdot(x-y)+\frac{\lambda}{2}\|x-y\|^{2}
+\]</div>
+<p>then note <span class="math notranslate nohighlight">\(x^{*}=\arg \min f(x)\)</span>. Then we have</p>
+<ul class="simple">
+<li><p>Take <span class="math notranslate nohighlight">\(y=x^{*}\)</span>, this leads to</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    f(x) \geq f\left(x^{*}\right)+\frac{\lambda}{2}\|x-y\|^{2} 
+\]</div>
+<ul class="simple">
+<li><p>Take <span class="math notranslate nohighlight">\(x=x^{*}\)</span>, this leads to</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    0 \geq f\left(x^{*}\right)-f(y) \geq \nabla f(y) \cdot\left(x^{*}-y\right)+\frac{\lambda}{2}\left\|x^{*}-y\right\|^{2}
+\]</div>
+<p>which means that</p>
+<div class="math notranslate nohighlight">
+\[
+    \nabla f(x) \cdot\left(x-x^{*}\right) \geq \frac{\lambda}{2}\left\|x-x^{*}\right\|^{2}
+\]</div>
+<p>2-  <span class="math notranslate nohighlight">\(\nabla f\)</span> is Lipschitz for some <span class="math notranslate nohighlight">\(L&gt;0\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+    \|\nabla f(x)-\nabla f(y)\| \leq L\|x-y\|, \forall x, y 
+\]</div>
+</div>
+<p>Thus, we have the next theorem about the convergence of gradient descent method.</p>
+<div class="proof theorem admonition" id="theorem-5">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>For <a class="reference internal" href="#FGD">Algorithm 3</a>, if <span class="math notranslate nohighlight">\(f(x)\)</span> is <span class="math notranslate nohighlight">\(\lambda\)</span>-strongly convex and
+<span class="math notranslate nohighlight">\(\nabla f\)</span> is Lipschitz for some <span class="math notranslate nohighlight">\(L&gt;0\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\|x_{t}-x^{*}\right\|^{2} \leq \alpha^{t}\left\|x_{0}-x^{*}\right\|^{2}
+\]</div>
+<p>if <span class="math notranslate nohighlight">\(0&lt;\eta_{t} \leq \eta_{0}=\frac{\lambda}{2 L^{2}}\)</span> and
+<span class="math notranslate nohighlight">\(\alpha=1-\frac{\lambda^{2}}{4 L^{2}}&lt;1.\)</span></p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. If we minus any <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{n}\)</span>, we can only get:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{t+1}-x=x_{t}-\eta_{t} \nabla f\left(x_{t}\right)-x 
+\]</div>
+<p>If we take <span class="math notranslate nohighlight">\(L^{2}\)</span> norm for both side, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\|x_{t+1}-x\right\|^{2}=\left\|x_{t}-\eta_{t} \nabla f\left(x_{t}\right)-x\right\|^{2} 
+\]</div>
+<p>So we have the following inequality and take <span class="math notranslate nohighlight">\(x=x^{*}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(\left\|x_{t+1}-x^{*}\right\|^{2}=\left\|x_{t}-\eta_{t} \nabla f\left(x_{t}\right)-x^{*}\right\|^{2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(=\left\|x_{t}-x^{*}\right\|^{2}-2 \eta_{t} \nabla f\left(x_{t}\right)^{\top}\left(x_{t}-x^{*}\right)+\eta_{t}^{2}\left\|\nabla f\left(x_{t}\right)-\nabla f\left(x^{*}\right)\right\|^{2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\leq\left\|x_{t}-x^{*}\right\|^{2}-\eta_{t} \lambda\left\|x_{t}-x^{*}\right\|^{2}+\eta_{t}^{2} L^{2}\left\|x_{t}-x^{*}\right\|^{2} \quad(\lambda-\)</span>
+strongly convex and Lipschitz <span class="math notranslate nohighlight">\()\)</span></p>
+<p><span class="math notranslate nohighlight">\(\leq\left(1-\eta_{t} \lambda+\eta_{t}^{2} L^{2}\right)\left\|x_{t}-x^{*}\right\|\)</span>.</p>
+<p>So, if <span class="math notranslate nohighlight">\(\eta_{t} \leq \frac{\lambda}{2 L^{2}}\)</span>, then
+<span class="math notranslate nohighlight">\(\alpha=\left(1-\eta_{t} \lambda+\eta_{t}^{2} L^{2}\right) \leq 1-\frac{\lambda^{2}}{4 L^{2}}&lt;1\)</span>,
+which finishes the proof.</p>
+</div>
+<p>Some issues on GD:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\nabla f\left(x_{t}\right)\)</span> is very expensive to compete.</p></li>
+<li><p>GD does not yield generalization accuracy.</p></li>
+</ul>
+<p>The stochastic gradient descent (SGD) method which we will discuss in
+the next section will focus on these two issues.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module2/m2_03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../m2_02.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Probabilistic derivation of logistic regression models</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../m2_04.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Stochastic gradient descent method and convergence theory</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

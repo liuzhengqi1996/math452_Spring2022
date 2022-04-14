@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monte Carlo Methods &#8212; Math 452 Site</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Building and Training Deep Neural Networks (DNNs) with Pytorch" href="../C08_DNN.html" />
+    <link rel="prev" title="DNN for image classification" href="../m3_07.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module1/quiz1.html">
+     Quiz 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_03/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module2/quiz2.html">
+     Quiz 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_01/m3_01.html">
+     Nonlinear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_02/m3_02.html">
+     Polynomials and Weierstrass theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_03/m3_03.html">
+     Finite element method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_04/m3_04.html">
+     Deep neural network functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_05/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Monte Carlo Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module4/module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_01/m4_01.html">
+     Convolutional neural networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_02/m4_02.html">
+     Convolutional operations on images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_03/m4_03.html">
+     Some classic CNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/m4_hw.html">
+     Homework 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/Programming_Assignment_4.html">
+     Week 4 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module4/quiz4.html">
+     Quiz 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module5/module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_01/m5_01.html">
+     Data normalization and weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_04/m5_04.html">
+     Multigrid Method for Finite Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/m5_hw.html">
+     Homework 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module5/quiz5.html">
+     Quiz 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_01.html">
+     MgNet: a special CNN based on multigrid method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Module3/m3_08/m3_08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module3/m3_08/m3_08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-lecture-notes-here-notes">
+   Download the lecture notes here: Notes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Monte Carlo methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-basic-result">
+     A basic result
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application">
+     Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integral-representations-of-functions">
+   Integral representations of functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-representation">
+     Fourier representation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-fourier-representation">
+     Double Fourier representation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="monte-carlo-methods">
+<h1>Monte Carlo Methods<a class="headerlink" href="#monte-carlo-methods" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8xtoqvb&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_yh08ji56&quot;</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;800&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="500"
+    src="https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&playerId=kaltura_player&entry_id=1_r8xtoqvb&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_yh08ji56"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#IFrame(src=&quot;https://cdnapisec.kaltura.com/p/2356971/sp/235697100/embedIframeJs/uiconf_id/41416911/partner_id/2356971?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_o6yt8ku9&amp;flashvars[streamerType]=auto&amp;amp;flashvars[localizationCode]=en&amp;amp;flashvars[leadWithHTML5]=true&amp;amp;flashvars[sideBarContainer.plugin]=true&amp;amp;flashvars[sideBarContainer.position]=left&amp;amp;flashvars[sideBarContainer.clickToClose]=true&amp;amp;flashvars[chapters.plugin]=true&amp;amp;flashvars[chapters.layout]=vertical&amp;amp;flashvars[chapters.thumbnailRotator]=false&amp;amp;flashvars[streamSelector.plugin]=true&amp;amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;amp;flashvars[dualScreen.plugin]=true&amp;amp;flashvars[hotspots.plugin]=1&amp;amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;amp;&amp;wid=1_a5lk2qct&quot; ,width=&#39;800&#39;, height=&#39;500&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="download-the-lecture-notes-here-notes">
+<h2>Download the lecture notes here: <a class="reference external" href="https://sites.psu.edu/math452/files/2022/01/C08_-Monte-Carlo-Methods.pdf">Notes</a><a class="headerlink" href="#download-the-lecture-notes-here-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>Monte Carlo methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span> be a probability density function on
+<span class="math notranslate nohighlight">\(G \subset \mathbb{R}^{d}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{G} \lambda(\omega) d \omega=1 
+\]</div>
+<p>For example:</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda(\omega)=\frac{1}{|G|}
+\]</div>
+<p>if <span class="math notranslate nohighlight">\(G\)</span> is bounded. The expectation is defined:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E} g:=\int_{G} g(\omega) \lambda(\omega) d \omega
+\]</div>
+<p>and for any
+<span class="math notranslate nohighlight">\(h=h\left(\omega_{1}, \omega_{2}, \ldots, \omega_{n}\right): G \times G \cdots G \mapsto \mathbb{R}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n} h:=\int_{G \times G \times \ldots \times G} h\left(\omega_{1}, \omega_{2}, \ldots, \omega_{n}\right) \lambda\left(\omega_{1}\right) \lambda\left(\omega_{2}\right) \ldots \lambda\left(\omega_{n}\right) d \omega_{1} d \omega_{2} \ldots d \omega_{n}
+\]</div>
+<div class="section" id="a-basic-result">
+<h3>A basic result<a class="headerlink" href="#a-basic-result" title="Permalink to this headline">¶</a></h3>
+<div class="proof lemma admonition" id="lemma38_1">
+<p class="admonition-title"><span class="caption-number">Lemma 9 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>For any <span class="math notranslate nohighlight">\(g \in L^{\infty}(G)\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbb{E}_{n}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}=\left\{\begin{array}{c}
+\frac{1}{n} \mathbb{E}\left((\mathbb{E} g-g)^{2}\right) \leq \frac{1}{n} \sup _{\omega, \omega \in G}\left|g(\omega)-g\left(\omega^{\prime}\right)\right|^{2} \\
+\frac{1}{n}\left(\mathbb{E}\left(g^{2}\right)-(\mathbb{E}(g))^{2}\right) \leq \frac{1}{n} \mathbb{E}\left(g^{2}\right) \leq \frac{1}{n}\|g\|_{L^{\infty}}^{2},
+\end{array}\right.
+\end{split}\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. First note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} &amp;=\frac{1}{n^{2}}\left(n \mathbb{E} g-\sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}=\frac{1}{n^{2}}\left(\sum_{i=1}^{n}\left(\mathbb{E} g-g\left(\omega_{i}\right)\right)\right)^{2} \\
+&amp;=\frac{1}{n^{2}} \sum_{i, j=1}^{n}\left(\mathbb{E} g-g\left(\omega_{i}\right)\right)\left(\mathbb{E} g-g\left(\omega_{j}\right)\right) \\
+&amp;=\frac{I_{1}}{n^{2}}+\frac{I_{2}}{n^{2}}
+\end{aligned}
+\end{split}\]</div>
+<p>with</p>
+<p><span class="math notranslate nohighlight">\(\left.I_{1}=\sum_{i=1}^{n}\left(\mathbb{E} g-g\left(\omega_{i}\right)\right)^{2}, \quad I_{2}=\sum_{i \neq j}^{n}\left((\mathbb{E} g)^{2}-\mathbb{E}(g)\left(g\left(\omega_{i}\right)+g\left(\omega_{j}\right)\right)+g\left(\omega_{i}\right) g\left(\omega_{j}\right)\right)\right)\)</span></p>
+<p>Consider <span class="math notranslate nohighlight">\(I_{1}\)</span>, for any <span class="math notranslate nohighlight">\(i\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n}\left(\mathbb{E} g-g\left(\omega_{i}\right)\right)^{2}=\mathbb{E}_{n}(\mathbb{E} g-g)^{2}
+\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n} I_{1}=n \mathbb{E}\left((\mathbb{E} g-g)^{2}\right)
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(I_{2}\)</span>, note that</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n} g\left(\omega_{i}\right)=\mathbb{E}_{n} g\left(\omega_{j}\right)=\mathbb{E}(g)\]</div>
+<p>and, for <span class="math notranslate nohighlight">\(i \neq j\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+\mathbb{E}_{n}\left(g\left(\omega_{i}\right) g\left(\omega_{j}\right)\right) &amp;=\int_{G \times G \times \ldots \times G} g\left(\omega_{j}\right) g\left(\omega_{j}\right) \lambda\left(\omega_{1}\right) \lambda\left(\omega_{2}\right) \ldots \lambda\left(\omega_{n}\right) d \omega_{1} d \omega_{2} \ldots d \omega_{n} \\
+&amp;=\int_{G \times G} g\left(\omega_{j}\right) g\left(\omega_{j}\right) \lambda\left(\omega_{1}\right) \lambda\left(\omega_{1}\right) \lambda\left(\omega_{2}\right) d \omega_{1} d \omega_{2} \\
+&amp;=\mathbb{E}_{n}\left(g\left(\omega_{i}\right)\right) \mathbb{E}_{n}\left(g\left(\omega_{j}\right)\right)=[\mathbb{E}(g)]^{2}
+\end{aligned}
+\end{split}\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n}\left(I_{2}\right)=\mathbb{E}_{n}\left(\sum_{i \neq j}^{n}\left((\mathbb{E} g)^{2}-\mathbb{E}(g)\left(\mathbb{E}\left(g\left(\omega_{i}\right)\right)+\mathbb{E}\left(g\left(\omega_{j}\right)\right)\right)+\mathbb{E}\left(g\left(\omega_{i}\right) g\left(\omega_{j}\right)\right)\right)\right)=0
+\]</div>
+<p>Consequently, there exist the following two formulas for
+<span class="math notranslate nohighlight">\(\mathbb{E}_{n}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}:\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbb{E}_{n}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}=\frac{1}{n^{2}} \mathbb{E}_{n} I_{1}=\left\{\begin{array}{c}
+\frac{1}{n} \mathbb{E}\left((\mathbb{E} g-g)^{2}\right) \\
+\frac{1}{n}\left(\mathbb{E}\left(g^{2}\right)-(\mathbb{E} g)^{2}\right)
+\end{array}\right.
+\end{split}\]</div>
+<p>Based on the first formula above, since</p>
+<div class="math notranslate nohighlight">
+\[
+    |g(\omega)-\mathbb{E} g|=\left|\int_{G}(g(\omega)-g(\tilde{\omega})) \lambda(\tilde{\omega}) d \tilde{\omega}\right| \leq \sup _{\omega, \omega \in G}\left|g(\omega)-g\left(\omega^{\prime}\right)\right|
+\]</div>
+<p>it holds that</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} \leq \frac{1}{n} \sup _{\omega, \omega \in G}\left|g(\omega)-g\left(\omega^{\prime}\right)\right|^{2}
+\]</div>
+<p>Due to the second formula above,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} \leq \frac{1}{n} \mathbb{E}\left(g^{2}\right) \leq \frac{1}{n}\|g\|_{L^{\infty}}^{2}
+\]</div>
+<p>which completes the proof. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<p>Of course, we can use this to prove a high probability result.</p>
+<div class="proof corollary admonition" id="corollary-1">
+<p class="admonition-title"><span class="caption-number">Corollary 1 </span></p>
+<div class="corollary-content section" id="proof-content">
+<p>Under the assumptions of the preceding lemma, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \overline{\mathbb{P}}\left[\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}&gt;\frac{k}{n}\|g\|_{L^{\infty}}^{2}\right]&lt;\frac{1}{k}
+\]</div>
+</div>
+</div></div>
+<div class="proof admonition" id="proof">
+<p>Proof. <span class="math notranslate nohighlight">\(
+    \overline{\mathbb{P}}\left[\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2}&gt;\epsilon\right] \leq \epsilon^{-1} \overline{\mathbb{E}}\left(\mathbb{E} g-\frac{1}{n} \sum_{i=1}^{n} g\left(\omega_{i}\right)\right)^{2} \leq \frac{1}{n \epsilon}\|g\|_{L^{\infty}}^{2}
+\)</span></p>
+</div>
+<p>This corollary implies that the set of <span class="math notranslate nohighlight">\(\omega_{i}\)</span> where the estimate
+<span class="math notranslate nohighlight">\(n^{-1} \sum_{i=1}^{n} g\left(\omega_{i}\right)\)</span> is far from the desired
+value <span class="math notranslate nohighlight">\(\mathbb{E} g\)</span> is small.</p>
+<p>The practical usefulness of this algorithm depends upon the existence of
+a repeatable process (for instance some physical process) which
+generates <span class="math notranslate nohighlight">\(\omega\)</span> according to a desired distribution <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>The precise meaning of this last statement is essentially that the
+strong law of large numbers holds. Specifically, if
+<span class="math notranslate nohighlight">\(\omega_{1}, \ldots, \omega_{n}, \ldots\)</span> is a infinite sequence
+generated by the process, and <span class="math notranslate nohighlight">\(A \subset \Omega\)</span> is any a measurable
+set, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim _{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^{n} \chi_{A}\left(\omega_{i}\right)=\mu(A) 
+\]</div>
+<p>Generating <span class="math notranslate nohighlight">\(n\)</span> independent samples means generating
+<span class="math notranslate nohighlight">\(\omega_{1}, \ldots, \omega_{n}\)</span> from <span class="math notranslate nohighlight">\(\mu^{n}\)</span> according to the above
+notion. The existence of a realizable process generating samples from a
+probability distribution, and the practical use of such processes is an
+interesting topic in the intersection of statistics, physics, and
+computer science. In addition, statistics/probability theory studies how
+to take samples from one probability distribution and transform them to
+samples from another distribution.</p>
+</div>
+<div class="section" id="application">
+<h3>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h3>
+<div class="proof lemma admonition" id="lemma38_2">
+<p class="admonition-title"><span class="caption-number">Lemma 10 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\int_{G} g(x, \theta) \lambda(\theta) d \theta=\mathbb{E}(g)
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\lambda(\theta) \geq 0\)</span> and <span class="math notranslate nohighlight">\(\|\lambda(\theta)\|_{L^{1}(G)}=1\)</span>.
+For any <span class="math notranslate nohighlight">\(n \geq 1\)</span>, there exist <span class="math notranslate nohighlight">\(\theta_{i}^{*} \in G\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\|f-f_{n}\right\|_{L^{2}(\Omega)}^{2} \leq \frac{1}{n} \int_{G}\|g(\cdot, \theta)\|_{L^{2}(\Omega)}^{2} \lambda(\theta) d \theta=\frac{1}{n} \mathbb{E}\left(\|g(\cdot, \theta)\|_{L^{2}(\Omega)}^{2}\right)
+\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\|g(\cdot, \theta)\|_{L^{2}(\Omega)}^{2}=\int_{\Omega}[g(x, \theta)]^{2} d \mu(x)\)</span>,
+and</p>
+<div class="math notranslate nohighlight">
+\[
+    f_{n}(x)=\frac{1}{n} \sum_{i=1}^{n} g\left(x, \theta_{i}^{*}\right)
+\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Introducing a probability distribution <span class="math notranslate nohighlight">\(\lambda(\theta)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\mathbb{Z}(g)
+\]</div>
+<p>By <a class="reference internal" href="#lemma38_1">Lemma 9</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \left.\mathbb{E}_{n}\left(\left(\mathbb{E}(g(x, \cdot))-\frac{1}{n} \sum_{i=1}^{n} g\left(x, \theta_{i}\right)\right)\right)^{2}\right) \leq \frac{1}{n} \mathbb{E}\left(g^{2}\right)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{E}_{n}\left(h\left(\theta_{1}, \theta_{2}, \cdots, \theta_{n}\right)\right) \leq \frac{1}{n} \mathbb{E}\left(\int_{\Omega} g^{2} d \mu(x)\right),
+\]</div>
+<p>by taking integral where</p>
+<div class="math notranslate nohighlight">
+\[
+    \left.h\left(\theta_{1}, \theta_{2}, \cdots, \theta_{n}\right)=\int_{\Omega}\left(\mathbb{E}(g(x, \cdot))-\frac{1}{n} \sum_{i=1}^{n} g\left(x, \theta_{i}\right)\right)\right)^{2} d \mu(x)
+\]</div>
+<p>Sine <span class="math notranslate nohighlight">\(\mathbb{E}_{n}(1)=1\)</span> and
+<span class="math notranslate nohighlight">\(\mathbb{E}_{n}(h) \leq \frac{1}{n} \mathbb{E}\left(\int_{O} g^{2} d \mu(x)\right)\)</span>,
+there exists
+<span class="math notranslate nohighlight">\(\left(\theta_{1}^{*}, \theta_{2}^{*}, \cdots, \theta_{n}^{*}\right) \in G \times G \times\)</span>
+<span class="math notranslate nohighlight">\(\cdots \times G\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    h\left(\theta_{1}^{*}, \theta_{2}^{*}, \cdots, \theta_{n}^{*}\right) \leq \frac{1}{n} \int_{\Omega} \mathbb{E}\left(g^{2}\right) d \mu(x)
+\]</div>
+<p>Otherwise,
+<span class="math notranslate nohighlight">\(\mathbb{E}_{n}(h)&gt;\frac{1}{n} \mathbb{E}\left(\int_{\Omega} g^{2} d \mu(x)\right)\)</span>
+if
+<span class="math notranslate nohighlight">\(\left.h\left(\theta_{1}, \theta_{2}, \cdots, \theta_{n}\right)&gt;\frac{1}{n} \int_{\Omega} \mathbb{E}\left(g^{2}\right)\right) d \mu(x) .\)</span>
+This implies that
+$<span class="math notranslate nohighlight">\(\left\|f-f_{n}\right\|_{L^{2}(\Omega)}^{2} \leq \frac{1}{n} \int_{G}\|g(\cdot, \theta)\|_{L^{2}(\Omega)}^{2} \lambda(\theta) d \theta,\)</span>$
+which completes the proof.</p>
+</div>
+<p>We also have a more general version of the above lemma.</p>
+<div class="proof lemma admonition" id="lemma38_3">
+<p class="admonition-title"><span class="caption-number">Lemma 11 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\int_{G} g(x, \theta) \lambda(\theta) d \theta=\mathbb{E}(g)
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\|\lambda(\theta)\|_{L^{1}(\Theta)}=1\)</span>. For any <span class="math notranslate nohighlight">\(n \geq 1\)</span>, there
+exist <span class="math notranslate nohighlight">\(\theta_{i}^{*} \in G\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \left\|f-f_{n}\right\|_{H^{m}(\Omega)}^{2} \leq \int_{G}\|g(\cdot, \theta)\|_{H^{m}(\Omega)}^{2} \lambda(\theta) d \theta=\frac{1}{n} \mathbb{E}\left(\|g(\cdot, \theta)\|_{H^{m}(\Omega)}^{2}\right)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    f_{n}(x)=\frac{1}{n} \sum_{i=1}^{n} g\left(x, \theta_{i}^{*}\right)
+\]</div>
+<p>In particular, if</p>
+<div class="math notranslate nohighlight">
+\[
+    \left|D^{\alpha} g(x, \theta)\right| \leq C, \quad \forall x, \theta,|\alpha| \leq m
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \left\|f-f_{n}\right\|_{H^{m}(\Omega)} \leq\left(\begin{array}{c}
+m+d \\
+m
+\end{array}\right)^{1 / 2}|\Omega|^{1 / 2} n^{-1 / 2}
+\end{split}\]</div>
+</div>
+</div><p>For any
+<span class="math notranslate nohighlight">\(f(x)=\int_{G} g(x, \theta) \rho(\theta) d \theta\)</span> with
+<span class="math notranslate nohighlight">\(\|\rho\|_{L^{1}(\Theta)} \neq 1 .\)</span> Let
+<span class="math notranslate nohighlight">\(\lambda(\theta)=\frac{\rho(\theta)}{\|\rho\|_{L^{1}(\theta)}} .\)</span> Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\|\rho\|_{L^{1}(\Theta)} \int_{G} g(x, \theta) \lambda(\theta) d \theta
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\|\lambda(\theta)\|_{L^{1}(\Theta)}=1 .\)</span> We can apply the above
+two lemmas to the given function <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="integral-representations-of-functions">
+<h2>Integral representations of functions<a class="headerlink" href="#integral-representations-of-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fourier-representation">
+<h3>Fourier representation<a class="headerlink" href="#fourier-representation" title="Permalink to this headline">¶</a></h3>
+<p>Consider the Fourier transform:</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{f}(\omega)=\frac{1}{(2 \pi)^{d}} \int_{\mathbb{R}^{d}} e^{-i \omega \cdot x} f(x) d x \quad \forall \omega \in \mathbb{R}^{d}
+\]</div>
+<p>We write <span class="math notranslate nohighlight">\(\hat{f}(\omega)=e^{i \theta(\omega)}|\hat{f}(\omega)| .\)</span> By
+Fourier inversion formula,</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\int_{\mathbb{R}^{d}} e^{i \omega \cdot x} \hat{f}(\omega) d \omega=\int_{\mathbb{R}^{d}} e^{i(\omega \cdot x+\beta(\omega))}|\hat{f}(\omega)| d \omega 
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(f(x)\)</span> is real-valued, it implies that, for <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+f(x) &amp;=\operatorname{Re} \int_{\mathbb{R}^{d}} e^{i \omega \cdot x} \hat{f}(\omega) d \omega \\
+&amp;=\operatorname{Re} \int_{\mathbb{R}^{d}} e^{i \omega \cdot x} e^{i \beta(\omega)}|\hat{f}(\omega)| d \omega \\
+&amp;=\int_{\mathbb{R}^{d}} \cos (\omega \cdot x+\beta(\omega))|\hat{f}(\omega)| d \omega
+\end{aligned}
+\end{split}\]</div>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x)=\int_{\mathbb{R}^{d}} k(x, \omega) d \omega
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+    k(x, \omega)=\cos (\omega \cdot x+\beta(\omega))|\hat{f}(\omega)|
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+    |k(x, \omega)| \leq|\hat{f}(\omega)|=\rho(\omega)
+\]</div>
+<div class="proof theorem admonition" id="theorem-4">
+<p class="admonition-title"><span class="caption-number">Theorem 11 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>There exist <span class="math notranslate nohighlight">\(\omega_{i} \in \mathbb{R}^{d}\)</span>, s.t., <span class="math notranslate nohighlight">\(G=\mathbb{R}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{\Omega}\left(f(x)-f_{n}(x)\right)^{2} \leq \frac{1}{n} \int_{\mathbb{R}^{d}}|\hat{f}(\omega)| d \omega
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    f_{n}(x)=\frac{\|\hat{f}\|_{L^{1}}}{n} \sum_{i=1}^{n} \frac{\cos \left(\omega_{i}^{*} \cdot x+\beta_{i}^{*}\right)}{\rho\left(\omega_{i}^{*}\right)}
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[
+    f_{n}=\sum_{i=1}^{n} \frac{\cos \left(\omega_{i}^{*} \cdot x+\beta_{i}^{*}\right)}{\rho\left(\omega_{i}^{*}\right)} \in{ }_{n} \mathrm{~N}(\sigma, n)
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma(t)=\cos (t)
+\]</div>
+</div>
+</div></div>
+<div class="section" id="double-fourier-representation">
+<h3>Double Fourier representation<a class="headerlink" href="#double-fourier-representation" title="Permalink to this headline">¶</a></h3>
+<p>Assume that <span class="math notranslate nohighlight">\(\sigma\)</span> is a locally Riemann integrable function and
+<span class="math notranslate nohighlight">\(\sigma \in L^{1}(\mathbb{R})\)</span> and thus the Fourier transform of
+<span class="math notranslate nohighlight">\(\sigma\)</span> is well-defined and continuous. Since <span class="math notranslate nohighlight">\(\sigma\)</span> is non-zero and</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{\sigma}(\omega)=\frac{1}{2 \pi} \int_{\mathbb{R}} \sigma(t) e^{-i \omega t} d t
+\]</div>
+<p>this implies that <span class="math notranslate nohighlight">\(\hat{\sigma}(a) \neq 0\)</span> for some <span class="math notranslate nohighlight">\(a \neq 0\)</span>. Via a
+change of variables <span class="math notranslate nohighlight">\(t=w \cdot x+b\)</span> and <span class="math notranslate nohighlight">\(d t=d b\)</span>, this means that for
+all <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+0 \neq \hat{\sigma}(a) &amp;=\frac{1}{2 \pi} \int_{\mathbb{R}} \sigma(\omega \cdot x+b) e^{-i a(\omega \cdot x+b)} d b \\
+&amp;=e^{-i a \omega \cdot x} \frac{1}{2 \pi} \int_{\mathbb{R}} \sigma(\omega \cdot x+b) e^{-i a+b} d b
+\end{aligned}
+\end{split}\]</div>
+<p>and so</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{i a \omega \cdot x}=\frac{1}{2 \pi \hat{\sigma}(a)} \int_{\mathbb{R}} \sigma(\omega \cdot x+b) e^{-i a b} d b
+\]</div>
+<p>Likewise, since the growth condition also implies that
+<span class="math notranslate nohighlight">\(\sigma^{(k)} \in L^{1}\)</span>, we can differentiate the above expression
+under the integral with respect to <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>This allows us to write the Fourier mode <span class="math notranslate nohighlight">\(e^{i a \omega \cdot x}\)</span> as an
+integral of neuron output functions. We substitute this into the Fourier
+representation of <span class="math notranslate nohighlight">\(f\)</span> (note that the assumption we make implies that
+<span class="math notranslate nohighlight">\(\hat{f} \in L^{1}\)</span> so this is rigorously justified for a.e. <span class="math notranslate nohighlight">\(x\)</span> ) to
+get</p>
+<p><span class="math notranslate nohighlight">\(f(x)=\int_{\mathbb{R}^{d}} e^{i \omega \cdot x} \hat{f}(\omega) d \omega=\int_{\mathbb{R}^{d}} \int_{\mathbb{R}} \frac{1}{2 \pi \hat{\sigma}(a)} \sigma\left(a^{-1} \omega \cdot x+b\right) \hat{f}(\omega) e^{-i a b} d b d \omega=\int_{\mathbb{R}^{d} \times \mathbb{R}} k(x, \theta) d \theta\)</span>
+where <span class="math notranslate nohighlight">\(\theta=(\omega, b)\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    k(x, \theta)=\frac{1}{2 \pi \hat{\sigma}(a)} \sigma\left(a^{-1} \omega \cdot x+b\right) \hat{f}(\omega) e^{-i a b}
+\]</div>
+<p>Thus we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+|k(x, \theta)| &amp; \leq \frac{1}{2 \pi|\hat{\sigma}(a)|} \max _{x \in \Omega}\left|\sigma\left(a^{-1} \omega \cdot x+b\right) \| \hat{f}(\omega)\right| \\
+&amp; \leq h(\omega, b)|\hat{f}(\omega)|=\rho(\theta)
+\end{aligned}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    h(\omega, b)=\max _{x \in \Omega}\left|\sigma\left(a^{-1} \omega \cdot x+b\right)\right|
+\]</div>
+<p>if we ignore the coefficient. Thus, following the discussion in last
+section, the next step is to analyze <span class="math notranslate nohighlight">\(h(\omega, b)\)</span> which we will
+discuss in the next section. Before that, let us introduce a special
+case of the above representation once the activation function is
+periodic.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module3/m3_08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../m3_07.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">DNN for image classification</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../C08_DNN.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Building and Training Deep Neural Networks (DNNs) with Pytorch</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

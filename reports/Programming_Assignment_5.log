@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/anaconda3/envs/myenv/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+
+######## FEM_GD  ########
+# Write your code in FEM_GD function to compute one gradient descent iteration
+def FEM_GD():
+
+
+######## parameter definition ########
+J = 4                                # grid level
+n = 2**J - 1                         # number of inner grid points
+h = 1/ 2**J                          # length of grid interval
+x = np.arange(1, n + 1) *h           # grid points
+u = 1/2*x*(1-x)                      # true solution at grid points
+b = np.ones(n)*h                     # right-hand-size term
+u1 = (np.random.rand(n)*2-1+np.sin(4*np.pi*x))/2  # initial value for u
+M = 10
+t0 = time.time()                     # initial time
+
+######## compute numerical solution ########
+err = []                             # create a list to save the error of each iteration
+for m in range(M):
+  u1 = FEM_GD({Define a FEM_GD function to compute one gradient descent iteration})
+  temp=np.array([u1[0]*A[1]+u1[1]*A[2]])
+  for j in np.arange(1,len(u1)-1):
+      temp=np.append(temp,np.dot(u1[j-1:j+2],A))
+  Au=np.append(temp,u1[-2]*A[0]+u1[-1]*A[1])
+  err.append(np.linalg.norm(Au-b))   # compute the error of m-th iteration and save it to the list
+print('time cost', time.time() - t0)
+######## plot the exact solution and numerical solution ########
+plt.figure()
+plt.title('Exact solution and numerical solution')
+plot = plt.plot(x,u,label='Exact solution')
+plot = plt.plot(x,u1,'*',label='Numerical solution')
+plt.legend()
+plt.show()
+
+######## plot the l2 norm of the error vs iterations ########
+plt.figure()
+plt.title('Error vs number of iterations using FEM and gradient descent')
+plot = plt.plot(err)
+plt.xlabel('Number of iterations')
+plt.yscale('log')
+plt.ylabel('Error')
+plt.show()
+------------------
+
+[0;36m  File [0;32m"/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_27469/1562355361.py"[0;36m, line [0;32m11[0m
+[0;31m    J = 4                                # grid level[0m
+[0m    ^[0m
+[0;31mIndentationError[0m[0;31m:[0m expected an indented block
+
+IndentationError: expected an indented block (1562355361.py, line 11)
+

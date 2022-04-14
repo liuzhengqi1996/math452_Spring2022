@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 4 Programming Assignment &#8212; Math 452 Site</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quiz 4" href="quiz4.html" />
+    <link rel="prev" title="Homework 4" href="m4_hw.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Math 452
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  contents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module0/ch0_.html">
+   Module 0 Get started: course information and preparations:
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_1.html">
+     Course information, requirements and reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_2.html">
+     Course background and introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/ch0_3.html">
+     Introduction to Python and Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module0/quiz0.html">
+     Preliminary Quiz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module1/module1_.html">
+   Module 1: Linear machine learning models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_01.html">
+     Machine learning basics, popular data sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_02.html">
+     Linearly separable sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_03.html">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_04.html">
+     KL-divergence and cross-entropy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_05.html">
+     Support vector machine and relation with LR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_06.html">
+     Optimization and gradient descent method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/m1_hw.html">
+     Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/Programming_Assignment_1.html">
+     Module 1 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module1/quiz1.html">
+     Quiz 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module2/module2_.html">
+   Module 2: Probability and training algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_01.html">
+     Introduction to probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_02.html">
+     Probabilistic derivation of logistic regression models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_03/m2_03.html">
+     Convex functions and convergence of gradient descen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_04.html">
+     Stochastic gradient descent method and convergence theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_05.html">
+     MNIST: training and generalization accuracy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/m2_hw.html">
+     Homework 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/Programming_Assignment_2.html">
+     Week 2 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module2/quiz2.html">
+     Quiz 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module3/module3_.html">
+   Module 3: Deep neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_01/m3_01.html">
+     Nonlinear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_02/m3_02.html">
+     Polynomials and Weierstrass theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_03/m3_03.html">
+     Finite element method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_04/m3_04.html">
+     Deep neural network functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_05/m3_05.html">
+     Universal approximation properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_06.html">
+     Application to data classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_07.html">
+     DNN for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_08/m3_08.html">
+     Monte Carlo Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/C08_DNN.html">
+     Building and Training Deep Neural Networks (DNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/m3_hw.html">
+     Homework 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module3/Programming_Assignment_3.html">
+     Week 3 Programming Assignment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="module4_.html">
+   Module 4: Convolutional neural networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_01/m4_01.html">
+     Convolutional neural networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_02/m4_02.html">
+     Convolutional operations on images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_03/m4_03.html">
+     Some classic CNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_04/m4_04.html">
+     Training CNN with GPU on Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_05.html">
+     Building and Training Convolutional Neural Networks (CNNs) with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="m4_hw.html">
+     Homework 4
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Week 4 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz4.html">
+     Quiz 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module5/module5_.html">
+   Module 5: Normalization, ResNet and Multigrid
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_01/m5_01.html">
+     Data normalization and weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_02/m5_02.html">
+     Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_03/m5_03.html">
+     Building and Training ResNet with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_04/m5_04.html">
+     Multigrid Method for Finite Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/m5_hw.html">
+     Homework 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/Programming_Assignment_5.html">
+     Week 5 Programming Assignment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module5/quiz5.html">
+     Quiz 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Module6/module6_.html">
+   Module 6: MgNet
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/m6_01.html">
+     MgNet: a special CNN based on multigrid method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/m6_02.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/MG_MgNet.html">
+     Multigrid and MgNet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Module6/Final_Project.html">
+     MATH 497: Final Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module4/Programming_Assignment_4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/liuzhengqi1996/math452_Spring2022/main?urlpath=lab/tree/Module4/Programming_Assignment_4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
+   Problem 1 : Given a image
+   <span class="math notranslate nohighlight">
+    \(x\)
+   </span>
+   , use Pytorch to apply the following three operations to the image sequentially:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1">
+     (1) Do a convolution
+     <span class="math notranslate nohighlight">
+      \(x_{conv1}= self.conv1(x)\)
+     </span>
+     with
+     <span class="math notranslate nohighlight">
+      \(stride=1\)
+     </span>
+     ,  zero
+     <span class="math notranslate nohighlight">
+      \(padding=2\)
+     </span>
+     and  the
+     <span class="math notranslate nohighlight">
+      \(kernel_1\)
+     </span>
+     :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     $$
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-a-relu-x-relu-f-relu-x-conv1">
+     (2) Do a ReLu
+     <span class="math notranslate nohighlight">
+      \(x_{relu} = F.relu(x_{conv1})\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2">
+     (3) Do another convolution
+     <span class="math notranslate nohighlight">
+      \(x_{conv2}= self.conv2(x_{relu})\)
+     </span>
+     with
+     <span class="math notranslate nohighlight">
+      \(stride=1\)
+     </span>
+     ,  zero
+     <span class="math notranslate nohighlight">
+      \(padding=1\)
+     </span>
+     and the average
+     <span class="math notranslate nohighlight">
+      \(kernel_2\)
+     </span>
+     :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     $$
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2">
+     Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are
+     <span class="math notranslate nohighlight">
+      \(x,~x_{conv1},~x_{relu},~x_{conv2}.\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies">
+   <strong>
+    Problem 2 (5 pts).
+   </strong>
+   Try to use stochastic gradient descent method to train CIFAR10 with LeNet-5 to achieve 60% test accuracy. Apply the following two strategies:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+     Run 30 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weight-decay">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-normalization">
+     Data normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-the-results-with-the-following-format">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies">
+   <strong>
+    Optional Problem 1.
+   </strong>
+   Try to use stochastic gradient descent method to train MNIST with LeNet-5 to achieve 99% test accuracy. Apply the following two strategies:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+     Run 20 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5">
+   <strong>
+    Optional Problem 2.
+   </strong>
+   Try to use stochastic gradient descent method to train CIFAR10 with a CNN to achieve 70% test accuracy. For the CNN model, you can modified the LeNet-5:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
+     Increase the number of out_channels in conv1 from 6 to 16 or more.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
+     Increase the number of out_channels in conv2 from 16 to 32 or more.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-will-also-need-to-change-the-size-of-fc1-layer">
+     You will also need to change the size of fc1 layer.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Run 30 epochs, and divide the learning rate by 10 every 10 epochs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Weight decay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Data normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Print the results with the following format:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="week-4-programming-assignment">
+<h1>Week 4 Programming Assignment<a class="headerlink" href="#week-4-programming-assignment" title="Permalink to this headline">¶</a></h1>
+<p>Remark:</p>
+<p>Please upload your solutions of this assignment to Canvas with a file named “Programming_Assignment_4 _yourname.ipynb”</p>
+<p>=================================================================================================================</p>
+<div class="section" id="problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially">
+<h2>Problem 1 : Given a image <span class="math notranslate nohighlight">\(x\)</span>, use Pytorch to apply the following three operations to the image sequentially:<a class="headerlink" href="#problem-1-given-a-image-x-use-pytorch-to-apply-the-following-three-operations-to-the-image-sequentially" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1">
+<h3>(1) Do a convolution  <span class="math notranslate nohighlight">\(x_{conv1}= self.conv1(x)\)</span> with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=2\)</span> and  the <span class="math notranslate nohighlight">\(kernel_1\)</span>:<a class="headerlink" href="#do-a-convolution-x-conv1-self-conv1-x-with-stride-1-zero-padding-2-and-the-kernel-1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3>$$<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Kernel_1=\begin{bmatrix}
+0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \<br />
+0&amp;-1&amp;-2&amp;-1&amp; 0\
+-1&amp;-2&amp;16&amp;-2&amp;-1\
+0&amp;-1&amp;-2&amp;-1&amp; 0\
+0&amp; 0&amp;-1&amp; 0&amp; 0
+\end{bmatrix}
+$$</p>
+</div>
+<div class="section" id="do-a-relu-x-relu-f-relu-x-conv1">
+<h3>(2) Do a ReLu <span class="math notranslate nohighlight">\(x_{relu} = F.relu(x_{conv1})\)</span><a class="headerlink" href="#do-a-relu-x-relu-f-relu-x-conv1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2">
+<h3>(3) Do another convolution  <span class="math notranslate nohighlight">\(x_{conv2}= self.conv2(x_{relu})\)</span>  with <span class="math notranslate nohighlight">\(stride=1\)</span>,  zero <span class="math notranslate nohighlight">\(padding=1\)</span> and the average <span class="math notranslate nohighlight">\(kernel_2\)</span>:<a class="headerlink" href="#do-another-convolution-x-conv2-self-conv2-x-relu-with-stride-1-zero-padding-1-and-the-average-kernel-2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>$$<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Kernel_2=\begin{bmatrix}
+\frac{1}{9} &amp; \frac{1}{9} &amp;\frac{1}{9}  \<br />
+\frac{1}{9} &amp; \frac{1}{9} &amp;\frac{1}{9}  \<br />
+\frac{1}{9} &amp; \frac{1}{9} &amp;\frac{1}{9}<br />
+\end{bmatrix}
+$$</p>
+</div>
+<div class="section" id="define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2">
+<h3>Define a model which includes:  a convolutional layer self.conv1(), ReLu and another convolutional layer self.conv2(). Plot four images which are <span class="math notranslate nohighlight">\(x,~x_{conv1},~x_{relu},~x_{conv2}.\)</span><a class="headerlink" href="#define-a-model-which-includes-a-convolutional-layer-self-conv1-relu-and-another-convolutional-layer-self-conv2-plot-four-images-which-are-x-x-conv1-x-relu-x-conv2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can finish the following code to solve Problem 1.</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#Step I: Deal with the data</span>
+<span class="k">def</span> <span class="nf">read_image</span><span class="p">():</span>    
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./lena.png&#39;</span><span class="p">)</span>
+    <span class="n">im_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+    <span class="c1"># transfer im_array to 4th order torch.tensor </span>
+    <span class="n">im_array</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">im_array</span><span class="p">)</span>
+    <span class="n">im_array</span><span class="o">=</span><span class="n">im_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">im_array</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">im_array</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">im_array</span><span class="o">=</span><span class="n">im_array</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">im_array</span>
+
+<span class="c1">#Step II: Define a function to plot the image: give 4th order torch.tensor </span>
+
+<span class="k">def</span> <span class="nf">plot_images</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span> <span class="c1"># change the figure size for plotting</span>
+    <span class="n">images_for_plot</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:,:]</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images_for_plot</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+
+<span class="c1">#Step III: Define the operators</span>
+    
+<span class="k">class</span> <span class="nc">model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Define the first convolutional layer</span>
+        <span class="n">kernel_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">({</span><span class="n">Define</span> <span class="n">your</span> <span class="n">kernel</span> <span class="n">here</span><span class="p">},</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="c1"># reshape your 2nd order tensor to 4th order tensor. Think about why?</span>
+        <span class="n">kernel_1</span> <span class="o">=</span> <span class="n">kernel_1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">kernel_1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">kernel_1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">kernel_1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># assign kerner_1 to conv1 layer.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">kernel_1</span><span class="p">)</span>
+        
+        
+        <span class="c1"># Define the second convolutional layer</span>
+            
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x_conv1</span> <span class="o">=</span> <span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span><span class="p">}</span>
+        <span class="n">x_relu</span> <span class="o">=</span> <span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span><span class="p">}</span>
+        <span class="n">x_conv2</span> <span class="o">=</span> <span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">x_conv1</span><span class="p">,</span><span class="n">x_relu</span><span class="p">,</span><span class="n">x_conv2</span>
+    
+<span class="c1">#Step IV: Show results:</span>
+<span class="n">x</span><span class="o">=</span><span class="n">read_image</span><span class="p">()</span>
+<span class="n">my_model</span><span class="o">=</span><span class="n">model</span><span class="p">()</span>
+<span class="n">x_conv1</span><span class="p">,</span><span class="n">x_relu</span><span class="p">,</span><span class="n">x_conv2</span> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original image&#39;</span><span class="p">)</span>
+<span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">original</span> <span class="n">image</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Apply the first convolution&#39;</span><span class="p">)</span>
+<span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">image</span> <span class="n">after</span> <span class="n">applying</span> <span class="n">the</span> <span class="n">first</span> <span class="n">convolution</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Apply the first convolution and ReLU&#39;</span><span class="p">)</span>
+<span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">image</span> <span class="n">after</span> <span class="n">applying</span> <span class="n">the</span> <span class="n">first</span> <span class="n">convolution</span> <span class="ow">and</span> <span class="n">ReLU</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Apply the first convolution, ReLU and the second convolution&#39;</span><span class="p">)</span>
+<span class="p">{</span><span class="n">Write</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">image</span> <span class="n">after</span> <span class="n">applying</span> <span class="n">the</span> <span class="n">first</span> <span class="n">convolution</span><span class="p">,</span> <span class="n">ReLU</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">second</span> <span class="n">convolution</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_27415/1762135276.py&quot;</span><span class="gt">, line </span><span class="mi">36</span>
+    <span class="n">kernel_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">({</span><span class="n">Define</span> <span class="n">your</span> <span class="n">kernel</span> <span class="n">here</span><span class="p">},</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+                                    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>=================================================================================================================</p>
+</div>
+</div>
+<div class="section" id="problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies">
+<h2><strong>Problem 2 (5 pts).</strong> Try to use stochastic gradient descent method to train CIFAR10 with LeNet-5 to achieve 60% test accuracy. Apply the following two strategies:<a class="headerlink" href="#problem-2-5-pts-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-lenet-5-to-achieve-60-test-accuracy-apply-the-following-two-strategies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<div class="section" id="run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+<h3>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-30-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="weight-decay">
+<h3>Weight decay<a class="headerlink" href="#weight-decay" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="data-normalization">
+<h3>Data normalization<a class="headerlink" href="#data-normalization" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="print-the-results-with-the-following-format">
+<h3>Print the results with the following format:<a class="headerlink" href="#print-the-results-with-the-following-format" title="Permalink to this headline">¶</a></h3>
+<p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
+<p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
+<p>=================================================================================================================</p>
+</div>
+</div>
+<div class="section" id="optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies">
+<h2><strong>Optional Problem 1.</strong> Try to use stochastic gradient descent method to train MNIST with LeNet-5 to achieve 99% test accuracy. Apply the following two strategies:<a class="headerlink" href="#optional-problem-1-try-to-use-stochastic-gradient-descent-method-to-train-mnist-with-lenet-5-to-achieve-99-test-accuracy-apply-the-following-two-strategies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li></li>
+<li></li>
+</ul>
+<div class="section" id="run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs">
+<h3>Run 20 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#run-20-epochs-and-divide-the-learning-rate-by-10-every-10-epochs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3>Weight decay<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>Print the results with the following format:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
+<p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
+<p>=================================================================================================================</p>
+</div>
+</div>
+<div class="section" id="optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5">
+<h2><strong>Optional Problem 2.</strong> Try to use stochastic gradient descent method to train CIFAR10 with a CNN to achieve 70% test accuracy. For the CNN model, you can modified the LeNet-5:<a class="headerlink" href="#optional-problem-2-try-to-use-stochastic-gradient-descent-method-to-train-cifar10-with-a-cnn-to-achieve-70-test-accuracy-for-the-cnn-model-you-can-modified-the-lenet-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<div class="section" id="increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more">
+<h3>Increase the number of out_channels in conv1 from 6 to 16 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv1-from-6-to-16-or-more" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more">
+<h3>Increase the number of out_channels in conv2 from 16 to 32 or more.<a class="headerlink" href="#increase-the-number-of-out-channels-in-conv2-from-16-to-32-or-more" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="you-will-also-need-to-change-the-size-of-fc1-layer">
+<h3>You will also need to change the size of fc1 layer.<a class="headerlink" href="#you-will-also-need-to-change-the-size-of-fc1-layer" title="Permalink to this headline">¶</a></h3>
+</div>
+<p>Apply the following two strategies:</p>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<div class="section" id="id5">
+<h3>Run 30 epochs, and divide the learning rate by 10 every 10 epochs<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Weight decay<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>Data normalization<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3>Print the results with the following format:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>“Epoch: i, Training accuracy: <span class="math notranslate nohighlight">\(a_i\)</span>, Test accuracy: <span class="math notranslate nohighlight">\(b_i\)</span>”</p>
+<p>where <span class="math notranslate nohighlight">\(i=1,2,3,...\)</span> means the <span class="math notranslate nohighlight">\(i\)</span>-th epoch,  <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the training accuracy and test accuracy computed at the end of <span class="math notranslate nohighlight">\(i\)</span>-th epoch.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "liuzhengqi1996/math452_Spring2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="m4_hw.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Homework 4</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="quiz4.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Quiz 4</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Department of Mathematics, Penn State University Park<br/>
+        
+            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

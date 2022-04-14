@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/anaconda3/envs/myenv/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/anaconda3/envs/myenv/lib/python3.9/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# The most important library for building neural networks is the torch.nn library. 
+# This library allows us to build neural networks by concatenating different types of layers.
+import torch
+import torch.nn as nn # Import functions from torch.nn
+
+def model(input_size,num_classes):
+    return nn.Linear(input_size,num_classes) 
+
+# Define a function named model, which returns a linear model (xW^{T}+b) by nn.Linear(input_size, num_classes)
+# input_size is the size of the row vector x
+# num_classes is the number of classes to be classified
+# This model includes parameters W and b. 
+
+# Question: what are the sizes of W and b?
+
+# Example: in MNIST, the size of all the images is 1*28*28,  
+# which can be re-arranged to a row vector x with size 784 so that input_size=784
+# num_classes=10 in MNIST.
+# Therefore, the size of W is 10*784 and the size of b is 1*10 
+
+# Linear model: xW^{T}+b
+
+# The size of W is num_classes*input_size
+# The size of b is 1*num_classes
+# The size of input x is 1*input_size (if batch_size=1)
+
+# Question: what are the sizes of W, x and b if we have a mini-batch of data?
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/var/folders/xz/fhb2zgq551315f5zf88k__ph0000gn/T/ipykernel_27328/1377107356.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# The most important library for building neural networks is the torch.nn library.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;31m# This library allows us to build neural networks by concatenating different types of layers.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0;32mimport[0m [0mtorch[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;32mimport[0m [0mtorch[0m[0;34m.[0m[0mnn[0m [0;32mas[0m [0mnn[0m [0;31m# Import functions from torch.nn[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'torch'
+ModuleNotFoundError: No module named 'torch'
+
