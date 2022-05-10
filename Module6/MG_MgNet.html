@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -54,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MATH 497: Final Project" href="Final_Project.html" />
+    <link rel="next" title="MATH 452: Final Project" href="Final_Project.html" />
     <link rel="prev" title="Multigrid and MgNet" href="m6_02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +73,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
       
@@ -432,7 +436,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Final_Project.html">
-     MATH 497: Final Project
+     MATH 452: Final Project
     </a>
    </li>
   </ul>
@@ -757,7 +761,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">fhb2zgq551315f5zf88k__ph0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_27517</span><span class="o">/</span><span class="mf">4091978758.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">19</span><span class="n">d8455291c8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -772,8 +776,8 @@
 </div>
 <div class="section" id="apply-multigrid-to-solve-the-solving-the-following-system">
 <h2>2. Apply Multigrid to solve the solving the following system<a class="headerlink" href="#apply-multigrid-to-solve-the-solving-the-following-system" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-d1e2f823-5e1e-43a8-8144-2318dc20a172">
-<span class="eqno">(59)<a class="headerlink" href="#equation-d1e2f823-5e1e-43a8-8144-2318dc20a172" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-fee172d7-c834-4c8c-9dc4-937cd101808a">
+<span class="eqno">(59)<a class="headerlink" href="#equation-fee172d7-c834-4c8c-9dc4-937cd101808a" title="Permalink to this equation">¶</a></span>\[\begin{equation}\label{matrix}
 A\ast u =f,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\ast\)</span> is a convolution for one channel with stride 1 and zero padding <span class="math notranslate nohighlight">\(1\)</span>
@@ -1037,7 +1041,7 @@ and
         <a class="right-next" href="Final_Project.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">MATH 497: Final Project</p>
+                <p class="prevnext-title">MATH 452: Final Project</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
@@ -1047,7 +1051,7 @@ and
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
