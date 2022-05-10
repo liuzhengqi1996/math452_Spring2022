@@ -590,7 +590,7 @@
                 
   <div class="section" id="quiz-4">
 <h1>Quiz 4<a class="headerlink" href="#quiz-4" title="Permalink to this headline">¶</a></h1>
-<p>For Penn State student, access quiz <a class="reference external" href="https://psu.instructure.com/courses/2177217/quizzes/4421202">here</a></p>
+<p>For Penn State student, access quiz <a class="reference external" href="https://psu.instructure.com/courses/2177217">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
@@ -604,24 +604,24 @@
 <div class="math notranslate nohighlight">
 \[\begin{split}
     g=\begin{pmatrix}
-1 &amp; 2 &amp; 1 &amp; 1\\
-0 &amp; 0 &amp; 2 &amp; 0\\
-0 &amp; 2 &amp; 2 &amp; 0\\
-1 &amp; 1 &amp; 1 &amp; 1
-\end{pmatrix}
+    1 &amp; 2 &amp; 1 &amp; 1\\
+    0 &amp; 0 &amp; 2 &amp; 0\\
+    0 &amp; 2 &amp; 2 &amp; 0\\
+    1 &amp; 1 &amp; 1 &amp; 1
+    \end{pmatrix},
 \end{split}\]</div>
 <p>and kernel</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     K = 
-\begin{pmatrix}
-0 &amp; 0 &amp; 1\\
-0 &amp; 1 &amp; 0\\
-1 &amp; 0 &amp; 0
-\end{pmatrix}
+    \begin{pmatrix}
+    0 &amp; 0 &amp; 1\\
+    0 &amp; 1 &amp; 0\\
+    1 &amp; 0 &amp; 0
+    \end{pmatrix}.
 \end{split}\]</div>
-<p>Then what is the outcome of convolution for one channel with stride one and zero padding
-<span class="math notranslate nohighlight">\(f = K * g\)</span></p>
+<p>Then what is the outcome of convolution for one channel</p>
+<p>with stride one and zero padding <span class="math notranslate nohighlight">\( f = K\ast g \)</span></p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Show answer<div class="summary-down docutils">
@@ -629,16 +629,15 @@ Show answer<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Answer:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p class="card-text">Answer:
+<span class="math notranslate nohighlight">\(
     f = \begin{pmatrix}
-	1 &amp; 2 &amp; 1 &amp; 3\\
-	2 &amp; 1 &amp; 5 &amp; 2\\
-	0 &amp; 5 &amp; 3 &amp; 1\\
-	3 &amp; 3 &amp; 1 &amp; 1
-	\end{pmatrix}
-\end{split}\]</div>
+    1 &amp; 2 &amp; 1 &amp; 3\\
+    2 &amp; 1 &amp; 5 &amp; 2\\
+    0 &amp; 5 &amp; 3 &amp; 1\\
+    3 &amp; 3 &amp; 1 &amp; 1
+    \end{pmatrix}
+\)</span></p>
 </div>
 </details></div>
 <div class="section" id="question-2">
@@ -656,7 +655,7 @@ Show answer<div class="summary-down docutils">
 </details></div>
 <div class="section" id="question-3">
 <h2>Question 3<a class="headerlink" href="#question-3" title="Permalink to this headline">¶</a></h2>
-<p>Consider a two channel image (tensor) <span class="math notranslate nohighlight">\(g \in \mathbb{R}^{2\times 5\times 5}\)</span>. Let define <span class="math notranslate nohighlight">\(f = K\ast g\)</span> by convolution for multi-channel with stride-two and zero padding, where <span class="math notranslate nohighlight">\(K \in \mathbb{R}^{3\times 2\times 3\times3}\)</span> (<span class="math notranslate nohighlight">\(K_{i,j} \in \mathbb{R}^{3\times 3}\)</span> for <span class="math notranslate nohighlight">\(i=1,2,3\)</span> and <span class="math notranslate nohighlight">\(j=1,2\)</span>). What is the right dimension (size) of <span class="math notranslate nohighlight">\(f\)</span></p>
+<p>Consider a two channel image (tensor) <span class="math notranslate nohighlight">\(g \in \mathbb{R}^{2\times 5\times 5}\)</span>. Let define <span class="math notranslate nohighlight">\(f = K\ast g\)</span> by convolution for multi-channel with stride-two and zero padding, where <span class="math notranslate nohighlight">\(K \in \mathbb{R}^{3\times 2\times 3\times3}\)</span> (<span class="math notranslate nohighlight">\(K_{i,j} \in \mathbb{R}^{3\times 3}\)</span> for <span class="math notranslate nohighlight">\(i=1,2,3\)</span> and <span class="math notranslate nohighlight">\(j=1,2\)</span>). What is the right dimension (size) of <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Show answer<div class="summary-down docutils">
@@ -673,18 +672,18 @@ Show answer<div class="summary-down docutils">
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \tilde{M}=
-\left(
-\begin{array}{ccccc}
-4&amp; 1&amp;&amp;&amp;\\
-1&amp;4&amp;1&amp;&amp;\\
-&amp;\ddots&amp;\ddots&amp;\ddots&amp;\\
-&amp;&amp;1&amp;4&amp;1\\
-&amp;&amp;&amp;1&amp;4\\
-\end{array}
-\right)\in \mathbb R^{n\times n}
+    \left(
+    \begin{array}{ccccc}
+    4&amp; 1&amp;&amp;&amp;\\
+    1&amp;4&amp;1&amp;&amp;\\
+    &amp;\ddots&amp;\ddots&amp;\ddots&amp;\\
+    &amp;&amp;1&amp;4&amp;1\\
+    &amp;&amp;&amp;1&amp;4\\
+    \end{array}
+    \right)\in \mathbb R^{n\times n}
 \end{split}\]</div>
-<p>Write out the kernel <span class="math notranslate nohighlight">\(M\)</span> such that for any <span class="math notranslate nohighlight">\(\mu\in \mathbb R^n\)</span> (with zero padding)</p>
-<p><span class="math notranslate nohighlight">\(\tilde{M}\mu=M\ast \mu.\)</span></p>
+<p>Write out the kernel <span class="math notranslate nohighlight">\(M\)</span> such that for any <span class="math notranslate nohighlight">\(\mu\in \mathbb R^n\)</span> (with zero padding)
+<span class="math notranslate nohighlight">\(\tilde{M}\mu=M\ast \mu.\)</span></p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Show answer<div class="summary-down docutils">
@@ -692,7 +691,7 @@ Show answer<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Answer: M = (1,4,1)</p>
+<p class="card-text">Answer: <span class="math notranslate nohighlight">\(M=(1,4,1)\)</span></p>
 </div>
 </details></div>
 <div class="section" id="question-5">
@@ -746,7 +745,7 @@ Show answer<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Answer:</p>
+<p class="card-text">Answer: torch.Size([2, 1, 3, 3])</p>
 </div>
 </details></div>
 <div class="section" id="question-7">
@@ -767,20 +766,6 @@ Show answer<div class="summary-down docutils">
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mf">0e15</span><span class="n">d08986b6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">max_x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -789,7 +774,8 @@ Show answer<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Answer:</p>
+<p class="card-text">Answer:tensor([[[1.0, 2.0],[3.0, 4.0]]])
+tensor([[[0.5, 1.0],[1.5, 2.0]]])</p>
 </div>
 </details></div>
 <div class="section" id="question-8">
@@ -818,35 +804,7 @@ Show answer<div class="summary-down docutils">
 </details></div>
 <div class="section" id="question-9">
 <h2>Question 9<a class="headerlink" href="#question-9" title="Permalink to this headline">¶</a></h2>
-<p>If we ask that the learning rate is divided by 5 every 30 epochs, given the initial learning is 1, which of the following code is correct?</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mf">0.2</span> <span class="o">**</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">//</span> <span class="mi">30</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">**</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">//</span> <span class="mi">30</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mf">0.2</span> <span class="o">**</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">**</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>If we ask that the learning rate is divided by 5 every 30 epochs, given the initial learning is 1, what code should we run?</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Show answer<div class="summary-down docutils">
