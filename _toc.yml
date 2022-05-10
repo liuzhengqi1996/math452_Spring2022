@@ -46,6 +46,7 @@ parts:
     - file: Module3/C08_DNN.ipynb
     - file: Module3/m3_hw.ipynb
     - file: Module3/Programming_Assignment_3.ipynb
+    - file: Module3/quiz3.ipynb
   - file: Module4/module4_
     sections:
     - file: Module4/m4_01/m4_01.ipynb
