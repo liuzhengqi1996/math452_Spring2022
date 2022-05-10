@@ -24,6 +24,8 @@ import ipywidgets as widgets
 # \end{bmatrix}
 # $$
 # 
+# $f(x,y)$ is not a convex function
+# 
 # ```
 
 # ## Question 2
@@ -119,7 +121,7 @@ import ipywidgets as widgets
 # and consider the random variable $\mathcal X_{\boldsymbol v} ={\boldsymbol x} \cdot {\boldsymbol v}$.  What are $\mathbb{E} [\mathcal X_{\boldsymbol v}]$ and  $\big(\mathbb{V}[ \mathcal X_{\boldsymbol v}]\big)^2$.
 
 # ```{dropdown} Show answer
-# Answer:
+# Answer: Unavailable
 # 
 # ```
 
@@ -156,7 +158,7 @@ for i, (images, labels) in enumerate(trainloader):
 # What are the sizes of variable images and labels?
 
 # ```{dropdown} Show answer
-# Answer: 
+# Answer: Size of images: torch.Size([100, 1, 28, 28]), Size of labels: torch.Size([100])
 # 
 # ```
 
@@ -164,7 +166,7 @@ for i, (images, labels) in enumerate(trainloader):
 # In the training process of MNIST dataset with mini-batch stochastic gradient descent(SGD) method, if we set bath_size = 600, how many iterations (or SGD steps) are there in one epoch?
 
 # ```{dropdown} Show answer
-# Answer: 
+# Answer: 100
 # 
 # ```
 
@@ -182,7 +184,7 @@ print(maxvalue,',',index)
 
 
 # ```{dropdown} Show answer
-# Answer: 
+# Answer: tensor([4, 6, 7]) , tensor([0, 2, 1])
 # 
 # ```
 
@@ -200,6 +202,12 @@ print(num_correct)
 
 
 # ```{dropdown} Show answer
-# Answer: 
+# Answer: tensor([4, 7, 6]) , tensor([0, 2, 1])
 # 
 # ```
+
+# In[ ]:
+
+
+
+

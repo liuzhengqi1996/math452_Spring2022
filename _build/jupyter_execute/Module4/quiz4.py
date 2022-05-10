@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Quiz 4
-# For Penn State student, access quiz [here](https://psu.instructure.com/courses/2177217/quizzes/4421202)
+# For Penn State student, access quiz [here](https://psu.instructure.com/courses/2177217)
 
 # In[1]:
 
@@ -15,39 +15,38 @@ import ipywidgets as widgets
 # 
 # $$
 #     g=\begin{pmatrix}
-# 1 & 2 & 1 & 1\\
-# 0 & 0 & 2 & 0\\
-# 0 & 2 & 2 & 0\\
-# 1 & 1 & 1 & 1
-# \end{pmatrix}
+#     1 & 2 & 1 & 1\\
+#     0 & 0 & 2 & 0\\
+#     0 & 2 & 2 & 0\\
+#     1 & 1 & 1 & 1
+#     \end{pmatrix},
 # $$
-# 
-# and kernel 
+# and kernel
 # 
 # $$
 #     K = 
-# \begin{pmatrix}
-# 0 & 0 & 1\\
-# 0 & 1 & 0\\
-# 1 & 0 & 0
-# \end{pmatrix}
+#     \begin{pmatrix}
+#     0 & 0 & 1\\
+#     0 & 1 & 0\\
+#     1 & 0 & 0
+#     \end{pmatrix}.
 # $$
 # 
-# Then what is the outcome of convolution for one channel with stride one and zero padding
-# $f = K * g$
+# Then what is the outcome of convolution for one channel 
+# 
+# with stride one and zero padding $ f = K\ast g $
 # 
 
 # ```{dropdown} Show answer
 # Answer:
-# 
-# $$
+# $
 #     f = \begin{pmatrix}
-# 	1 & 2 & 1 & 3\\
-# 	2 & 1 & 5 & 2\\
-# 	0 & 5 & 3 & 1\\
-# 	3 & 3 & 1 & 1
-# 	\end{pmatrix}
-# $$
+#     1 & 2 & 1 & 3\\
+#     2 & 1 & 5 & 2\\
+#     0 & 5 & 3 & 1\\
+#     3 & 3 & 1 & 1
+#     \end{pmatrix}
+# $
 # ```
 
 # ## Question 2
@@ -58,34 +57,33 @@ import ipywidgets as widgets
 # ```
 
 # ## Question 3
-# Consider a two channel image (tensor) $g \in \mathbb{R}^{2\times 5\times 5}$. Let define $f = K\ast g$ by convolution for multi-channel with stride-two and zero padding, where $K \in \mathbb{R}^{3\times 2\times 3\times3}$ ($K_{i,j} \in \mathbb{R}^{3\times 3}$ for $i=1,2,3$ and $j=1,2$). What is the right dimension (size) of $f$
+# Consider a two channel image (tensor) $g \in \mathbb{R}^{2\times 5\times 5}$. Let define $f = K\ast g$ by convolution for multi-channel with stride-two and zero padding, where $K \in \mathbb{R}^{3\times 2\times 3\times3}$ ($K_{i,j} \in \mathbb{R}^{3\times 3}$ for $i=1,2,3$ and $j=1,2$). What is the right dimension (size) of $f$.
 
 # ```{dropdown} Show answer
 # Answer: $f \in \mathbb{R}^{3\times 3\times 3}$
 # ```
 
 # ## Question 4
-# Given 
+# Given 
 # 
 # $$
 #     \tilde{M}=
-# \left(
-# \begin{array}{ccccc}
-# 4& 1&&&\\
-# 1&4&1&&\\
-# &\ddots&\ddots&\ddots&\\
-# &&1&4&1\\
-# &&&1&4\\
-# \end{array}
-# \right)\in \mathbb R^{n\times n}
+#     \left(
+#     \begin{array}{ccccc}
+#     4& 1&&&\\
+#     1&4&1&&\\
+#     &\ddots&\ddots&\ddots&\\
+#     &&1&4&1\\
+#     &&&1&4\\
+#     \end{array}
+#     \right)\in \mathbb R^{n\times n}
 # $$
 # 
 # Write out the kernel $M$ such that for any $\mu\in \mathbb R^n$ (with zero padding)
-# 
 # $\tilde{M}\mu=M\ast \mu.$
 
 # ```{dropdown} Show answer
-# Answer: M = (1,4,1)
+# Answer: $M=(1,4,1)$
 # ```
 
 # ## Question 5
@@ -114,13 +112,13 @@ print(conv1.weight.size())
 
 
 # ```{dropdown} Show answer
-# Answer:
+# Answer: torch.Size([2, 1, 3, 3])
 # ```
 
 # ## Question 7
 # What is the output of the following code:
 
-# In[3]:
+# In[ ]:
 
 
 import torch.nn.functional as F
@@ -136,7 +134,8 @@ print(max_x,'\n',avg_x)
 
 
 # ```{dropdown} Show answer
-# Answer:
+# Answer:tensor([[[1.0, 2.0],[3.0, 4.0]]])
+# tensor([[[0.5, 1.0],[1.5, 2.0]]])
 # ```
 
 # ## Question 8
@@ -157,31 +156,7 @@ print(x.size())
 # ```
 
 # ## Question 9
-# If we ask that the learning rate is divided by 5 every 30 epochs, given the initial learning is 1, which of the following code is correct?
-
-# In[ ]:
-
-
-lr = 1 * 0.2 ** (epoch // 30)
-
-
-# In[ ]:
-
-
-lr = 1 * 5 ** (epoch // 30)
-
-
-# In[ ]:
-
-
-lr = 1 * 0.2 ** (epoch // 10)
-
-
-# In[ ]:
-
-
-lr = 1 * 5 ** (epoch // 10)
-
+# If we ask that the learning rate is divided by 5 every 30 epochs, given the initial learning is 1, what code should we run?
 
 # ```{dropdown} Show answer
 # Answer: lr = 1 * 0.2 ** (epoch // 30)
