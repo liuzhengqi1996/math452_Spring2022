@@ -96,7 +96,7 @@ print('The number of students in my class is:', my_class.num_students)
 # 
 # * output layer: outputs$=(x^{l}{W^{l}}^{T}+b^{l})$
 
-# In[4]:
+# In[5]:
 
 
 import torch.nn as nn

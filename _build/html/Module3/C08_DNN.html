@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Building and Training Deep Neural Networks (DNNs) with Pytorch &#8212; Math 452 Site</title>
+    <title>Building and Training Deep Neural Networks (DNNs) with Pytorch &#8212; Deep Learning Web Course</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -78,10 +78,10 @@
         
       
       
-      <img src="../_static/PSU_SCI_RGB_2C.png" class="logo" alt="logo">
+      <img src="../_static/multigrid.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Math 452 Site</h1>
+      <h1 class="site-logo" id="site-title">Deep Learning Web Course</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -665,16 +665,7 @@ The number of students in Math497 is: 42
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">ed6c2e0bf6a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">Course</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#  If our module changed, we would have to reload it with the following commands</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">imp</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">Course</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;Course&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of students in my class is: 40
 </pre></div>
 </div>
 </div>
@@ -688,8 +679,8 @@ The number of students in Math497 is: 42
 <li><p><span class="math notranslate nohighlight">\(l\)</span>-hidden layers: denote <span class="math notranslate nohighlight">\(x^{0}=x\)</span>
 $$</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-b6d2bd0a-0bfc-47f4-abf9-59176693848e">
-<span class="eqno">(37)<a class="headerlink" href="#equation-b6d2bd0a-0bfc-47f4-abf9-59176693848e" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b1b86ea3-7c48-48cd-b6e9-054b8f176fa8">
+<span class="eqno">(37)<a class="headerlink" href="#equation-b1b86ea3-7c48-48cd-b6e9-054b8f176fa8" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 &amp;x^{1} = \sigma (x^0{W^0}^{T}+b^0), &amp;&amp;\text{first hidden layer}\\
 &amp;x^{2} = \sigma (x^1{W^1}^{T}+b^1), &amp;&amp;\text{second hidden layer}\\
 &amp;\vdots &amp;&amp;\\
@@ -735,12 +726,16 @@ $$</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([500, 784])
-torch.Size([500])
-torch.Size([250, 500])
-torch.Size([250])
-torch.Size([10, 250])
-torch.Size([10])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">63</span><span class="n">cf0bcef05e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Note that:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># (1)torch.nn.Module is a Class</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># (2)torch.nn is a Module</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
 </pre></div>
 </div>
 </div>
@@ -916,9 +911,9 @@ Epoch: 2, the training accuracy: 0.9261, the test accuracy: 0.9284
     <div class="container">
       <p>
         
-          By Department of Mathematics, Penn State University Park<br/>
+          By Jinchao Xu<br/>
         
-            &copy; Copyright The Pennsylvania State University, 2021. This material is not licensed for resale.<br/>
+            &copy; Copyright  Multigrid.org.<br/>
       </p>
     </div>
   </footer>

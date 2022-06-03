@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Course information, requirements and reference
+# 
+# 
 
 # In[1]:
 

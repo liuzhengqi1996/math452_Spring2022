@@ -1,10 +1,10 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Math 452 Site
-author: Department of Mathematics, Penn State University Park
-copyright: "The Pennsylvania State University, 2021. This material is not licensed for resale"
-logo: PSU_SCI_RGB_2C.png
+title: Deep Learning Web Course
+author: Jinchao Xu
+copyright: " Multigrid.org"
+logo: multigrid.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
